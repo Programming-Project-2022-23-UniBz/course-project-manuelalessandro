@@ -13,9 +13,9 @@ Add a link to a demo of your project.
 
 This project was created by:
 
-* Student 1 
-* Student 2
-* Student 3
+* Khinchi Ganesh Kumar 
+* Marconi Alessandro
+* Villotti Manuel
 
 ## 3. Usage
 
