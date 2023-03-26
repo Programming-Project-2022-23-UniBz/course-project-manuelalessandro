@@ -5,20 +5,21 @@ import javax.swing.*;
 
 public class WelcomeFrame extends JFrame{
     // Settings
-    private static int width = 1100;
-    private static int height = 700;
-    private static boolean resize = false; // Resizable?
-    private static String logoPath = "src/main/resources/logo.png";
+    private int width = 1100;
+    private int height = 700;
+    private boolean resize = false; // Resizable?
+    private String logoPath = "src/main/resources/logo.png";
 
     //instance variables
-    BorderPanel borderPanel;
+    private HomePanel homePanel;
+
 
     public WelcomeFrame() {
 
-        borderPanel = new BorderPanel();
+        homePanel = new HomePanel(width, height);
 
         setTitle("Hotel Management");
-        setContentPane(borderPanel.getBorderPanel()); // Set the main panel
+        setContentPane(homePanel); // Set the main panel
         setSize(width, height);
         setResizable(resize); // prevent from resize
         setVisible(true); // make frame visible
@@ -29,6 +30,12 @@ public class WelcomeFrame extends JFrame{
         setIconImage(logo.getImage());
     }
 
-
+    //Getters
+    public int getWidth(){
+        return width;
+    }
+    public int getHeight(){
+        return height;
+    }
 
 }

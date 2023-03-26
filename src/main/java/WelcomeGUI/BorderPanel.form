@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="WelcomeGUI.BorderPanel">
-  <grid id="27dc6" binding="borderPanel" layout-manager="GridLayoutManager" row-count="7" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="borderPanel" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+    <margin top="50" left="20" bottom="30" right="20"/>
     <constraints>
-      <xy x="20" y="20" width="217" height="457"/>
+      <xy x="20" y="20" width="217" height="508"/>
     </constraints>
     <properties>
       <background color="-16364541"/>
     </properties>
-    <border type="none"/>
+    <border type="bevel-raised"/>
     <children>
-      <grid id="8fc85" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="8fc85" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="10">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-16364541"/>
@@ -26,6 +26,7 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <font size="14"/>
               <foreground color="-1"/>
               <text value="Home"/>
             </properties>
@@ -36,6 +37,7 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <font size="14"/>
               <foreground color="-1"/>
               <text value="Booking"/>
             </properties>
@@ -46,6 +48,7 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <font size="14"/>
               <foreground color="-1"/>
               <text value="Rooms"/>
             </properties>
@@ -56,6 +59,7 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <font size="14"/>
               <foreground color="-1"/>
               <text value="Services"/>
             </properties>
@@ -65,7 +69,7 @@
       <grid id="c8547" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-16364541"/>
@@ -74,33 +78,30 @@
         <children>
           <component id="db3a4" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <maximum-size width="50" height="50"/>
-              </grid>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font size="10"/>
               <foreground color="-6513508"/>
               <text value="Quellenhof Luxury Resort "/>
             </properties>
           </component>
           <component id="ca23d" class="javax.swing.JLabel">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <maximum-size width="50" height="50"/>
-              </grid>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font size="10"/>
               <foreground color="-6513508"/>
               <text value="S.Martino - South Tyrol"/>
             </properties>
           </component>
           <component id="679d8" class="javax.swing.JLabel">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <maximum-size width="50" height="50"/>
-              </grid>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font size="10"/>
               <foreground color="-6513508"/>
               <text value="info@quellenhof.it"/>
             </properties>
@@ -109,14 +110,14 @@
       </grid>
       <vspacer id="ab131">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
             <preferred-size width="80" height="80"/>
           </grid>
         </constraints>
       </vspacer>
       <component id="a19e7" class="javax.swing.JLabel" binding="titleLabel">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <enabled value="true"/>
@@ -127,23 +128,9 @@
           <text value="Quellenhof"/>
         </properties>
       </component>
-      <vspacer id="58a11">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="30" height="30"/>
-          </grid>
-        </constraints>
-      </vspacer>
-      <vspacer id="f0b46">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="50" height="50"/>
-          </grid>
-        </constraints>
-      </vspacer>
       <vspacer id="7c514">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
             <preferred-size width="50" height="50"/>
           </grid>
         </constraints>
