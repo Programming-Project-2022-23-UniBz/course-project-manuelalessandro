@@ -14,7 +14,7 @@ public class BorderPanel {
     public BorderPanel(int heightIn){
         width = 200;
         height = heightIn;
-        borderPanel.setSize(width, height);
+        //borderPanel.setSize(width, height);
     }
     public JPanel getBorderPanel(){
         return borderPanel;
