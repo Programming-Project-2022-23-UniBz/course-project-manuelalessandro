@@ -19,15 +19,15 @@ This project was created by:
 
 ## 3. Usage
 
-Describe how to compile, package, and run your project here.
+Describe how to compile, package, and Main your project here.
 
-To build the project, run:
+To build the project, Main:
 
 ```shell
 mvn package
 ```
 
-To do X, run:
+To do X, Main:
 
 ```
 mvn abc
