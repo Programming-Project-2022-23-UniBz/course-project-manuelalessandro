@@ -3,25 +3,15 @@ import javax.swing.*;
 
 public class Main {
     // Settings
-    private static int width = 800;
-    private static int height = 500;
-
-    private static boolean resize = false; // Resizable?
+    private static String logoPath = "src/main/resources/logo.png";
 
 
     public static void main(String[] args) {
 
-        System.out.print("main start");
-        JFrame frame = new JFrame();
-        frame.setTitle("Hotel Management");
-        frame.setContentPane(new WelcomeFrame().getMainPanel()); // Set the welcome frame
-        frame.setSize(width, height);
-        frame.setResizable(resize); // prevent from resize
-        frame.setVisible(true); // make frame visible
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // stop application when closed
+        JFrame frame = new WelcomeFrame();
 
         // Set logo as icon
-        ImageIcon logo = new ImageIcon("src/main/resources/logo.png");
+        ImageIcon logo = new ImageIcon(logoPath); // set path in settings
         frame.setIconImage(logo.getImage());
 
 
