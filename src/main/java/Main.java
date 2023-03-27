@@ -1,14 +1,9 @@
+
 import WelcomeGUI.WelcomeFrame;
 
 
 public class Main {
-
-
-
-    public static void main(String[] args) {
-
+    public static void main(String[] args){
         WelcomeFrame frame = new WelcomeFrame();
-
-
     }
 }
