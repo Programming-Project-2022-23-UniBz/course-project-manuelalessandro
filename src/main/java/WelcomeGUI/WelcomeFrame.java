@@ -5,7 +5,7 @@ import javax.swing.*;
 public class WelcomeFrame extends JFrame{
     // Settings
     private int width = 1100;
-    private int height = 700;
+    private int height = 650;
     private boolean resize = false; // Resizable?
     private String logoPath = "src/main/resources/logo.png";
 
