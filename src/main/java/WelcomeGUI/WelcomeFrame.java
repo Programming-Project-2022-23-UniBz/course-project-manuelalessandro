@@ -16,10 +16,8 @@ public class WelcomeFrame extends JFrame{
     private JLabel roomsLabel;
     private JLabel servicesLabel;
     private JLabel titleLabel;
-    private JTabbedPane tabbedPane1;
-    private JPanel homePanel;
-    private JPanel bookingPanel;
     private JPanel welcomePanel;
+    private JTabbedPane tabbedPane1;
 
     public WelcomeFrame(){
         setTitle("Hotel Management");
