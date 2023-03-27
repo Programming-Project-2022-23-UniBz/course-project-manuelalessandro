@@ -1,6 +1,7 @@
-package WelcomeGUI;
+package OldGUI;
 
 import javax.swing.*;
+
 
 public class WelcomeFrame extends JFrame{
     // Settings
@@ -10,20 +11,15 @@ public class WelcomeFrame extends JFrame{
     private String logoPath = "src/main/resources/logo.png";
 
     //instance variables
-    private JPanel borderPanel;
-    private JLabel homeLabel;
-    private JLabel bookingLabel;
-    private JLabel roomsLabel;
-    private JLabel servicesLabel;
-    private JLabel titleLabel;
-    private JTabbedPane tabbedPane1;
-    private JPanel homePanel;
-    private JPanel bookingPanel;
-    private JPanel welcomePanel;
+    private HomePanel homePanel;
 
-    public WelcomeFrame(){
+
+    public WelcomeFrame() {
+
+        homePanel = new HomePanel(width, height);
+
         setTitle("Hotel Management");
-        setContentPane(welcomePanel); // Set the main panel
+        setContentPane(homePanel); // Set the main panel
         setSize(width, height);
         setResizable(resize); // prevent from resize
         //setUndecorated(true); //disable app borders
@@ -34,4 +30,13 @@ public class WelcomeFrame extends JFrame{
         ImageIcon logo = new ImageIcon(logoPath); // set path in settings
         setIconImage(logo.getImage());
     }
+
+    //Getters
+    public int getWidth(){
+        return width;
+    }
+    public int getHeight(){
+        return height;
+    }
+
 }

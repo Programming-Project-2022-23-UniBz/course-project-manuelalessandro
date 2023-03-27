@@ -1,4 +1,4 @@
-package WelcomeGUI;
+package OldGUI;
 
 import javax.swing.*;
 
