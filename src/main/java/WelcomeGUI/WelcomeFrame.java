@@ -17,9 +17,11 @@ public class WelcomeFrame extends JFrame{
     private JLabel servicesLabel;
     private JLabel titleLabel;
     private JPanel welcomePanel;
-    private JTabbedPane tabbedPane1;
+    private JPanel cardPanel;
 
     public WelcomeFrame(){
+
+        //Frame
         setTitle("Hotel Management");
         setContentPane(welcomePanel); // Set the main panel
         setSize(width, height);
