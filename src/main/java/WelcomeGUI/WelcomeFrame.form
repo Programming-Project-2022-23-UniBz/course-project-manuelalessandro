@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="WelcomeGUI.WelcomeFrame">
   <grid id="27dc6" binding="welcomePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="685" height="550"/>
+      <xy x="20" y="20" width="736" height="550"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -25,45 +25,70 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="3af34" class="javax.swing.JLabel" binding="homeLabel">
+              <component id="3af34" class="javax.swing.JButton" binding="homeButton">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-1"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <defaultCapable value="true"/>
+                  <focusCycleRoot value="true"/>
+                  <focusPainted value="false"/>
+                  <focusable value="true"/>
                   <font size="14"/>
                   <foreground color="-1"/>
                   <text value="Home"/>
                 </properties>
               </component>
-              <component id="5b201" class="javax.swing.JLabel" binding="bookingLabel">
+              <component id="5b201" class="javax.swing.JButton" binding="bookingButton">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-1"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <defaultCapable value="true"/>
+                  <focusCycleRoot value="true"/>
+                  <focusPainted value="false"/>
+                  <focusable value="true"/>
                   <font size="14"/>
                   <foreground color="-1"/>
                   <text value="Booking"/>
                 </properties>
               </component>
-              <component id="46cc9" class="javax.swing.JLabel" binding="roomsLabel">
+              <component id="46cc9" class="javax.swing.JButton" binding="reviewsButton">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-1"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <defaultCapable value="true"/>
+                  <focusCycleRoot value="true"/>
+                  <focusPainted value="false"/>
+                  <focusable value="true"/>
                   <font size="14"/>
                   <foreground color="-1"/>
-                  <text value="Rooms"/>
+                  <label value="Reviews"/>
+                  <text value="Reviews"/>
                 </properties>
               </component>
-              <component id="9087c" class="javax.swing.JLabel" binding="servicesLabel">
+              <component id="9087c" class="javax.swing.JButton" binding="servicesButton">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-1"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <defaultCapable value="true"/>
+                  <focusCycleRoot value="true"/>
+                  <focusPainted value="false"/>
+                  <focusable value="true"/>
                   <font size="14"/>
                   <foreground color="-1"/>
                   <text value="Services"/>
@@ -146,7 +171,43 @@
         <constraints border-constraint="Center"/>
         <properties/>
         <border type="none"/>
-        <children/>
+        <children>
+          <grid id="f0677" binding="homePanel" layout-manager="FormLayout">
+            <rowspec value="center:d:noGrow"/>
+            <colspec value="fill:d:grow"/>
+            <constraints>
+              <card name="homePanel"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <grid id="81efa" binding="imageSlider" layout-manager="CardLayout" hgap="0" vgap="0">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms top="30" left="30" bottom="0" right="0" defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <alignmentX value="0.0"/>
+                  <alignmentY value="0.0"/>
+                  <maximumSize width="-1" height="-1"/>
+                  <minimumSize width="-1" height="-1"/>
+                  <preferredSize width="200" height="200"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
+          </grid>
+          <grid id="d0728" binding="bookingPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <card name="bookingPanel"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
       </grid>
     </children>
   </grid>
