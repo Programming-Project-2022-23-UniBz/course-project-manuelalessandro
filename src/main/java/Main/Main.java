@@ -1,4 +1,4 @@
-package MainPackage;
+package Main;
 
 
 import WelcomeGUI.WelcomeFrame;
