@@ -15,7 +15,7 @@ public class ColorSetting {
     private static Color[] lightColors = { light0, light1, light2, light3, light4 };
 
     // Dark palette link: https://colorhunt.co/palette/2c33332e4f4f0e8388cbe4de
-    private static Color dark0 = new Color(0, 0, 0);
+    private static Color dark0 = new Color(255, 255, 255);
     private static Color dark1 = new Color(44, 51, 51);
     private static Color dark2 = new Color(46, 79, 79);
     private static Color dark3 = new Color(14, 131, 136);
