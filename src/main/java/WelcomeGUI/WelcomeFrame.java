@@ -71,6 +71,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 galleryButton.setBackground(lightColors[4]);
                 servicesButton.setBackground(lightColors[4]);
                 themeCheckBox.setBackground(lightColors[4]);
+                accountButton.setBackground(lightColors[3]); // same colors as cardPanel
 
                 // cardPanel background
                 homePanel.setBackground(lightColors[3]);
@@ -91,6 +92,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 infoLabel1.setForeground(lightColors[0]);
                 infoLabel2.setForeground(lightColors[0]);
                 infoLabel3.setForeground(lightColors[0]);
+                accountButton.setForeground(lightColors[0]);
         }
 
         public void setDarkTheme() {
@@ -105,6 +107,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 galleryButton.setBackground(darkColors[1]);
                 servicesButton.setBackground(darkColors[1]);
                 themeCheckBox.setBackground(darkColors[1]);
+                accountButton.setBackground(lightColors[2]); // same colors as cardPanel
 
                 // cardPanel background
                 homePanel.setBackground(darkColors[2]);
@@ -125,6 +128,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 infoLabel1.setForeground(darkColors[0]);
                 infoLabel2.setForeground(darkColors[0]);
                 infoLabel3.setForeground(darkColors[0]);
+                accountButton.setForeground(darkColors[0]);
         }
 
         private void buttonCardAction(ActionEvent e) {
@@ -140,6 +144,11 @@ public class WelcomeFrame extends javax.swing.JFrame {
                         cardLayout.show(cardPanel, "gallery");
         }
 
+        private void accountButtonActionPerformed(java.awt.event.ActionEvent event) {
+
+        }
+
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
@@ -158,7 +167,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 infoLabel2 = new javax.swing.JLabel();
                 infoLabel3 = new javax.swing.JLabel();
                 jLabel5 = new javax.swing.JLabel();
-                jButton1 = new javax.swing.JButton();
+                accountButton = new javax.swing.JButton();
                 themeCheckBox = new SteelCheckBox.SteelCheckBox();
                 cardPanel = new javax.swing.JPanel();
                 homePanel = new javax.swing.JPanel();
@@ -240,17 +249,17 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
                 jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_small.png"))); // NOI18N
 
-                jButton1.setBackground(new java.awt.Color(145, 146, 129));
-                jButton1.setForeground(new java.awt.Color(102, 102, 102));
-                jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login_icon.png"))); // NOI18N
-                jButton1.setText("Account");
-                jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-                jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                jButton1.setFocusPainted(false);
-                jButton1.setMargin(new java.awt.Insets(3, 2, 3, 2));
-                jButton1.addActionListener(new java.awt.event.ActionListener() {
+                accountButton.setBackground(new java.awt.Color(145, 146, 129));
+                accountButton.setForeground(new java.awt.Color(102, 102, 102));
+                accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login_icon.png"))); // NOI18N
+                accountButton.setText("Account");
+                accountButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+                accountButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                accountButton.setFocusPainted(false);
+                accountButton.setMargin(new java.awt.Insets(3, 2, 3, 2));
+                accountButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                jButton1ActionPerformed(evt);
+                                accountButtonActionPerformed(evt);
                         }
                 });
 
@@ -270,9 +279,8 @@ public class WelcomeFrame extends javax.swing.JFrame {
                                                 .addGroup(borderPanelLayout.createSequentialGroup()
                                                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                 Short.MAX_VALUE)
-                                                                .addGroup(borderPanelLayout
-                                                                                .createParallelGroup(
-                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(borderPanelLayout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.LEADING)
                                                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
                                                                                                 borderPanelLayout
                                                                                                                 .createSequentialGroup()
@@ -319,7 +327,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                                                                                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                                                                                                 72,
                                                                                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                                                                                .addComponent(jButton1,
+                                                                                                                                                                                .addComponent(accountButton,
                                                                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                                                                                 81,
                                                                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -333,7 +341,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                                 borderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(borderPanelLayout.createSequentialGroup()
                                                                 .addContainerGap()
-                                                                .addComponent(jButton1,
+                                                                .addComponent(accountButton,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                 28,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -442,8 +450,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 accomodationPanelLayout.setHorizontalGroup(
                                 accomodationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                accomodationPanelLayout
-                                                                                .createSequentialGroup()
+                                                                accomodationPanelLayout.createSequentialGroup()
                                                                                 .addContainerGap(22, Short.MAX_VALUE)
                                                                                 .addComponent(jPanel1,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -544,6 +551,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton accomodationButton;
         private javax.swing.JPanel accomodationPanel;
+        private javax.swing.JButton accountButton;
         private javax.swing.JPanel borderPanel;
         private javax.swing.JPanel cardPanel;
         private javax.swing.JButton galleryButton;
@@ -555,7 +563,6 @@ public class WelcomeFrame extends javax.swing.JFrame {
         private javax.swing.JLabel infoLabel2;
         private javax.swing.JLabel infoLabel3;
         private javax.swing.JPanel infoPanel;
-        private javax.swing.JButton jButton1;
         private javax.swing.JLabel jLabel4;
         private javax.swing.JLabel jLabel5;
         private javax.swing.JPanel jPanel1;
