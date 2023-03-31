@@ -107,7 +107,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 galleryButton.setBackground(darkColors[1]);
                 servicesButton.setBackground(darkColors[1]);
                 themeCheckBox.setBackground(darkColors[1]);
-                accountButton.setBackground(lightColors[2]); // same colors as cardPanel
+                accountButton.setBackground(darkColors[2]); // same colors as cardPanel
 
                 // cardPanel background
                 homePanel.setBackground(darkColors[2]);
