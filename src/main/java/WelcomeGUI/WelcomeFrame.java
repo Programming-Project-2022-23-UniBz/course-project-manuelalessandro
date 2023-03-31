@@ -1,13 +1,18 @@
 
 package WelcomeGUI;
 
+import Main.Main;
 import Main.ColorSetting;
 import java.awt.CardLayout;
 import java.awt.Image;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import java.awt.Color;
-import Main.ColorSetting;
 import SteelCheckBox.ColorDef;
 
 public class WelcomeFrame extends javax.swing.JFrame {
@@ -57,10 +62,16 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 reviewsButton.addActionListener(this::buttonCardAction);
                 servicesButton.addActionListener(this::buttonCardAction);
                 galleryButton.addActionListener(this::buttonCardAction);
+
+                
+
         }
 
         public void setLightTheme() {
                 lightColors = ColorSetting.getWelcomeColors("Light");
+
+                // Icons
+                appControlButtonsHome.setLightTheme();
 
                 // borderPanel background
                 borderPanel.setBackground(lightColors[4]);
@@ -97,6 +108,9 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
         public void setDarkTheme() {
                 darkColors = ColorSetting.getWelcomeColors("Dark");
+
+                // Icons
+                appControlButtonsHome.setDarkTheme();
 
                 // borderPanel background
                 borderPanel.setBackground(darkColors[1]);
@@ -153,6 +167,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -173,6 +188,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 homePanel = new javax.swing.JPanel();
                 homeImageLabel = new javax.swing.JLabel();
                 jLabel4 = new javax.swing.JLabel();
+                appControlButtonsHome = new WelcomeGUI.appControlButtons();
                 accomodationPanel = new javax.swing.JPanel();
                 jPanel1 = new javax.swing.JPanel();
                 reviewsPanel = new javax.swing.JPanel();
@@ -190,6 +206,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 homeButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 homeButton.setText("Home");
                 homeButton.setBorder(null);
+                homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 homeButton.setFocusPainted(false);
                 homeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
                 homeButton.setMaximumSize(new java.awt.Dimension(50, 20));
@@ -199,6 +216,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 accomodationButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 accomodationButton.setText("Accomodation");
                 accomodationButton.setBorder(null);
+                accomodationButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 accomodationButton.setFocusPainted(false);
                 accomodationButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -206,6 +224,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 reviewsButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 reviewsButton.setText("Reviews");
                 reviewsButton.setBorder(null);
+                reviewsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 reviewsButton.setFocusPainted(false);
                 reviewsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
                 reviewsButton.setMaximumSize(new java.awt.Dimension(50, 20));
@@ -215,6 +234,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 servicesButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 servicesButton.setText("Services");
                 servicesButton.setBorder(null);
+                servicesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 servicesButton.setFocusPainted(false);
                 servicesButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
                 servicesButton.setMaximumSize(new java.awt.Dimension(50, 20));
@@ -224,6 +244,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 galleryButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 galleryButton.setText("Gallery");
                 galleryButton.setBorder(null);
+                galleryButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 galleryButton.setFocusPainted(false);
                 galleryButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
                 galleryButton.setMaximumSize(new java.awt.Dimension(50, 20));
@@ -408,21 +429,41 @@ public class WelcomeFrame extends javax.swing.JFrame {
                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
                                                                                 .addGroup(homePanelLayout
                                                                                                 .createSequentialGroup()
-                                                                                                .addGap(81, 81, 81)
-                                                                                                .addComponent(homeImageLabel,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                544,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addGroup(homePanelLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(209, 209, 209)
-                                                                                                .addComponent(jLabel4)))
-                                                                .addContainerGap(94, Short.MAX_VALUE)));
+                                                                                                .addGroup(homePanelLayout
+                                                                                                                .createParallelGroup(
+                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                .addGroup(homePanelLayout
+                                                                                                                                .createSequentialGroup()
+                                                                                                                                .addGap(81, 81, 81)
+                                                                                                                                .addComponent(homeImageLabel,
+                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                                                544,
+                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                                                .addGroup(homePanelLayout
+                                                                                                                                .createSequentialGroup()
+                                                                                                                                .addGap(209, 209,
+                                                                                                                                                209)
+                                                                                                                                .addComponent(jLabel4)))
+                                                                                                .addGap(0, 88, Short.MAX_VALUE))
+                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                                                homePanelLayout.createSequentialGroup()
+                                                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                                                .addComponent(appControlButtonsHome,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                                57,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addContainerGap()));
                 homePanelLayout.setVerticalGroup(
                                 homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout
                                                                 .createSequentialGroup()
-                                                                .addContainerGap(49, Short.MAX_VALUE)
+                                                                .addComponent(appControlButtonsHome,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(
+                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                                                17, Short.MAX_VALUE)
                                                                 .addComponent(jLabel4)
                                                                 .addPreferredGap(
                                                                                 javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -552,6 +593,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         private javax.swing.JButton accomodationButton;
         private javax.swing.JPanel accomodationPanel;
         private javax.swing.JButton accountButton;
+        private WelcomeGUI.appControlButtons appControlButtonsHome;
         private javax.swing.JPanel borderPanel;
         private javax.swing.JPanel cardPanel;
         private javax.swing.JButton galleryButton;
