@@ -178,6 +178,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         homePanel = new javax.swing.JPanel();
         homeImageLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         accomodationPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         reviewsPanel = new javax.swing.JPanel();
@@ -349,6 +350,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         homePanel.setBackground(new java.awt.Color(145, 146, 129));
 
         homeImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exterior1.jpg"))); // NOI18N
+        homeImageLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         homeImageLabel.setMaximumSize(new java.awt.Dimension(800, 600));
         homeImageLabel.setMinimumSize(new java.awt.Dimension(800, 600));
         homeImageLabel.setName(""); // NOI18N
@@ -358,6 +360,9 @@ public class WelcomeFrame extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Adler Palace Hotel");
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 20)); // NOI18N
+        jLabel1.setText("Welcome to");
+
         javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
         homePanel.setLayout(homePanelLayout);
         homePanelLayout.setHorizontalGroup(
@@ -365,21 +370,27 @@ public class WelcomeFrame extends javax.swing.JFrame {
             .addGroup(homePanelLayout.createSequentialGroup()
                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(homePanelLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(homeImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(62, 62, 62)
+                        .addComponent(homeImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(homePanelLayout.createSequentialGroup()
                         .addGap(209, 209, 209)
                         .addComponent(jLabel4)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(277, 277, 277))
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(homeImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addComponent(homeImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
 
         cardPanel.add(homePanel, "home");
@@ -448,6 +459,8 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
         galleryPanel.setBackground(new java.awt.Color(145, 146, 129));
 
+        imgLable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         btnLeft.setFont(new java.awt.Font("Wide Latin", 1, 36)); // NOI18N
         btnLeft.setText("<");
         btnLeft.setBorderPainted(false);
@@ -508,7 +521,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
             }
         });
 
-        galleryTxtLable.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        galleryTxtLable.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         galleryTxtLable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         radioImage6.setContentAreaFilled(false);
@@ -557,11 +570,12 @@ public class WelcomeFrame extends javax.swing.JFrame {
             galleryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(galleryPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(imgLable, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(btnRight, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(btnRight, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(galleryPanelLayout.createSequentialGroup()
                 .addGap(248, 248, 248)
                 .addComponent(radioImage1)
@@ -591,32 +605,33 @@ public class WelcomeFrame extends javax.swing.JFrame {
         galleryPanelLayout.setVerticalGroup(
             galleryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(galleryPanelLayout.createSequentialGroup()
-                .addGap(197, 197, 197)
-                .addComponent(btnLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(galleryPanelLayout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
+                .addGap(59, 59, 59)
                 .addComponent(galleryTxtLable, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(galleryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, galleryPanelLayout.createSequentialGroup()
-                        .addComponent(btnRight, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(202, 202, 202))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, galleryPanelLayout.createSequentialGroup()
-                        .addComponent(imgLable, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(galleryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radioImage1)
-                            .addComponent(radioImage2)
-                            .addComponent(radioImage3)
-                            .addComponent(radioImage4)
-                            .addComponent(radioImage5)
-                            .addComponent(radioImage6)
-                            .addComponent(radioImage7)
-                            .addComponent(radioImage10)
-                            .addComponent(radioImage8)
-                            .addComponent(radioImage9))
-                        .addGap(64, 64, 64))))
+                    .addGroup(galleryPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addGroup(galleryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(imgLable, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, galleryPanelLayout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(btnLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18))
+                    .addGroup(galleryPanelLayout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(btnRight, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(galleryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(radioImage1)
+                    .addComponent(radioImage2)
+                    .addComponent(radioImage3)
+                    .addComponent(radioImage4)
+                    .addComponent(radioImage5)
+                    .addComponent(radioImage6)
+                    .addComponent(radioImage7)
+                    .addComponent(radioImage10)
+                    .addComponent(radioImage8)
+                    .addComponent(radioImage9))
+                .addGap(64, 64, 64))
         );
 
         cardPanel.add(galleryPanel, "gallery");
@@ -678,19 +693,19 @@ public class WelcomeFrame extends javax.swing.JFrame {
              radioImage5.setSelected(true);
              galleryTxtLable.setText("Double room standard");
          } else if (url.equals(imgNames[5])){
-             radioImage5.setSelected(true);
+             radioImage6.setSelected(true);
              galleryTxtLable.setText("Kids area");
          } else if (url.equals(imgNames[6])){
-             radioImage5.setSelected(true);
+             radioImage7.setSelected(true);
              galleryTxtLable.setText("Sauna - Wellness & Spa");
          } else if (url.equals(imgNames[7])){
-             radioImage5.setSelected(true);
+             radioImage8.setSelected(true);
              galleryTxtLable.setText("Swimming pool");
          } else if (url.equals(imgNames[8])){
-             radioImage5.setSelected(true);
+             radioImage9.setSelected(true);
              galleryTxtLable.setText("Dining hall");
          } else if (url.equals(imgNames[9])){
-             radioImage5.setSelected(true);
+             radioImage10.setSelected(true);
              galleryTxtLable.setText("Breakfast area");
          }
          
@@ -782,6 +797,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel infoLabel2;
     private javax.swing.JLabel infoLabel3;
     private javax.swing.JPanel infoPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
