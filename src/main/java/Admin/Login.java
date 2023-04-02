@@ -25,8 +25,6 @@ public class Login extends javax.swing.JFrame {
         logInBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
@@ -163,7 +161,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTxtFieldActionPerformed
 
     private void logInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInBtnActionPerformed
-        // TODO add your handling code here:
+        Rooms room = new Rooms(); // solo per test per aprire rooms
+        setVisible(false);
+        room.setVisible(true);
     }//GEN-LAST:event_logInBtnActionPerformed
 
     /**
