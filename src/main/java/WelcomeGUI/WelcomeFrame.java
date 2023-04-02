@@ -149,6 +149,8 @@ public class WelcomeFrame extends javax.swing.JFrame {
         }
 
         private void accountButtonActionPerformed(java.awt.event.ActionEvent event) {
+           Login log = new Login();
+           log.setVisible(true);
 
         }
 
