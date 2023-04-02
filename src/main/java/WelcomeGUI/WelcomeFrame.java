@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import Main.ColorSetting;
 import SteelCheckBox.ColorDef;
+import Admin.Login;
 
 public class WelcomeFrame extends javax.swing.JFrame {
 
@@ -148,10 +149,10 @@ public class WelcomeFrame extends javax.swing.JFrame {
                         cardLayout.show(cardPanel, "gallery");
         }
 
+        // Here the admin login panel is intantiated
         private void accountButtonActionPerformed(java.awt.event.ActionEvent event) {
-           Login log = new Login();
-           log.setVisible(true);
-
+           Login login = new Login();
+           login.setVisible(true);
         }
 
         // <editor-fold defaultstate="collapsed" desc="Generated
