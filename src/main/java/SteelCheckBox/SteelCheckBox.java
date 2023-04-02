@@ -1,5 +1,7 @@
 package SteelCheckBox;
 
+import java.awt.Cursor;
+
 /**
  *
  * @author hansolo
@@ -18,6 +20,7 @@ public class SteelCheckBox extends javax.swing.JCheckBox {
     public SteelCheckBox() {
         super();
         setPreferredSize(new java.awt.Dimension(100, 26));
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
     // </editor-fold>
 
