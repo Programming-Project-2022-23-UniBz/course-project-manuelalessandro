@@ -54,7 +54,6 @@ public class WelcomeFrame extends javax.swing.JFrame {
         // Frame
         setTitle("Hotel Management");
         setResizable(resize); // prevent from resize
-        // setUndecorated(true); //disable app borders
         setVisible(true); // make frame visible
 
         // Set logo as icon
@@ -68,6 +67,9 @@ public class WelcomeFrame extends javax.swing.JFrame {
         reviewsButton.addActionListener(this::buttonCardAction);
         servicesButton.addActionListener(this::buttonCardAction);
         galleryButton.addActionListener(this::buttonCardAction);
+        
+        // App control settings
+        homePanel.setAppControl(this);
 
     }
 

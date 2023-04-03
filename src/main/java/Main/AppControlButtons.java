@@ -1,8 +1,12 @@
 
 package Main;
 
+import WelcomeGUI.WelcomeFrame;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
@@ -17,6 +21,26 @@ public class AppControlButtons extends javax.swing.JPanel {
 
     public AppControlButtons() {
         initComponents();
+    }
+    
+    public void setAppControl(JFrame frame){
+        
+        closeLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(frame instanceof WelcomeFrame)
+                    System.exit(0);
+                else
+                    frame.setVisible(false);
+            }
+        });
+        minimizeLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e){
+                frame.setState(JFrame.ICONIFIED);
+            }
+        });
+        
     }
 
     public void setLightTheme() {
@@ -70,10 +94,9 @@ public class AppControlButtons extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(minimizeLabel)
-                    .addComponent(closeLabel))
+                    .addComponent(closeLabel)
+                    .addComponent(minimizeLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
