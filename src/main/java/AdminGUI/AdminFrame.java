@@ -12,6 +12,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
     public AdminFrame() {
         initComponents();
+        setLocationRelativeTo(null);//center position of JFrame
 
         // Buttons settings
         cardLayout = (CardLayout) cardPanel.getLayout();

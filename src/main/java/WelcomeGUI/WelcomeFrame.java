@@ -54,7 +54,9 @@ public class WelcomeFrame extends javax.swing.JFrame {
         // Frame
         setTitle("Hotel Management");
         setResizable(resize); // prevent from resize
+        setLocationRelativeTo(null);//center position of JFrame
         setVisible(true); // make frame visible
+        
 
         // Set logo as icon
         ImageIcon logo = new ImageIcon(logoPath); // set path in settings
