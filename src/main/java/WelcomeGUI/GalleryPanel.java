@@ -334,42 +334,52 @@ public class GalleryPanel extends javax.swing.JPanel {
 
     private void radioImage1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_radioImage1ActionPerformed
         setImage(imgNames[0]);
+        inc = 0;
     }// GEN-LAST:event_radioImage1ActionPerformed
 
     private void radioImage2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_radioImage2ActionPerformed
         setImage(imgNames[1]);
+        inc = 1;
     }// GEN-LAST:event_radioImage2ActionPerformed
 
     private void radioImage3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_radioImage3ActionPerformed
         setImage(imgNames[2]);
+        inc = 2;
     }// GEN-LAST:event_radioImage3ActionPerformed
 
     private void radioImage4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_radioImage4ActionPerformed
         setImage(imgNames[3]);
+        inc = 3;
     }// GEN-LAST:event_radioImage4ActionPerformed
 
     private void radioImage5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_radioImage5ActionPerformed
         setImage(imgNames[4]);
+        inc = 4;
     }// GEN-LAST:event_radioImage5ActionPerformed
 
     private void radioImage6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_radioImage6ActionPerformed
         setImage(imgNames[5]);
+        inc = 5;
     }// GEN-LAST:event_radioImage6ActionPerformed
 
     private void radioImage7ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_radioImage7ActionPerformed
         setImage(imgNames[6]);
+        inc = 6;
     }// GEN-LAST:event_radioImage7ActionPerformed
 
     private void radioImage8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_radioImage8ActionPerformed
         setImage(imgNames[7]);
+        inc = 7;
     }// GEN-LAST:event_radioImage8ActionPerformed
 
     private void radioImage9ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_radioImage9ActionPerformed
         setImage(imgNames[8]);
+        inc = 8;
     }// GEN-LAST:event_radioImage9ActionPerformed
 
     private void radioImage10ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_radioImage10ActionPerformed
         setImage(imgNames[9]);
+        inc = 9;
     }// GEN-LAST:event_radioImage10ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
