@@ -1,4 +1,4 @@
-package Admin;
+package AdminGUI;
 
 public class Login extends javax.swing.JFrame {
 
@@ -161,9 +161,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTxtFieldActionPerformed
 
     private void logInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInBtnActionPerformed
-        Rooms room = new Rooms(); // solo per test per aprire rooms
+        AdminFrame adminFrame = new AdminFrame(); // solo per test
         setVisible(false);
-        room.setVisible(true);
+        adminFrame.setVisible(true);
     }//GEN-LAST:event_logInBtnActionPerformed
 
     /**
