@@ -16,19 +16,21 @@ import javax.swing.JLabel;
 public class AppControlButtons extends javax.swing.JPanel {
     private ImageIcon closeLight = new ImageIcon("src/main/resources/appControl/close_light.png");
     private ImageIcon closeDark = new ImageIcon("src/main/resources/appControl/close_dark.png");
+    private ImageIcon moveLight = new ImageIcon("src/main/resources/appControl/move_light.png");
+    private ImageIcon moveDark = new ImageIcon("src/main/resources/appControl/move_dark.png");
     private ImageIcon minimizeLight = new ImageIcon("src/main/resources/appControl/minimize_light.png");
     private ImageIcon minimizeDark = new ImageIcon("src/main/resources/appControl/minimize_dark.png");
 
     public AppControlButtons() {
         initComponents();
     }
-    
-    public void setAppControl(JFrame frame){
-        
+
+    public void setAppControl(JFrame frame) {
+
         closeLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(frame instanceof WelcomeFrame)
+                if (frame instanceof WelcomeFrame)
                     System.exit(0);
                 else
                     frame.setVisible(false);
@@ -36,73 +38,58 @@ public class AppControlButtons extends javax.swing.JPanel {
         });
         minimizeLabel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e){
+            public void mouseClicked(MouseEvent e) {
                 frame.setState(JFrame.ICONIFIED);
             }
         });
-        
+
     }
 
     public void setLightTheme() {
         closeLabel.setIcon(closeDark);
+        moveLabel.setIcon(moveDark);
         minimizeLabel.setIcon(minimizeDark);
     }
 
     public void setDarkTheme() {
         closeLabel.setIcon(closeLight);
+        moveLabel.setIcon(moveLight);
         minimizeLabel.setIcon(minimizeLight);
     }
 
-    public JLabel getCloseLabel() {
-        return closeLabel;
-    }
-
-    public JLabel getMinimizeLabel() {
-        return minimizeLabel;
-    }
-
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         closeLabel = new javax.swing.JLabel();
+        moveLabel = new javax.swing.JLabel();
         minimizeLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 102, 51));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(57, 32));
+        setPreferredSize(new java.awt.Dimension(83, 20));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         closeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/appControl/close_dark.png"))); // NOI18N
         closeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(closeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, -1));
+
+        moveLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/appControl/move_dark.png"))); // NOI18N
+        moveLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(moveLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
 
         minimizeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/appControl/minimize_dark.png"))); // NOI18N
         minimizeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(minimizeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(closeLabel)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(closeLabel)
-                    .addComponent(minimizeLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(minimizeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel closeLabel;
     private javax.swing.JLabel minimizeLabel;
+    private javax.swing.JLabel moveLabel;
     // End of variables declaration//GEN-END:variables
 }

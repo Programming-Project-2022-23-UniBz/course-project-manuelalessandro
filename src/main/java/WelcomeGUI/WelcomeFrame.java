@@ -22,7 +22,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private int width = 1100;
     private int height = 650;
     private boolean resize = false; // Resizable? default:false
-    private String logoPath = "src/main/resources/logo.png";
+    private String logoPath = "src/main/resources/logo_light.png";
 
     // For gallery section
     private final String[] imgNames = new String[] { "/1.jpg", "/2.jpg", "/3.jpg", "/4.jpg", "/5.jpg", "/6.jpg",
@@ -204,6 +204,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         galleryPanel = new WelcomeGUI.GalleryPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
         borderPanel.setBackground(new java.awt.Color(153, 153, 0));
@@ -281,7 +282,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         infoLabel3.setText("info@adlerpalace.it");
         infoPanel.add(infoLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 100, -1));
 
-        hotelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_small.png"))); // NOI18N
+        hotelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_small_dark.png"))); // NOI18N
 
         accountButton.setBackground(new java.awt.Color(145, 146, 129));
         accountButton.setForeground(new java.awt.Color(102, 102, 102));
