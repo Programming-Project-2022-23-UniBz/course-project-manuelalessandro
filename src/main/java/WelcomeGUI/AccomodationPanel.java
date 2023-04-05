@@ -17,13 +17,18 @@ public class AccomodationPanel extends javax.swing.JPanel {
         accomodationPanel.setBackground(colors[2]);
     }
 
+    public Main.AppControlButtons getAppControlButtons() {
+        return appControlButtons1;
+    }
+
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         accomodationPanel = new javax.swing.JPanel();
-        appControlButtons2 = new Main.AppControlButtons();
+        appControlButtons1 = new Main.AppControlButtons();
 
         setMaximumSize(new java.awt.Dimension(720, 548));
         setMinimumSize(new java.awt.Dimension(720, 548));
@@ -39,13 +44,13 @@ public class AccomodationPanel extends javax.swing.JPanel {
             accomodationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accomodationPanelLayout.createSequentialGroup()
                 .addContainerGap(646, Short.MAX_VALUE)
-                .addComponent(appControlButtons2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         accomodationPanelLayout.setVerticalGroup(
             accomodationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(accomodationPanelLayout.createSequentialGroup()
-                .addComponent(appControlButtons2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 528, Short.MAX_VALUE))
         );
 
@@ -63,6 +68,6 @@ public class AccomodationPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel accomodationPanel;
-    private Main.AppControlButtons appControlButtons2;
+    private Main.AppControlButtons appControlButtons1;
     // End of variables declaration//GEN-END:variables
 }

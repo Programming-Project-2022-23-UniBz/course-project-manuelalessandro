@@ -8,12 +8,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
 public class AppControlButtons extends javax.swing.JPanel {
+    
+    private int x, y;
     private ImageIcon closeLight = new ImageIcon("src/main/resources/appControl/close_light.png");
     private ImageIcon closeDark = new ImageIcon("src/main/resources/appControl/close_dark.png");
     private ImageIcon moveLight = new ImageIcon("src/main/resources/appControl/move_light.png");
@@ -34,6 +38,26 @@ public class AppControlButtons extends javax.swing.JPanel {
                     System.exit(0);
                 else
                     frame.setVisible(false);
+            }
+        });
+        moveLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent me) {
+                if (frame.getExtendedState() != JFrame.MAXIMIZED_BOTH && SwingUtilities.isLeftMouseButton(me)) {
+                    x = me.getX();
+                    y = me.getY();
+                }
+            }
+        }); 
+        moveLabel.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent me) {
+                if (SwingUtilities.isLeftMouseButton(me)) {
+                    if (frame.getExtendedState() == JFrame.MAXIMIZED_BOTH) {
+                        frame.setExtendedState(JFrame.NORMAL);
+                    }
+                    setLocation(me.getXOnScreen() - x, me.getYOnScreen() - x);
+                }
             }
         });
         minimizeLabel.addMouseListener(new MouseAdapter() {

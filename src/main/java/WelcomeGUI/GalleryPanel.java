@@ -44,6 +44,10 @@ public class GalleryPanel extends javax.swing.JPanel {
         galleryPanel.setBackground(colors[2]);
     }
 
+    public Main.AppControlButtons getAppControlButtons() {
+        return appControlButtons1;
+    }
+
     private void setImage(String url) {
         if (url.equals(imgNames[0])) {
             radioImage1.setSelected(true);
@@ -86,6 +90,7 @@ public class GalleryPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -104,7 +109,7 @@ public class GalleryPanel extends javax.swing.JPanel {
         radioImage8 = new javax.swing.JRadioButton();
         radioImage9 = new javax.swing.JRadioButton();
         radioImage10 = new javax.swing.JRadioButton();
-        appControlButtons2 = new Main.AppControlButtons();
+        appControlButtons1 = new Main.AppControlButtons();
 
         setMaximumSize(new java.awt.Dimension(720, 548));
         setMinimumSize(new java.awt.Dimension(720, 548));
@@ -257,13 +262,13 @@ public class GalleryPanel extends javax.swing.JPanel {
                 .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, galleryPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(appControlButtons2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
         galleryPanelLayout.setVerticalGroup(
             galleryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(galleryPanelLayout.createSequentialGroup()
-                .addComponent(appControlButtons2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(galleryTxtLable, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(galleryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,7 +375,7 @@ public class GalleryPanel extends javax.swing.JPanel {
     }// GEN-LAST:event_radioImage10ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Main.AppControlButtons appControlButtons2;
+    private Main.AppControlButtons appControlButtons1;
     private javax.swing.JButton btnLeft;
     private javax.swing.JButton btnRight;
     private javax.swing.JPanel galleryPanel;

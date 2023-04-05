@@ -71,8 +71,11 @@ public class WelcomeFrame extends javax.swing.JFrame {
         galleryButton.addActionListener(this::buttonCardAction);
         
         // App control settings
-        homePanel.setAppControl(this);
-
+        homePanel.getAppControlButtons().setAppControl(this);
+        galleryPanel.getAppControlButtons().setAppControl(this);
+        accomodationPanel.getAppControlButtons().setAppControl(this);
+        reviewsPanel.getAppControlButtons().setAppControl(this);
+        servicesPanel.getAppControlButtons().setAppControl(this);
     }
 
     public void setLightTheme() {
@@ -183,6 +186,13 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        cardPanel = new javax.swing.JPanel();
+        homePanel = new WelcomeGUI.HomePanel();
+        accomodationPanel = new WelcomeGUI.AccomodationPanel();
+        reviewsPanel = new WelcomeGUI.ReviewsPanel();
+        servicesPanel = new WelcomeGUI.ServicesPanel();
+        galleryPanel = new WelcomeGUI.GalleryPanel();
         borderPanel = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
         accomodationButton = new javax.swing.JButton();
@@ -196,16 +206,20 @@ public class WelcomeFrame extends javax.swing.JFrame {
         hotelLogo = new javax.swing.JLabel();
         accountButton = new javax.swing.JButton();
         themeCheckBox = new SteelCheckBox.SteelCheckBox();
-        cardPanel = new javax.swing.JPanel();
-        homePanel = new WelcomeGUI.HomePanel();
-        accomodationPanel = new WelcomeGUI.AccomodationPanel();
-        reviewsPanel = new WelcomeGUI.ReviewsPanel();
-        servicesPanel = new WelcomeGUI.ServicesPanel();
-        galleryPanel = new WelcomeGUI.GalleryPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        jPanel1.setPreferredSize(new java.awt.Dimension(833, 548));
+
+        cardPanel.setLayout(new java.awt.CardLayout());
+        cardPanel.add(homePanel, "home");
+        cardPanel.add(accomodationPanel, "accomodations");
+        cardPanel.add(reviewsPanel, "reviews");
+        cardPanel.add(servicesPanel, "services");
+        cardPanel.add(galleryPanel, "gallery1");
 
         borderPanel.setBackground(new java.awt.Color(153, 153, 0));
         borderPanel.setMaximumSize(new java.awt.Dimension(129, 421));
@@ -337,7 +351,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 .addComponent(accountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(themeCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(hotelLogo)
                 .addGap(39, 39, 39)
                 .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -354,29 +368,37 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        cardPanel.setLayout(new java.awt.CardLayout());
-        cardPanel.add(homePanel, "home");
-        cardPanel.add(accomodationPanel, "accomodations");
-        cardPanel.add(reviewsPanel, "reviews");
-        cardPanel.add(servicesPanel, "services");
-        cardPanel.add(galleryPanel, "gallery1");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(borderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 716, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 115, Short.MAX_VALUE)
+                    .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(borderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))
+        );
+
+        borderPanel.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(borderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(borderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
-
-        borderPanel.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -411,6 +433,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel infoLabel2;
     private javax.swing.JLabel infoLabel3;
     private javax.swing.JPanel infoPanel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton reviewsButton;
     private WelcomeGUI.ReviewsPanel reviewsPanel;
     private javax.swing.JButton servicesButton;
