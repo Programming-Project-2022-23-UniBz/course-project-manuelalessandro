@@ -8,12 +8,12 @@ package AdminGUI;
  *
  * @author kumar
  */
-public class Bookings extends javax.swing.JPanel {
+public class BookingsPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Bookings
      */
-    public Bookings() {
+    public BookingsPanel() {
         initComponents();
     }
 

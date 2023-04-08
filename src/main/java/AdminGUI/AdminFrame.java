@@ -24,7 +24,7 @@ public class AdminFrame extends javax.swing.JFrame {
         dashButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                cardLayout.show(cardPanel, "dashboard");
+                cardLayout.show(cardPanel, "dash");
             }
         });
         roomsButton.addMouseListener(new MouseAdapter() {
@@ -63,10 +63,18 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cardPanel = new javax.swing.JPanel();
+        dashboardPanel = new AdminGUI.DashboardPanel();
+        roomsPanel = new AdminGUI.RoomsPanel();
+        guestsPanel = new AdminGUI.GuestsPanel();
+        bookingsPanel = new AdminGUI.BookingsPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(908, 546));
 
         sideMenu.setBackground(new java.awt.Color(51, 153, 255));
+        sideMenu.setMaximumSize(new java.awt.Dimension(164, 548));
+        sideMenu.setMinimumSize(new java.awt.Dimension(164, 548));
+        sideMenu.setPreferredSize(new java.awt.Dimension(164, 548));
 
         dashButton.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         dashButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -162,11 +170,20 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addComponent(bookingsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(44, 44, 44))
         );
 
-        cardPanel.setBackground(new java.awt.Color(255, 255, 255));
+        cardPanel.setPreferredSize(new java.awt.Dimension(744, 546));
         cardPanel.setLayout(new java.awt.CardLayout());
+
+        dashboardPanel.setMaximumSize(new java.awt.Dimension(44444444, 33313));
+        dashboardPanel.setMinimumSize(new java.awt.Dimension(1, 1));
+        cardPanel.add(dashboardPanel, "dash");
+        cardPanel.add(roomsPanel, "rooms");
+
+        guestsPanel.setMinimumSize(new java.awt.Dimension(744, 546));
+        cardPanel.add(guestsPanel, "guests");
+        cardPanel.add(bookingsPanel, "bookings");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,12 +192,12 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sideMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
 
         pack();
@@ -233,14 +250,18 @@ public class AdminFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bookingsButton;
+    private AdminGUI.BookingsPanel bookingsPanel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JLabel dashButton;
+    private AdminGUI.DashboardPanel dashboardPanel;
     private javax.swing.JLabel guestsButton;
+    private AdminGUI.GuestsPanel guestsPanel;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton logOutBtn;
     private javax.swing.JLabel roomsButton;
+    private AdminGUI.RoomsPanel roomsPanel;
     private javax.swing.JPanel sideMenu;
     // End of variables declaration//GEN-END:variables
 }
