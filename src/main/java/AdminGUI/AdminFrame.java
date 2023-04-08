@@ -12,7 +12,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
     public AdminFrame() {
         initComponents();
-        setLocationRelativeTo(null);//center position of JFrame
+        setLocationRelativeTo(null);// center position of JFrame
 
         // Buttons settings
         cardLayout = (CardLayout) cardPanel.getLayout();
@@ -48,6 +48,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -109,7 +110,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_small.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_small_dark.png"))); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Brush Script MT", 0, 28)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 153));
