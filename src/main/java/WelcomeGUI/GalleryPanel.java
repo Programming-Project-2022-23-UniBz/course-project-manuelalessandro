@@ -37,11 +37,21 @@ public class GalleryPanel extends javax.swing.JPanel {
     }
 
     public void setLightTheme(Color[] colors) {
-        galleryPanel.setBackground(colors[3]);
+        // Background
+        galleryPanel.setBackground(colors[1]);
+
+        // Foreground
+        btnLeft.setForeground(colors[4]);
+        btnRight.setForeground(colors[4]);
     }
 
     public void setDarkTheme(Color[] colors) {
-        galleryPanel.setBackground(colors[2]);
+        // Background
+        galleryPanel.setBackground(colors[4]);
+
+        // Foreground
+        btnLeft.setForeground(colors[1]);
+        btnRight.setForeground(colors[1]);
     }
 
     public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {

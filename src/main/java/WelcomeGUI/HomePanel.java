@@ -10,11 +10,21 @@ public class HomePanel extends javax.swing.JPanel {
         }
 
         public void setLightTheme(Color[] colors) {
-                homePanel.setBackground(colors[3]);
+                // Background
+                homePanel.setBackground(colors[1]);
+
+                // Foreground
+                titleLabel1.setForeground(colors[0]);
+                titleLabel2.setForeground(colors[0]);
         }
 
         public void setDarkTheme(Color[] colors) {
-                homePanel.setBackground(colors[2]);
+                // Background
+                homePanel.setBackground(colors[4]);
+
+                // Foreground
+                titleLabel1.setForeground(colors[1]);
+                titleLabel2.setForeground(colors[1]);
         }
 
         public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
@@ -24,13 +34,14 @@ public class HomePanel extends javax.swing.JPanel {
         @SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 homePanel = new javax.swing.JPanel();
                 homeImageLabel = new javax.swing.JLabel();
-                jLabel4 = new javax.swing.JLabel();
-                jLabel1 = new javax.swing.JLabel();
+                titleLabel2 = new javax.swing.JLabel();
+                titleLabel1 = new javax.swing.JLabel();
                 appControlButtons1 = new Main.AppControlButtons();
 
                 setMaximumSize(new java.awt.Dimension(720, 548));
@@ -46,12 +57,12 @@ public class HomePanel extends javax.swing.JPanel {
                 homeImageLabel.setName(""); // NOI18N
                 homeImageLabel.setPreferredSize(new java.awt.Dimension(800, 600));
 
-                jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-                jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-                jLabel4.setText("Adler Palace Hotel");
+                titleLabel2.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+                titleLabel2.setForeground(new java.awt.Color(51, 51, 51));
+                titleLabel2.setText("Adler Palace Hotel");
 
-                jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 20)); // NOI18N
-                jLabel1.setText("Welcome to");
+                titleLabel1.setFont(new java.awt.Font("Times New Roman", 3, 20)); // NOI18N
+                titleLabel1.setText("Welcome to");
 
                 javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
                 homePanel.setLayout(homePanelLayout);
@@ -70,7 +81,7 @@ public class HomePanel extends javax.swing.JPanel {
                                                                                 .addGroup(homePanelLayout
                                                                                                 .createSequentialGroup()
                                                                                                 .addGap(209, 209, 209)
-                                                                                                .addComponent(jLabel4)))
+                                                                                                .addComponent(titleLabel2)))
                                                                 .addContainerGap(71, Short.MAX_VALUE))
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout
                                                                 .createSequentialGroup()
@@ -79,7 +90,7 @@ public class HomePanel extends javax.swing.JPanel {
                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
                                                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
                                                                                                 homePanelLayout.createSequentialGroup()
-                                                                                                                .addComponent(jLabel1,
+                                                                                                                .addComponent(titleLabel1,
                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                 133,
                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -100,15 +111,14 @@ public class HomePanel extends javax.swing.JPanel {
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(
                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                                                12,
-                                                                                Short.MAX_VALUE)
-                                                                .addComponent(jLabel1,
+                                                                                12, Short.MAX_VALUE)
+                                                                .addComponent(titleLabel1,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                 16,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(
                                                                                 javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jLabel4)
+                                                                .addComponent(titleLabel2)
                                                                 .addPreferredGap(
                                                                                 javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                 .addComponent(homeImageLabel,
@@ -135,7 +145,7 @@ public class HomePanel extends javax.swing.JPanel {
         private Main.AppControlButtons appControlButtons1;
         private javax.swing.JLabel homeImageLabel;
         private javax.swing.JPanel homePanel;
-        private javax.swing.JLabel jLabel1;
-        private javax.swing.JLabel jLabel4;
+        private javax.swing.JLabel titleLabel1;
+        private javax.swing.JLabel titleLabel2;
         // End of variables declaration//GEN-END:variables
 }

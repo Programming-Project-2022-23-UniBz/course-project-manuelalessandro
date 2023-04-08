@@ -10,11 +10,17 @@ public class ReviewsPanel extends javax.swing.JPanel {
         }
 
         public void setLightTheme(Color[] colors) {
-                reviewsPanel.setBackground(colors[3]);
+                // Background
+                reviewsPanel.setBackground(colors[1]);
+
+                // Foreground
         }
 
         public void setDarkTheme(Color[] colors) {
-                reviewsPanel.setBackground(colors[2]);
+                // Background
+                reviewsPanel.setBackground(colors[4]);
+
+                // Foreground
         }
 
         public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
