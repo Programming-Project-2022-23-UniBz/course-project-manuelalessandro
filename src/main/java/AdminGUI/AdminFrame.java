@@ -13,7 +13,7 @@ public class AdminFrame extends javax.swing.JFrame {
     public AdminFrame() {
         initComponents();
         setLocationRelativeTo(null);// center position of JFrame
-
+        setResizable(false);
         // Buttons settings
         cardLayout = (CardLayout) cardPanel.getLayout();
         initMouseActionListener();
@@ -63,9 +63,6 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cardPanel = new javax.swing.JPanel();
-        roomsPanel = new AdminGUI.RoomsPanel();
-        guestsPanel = new AdminGUI.GuestsPanel();
-        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,7 +141,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addGroup(sideMenuLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jLabel5)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         sideMenuLayout.setVerticalGroup(
             sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,22 +165,8 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
+        cardPanel.setBackground(new java.awt.Color(255, 255, 255));
         cardPanel.setLayout(new java.awt.CardLayout());
-        cardPanel.add(roomsPanel, "rooms");
-        cardPanel.add(guestsPanel, "guests");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
-        );
-
-        cardPanel.add(jPanel1, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,14 +236,11 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel cardPanel;
     private javax.swing.JLabel dashButton;
     private javax.swing.JLabel guestsButton;
-    private AdminGUI.GuestsPanel guestsPanel;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logOutBtn;
     private javax.swing.JLabel roomsButton;
-    private AdminGUI.RoomsPanel roomsPanel;
     private javax.swing.JPanel sideMenu;
     // End of variables declaration//GEN-END:variables
 }

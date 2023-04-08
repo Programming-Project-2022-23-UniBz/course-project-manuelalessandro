@@ -109,7 +109,7 @@ public class ServicesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -314,113 +314,76 @@ public class ServicesPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout servicesPanelLayout = new javax.swing.GroupLayout(servicesPanel);
         servicesPanel.setLayout(servicesPanelLayout);
         servicesPanelLayout.setHorizontalGroup(
-                servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(servicesPanelLayout.createSequentialGroup()
-                                .addGap(215, 215, 215)
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, servicesPanelLayout
-                                .createSequentialGroup()
-                                .addContainerGap(12, Short.MAX_VALUE)
-                                .addGroup(servicesPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, servicesPanelLayout
-                                                .createSequentialGroup()
-                                                .addGroup(servicesPanelLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(panelGlowingGradient4,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 224,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(panelGlowingGradient1,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 232,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(servicesPanelLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(servicesPanelLayout.createSequentialGroup()
-                                                                .addComponent(panelGlowingGradient6,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 218,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(panelGlowingGradient5,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 218,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(servicesPanelLayout.createSequentialGroup()
-                                                                .addComponent(panelGlowingGradient3,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 218,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(panelGlowingGradient2,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 236,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(24, 24, 24))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                servicesPanelLayout.createSequentialGroup()
-                                                        .addComponent(jLabel2)
-                                                        .addGap(253, 253, 253))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                servicesPanelLayout.createSequentialGroup()
-                                                        .addComponent(appControlButtons1,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 71,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(41, 41, 41)))));
-        servicesPanelLayout.setVerticalGroup(
-                servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(servicesPanelLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(servicesPanelLayout.createSequentialGroup()
+                .addGap(215, 215, 215)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, servicesPanelLayout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addGroup(servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, servicesPanelLayout.createSequentialGroup()
+                        .addGroup(servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(panelGlowingGradient4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelGlowingGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(servicesPanelLayout.createSequentialGroup()
+                                .addComponent(panelGlowingGradient6, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
+                                .addComponent(panelGlowingGradient5, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(servicesPanelLayout.createSequentialGroup()
+                                .addComponent(panelGlowingGradient3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)
-                                .addGroup(servicesPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(servicesPanelLayout.createSequentialGroup()
-                                                .addGap(41, 41, 41)
-                                                .addGroup(servicesPanelLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(panelGlowingGradient1,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 224,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(panelGlowingGradient2,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 224,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(189, 189, 189)
-                                                .addGroup(servicesPanelLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(panelGlowingGradient5,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 224,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(panelGlowingGradient4,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 224,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(servicesPanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                        225, Short.MAX_VALUE)
-                                                .addComponent(panelGlowingGradient3,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 224,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(185, 185, 185)
-                                                .addComponent(panelGlowingGradient6,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 224,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(81, 81, 81)))));
+                                .addComponent(panelGlowingGradient2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, servicesPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(253, 253, 253))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, servicesPanelLayout.createSequentialGroup()
+                        .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
+        );
+        servicesPanelLayout.setVerticalGroup(
+            servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(servicesPanelLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGroup(servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(servicesPanelLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelGlowingGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelGlowingGradient2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(189, 189, 189)
+                        .addGroup(servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelGlowingGradient5, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelGlowingGradient4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(servicesPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                        .addComponent(panelGlowingGradient3, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(185, 185, 185)
+                        .addComponent(panelGlowingGradient6, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81))))
+        );
 
         jScrollPane1.setViewportView(servicesPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -24,19 +24,22 @@ public class GuestsPanel extends javax.swing.JPanel {
         titleTxt = new javax.swing.JLabel();
         genderLabel = new javax.swing.JLabel();
         genderComboBox = new javax.swing.JComboBox<>();
-        ageLabel = new javax.swing.JLabel();
-        ageTxtField = new javax.swing.JTextField();
+        dobLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         roomTable = new javax.swing.JTable();
         addGuestBtn = new javax.swing.JButton();
         editGuestBtn = new javax.swing.JButton();
         deleteGuestBtn = new javax.swing.JButton();
-        roomNrTxtField1 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        surnameTxtField = new javax.swing.JTextField();
+        phnNrLabel = new javax.swing.JLabel();
         phoneNrTxtField = new javax.swing.JTextField();
-        roomNrTxtField4 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        addressTxtField = new javax.swing.JTextField();
+        nameTxtField = new javax.swing.JTextField();
+        jDateOfBirthChooser = new com.toedter.calendar.JDateChooser();
+
+        setPreferredSize(new java.awt.Dimension(744, 546));
+
+        guestsPanel.setBackground(new java.awt.Color(255, 255, 255));
+        guestsPanel.setPreferredSize(new java.awt.Dimension(744, 546));
 
         surnameLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         surnameLabel.setForeground(new java.awt.Color(102, 153, 255));
@@ -58,17 +61,9 @@ public class GuestsPanel extends javax.swing.JPanel {
 
         genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
 
-        ageLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        ageLabel.setForeground(new java.awt.Color(102, 153, 255));
-        ageLabel.setText(" Age");
-
-        ageTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-        ageTxtField.setForeground(new java.awt.Color(0, 153, 153));
-        ageTxtField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ageTxtFieldActionPerformed(evt);
-            }
-        });
+        dobLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        dobLabel.setForeground(new java.awt.Color(102, 153, 255));
+        dobLabel.setText("Date of Birth");
 
         roomTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
         roomTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -79,7 +74,7 @@ public class GuestsPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Surname", "Name", "Gender", "Age", "Phone number", "Address"
+                "ID", "Surname", "Name", "Gender", "Date of Birth", "Phone number"
             }
         ));
         roomTable.setGridColor(new java.awt.Color(51, 153, 255));
@@ -118,17 +113,17 @@ public class GuestsPanel extends javax.swing.JPanel {
             }
         });
 
-        roomNrTxtField1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-        roomNrTxtField1.setForeground(new java.awt.Color(0, 153, 153));
-        roomNrTxtField1.addActionListener(new java.awt.event.ActionListener() {
+        surnameTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
+        surnameTxtField.setForeground(new java.awt.Color(0, 153, 153));
+        surnameTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomNrTxtField1ActionPerformed(evt);
+                surnameTxtFieldActionPerformed(evt);
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(102, 153, 255));
-        jLabel12.setText("Phone number");
+        phnNrLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        phnNrLabel.setForeground(new java.awt.Color(102, 153, 255));
+        phnNrLabel.setText("Phone number");
 
         phoneNrTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
         phoneNrTxtField.setForeground(new java.awt.Color(0, 153, 153));
@@ -138,23 +133,11 @@ public class GuestsPanel extends javax.swing.JPanel {
             }
         });
 
-        roomNrTxtField4.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-        roomNrTxtField4.setForeground(new java.awt.Color(0, 153, 153));
-        roomNrTxtField4.addActionListener(new java.awt.event.ActionListener() {
+        nameTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
+        nameTxtField.setForeground(new java.awt.Color(0, 153, 153));
+        nameTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomNrTxtField4ActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 153, 255));
-        jLabel13.setText("Address");
-
-        addressTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-        addressTxtField.setForeground(new java.awt.Color(0, 153, 153));
-        addressTxtField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressTxtFieldActionPerformed(evt);
+                nameTxtFieldActionPerformed(evt);
             }
         });
 
@@ -163,153 +146,137 @@ public class GuestsPanel extends javax.swing.JPanel {
         guestsPanelLayout.setHorizontalGroup(
             guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(guestsPanelLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
                 .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(guestsPanelLayout.createSequentialGroup()
-                        .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(surnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(roomNrTxtField1)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(phoneNrTxtField)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, guestsPanelLayout.createSequentialGroup()
-                                .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(guestsPanelLayout.createSequentialGroup()
-                                        .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(genderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ageTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(roomNrTxtField4)
-                            .addComponent(jLabel13)
-                            .addComponent(addGuestBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editGuestBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(deleteGuestBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addressTxtField))
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(252, 252, 252)
+                        .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(guestsPanelLayout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                        .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(guestsPanelLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(phnNrLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(dobLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(phoneNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jDateOfBirthChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(surnameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(guestsPanelLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(surnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, guestsPanelLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(addGuestBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(editGuestBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(guestsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(deleteGuestBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         guestsPanelLayout.setVerticalGroup(
             guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(guestsPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addComponent(titleTxt)
-                .addGap(18, 18, 18)
                 .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(guestsPanelLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addComponent(surnameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(roomNrTxtField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(surnameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(roomNrTxtField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(genderLabel)
-                            .addComponent(ageLabel))
+                        .addComponent(nameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
+                        .addComponent(genderLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ageTxtField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                            .addComponent(genderComboBox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel12)
+                        .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(phoneNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(phnNrLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13)
+                        .addComponent(phoneNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(dobLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addressTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(jDateOfBirthChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
                         .addComponent(addGuestBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editGuestBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteGuestBtn)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(deleteGuestBtn))
+                    .addGroup(guestsPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+            .addGap(0, 773, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(guestsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(guestsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGap(0, 545, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(guestsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(guestsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ageTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageTxtFieldActionPerformed
+    private void nameTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ageTxtFieldActionPerformed
-
-    private void addGuestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGuestBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addGuestBtnActionPerformed
-
-    private void editGuestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editGuestBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editGuestBtnActionPerformed
-
-    private void deleteGuestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteGuestBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteGuestBtnActionPerformed
-
-    private void roomNrTxtField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomNrTxtField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roomNrTxtField1ActionPerformed
+    }//GEN-LAST:event_nameTxtFieldActionPerformed
 
     private void phoneNrTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNrTxtFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_phoneNrTxtFieldActionPerformed
 
-    private void roomNrTxtField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomNrTxtField4ActionPerformed
+    private void surnameTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surnameTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_roomNrTxtField4ActionPerformed
+    }//GEN-LAST:event_surnameTxtFieldActionPerformed
 
-    private void addressTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTxtFieldActionPerformed
+    private void deleteGuestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteGuestBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addressTxtFieldActionPerformed
+    }//GEN-LAST:event_deleteGuestBtnActionPerformed
+
+    private void editGuestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editGuestBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editGuestBtnActionPerformed
+
+    private void addGuestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGuestBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addGuestBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addGuestBtn;
-    private javax.swing.JTextField addressTxtField;
-    private javax.swing.JLabel ageLabel;
-    private javax.swing.JTextField ageTxtField;
     private javax.swing.JButton deleteGuestBtn;
+    private javax.swing.JLabel dobLabel;
     private javax.swing.JButton editGuestBtn;
     private javax.swing.JComboBox<String> genderComboBox;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JPanel guestsPanel;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
+    private com.toedter.calendar.JDateChooser jDateOfBirthChooser;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField nameTxtField;
+    private javax.swing.JLabel phnNrLabel;
     private javax.swing.JTextField phoneNrTxtField;
-    private javax.swing.JTextField roomNrTxtField1;
-    private javax.swing.JTextField roomNrTxtField4;
     private javax.swing.JTable roomTable;
     private javax.swing.JLabel surnameLabel;
+    private javax.swing.JTextField surnameTxtField;
     private javax.swing.JLabel titleTxt;
     // End of variables declaration//GEN-END:variables
 }
