@@ -3,6 +3,7 @@ package Main;
 
 import WelcomeGUI.WelcomeFrame;
 import java.awt.Image;
+import java.awt.MouseInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -16,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 public class AppControlButtons extends javax.swing.JPanel {
-    
+
     private int x, y;
     private ImageIcon closeLight = new ImageIcon("src/main/resources/appControl/close_light.png");
     private ImageIcon closeDark = new ImageIcon("src/main/resources/appControl/close_dark.png");
@@ -29,7 +30,9 @@ public class AppControlButtons extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void setAppControl(JFrame frame) {
+    // xPosition and yPosition are the coordinates of the calling JPanel and the
+    // BorderPanel toghether
+    public void setAppControl(JFrame frame, int xPosition, int yPosition) {
 
         closeLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -44,11 +47,11 @@ public class AppControlButtons extends javax.swing.JPanel {
             @Override
             public void mousePressed(MouseEvent me) {
                 if (frame.getExtendedState() != JFrame.MAXIMIZED_BOTH && SwingUtilities.isLeftMouseButton(me)) {
-                    x = me.getX();
-                    y = me.getY();
+                    x = me.getX() + moveLabel.getX() + xPosition;
+                    y = me.getY() + moveLabel.getY() + yPosition;
                 }
             }
-        }); 
+        });
         moveLabel.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent me) {
@@ -56,7 +59,7 @@ public class AppControlButtons extends javax.swing.JPanel {
                     if (frame.getExtendedState() == JFrame.MAXIMIZED_BOTH) {
                         frame.setExtendedState(JFrame.NORMAL);
                     }
-                    setLocation(me.getXOnScreen() - x, me.getYOnScreen() - x);
+                    frame.setLocation(me.getXOnScreen() - x, me.getYOnScreen() - y);
                 }
             }
         });
@@ -86,7 +89,8 @@ public class AppControlButtons extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         closeLabel = new javax.swing.JLabel();
