@@ -167,6 +167,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
                 Login login = new Login();
                 login.setVisible(true);
+
         }
 
         // <editor-fold defaultstate="collapsed" desc="Generated

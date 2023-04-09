@@ -2,13 +2,14 @@ package AdminGUI;
 
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    private boolean resize = false; // Resizable? default:false
+    
     public Login() {
         initComponents();
+        setResizable(resize); // prevent from resize
         setLocationRelativeTo(null);//center position of JFrame
         setTitle("Admin Login");
+
     }
 
     @SuppressWarnings("unchecked")
@@ -18,6 +19,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         hotelName = new javax.swing.JLabel();
+        appControlButtons1 = new Main.AppControlButtons();
         titleTxt = new javax.swing.JLabel();
         usernameTxtField = new javax.swing.JTextField();
         passwordField = new javax.swing.JPasswordField();
@@ -25,6 +27,9 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         logInBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -43,13 +48,17 @@ public class Login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(147, Short.MAX_VALUE)
                 .addComponent(hotelName, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(135, 135, 135))
+                .addGap(65, 65, 65)
+                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 16, Short.MAX_VALUE)
                 .addComponent(hotelName))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         titleTxt.setBackground(new java.awt.Color(255, 255, 255));
@@ -163,7 +172,7 @@ public class Login extends javax.swing.JFrame {
         AdminFrame adminFrame = new AdminFrame(); // solo per test
         setVisible(false);
         adminFrame.setVisible(true);
-        
+
     }//GEN-LAST:event_logInBtnActionPerformed
 
     /**
@@ -202,6 +211,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Main.AppControlButtons appControlButtons1;
     private javax.swing.JLabel hotelName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
