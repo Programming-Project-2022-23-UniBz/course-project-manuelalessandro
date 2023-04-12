@@ -1,6 +1,5 @@
-package com.raven.component;
+package LoginGUI;
 
-import com.raven.swing.ButtonOutLine;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GradientPaint;

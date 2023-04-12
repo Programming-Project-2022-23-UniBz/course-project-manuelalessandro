@@ -1,4 +1,4 @@
-package com.raven.swing;
+package LoginGUI;
 
 import java.awt.Color;
 import java.awt.Cursor;

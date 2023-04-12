@@ -1,7 +1,5 @@
 package LoginGUI;
 
-import com.raven.component.PanelCover;
-import com.raven.component.PanelLoginAndRegister;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;

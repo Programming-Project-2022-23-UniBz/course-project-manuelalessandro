@@ -1,8 +1,5 @@
-package com.raven.component;
+package LoginGUI;
 
-import com.raven.swing.Button;
-import com.raven.swing.MyPasswordField;
-import com.raven.swing.MyTextField;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
