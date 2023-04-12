@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 
 import java.awt.Color;
 import SteelCheckBox.ColorDef;
-import AdminGUI.Login;
+import LoginGUI.Login;
 
 public class WelcomeFrame extends javax.swing.JFrame {
 

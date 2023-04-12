@@ -1,6 +1,7 @@
 
 package Main;
 
+import AdminGUI.AdminFrame;
 import WelcomeGUI.WelcomeFrame;
 import java.awt.Image;
 import java.awt.MouseInfo;

@@ -1,18 +1,25 @@
-package AdminGUI;
+package LoginGUI;
+
+import AdminGUI.AdminFrame;
 
 public class Login extends javax.swing.JFrame {
 
     private boolean resize = false; // Resizable? default:false
-    
+
     public Login() {
         initComponents();
         setResizable(resize); // prevent from resize
-        setLocationRelativeTo(null);//center position of JFrame
+        setLocationRelativeTo(null);// center position of JFrame
         setTitle("Admin Login");
 
     }
 
+    public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
+        appControlButtons1.setAppControl(frame, appControlButtons1.getX() + xBorder, appControlButtons1.getY());
+    }
+
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -164,25 +171,29 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtFieldActionPerformed
+    private void usernameTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_usernameTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameTxtFieldActionPerformed
+    }// GEN-LAST:event_usernameTxtFieldActionPerformed
 
-    private void logInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInBtnActionPerformed
+    private void logInBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logInBtnActionPerformed
         AdminFrame adminFrame = new AdminFrame(); // solo per test
         setVisible(false);
         adminFrame.setVisible(true);
 
-    }//GEN-LAST:event_logInBtnActionPerformed
+    }// GEN-LAST:event_logInBtnActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -200,7 +211,7 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

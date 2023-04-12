@@ -1,6 +1,7 @@
 
 package AdminGUI;
 
+import LoginGUI.Login;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -17,6 +18,12 @@ public class AdminFrame extends javax.swing.JFrame {
         // Buttons settings
         cardLayout = (CardLayout) cardPanel.getLayout();
         initMouseActionListener();
+
+        // App control settings
+        roomsPanel.setAppControlButtons(this, sideMenu.getWidth());
+        guestsPanel.setAppControlButtons(this, sideMenu.getWidth());
+        dashboardPanel.setAppControlButtons(this, sideMenu.getWidth());
+        bookingsPanel.setAppControlButtons(this, sideMenu.getWidth());
     }
 
     // Set the card switch for cards
@@ -50,6 +57,7 @@ public class AdminFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -69,12 +77,13 @@ public class AdminFrame extends javax.swing.JFrame {
         bookingsPanel = new AdminGUI.BookingsPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(908, 546));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(902, 546));
 
         sideMenu.setBackground(new java.awt.Color(51, 153, 255));
-        sideMenu.setMaximumSize(new java.awt.Dimension(164, 548));
-        sideMenu.setMinimumSize(new java.awt.Dimension(164, 548));
-        sideMenu.setPreferredSize(new java.awt.Dimension(164, 548));
+        sideMenu.setMaximumSize(new java.awt.Dimension(164, 546));
+        sideMenu.setMinimumSize(new java.awt.Dimension(164, 546));
+        sideMenu.setPreferredSize(new java.awt.Dimension(164, 546));
 
         dashButton.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         dashButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,16 +182,23 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addGap(44, 44, 44))
         );
 
-        cardPanel.setPreferredSize(new java.awt.Dimension(744, 546));
+        cardPanel.setMinimumSize(new java.awt.Dimension(1, 1));
+        cardPanel.setPreferredSize(new java.awt.Dimension(738, 546));
         cardPanel.setLayout(new java.awt.CardLayout());
 
         dashboardPanel.setMaximumSize(new java.awt.Dimension(44444444, 33313));
         dashboardPanel.setMinimumSize(new java.awt.Dimension(1, 1));
+        dashboardPanel.setPreferredSize(new java.awt.Dimension(738, 546));
         cardPanel.add(dashboardPanel, "dash");
+
+        roomsPanel.setPreferredSize(new java.awt.Dimension(738, 546));
         cardPanel.add(roomsPanel, "rooms");
 
         guestsPanel.setMinimumSize(new java.awt.Dimension(744, 546));
+        guestsPanel.setPreferredSize(new java.awt.Dimension(738, 546));
         cardPanel.add(guestsPanel, "guests");
+
+        bookingsPanel.setPreferredSize(new java.awt.Dimension(738, 546));
         cardPanel.add(bookingsPanel, "bookings");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -197,7 +213,7 @@ public class AdminFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
