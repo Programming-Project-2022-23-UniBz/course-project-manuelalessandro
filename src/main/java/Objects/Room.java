@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 
+import javax.lang.model.util.ElementScanner14;
+
 import com.google.gson.Gson;
 
 public class Room {
@@ -16,18 +18,32 @@ public class Room {
 
     // instance variables
     private int id;
-    private RoomType type;
+    private RoomType roomType;
     private int capacity;
-    private int price;
+    private double price;
     private boolean isOccupied;
 
-    public Room(int id, RoomType type, int capacity, int price) {
+    public Room(int id, RoomType roomType, int capacity) {
 
         this.id = id;
-        this.type = type;
+        this.roomType = roomType;
         this.capacity = capacity;
-        this.price = price;
-        isOccupied = false;
+        if (this.capacity > 2)
+            this.capacity = 2;
+        if (roomType.equals(RoomType.STANDARD))
+            if (capacity == 1)
+                price = 100;
+            else
+                price = 150;
+        else if (roomType.equals(RoomType.DELUXE))
+            if (capacity == 1)
+                price = 200;
+            else
+                price = 250;
+        else
+            price = 400;
+        this.isOccupied = false;
+
     }
 
     // getters and setters
@@ -39,12 +55,12 @@ public class Room {
         this.id = id;
     }
 
-    public RoomType getType() {
-        return type;
+    public RoomType getRoomType() {
+        return roomType;
     }
 
-    public void setType(RoomType type) {
-        this.type = type;
+    public void setRoomType(RoomType type) {
+        this.roomType = type;
     }
 
     public int getCapacity() {
@@ -55,30 +71,43 @@ public class Room {
         this.capacity = capacity;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public boolean isOccupied() {
+        return isOccupied;
+    }
+
+    public void setOccupied(boolean isOccupied) {
+        this.isOccupied = isOccupied;
+    }
+
     // Used to initialize rooms.json
+    // if used, json will be reset and old data lost
     public static void initRooms() {
         Room[] arr = new Room[400];
 
         for (int i = 100; i < arr.length && i < 126; i++) {
             if (i < 116)
-                arr[i] = new Room(i, RoomType.STANDARD, 1, 100);
+                arr[i] = new Room(i, RoomType.STANDARD, 1);
             else
-                arr[i] = new Room(i, RoomType.STANDARD, 2, 150);
+                arr[i] = new Room(i, RoomType.STANDARD, 2);
         }
 
         for (int i = 200; i < arr.length && i < 226; i++) {
             if (i < 216)
-                arr[i] = new Room(i, RoomType.DELUXE, 1, 200);
+                arr[i] = new Room(i, RoomType.DELUXE, 1);
             else
-                arr[i] = new Room(i, RoomType.DELUXE, 2, 250);
+                arr[i] = new Room(i, RoomType.DELUXE, 2);
         }
 
         for (int i = 300; i < arr.length && i < 326; i++) {
-            arr[i] = new Room(i, RoomType.KING, 1, 400);
+            arr[i] = new Room(i, RoomType.KING, 1);
         }
         Gson gson = new Gson();
         String roomsJson = gson.toJson(arr);
@@ -95,4 +124,5 @@ public class Room {
         }
 
     }
+
 }
