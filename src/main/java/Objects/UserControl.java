@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import com.google.gson.Gson;
 
+import Objects.User.GenderType;
+
 public class UserControl {
 
     private static User[] users;
@@ -15,7 +17,7 @@ public class UserControl {
     public static void pullData() {
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new File("users.json"));
+            scanner = new Scanner(new File("src/main/java/Objects/json/users.json"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -29,7 +31,7 @@ public class UserControl {
     public static void pushData() {
         String usersJson = gson.toJson(users);
         try {
-            FileWriter writer = new FileWriter("users.json");
+            FileWriter writer = new FileWriter("src/main/java/Objects/json/users.json");
             writer.append(usersJson);
             writer.flush();
             writer.close();
@@ -46,9 +48,72 @@ public class UserControl {
         users = newArr;
     }
 
+    private static void setRightId() {
+        for (int i = 1; i < users.length; i++) {
+            users[i].setId(i);
+        }
+    }
+
+    private static void removeUser(int id) {
+        User[] newArr = new User[users.length - 1];
+        if (users.length > id) {
+            for (int i = 0; i < id; i++) {
+                newArr[i] = users[i];
+            }
+            for (int i = id; i < newArr.length; i++) {
+                newArr[i] = users[i + 1];
+            }
+            users = newArr;
+            setRightId();
+        } else {
+            System.out.println("Id does not exist");
+        }
+    }
+
+    private static void addUser(User user) {
+        incrementUsers();
+        int index = users.length - 1;
+        users[index] = user;
+        users[index].setId(index);
+    }
+
+    private static User searchUser(String email) throws IllegalArgumentException {
+        for (int i = 1; i < users.length; i++)
+            if (users[i].getEmail().equals(email))
+                return users[i];
+        throw new IllegalArgumentException("Email does not exist");
+    }
+
+    private static User getUser(int id) throws IllegalArgumentException {
+        if (users.length > id)
+            return users[id];
+        else
+            throw new IllegalArgumentException("Id does not exist");
+    }
+
+    // Used to initialize users.json
+    // if used, json will be reset and old data lost
+    private static void initUsers() {
+        users = new User[2];
+        User admin = new User("admin", null, null, null, "admin", "password");
+        admin.setId(0);
+        users[0] = admin;
+        User guestTest = null;
+        try {
+            guestTest = new User("GuestName", "GuestSurname", User.dateFormatter.parse("01/01/1990"),
+                    GenderType.OTHER, "guest@email.com",
+                    "guest");
+            guestTest.setId(1);
+            users[1] = guestTest;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         pullData();
-        System.out.println(users[1].getEmail());
 
+        System.out.println(users.length);
+        pushData();
     }
 }

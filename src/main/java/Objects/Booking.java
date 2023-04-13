@@ -75,7 +75,7 @@ public class Booking {
 
     public int calculateStay() {
         long diff = checkOutDate.getTime() - checkInDate.getTime();
-        return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));;
+        return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
         //TODO test
     }

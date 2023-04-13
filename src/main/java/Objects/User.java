@@ -102,35 +102,4 @@ public class User {
             return false;
     }
 
-    // Used to initialize users.json
-    // if used, json will be reset and old data lost
-    public static void initUsers() {
-        User[] arr = new User[2];
-        User admin = new User("admin", null, null, null, "admin", "password");
-        admin.setId(1);
-        arr[0] = admin;
-        User guestTest = null;
-        try {
-            guestTest = new User("GuestName", "GuestSurname", dateFormatter.parse("01/01/1990"),
-                    GenderType.OTHER, "guest@email.com",
-                    "guest");
-            arr[1] = guestTest;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Gson gson = new Gson();
-        String usersJson = gson.toJson(arr);
-
-        try {
-            FileWriter writer = new FileWriter("users.json");
-            writer.append(usersJson);
-            writer.flush();
-            writer.close();
-            System.out.println("success");
-        } catch (Exception e) {
-            System.out.println("Exception");
-        }
-    }
-
 }
