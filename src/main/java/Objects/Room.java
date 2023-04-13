@@ -87,6 +87,8 @@ public class Room {
         this.isOccupied = isOccupied;
     }
 
+    // ------------------------------------------------------------------
+
     // Used to initialize rooms.json
     // if used, json will be reset and old data lost
     public static void initRooms() {
@@ -113,8 +115,7 @@ public class Room {
         String roomsJson = gson.toJson(arr);
 
         try {
-            File file = new File("rooms.json");
-            FileWriter writer = new FileWriter(file);
+            FileWriter writer = new FileWriter("rooms.json");
             writer.append(roomsJson);
             writer.flush();
             writer.close();
