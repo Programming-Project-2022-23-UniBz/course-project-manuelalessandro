@@ -1,5 +1,7 @@
 package Main;
 
+import Objects.Room;
+import Objects.Room.RoomType;
 import WelcomeGUI.WelcomeFrame;
 
 public class Main {
@@ -7,7 +9,4 @@ public class Main {
         WelcomeFrame frame = new WelcomeFrame();
     }
 
-    public static void shutdown() {
-        //System.exit(0);
-    }
 }
