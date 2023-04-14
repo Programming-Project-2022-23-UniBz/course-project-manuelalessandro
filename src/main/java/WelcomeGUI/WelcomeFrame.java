@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 
 import java.awt.Color;
 import SteelCheckBox.ColorDef;
-import LoginGUI.Login;
+import LoginGUI.LoginFrame;
 
 public class WelcomeFrame extends javax.swing.JFrame {
 
@@ -165,8 +165,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         // Here the admin login panel is intantiated
         private void accountButtonActionPerformed(java.awt.event.ActionEvent event) {
 
-                Login login = new Login();
-                login.setVisible(true);
+                new LoginFrame().setVisible(true);
 
         }
 
