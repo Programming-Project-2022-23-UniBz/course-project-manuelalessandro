@@ -53,6 +53,11 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    // Method for setting card frok the dashboardPanel
+    public void setCard(String card){
+        cardLayout.show(cardPanel, card);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated

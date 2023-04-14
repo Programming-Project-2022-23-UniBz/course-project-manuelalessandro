@@ -4,12 +4,14 @@
  */
 package AdminGUI;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author kumar
  */
 public class DashboardPanel extends javax.swing.JPanel {
-
+    AdminFrame adminFrame;
     /**
      * Creates new form Dashboard
      */
@@ -17,7 +19,8 @@ public class DashboardPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
+    public void setAppControlButtons(AdminFrame frame, int xBorder) {
+        adminFrame = frame;
         appControlButtons1.setAppControl(frame, appControlButtons1.getX() + xBorder, appControlButtons1.getY());
     }
 
@@ -220,15 +223,15 @@ public class DashboardPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void roomsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_roomsButtonActionPerformed
-        // TODO add your handling code here:
+        adminFrame.setCard("rooms");
     }// GEN-LAST:event_roomsButtonActionPerformed
 
     private void customersButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_customersButtonActionPerformed
-        // TODO add your handling code here:
+        adminFrame.setCard("guests");
     }// GEN-LAST:event_customersButtonActionPerformed
 
     private void bookingsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_bookingsButtonActionPerformed
-        // TODO add your handling code here:
+        adminFrame.setCard("bookings");
     }// GEN-LAST:event_bookingsButtonActionPerformed
 
     private void chartsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chartsButtonActionPerformed
