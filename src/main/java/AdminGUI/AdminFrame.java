@@ -1,7 +1,6 @@
 
 package AdminGUI;
 
-import LoginGUI.LoginFrame;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -249,7 +248,6 @@ public class AdminFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logOutBtnActionPerformed
-        new LoginFrame().setVisible(true);
         this.dispose();
     }// GEN-LAST:event_logOutBtnActionPerformed
 

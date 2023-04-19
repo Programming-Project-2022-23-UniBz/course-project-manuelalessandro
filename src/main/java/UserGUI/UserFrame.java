@@ -1,7 +1,6 @@
 
 package UserGUI;
 
-import LoginGUI.LoginFrame;
 import AdminGUI.*;
 
 public class UserFrame extends javax.swing.JFrame {
@@ -179,7 +178,6 @@ public class UserFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logOutBtnActionPerformed
-        new LoginFrame().setVisible(true);
         this.dispose();
     }// GEN-LAST:event_logOutBtnActionPerformed
 
