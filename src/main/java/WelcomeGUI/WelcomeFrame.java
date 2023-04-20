@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import LoginGUI.*;
 import java.awt.Color;
 import SteelCheckBox.ColorDef;
 
@@ -163,8 +164,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
         // Here the admin login panel is intantiated
         private void accountButtonActionPerformed(java.awt.event.ActionEvent event) {
-
-
+            LoginFrame login = new LoginFrame();
         }
 
         // <editor-fold defaultstate="collapsed" desc="Generated
