@@ -48,7 +48,7 @@ public class RoomControl {
         rooms = newArr;
     }
 
-    private static Room getRoom(int id) throws IllegalArgumentException {
+    public static Room getRoom(int id) throws IllegalArgumentException {
         Room room = null;
         if (rooms.length > id)
             room = rooms[id];
@@ -60,7 +60,7 @@ public class RoomControl {
 
     // returns first free room that matches parameters
     // returns -1 if no room matches
-    private static int getFreeRoomId(RoomType roomType, int capacity) {
+    public static int getFreeRoomId(RoomType roomType, int capacity) {
         int result = -1;
         for (int i = 0; i < rooms.length; i++)
             if (rooms[i] != null)

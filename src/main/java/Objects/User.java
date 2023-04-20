@@ -1,14 +1,9 @@
 package Objects;
 
-import java.io.FileWriter;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
-
-import com.google.gson.Gson;
 
 public class User {
 
