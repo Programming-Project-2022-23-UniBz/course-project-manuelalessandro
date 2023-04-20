@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package AdminGUI;
-dfasfdf
+
 /**
  *
  * @author kumar
@@ -57,7 +57,7 @@ public class BookingsPanel extends javax.swing.JPanel {
         roomsPanel.setPreferredSize(new java.awt.Dimension(738, 546));
 
         editRoomBtn.setBackground(new java.awt.Color(255, 153, 0));
-        editRoomBtn.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
+        editRoomBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         editRoomBtn.setForeground(new java.awt.Color(255, 255, 255));
         editRoomBtn.setText("Edit");
         editRoomBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -66,8 +66,8 @@ public class BookingsPanel extends javax.swing.JPanel {
             }
         });
 
-        addRoomBtn.setBackground(new java.awt.Color(0, 204, 0));
-        addRoomBtn.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
+        addRoomBtn.setBackground(new java.awt.Color(0, 153, 102));
+        addRoomBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         addRoomBtn.setForeground(new java.awt.Color(255, 255, 255));
         addRoomBtn.setText("Add new room");
         addRoomBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +89,7 @@ public class BookingsPanel extends javax.swing.JPanel {
         });
 
         deleteRoomBtn.setBackground(new java.awt.Color(255, 102, 51));
-        deleteRoomBtn.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
+        deleteRoomBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         deleteRoomBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteRoomBtn.setText("Delete");
         deleteRoomBtn.addActionListener(new java.awt.event.ActionListener() {

@@ -163,8 +163,8 @@ public class GuestsPanel extends javax.swing.JPanel {
             }
         });
 
-        addGuestBtn.setBackground(new java.awt.Color(0, 204, 0));
-        addGuestBtn.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
+        addGuestBtn.setBackground(new java.awt.Color(0, 153, 102));
+        addGuestBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         addGuestBtn.setForeground(new java.awt.Color(255, 255, 255));
         addGuestBtn.setText("Add new guest");
         addGuestBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +174,7 @@ public class GuestsPanel extends javax.swing.JPanel {
         });
 
         deleteGuestBtn.setBackground(new java.awt.Color(255, 102, 51));
-        deleteGuestBtn.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
+        deleteGuestBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         deleteGuestBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteGuestBtn.setText("Delete");
         deleteGuestBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +184,7 @@ public class GuestsPanel extends javax.swing.JPanel {
         });
 
         editGuestBtn.setBackground(new java.awt.Color(255, 153, 0));
-        editGuestBtn.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
+        editGuestBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         editGuestBtn.setForeground(new java.awt.Color(255, 255, 255));
         editGuestBtn.setText("Edit");
         editGuestBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -223,12 +223,12 @@ public class GuestsPanel extends javax.swing.JPanel {
                                 .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(dobLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDateOfBirthChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, guestsPanelLayout.createSequentialGroup()
-                                            .addComponent(deleteGuestBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(guestsPanelLayout.createSequentialGroup()
+                                            .addComponent(editGuestBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(editGuestBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addComponent(addGuestBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(deleteGuestBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(addGuestBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 26, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -246,7 +246,11 @@ public class GuestsPanel extends javax.swing.JPanel {
                         .addComponent(jDateOfBirthChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addGuestBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70))
+                        .addGap(2, 2, 2)
+                        .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(editGuestBtn)
+                            .addComponent(deleteGuestBtn))
+                        .addGap(45, 45, 45))
                     .addGroup(guestsPanelLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(titleTxt)
@@ -267,10 +271,7 @@ public class GuestsPanel extends javax.swing.JPanel {
                                 .addGap(9, 9, 9)
                                 .addComponent(phnNrLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(guestsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(phoneNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(deleteGuestBtn)
-                                    .addComponent(editGuestBtn))))
+                                .addComponent(phoneNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
