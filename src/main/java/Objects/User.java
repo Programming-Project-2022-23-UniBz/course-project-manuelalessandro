@@ -1,5 +1,7 @@
 package Objects;
 
+import com.google.gson.Gson;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -7,13 +9,19 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
+//<<<<<<< HEAD
 import com.google.gson.Gson;
 import java.io.FileReader;
 import java.io.IOException;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 
+//=======
+//>>>>>>> c5099d07ad4c6471a1724330b683cc5fe2d7e131
 public class User {
 
     public static DateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);

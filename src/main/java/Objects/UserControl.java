@@ -54,7 +54,7 @@ public class UserControl {
         }
     }
 
-    private static void removeUser(int id) {
+    public static void removeUser(int id) {
         User[] newArr = new User[users.length - 1];
         if (users.length > id) {
             for (int i = 0; i < id; i++) {
@@ -70,21 +70,21 @@ public class UserControl {
         }
     }
 
-    private static void addUser(User user) {
+    public static void addUser(User user) {
         incrementUsers();
         int index = users.length - 1;
         users[index] = user;
         users[index].setId(index);
     }
 
-    private static User searchUser(String email) throws IllegalArgumentException {
+    public static User searchUser(String email) throws IllegalArgumentException {
         for (int i = 1; i < users.length; i++)
             if (users[i].getEmail().equals(email))
                 return users[i];
         throw new IllegalArgumentException("Email does not exist");
     }
 
-    private static User getUser(int id) throws IllegalArgumentException {
+    public static User getUser(int id) throws IllegalArgumentException {
         if (users.length > id)
             return users[id];
         else
