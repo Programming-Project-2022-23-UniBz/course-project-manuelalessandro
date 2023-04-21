@@ -11,6 +11,11 @@ package LoginGUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileReader;
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import AdminGUI.AdminFrame;
+import java.io.FileWriter;
 
 public class LoginFrame extends JFrame{
     //private variables, don't change
@@ -54,6 +59,11 @@ public class LoginFrame extends JFrame{
         register.setBounds(150, 280, 100, 25 );
         register.setForeground(Color.WHITE);
         register.setBackground(Color.BLACK);
+        register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerOnAction(evt);
+            }
+        });
         
         //adding every component to the panel
         this.add(usernameLab);
@@ -69,10 +79,48 @@ public class LoginFrame extends JFrame{
     //login button on action
     public void loginOnAction(ActionEvent e){
         String U = this.username.getText();
-        String P = this.password.getText();
+        String P = this.password.getText(); 
+        
+        JSONArray users = new JSONArray();
+        JSONParser jp = new JSONParser();
+        
+        //extracting data from the json file
+        try{
+            FileReader file = new FileReader("src/main/java/Objects/json/UserData.json");
+            users = (JSONArray) jp.parse(file);
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "error occured: "+ex);
+            return;
+        }
+        
+        // checking User in UserData.json
+        String userRole = "";
+        for(Object userObj : users){
+            JSONObject user = (JSONObject) userObj;
+            String storedUsername = (String) user.get("username");
+            String storedPassword = (String) user.get("password");
+            String storedUserRole = (String) user.get("role");
+            if (U.equals(storedUsername) && P.equals(storedPassword)) {
+                userRole = storedUserRole;
+                JOptionPane.showMessageDialog(null, "login successful as " + userRole);
+            }else{
+                JOptionPane.showMessageDialog(null, "Error: invalid username or password");
+            }
+            if(userRole.equals("admin")){
+                //boh tipo adminframe
+                System.out.println("admin");
+            }else if(userRole.equals("costumer")){
+                //costumer frame
+                System.out.println("costumer");
+            }     
+        }
         
     }
-   
+    
+    public void registerOnAction(ActionEvent e) {
+        RegisterFrame r = new RegisterFrame();
+    }
+    
 }
 
 //nell'admin frame aggiungere opzione per creare nuovo admin
