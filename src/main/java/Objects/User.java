@@ -37,7 +37,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
-        this.password = password;
+        this.password = Encrypt(password,110);
     }
 
     // getters and setters
