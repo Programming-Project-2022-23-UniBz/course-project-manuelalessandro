@@ -9,6 +9,7 @@ public class Main {
         UserControl.pullData();
         RoomControl.pullData();
         WelcomeFrame frame = new WelcomeFrame();
+        frame.setVisible(true);
     }
 
     public static void stopApplication() {
