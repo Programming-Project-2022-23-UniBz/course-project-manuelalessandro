@@ -1,17 +1,11 @@
 
 package WelcomeGUI;
 
-import Main.Main;
 import Main.ColorSetting;
 import java.awt.CardLayout;
 import java.awt.Image;
-import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import LoginGUI.*;
 import java.awt.Color;
 import SteelCheckBox.ColorDef;
@@ -55,7 +49,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 setTitle("Adler Palace");
                 setResizable(resize); // prevent from resize
                 setLocationRelativeTo(null);// center position of JFrame
-                setVisible(true); // make frame visible
+                // setVisible(true); // set frame visible in Main.java
 
                 // Set logo as icon
                 ImageIcon logo = new ImageIcon(logoPath); // set path in settings
@@ -164,7 +158,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
         // Here the admin login panel is intantiated
         private void accountButtonActionPerformed(java.awt.event.ActionEvent event) {
-            LoginFrame login = new LoginFrame();
+                LoginFrame login = new LoginFrame();
         }
 
         // <editor-fold defaultstate="collapsed" desc="Generated

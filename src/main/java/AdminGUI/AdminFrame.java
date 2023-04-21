@@ -2,7 +2,6 @@
 package AdminGUI;
 
 import java.awt.CardLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -58,7 +57,6 @@ public class AdminFrame extends javax.swing.JFrame {
         cardLayout.show(cardPanel, card);
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated

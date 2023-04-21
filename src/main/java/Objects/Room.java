@@ -1,15 +1,5 @@
 package Objects;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.nio.file.Path;
-
-import javax.lang.model.util.ElementScanner14;
-
-import com.google.gson.Gson;
-
 public class Room {
 
     public enum RoomType {

@@ -78,7 +78,6 @@ public class AppControlButtons extends javax.swing.JPanel {
         minimizeLabel.setIcon(minimizeLight);
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
