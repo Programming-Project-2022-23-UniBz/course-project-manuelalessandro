@@ -26,67 +26,51 @@ public class UserAccountPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        roomsPanel2 = new javax.swing.JPanel();
-        editRoomBtn2 = new javax.swing.JButton();
-        addRoomBtn = new javax.swing.JButton();
-        roomNrLabel = new javax.swing.JLabel();
-        roomNrTxtField = new javax.swing.JTextField();
-        deleteRoomBtn = new javax.swing.JButton();
+        accountPanel = new javax.swing.JPanel();
+        applyChangesButton = new javax.swing.JButton();
+        genderLabel = new javax.swing.JLabel();
+        discardChangesButton = new javax.swing.JButton();
         titleTxt = new javax.swing.JLabel();
-        roomTypeComboBox = new javax.swing.JComboBox<>();
-        roomPriceLabel = new javax.swing.JLabel();
-        roomTypeLabel = new javax.swing.JLabel();
-        roomPriceTxtField = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        roomTable = new javax.swing.JTable();
+        genderComboBox = new javax.swing.JComboBox<>();
+        passLabel2 = new javax.swing.JLabel();
         checkInLabel = new javax.swing.JLabel();
         jDateOfCheckInChooser = new com.toedter.calendar.JDateChooser();
         checkOutLabel = new javax.swing.JLabel();
         jDateOfCheckOutChooser = new com.toedter.calendar.JDateChooser();
-        appControlButtons1 = new Main.AppControlButtons();
+        appControlButtons = new Main.AppControlButtons();
+        nameLabel = new javax.swing.JLabel();
+        nameField = new javax.swing.JTextField();
+        emailLabel = new javax.swing.JLabel();
+        emailField = new javax.swing.JTextField();
+        passLabel1 = new javax.swing.JLabel();
+        surnameLabel = new javax.swing.JLabel();
+        surnameField = new javax.swing.JTextField();
+        passField2 = new javax.swing.JPasswordField();
+        passField1 = new javax.swing.JPasswordField();
 
-        roomsPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        roomsPanel2.setPreferredSize(new java.awt.Dimension(738, 546));
+        accountPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        editRoomBtn2.setBackground(new java.awt.Color(255, 153, 0));
-        editRoomBtn2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        editRoomBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        editRoomBtn2.setText("Edit");
-        editRoomBtn2.addActionListener(new java.awt.event.ActionListener() {
+        applyChangesButton.setBackground(new java.awt.Color(0, 153, 102));
+        applyChangesButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        applyChangesButton.setForeground(new java.awt.Color(255, 255, 255));
+        applyChangesButton.setText("Apply changes");
+        applyChangesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editRoomBtn2ActionPerformed(evt);
+                applyChangesButtonActionPerformed(evt);
             }
         });
 
-        addRoomBtn.setBackground(new java.awt.Color(0, 153, 102));
-        addRoomBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        addRoomBtn.setForeground(new java.awt.Color(255, 255, 255));
-        addRoomBtn.setText("Add new room");
-        addRoomBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addRoomBtnActionPerformed(evt);
-            }
-        });
+        genderLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        genderLabel.setForeground(new java.awt.Color(0, 0, 255));
+        genderLabel.setText("Gender");
 
-        roomNrLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        roomNrLabel.setForeground(new java.awt.Color(0, 0, 255));
-        roomNrLabel.setText("Room Type");
-
-        roomNrTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-        roomNrTxtField.setForeground(new java.awt.Color(0, 153, 153));
-        roomNrTxtField.addActionListener(new java.awt.event.ActionListener() {
+        discardChangesButton.setBackground(new java.awt.Color(255, 102, 51));
+        discardChangesButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        discardChangesButton.setForeground(new java.awt.Color(255, 255, 255));
+        discardChangesButton.setText("Discard changes");
+        discardChangesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomNrTxtFieldActionPerformed(evt);
-            }
-        });
-
-        deleteRoomBtn.setBackground(new java.awt.Color(255, 102, 51));
-        deleteRoomBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        deleteRoomBtn.setForeground(new java.awt.Color(255, 255, 255));
-        deleteRoomBtn.setText("Delete");
-        deleteRoomBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteRoomBtnActionPerformed(evt);
+                discardChangesButtonActionPerformed(evt);
             }
         });
 
@@ -94,248 +78,226 @@ public class UserAccountPanel extends javax.swing.JPanel {
         titleTxt.setFont(new java.awt.Font("Yu Gothic UI", 1, 25)); // NOI18N
         titleTxt.setForeground(new java.awt.Color(102, 153, 255));
         titleTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleTxt.setText("Manage Bookings");
+        titleTxt.setText("Account information");
 
-        roomTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single room deluxe", "Double room deluxe", "Double room Standard", "King suite" }));
-        roomTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+        genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single room deluxe", "Double room deluxe", "Double room Standard", "King suite" }));
+        genderComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomTypeComboBoxActionPerformed(evt);
+                genderComboBoxActionPerformed(evt);
             }
         });
 
-        roomPriceLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        roomPriceLabel.setForeground(new java.awt.Color(0, 0, 255));
-        roomPriceLabel.setText("Total Cost (€)");
-
-        roomTypeLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        roomTypeLabel.setForeground(new java.awt.Color(0, 0, 255));
-        roomTypeLabel.setText("Customer ");
-
-        roomPriceTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-        roomPriceTxtField.setForeground(new java.awt.Color(0, 153, 153));
-        roomPriceTxtField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomPriceTxtFieldActionPerformed(evt);
-            }
-        });
-
-        roomTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-        roomTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Customer", "Room", "Check-In", "Check-Out", "Total Cost"
-            }
-        ));
-        roomTable.setGridColor(new java.awt.Color(51, 153, 255));
-        roomTable.setRowHeight(25);
-        roomTable.setShowGrid(true);
-        jScrollPane1.setViewportView(roomTable);
+        passLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        passLabel2.setForeground(new java.awt.Color(0, 0, 255));
+        passLabel2.setText("Confirm password");
 
         checkInLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         checkInLabel.setForeground(new java.awt.Color(0, 0, 255));
-        checkInLabel.setText("Date of Check-In");
+        checkInLabel.setText("Date of birth");
 
         checkOutLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         checkOutLabel.setForeground(new java.awt.Color(0, 0, 255));
         checkOutLabel.setText("Date of Check-Out");
 
-        javax.swing.GroupLayout roomsPanel2Layout = new javax.swing.GroupLayout(roomsPanel2);
-        roomsPanel2.setLayout(roomsPanel2Layout);
-        roomsPanel2Layout.setHorizontalGroup(
-            roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomsPanel2Layout.createSequentialGroup()
-                .addGroup(roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(roomsPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152)
-                        .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(roomsPanel2Layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addGroup(roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkOutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateOfCheckOutChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateOfCheckInChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        nameLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(0, 0, 255));
+        nameLabel.setText("Name");
+
+        nameField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
+        nameField.setForeground(new java.awt.Color(0, 153, 153));
+        nameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameFieldActionPerformed(evt);
+            }
+        });
+
+        emailLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        emailLabel.setForeground(new java.awt.Color(0, 0, 255));
+        emailLabel.setText("Email");
+
+        emailField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
+        emailField.setForeground(new java.awt.Color(0, 153, 153));
+        emailField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailFieldActionPerformed(evt);
+            }
+        });
+
+        passLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        passLabel1.setForeground(new java.awt.Color(0, 0, 255));
+        passLabel1.setText("New password");
+
+        surnameLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        surnameLabel.setForeground(new java.awt.Color(0, 0, 255));
+        surnameLabel.setText("Surname");
+
+        surnameField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
+        surnameField.setForeground(new java.awt.Color(0, 153, 153));
+        surnameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                surnameFieldActionPerformed(evt);
+            }
+        });
+
+        passField2.setText("test");
+
+        passField1.setText("test");
+
+        javax.swing.GroupLayout accountPanelLayout = new javax.swing.GroupLayout(accountPanel);
+        accountPanel.setLayout(accountPanelLayout);
+        accountPanelLayout.setHorizontalGroup(
+            accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(accountPanelLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(accountPanelLayout.createSequentialGroup()
+                        .addComponent(titleTxt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(appControlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(accountPanelLayout.createSequentialGroup()
+                        .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jDateOfCheckOutChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jDateOfCheckInChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, accountPanelLayout.createSequentialGroup()
+                                        .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(checkOutLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(checkInLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(discardChangesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(surnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(applyChangesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(genderComboBox, 0, 169, Short.MAX_VALUE)
+                            .addComponent(emailField)
+                            .addComponent(passField2)
+                            .addComponent(passField1)
+                            .addComponent(passLabel2))
+                        .addGap(25, 25, 25)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanel2Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addGroup(roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(roomsPanel2Layout.createSequentialGroup()
-                        .addGroup(roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(roomTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(roomNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(roomNrLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(roomTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(321, 321, 321)
-                        .addGroup(roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(roomPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addRoomBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(roomsPanel2Layout.createSequentialGroup()
-                                .addComponent(deleteRoomBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(editRoomBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(roomPriceTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(34, 34, 34))
         );
-        roomsPanel2Layout.setVerticalGroup(
-            roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomsPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titleTxt))
-                .addGap(25, 25, 25)
-                .addGroup(roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(roomsPanel2Layout.createSequentialGroup()
-                            .addComponent(roomPriceLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(roomPriceTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(addRoomBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(roomsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(deleteRoomBtn)
-                                .addComponent(editRoomBtn2)))
-                        .addGroup(roomsPanel2Layout.createSequentialGroup()
-                            .addComponent(checkInLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jDateOfCheckInChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(checkOutLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jDateOfCheckOutChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(roomsPanel2Layout.createSequentialGroup()
-                        .addComponent(roomTypeLabel)
+        accountPanelLayout.setVerticalGroup(
+            accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(accountPanelLayout.createSequentialGroup()
+                .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(accountPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(appControlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(accountPanelLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(titleTxt)))
+                .addGap(12, 12, 12)
+                .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(accountPanelLayout.createSequentialGroup()
+                        .addComponent(nameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(roomNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(roomNrLabel)
-                        .addGap(5, 5, 5)
-                        .addComponent(roomTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                        .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(accountPanelLayout.createSequentialGroup()
+                        .addComponent(genderLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(accountPanelLayout.createSequentialGroup()
+                        .addComponent(surnameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkInLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateOfCheckInChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkOutLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateOfCheckOutChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(accountPanelLayout.createSequentialGroup()
+                        .addComponent(emailLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(passLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(passField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(passLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(passField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(applyChangesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(discardChangesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 738, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(roomsPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(accountPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(roomsPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(accountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editRoomBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editRoomBtn2ActionPerformed
+    private void applyChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyChangesButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_editRoomBtn2ActionPerformed
+    }//GEN-LAST:event_applyChangesButtonActionPerformed
 
-    private void addRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRoomBtnActionPerformed
+    private void discardChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardChangesButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addRoomBtnActionPerformed
+    }//GEN-LAST:event_discardChangesButtonActionPerformed
 
-    private void roomNrTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomNrTxtFieldActionPerformed
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_roomNrTxtFieldActionPerformed
+    }//GEN-LAST:event_nameFieldActionPerformed
 
-    private void deleteRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRoomBtnActionPerformed
+    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_deleteRoomBtnActionPerformed
+    }//GEN-LAST:event_emailFieldActionPerformed
 
-    private void roomTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomTypeComboBoxActionPerformed
+    private void genderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_roomTypeComboBoxActionPerformed
+    }//GEN-LAST:event_genderComboBoxActionPerformed
 
-    private void roomPriceTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomPriceTxtFieldActionPerformed
+    private void surnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surnameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_roomPriceTxtFieldActionPerformed
+    }//GEN-LAST:event_surnameFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addRoomBtn;
-    private Main.AppControlButtons appControlButtons1;
+    private javax.swing.JPanel accountPanel;
+    private Main.AppControlButtons appControlButtons;
+    private javax.swing.JButton applyChangesButton;
     private javax.swing.JLabel checkInLabel;
     private javax.swing.JLabel checkOutLabel;
-    private javax.swing.JButton deleteRoomBtn;
-    private javax.swing.JButton editRoomBtn2;
+    private javax.swing.JButton discardChangesButton;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JComboBox<String> genderComboBox;
+    private javax.swing.JLabel genderLabel;
     private com.toedter.calendar.JDateChooser jDateOfCheckInChooser;
     private com.toedter.calendar.JDateChooser jDateOfCheckOutChooser;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel roomNrLabel;
-    private javax.swing.JTextField roomNrTxtField;
-    private javax.swing.JLabel roomPriceLabel;
-    private javax.swing.JTextField roomPriceTxtField;
-    private javax.swing.JTable roomTable;
-    private javax.swing.JComboBox<String> roomTypeComboBox;
-    private javax.swing.JLabel roomTypeLabel;
-    private javax.swing.JPanel roomsPanel2;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JPasswordField passField1;
+    private javax.swing.JPasswordField passField2;
+    private javax.swing.JLabel passLabel1;
+    private javax.swing.JLabel passLabel2;
+    private javax.swing.JTextField surnameField;
+    private javax.swing.JLabel surnameLabel;
     private javax.swing.JLabel titleTxt;
     // End of variables declaration//GEN-END:variables
 }
