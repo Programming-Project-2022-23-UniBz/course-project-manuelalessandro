@@ -2,8 +2,6 @@ package Main;
 
 import java.awt.Color;
 
-import javax.lang.model.util.ElementScanner14;
-
 public class ColorSetting {
 
     // Light palette link: https://colorhunt.co/palette/effffdb8fff985f4ff42c2ff

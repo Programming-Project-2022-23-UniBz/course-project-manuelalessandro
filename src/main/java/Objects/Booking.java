@@ -1,7 +1,5 @@
 package Objects;
 
-import java.time.Duration;
-import java.time.temporal.Temporal;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -77,7 +75,7 @@ public class Booking {
         long diff = checkOutDate.getTime() - checkInDate.getTime();
         return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
-        //TODO test
+        // TODO test
     }
 
     public double calculateTotalCost() {
