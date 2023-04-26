@@ -2,11 +2,36 @@
 package UserGUI;
 
 import AdminGUI.*;
+import java.awt.CardLayout;
+import java.awt.event.*;
 
 public class UserFrame extends javax.swing.JFrame {
 
+    private CardLayout cardLayout;
+
     public UserFrame() {
         initComponents();
+
+        // Buttons settings
+        cardLayout = (CardLayout) cardPanel.getLayout();
+        dashLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                buttonCardAction(e);
+            }
+        });
+        bookingLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                buttonCardAction(e);
+            }
+        });
+        accountLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                buttonCardAction(e);
+            }
+        });
 
         // App control settings
         userBookingPanel.setAppControlButtons(this, sideMenu.getWidth());
@@ -14,7 +39,19 @@ public class UserFrame extends javax.swing.JFrame {
         userDashboardPanel.setAppControlButtons(this, sideMenu.getWidth());
     }
 
+    private void buttonCardAction(MouseEvent e) {
+        if (e.getSource() == dashLabel)
+            cardLayout.show(cardPanel, "dashboard");
+        else if (e.getSource() == bookingLabel)
+            cardLayout.show(cardPanel, "booking");
+        else if (e.getSource() == accountLabel)
+            cardLayout.show(cardPanel, "account");
+    }
+
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -26,9 +63,9 @@ public class UserFrame extends javax.swing.JFrame {
         userDashboardPanel = new UserGUI.UserDashboardPanel();
         userAccountPanel = new UserGUI.UserAccountPanel();
         sideMenu = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        dashLabel = new javax.swing.JLabel();
+        bookingLabel = new javax.swing.JLabel();
+        accountLabel = new javax.swing.JLabel();
         logOutBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -39,29 +76,36 @@ public class UserFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(617, 352));
         setUndecorated(true);
 
+        cardPanel.setMaximumSize(new java.awt.Dimension(450, 352));
         cardPanel.setLayout(new java.awt.CardLayout());
-        cardPanel.add(userBookingPanel, "card2");
-        cardPanel.add(userDashboardPanel, "card3");
-        cardPanel.add(userAccountPanel, "card4");
+
+        userBookingPanel.setMaximumSize(new java.awt.Dimension(450, 352));
+        cardPanel.add(userBookingPanel, "booking");
+
+        userDashboardPanel.setMaximumSize(new java.awt.Dimension(450, 352));
+        cardPanel.add(userDashboardPanel, "dashboard");
+
+        userAccountPanel.setMaximumSize(new java.awt.Dimension(450, 352));
+        cardPanel.add(userAccountPanel, "account");
 
         sideMenu.setBackground(new java.awt.Color(51, 153, 255));
         sideMenu.setMaximumSize(new java.awt.Dimension(167, 352));
         sideMenu.setMinimumSize(new java.awt.Dimension(167, 352));
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setText("Dashboard");
+        dashLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        dashLabel.setForeground(new java.awt.Color(255, 255, 255));
+        dashLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        dashLabel.setText("Dashboard");
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText("Booking");
+        bookingLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        bookingLabel.setForeground(new java.awt.Color(255, 255, 255));
+        bookingLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bookingLabel.setText("Booking");
 
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel9.setText("Account");
+        accountLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        accountLabel.setForeground(new java.awt.Color(255, 255, 255));
+        accountLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        accountLabel.setText("Account");
 
         logOutBtn.setBackground(new java.awt.Color(0, 204, 255));
         logOutBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,9 +146,9 @@ public class UserFrame extends javax.swing.JFrame {
                     .addGroup(sideMenuLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bookingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dashLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(accountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)))
@@ -118,11 +162,11 @@ public class UserFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(jLabel6)
+                .addComponent(dashLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7)
+                .addComponent(bookingLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
+                .addComponent(accountLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -197,13 +241,13 @@ public class UserFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel accountLabel;
+    private javax.swing.JLabel bookingLabel;
     private javax.swing.JPanel cardPanel;
+    private javax.swing.JLabel dashLabel;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JButton logOutBtn;
     private javax.swing.JPanel sideMenu;
     private UserGUI.UserAccountPanel userAccountPanel;
