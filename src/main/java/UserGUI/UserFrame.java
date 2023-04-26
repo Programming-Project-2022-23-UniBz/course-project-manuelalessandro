@@ -7,15 +7,24 @@ public class UserFrame extends javax.swing.JFrame {
 
     public UserFrame() {
         initComponents();
+
+        // App control settings
+        userBookingPanel.setAppControlButtons(this, sideMenu.getWidth());
+        userAccountPanel.setAppControlButtons(this, sideMenu.getWidth());
+        userDashboardPanel.setAppControlButtons(this, sideMenu.getWidth());
     }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         cardPanel = new javax.swing.JPanel();
-        userBookingPanel1 = new UserGUI.UserBookingPanel();
+        userBookingPanel = new UserGUI.UserBookingPanel();
+        userDashboardPanel = new UserGUI.UserDashboardPanel();
+        userAccountPanel = new UserGUI.UserAccountPanel();
         sideMenu = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -31,7 +40,9 @@ public class UserFrame extends javax.swing.JFrame {
         setUndecorated(true);
 
         cardPanel.setLayout(new java.awt.CardLayout());
-        cardPanel.add(userBookingPanel1, "card2");
+        cardPanel.add(userBookingPanel, "card2");
+        cardPanel.add(userDashboardPanel, "card3");
+        cardPanel.add(userAccountPanel, "card4");
 
         sideMenu.setBackground(new java.awt.Color(51, 153, 255));
         sideMenu.setMaximumSize(new java.awt.Dimension(167, 352));
@@ -138,9 +149,9 @@ public class UserFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
+    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logOutBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_logOutBtnActionPerformed
+    }// GEN-LAST:event_logOutBtnActionPerformed
 
     private void logOutBtnActionPerformed() {// GEN-FIRST:event_logOutBtnActionPerformed
         this.dispose();
@@ -195,6 +206,8 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JButton logOutBtn;
     private javax.swing.JPanel sideMenu;
-    private UserGUI.UserBookingPanel userBookingPanel1;
+    private UserGUI.UserAccountPanel userAccountPanel;
+    private UserGUI.UserBookingPanel userBookingPanel;
+    private UserGUI.UserDashboardPanel userDashboardPanel;
     // End of variables declaration//GEN-END:variables
 }
