@@ -38,6 +38,7 @@
     </properties>
 
     <build>
+        <finalName>AdlerPalaceApplication</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
