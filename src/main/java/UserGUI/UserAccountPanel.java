@@ -53,9 +53,11 @@ public class UserAccountPanel extends javax.swing.JPanel {
         passField2 = new javax.swing.JPasswordField();
         passField1 = new javax.swing.JPasswordField();
 
+        setMaximumSize(new java.awt.Dimension(3231311, 123131));
+
         accountPanel.setBackground(new java.awt.Color(255, 255, 255));
-        accountPanel.setMaximumSize(new java.awt.Dimension(450, 352));
-        accountPanel.setMinimumSize(new java.awt.Dimension(450, 352));
+        accountPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
+        accountPanel.setMinimumSize(new java.awt.Dimension(0, 0));
 
         applyChangesButton.setBackground(new java.awt.Color(0, 153, 102));
         applyChangesButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

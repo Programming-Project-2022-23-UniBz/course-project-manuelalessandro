@@ -59,8 +59,8 @@ public class UserFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         cardPanel = new javax.swing.JPanel();
-        userBookingPanel = new UserGUI.UserBookingPanel();
         userDashboardPanel = new UserGUI.UserDashboardPanel();
+        userBookingPanel = new UserGUI.UserBookingPanel();
         userAccountPanel = new UserGUI.UserAccountPanel();
         sideMenu = new javax.swing.JPanel();
         dashLabel = new javax.swing.JLabel();
@@ -76,21 +76,23 @@ public class UserFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(617, 352));
         setUndecorated(true);
 
-        cardPanel.setMaximumSize(new java.awt.Dimension(450, 352));
+        cardPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
+        cardPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         cardPanel.setLayout(new java.awt.CardLayout());
 
-        userBookingPanel.setMaximumSize(new java.awt.Dimension(450, 352));
-        cardPanel.add(userBookingPanel, "booking");
-
-        userDashboardPanel.setMaximumSize(new java.awt.Dimension(450, 352));
+        userDashboardPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
+        userDashboardPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         cardPanel.add(userDashboardPanel, "dashboard");
 
-        userAccountPanel.setMaximumSize(new java.awt.Dimension(450, 352));
+        userBookingPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
+        userBookingPanel.setMinimumSize(new java.awt.Dimension(0, 0));
+        cardPanel.add(userBookingPanel, "booking");
         cardPanel.add(userAccountPanel, "account");
 
         sideMenu.setBackground(new java.awt.Color(51, 153, 255));
         sideMenu.setMaximumSize(new java.awt.Dimension(167, 352));
         sideMenu.setMinimumSize(new java.awt.Dimension(167, 352));
+        sideMenu.setPreferredSize(new java.awt.Dimension(167, 352));
 
         dashLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         dashLabel.setForeground(new java.awt.Color(255, 255, 255));

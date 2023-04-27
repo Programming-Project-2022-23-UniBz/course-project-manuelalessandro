@@ -53,9 +53,11 @@ public class UserBookingPanel extends javax.swing.JPanel {
         checkOutField = new javax.swing.JTextField();
         bookingInfoLabel = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(3231311, 123131));
+
         bookingPanel.setBackground(new java.awt.Color(255, 255, 255));
-        bookingPanel.setMaximumSize(new java.awt.Dimension(450, 352));
-        bookingPanel.setMinimumSize(new java.awt.Dimension(450, 352));
+        bookingPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
+        bookingPanel.setMinimumSize(new java.awt.Dimension(0, 0));
 
         applyButton.setBackground(new java.awt.Color(0, 153, 102));
         applyButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -191,7 +193,7 @@ public class UserBookingPanel extends javax.swing.JPanel {
                             .addComponent(checkInLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkOutField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkOutLabel2))
-                        .addGap(0, 25, Short.MAX_VALUE))
+                        .addGap(0, 34, Short.MAX_VALUE))
                     .addGroup(bookingPanelLayout.createSequentialGroup()
                         .addComponent(titleTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -246,24 +248,18 @@ public class UserBookingPanel extends javax.swing.JPanel {
                         .addComponent(totalCostLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(totalCostField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bookingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(bookingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bookingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(bookingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
