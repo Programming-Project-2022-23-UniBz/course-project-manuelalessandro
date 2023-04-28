@@ -16,6 +16,7 @@ import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import AdminGUI.AdminFrame;
 import java.io.FileWriter;
+import UserGUI.UserFrame;
 
 public class LoginFrame extends JFrame {
     // private variables, don't change
@@ -107,9 +108,13 @@ public class LoginFrame extends JFrame {
             }
             if (userRole.equals("admin")) {
                 // boh tipo adminframe
+                AdminFrame frame = new AdminFrame();
+                frame.setVisible(true);
                 System.out.println("admin");
             } else if (userRole.equals("costumer")) {
                 // costumer frame
+                UserFrame frame = new UserFrame();
+                frame.setVisible(true);
                 System.out.println("costumer");
             }
         }
