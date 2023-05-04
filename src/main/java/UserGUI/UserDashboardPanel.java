@@ -35,7 +35,9 @@ public class UserDashboardPanel extends javax.swing.JPanel {
         titleTxt = new javax.swing.JLabel();
         appControlButtons = new Main.AppControlButtons();
         panelGlowingGradient4 = new pggb.PanelGlowingGradient();
+        jLabel5 = new javax.swing.JLabel();
         panelGlowingGradient5 = new pggb.PanelGlowingGradient();
+        jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(3231311, 123131));
 
@@ -51,7 +53,20 @@ public class UserDashboardPanel extends javax.swing.JPanel {
 
         panelGlowingGradient4.setBackgroundLight(new java.awt.Color(255, 255, 255));
 
+        jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Edit your account");
+        panelGlowingGradient4.add(jLabel5);
+        jLabel5.setBounds(50, 40, 300, 50);
+
+        panelGlowingGradient5.setToolTipText("");
         panelGlowingGradient5.setBackgroundLight(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("View your bookings");
+        panelGlowingGradient5.add(jLabel4);
+        jLabel4.setBounds(50, 40, 300, 50);
 
         javax.swing.GroupLayout bookingPanelLayout = new javax.swing.GroupLayout(bookingPanel);
         bookingPanel.setLayout(bookingPanelLayout);
@@ -102,6 +117,8 @@ public class UserDashboardPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Main.AppControlButtons appControlButtons;
     private javax.swing.JPanel bookingPanel;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private pggb.PanelGlowingGradient panelGlowingGradient4;
     private pggb.PanelGlowingGradient panelGlowingGradient5;
     private javax.swing.JLabel titleTxt;

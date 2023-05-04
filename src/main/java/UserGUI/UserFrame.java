@@ -79,13 +79,7 @@ public class UserFrame extends javax.swing.JFrame {
         cardPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
         cardPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         cardPanel.setLayout(new java.awt.CardLayout());
-
-        userDashboardPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
-        userDashboardPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         cardPanel.add(userDashboardPanel, "dashboard");
-
-        userBookingPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
-        userBookingPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         cardPanel.add(userBookingPanel, "booking");
         cardPanel.add(userAccountPanel, "account");
 
@@ -188,7 +182,7 @@ public class UserFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
             .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
