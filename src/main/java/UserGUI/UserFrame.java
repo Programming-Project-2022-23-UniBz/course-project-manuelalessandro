@@ -2,14 +2,18 @@
 package UserGUI;
 
 import AdminGUI.*;
+import Objects.User;
+
 import java.awt.CardLayout;
 import java.awt.event.*;
 
 public class UserFrame extends javax.swing.JFrame {
 
     private CardLayout cardLayout;
+    private User user;
 
-    public UserFrame() {
+    public UserFrame(User user) {
+        this.user = user;
         initComponents();
 
         // Buttons settings
@@ -49,6 +53,7 @@ public class UserFrame extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -231,7 +236,7 @@ public class UserFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserFrame().setVisible(true);
+                new UserFrame(null).setVisible(true);
             }
         });
     }

@@ -14,7 +14,12 @@ import java.awt.event.*;
 import java.io.FileReader;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
+
+import com.google.gson.Gson;
+
 import AdminGUI.AdminFrame;
+import Objects.User;
+
 import java.io.FileWriter;
 import UserGUI.UserFrame;
 
@@ -24,6 +29,8 @@ public class LoginFrame extends JFrame {
     private JTextField username;
     private JPasswordField password;
     private JLabel passwordLab, usernameLab;
+
+    private Gson gson = new Gson();
 
     public LoginFrame() {
 
@@ -113,7 +120,7 @@ public class LoginFrame extends JFrame {
                 System.out.println("admin");
             } else if (userRole.equals("costumer")) {
                 // costumer frame
-                UserFrame frame = new UserFrame();
+                UserFrame frame = new UserFrame(gson.fromJson(user.toJSONString(), User.class));
                 frame.setVisible(true);
                 System.out.println("costumer");
             }
@@ -127,4 +134,4 @@ public class LoginFrame extends JFrame {
 
 }
 
-// nell'admin frame aggiungere opzione per creare nuovo admin
+// TODO: nell'admin frame aggiungere opzione per creare nuovo admin
