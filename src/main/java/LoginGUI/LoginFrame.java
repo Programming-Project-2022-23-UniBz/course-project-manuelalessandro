@@ -101,35 +101,55 @@ public class LoginFrame extends JFrame {
         }
 
         // checking User in UserData.json
+        System.out.println("index is: "+findIndexOfJson(U, P, users));
+        int index = findIndexOfJson(U,P,users);
         String userRole = "";
-        for (Object userObj : users) {
-            JSONObject user = (JSONObject) userObj;
+            JSONObject user = (JSONObject) users.get(index);
             String storedUsername = (String) user.get("username");
             String storedPassword = (String) user.get("password");
             String storedUserRole = (String) user.get("role");
             if (U.equals(storedUsername) && P.equals(storedPassword)) {
                 userRole = storedUserRole;
                 JOptionPane.showMessageDialog(null, "login successful as " + userRole);
-            } else {
-                JOptionPane.showMessageDialog(null, "Error: invalid username or password");
-            }
-            if (userRole.equals("admin")) {
+                if (userRole.equals("admin")) {
                 // boh tipo adminframe
                 AdminFrame frame = new AdminFrame();
                 frame.setVisible(true);
                 System.out.println("admin");
-            } else if (userRole.equals("costumer")) {
+            } else if (userRole.equals("user")) {
                 // costumer frame
                 UserFrame frame = new UserFrame(gson.fromJson(user.toJSONString(), User.class));
                 frame.setVisible(true);
-                System.out.println("costumer");
+                System.out.println("user");
+                
             }
-        }
+            } else {
+                JOptionPane.showMessageDialog(null, "Error: invalid username or password");
+                
+            }
 
     }
 
     public void registerOnAction(ActionEvent e) {
         RegisterFrame r = new RegisterFrame();
+    }
+    
+    
+    //json file is an array, i have to find an index for a given username and password
+    public int findIndexOfJson(String U, String P, JSONArray users){
+        int index = 0;
+        for(Object userObj : users){
+            JSONObject user = (JSONObject) userObj;
+            String storedUsername = (String) user.get("username");
+            String storedPassword = (String) user.get("password");
+            String storedUserRole = (String) user.get("role");
+            if (U.equals(storedUsername) && P.equals(storedPassword)) {
+                break;
+            }
+            index++;
+        }
+        
+        return index;
     }
 
 }

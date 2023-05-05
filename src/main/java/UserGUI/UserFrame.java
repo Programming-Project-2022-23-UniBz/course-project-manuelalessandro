@@ -3,7 +3,6 @@ package UserGUI;
 
 import AdminGUI.*;
 import Objects.User;
-
 import java.awt.CardLayout;
 import java.awt.event.*;
 
@@ -64,9 +63,6 @@ public class UserFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         cardPanel = new javax.swing.JPanel();
-        userDashboardPanel = new UserGUI.UserDashboardPanel();
-        userBookingPanel = new UserGUI.UserBookingPanel();
-        userAccountPanel = new UserGUI.UserAccountPanel();
         sideMenu = new javax.swing.JPanel();
         dashLabel = new javax.swing.JLabel();
         bookingLabel = new javax.swing.JLabel();
@@ -84,9 +80,6 @@ public class UserFrame extends javax.swing.JFrame {
         cardPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
         cardPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         cardPanel.setLayout(new java.awt.CardLayout());
-        cardPanel.add(userDashboardPanel, "dashboard");
-        cardPanel.add(userBookingPanel, "booking");
-        cardPanel.add(userAccountPanel, "account");
 
         sideMenu.setBackground(new java.awt.Color(51, 153, 255));
         sideMenu.setMaximumSize(new java.awt.Dimension(167, 352));
@@ -113,7 +106,7 @@ public class UserFrame extends javax.swing.JFrame {
         logOutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login_icon.png"))); // NOI18N
         logOutBtn.setText("Log Out");
         logOutBtn.setBorder(null);
-        logOutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logOutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logOutBtn.setFocusPainted(false);
         logOutBtn.setMargin(new java.awt.Insets(3, 2, 3, 2));
         logOutBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -251,8 +244,5 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton logOutBtn;
     private javax.swing.JPanel sideMenu;
-    private UserGUI.UserAccountPanel userAccountPanel;
-    private UserGUI.UserBookingPanel userBookingPanel;
-    private UserGUI.UserDashboardPanel userDashboardPanel;
     // End of variables declaration//GEN-END:variables
 }
