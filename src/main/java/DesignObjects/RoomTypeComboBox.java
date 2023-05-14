@@ -53,7 +53,7 @@ public class RoomTypeComboBox extends JComboBox {
         }
     }
 
-    // returns a List containing RoomType and capacity
+    // returns a List containing RoomType at index 0 and capacity at index 1
     public ArrayList<Object> getSelectedItem() {
         ArrayList<Object> result = new ArrayList<>();
         if (super.getSelectedItem().equals("Single room standard")) {
