@@ -101,44 +101,43 @@ public class LoginFrame extends JFrame {
         }
 
         // checking User in UserData.json
-        System.out.println("index is: "+findIndexOfJson(U, P, users));
-        int index = findIndexOfJson(U,P,users);
+        System.out.println("index is: " + findIndexOfJson(U, P, users));
+        int index = findIndexOfJson(U, P, users);
         String userRole = "";
-            JSONObject user = (JSONObject) users.get(index);
-            String storedUsername = (String) user.get("username");
-            String storedPassword = (String) user.get("password");
-            String storedUserRole = (String) user.get("role");
-            if (U.equals(storedUsername) && P.equals(storedPassword)) {
-                userRole = storedUserRole;
-                JOptionPane.showMessageDialog(null, "login successful as " + userRole);
-                if (userRole.equals("admin")) {
+        JSONObject user = (JSONObject) users.get(index);
+        String storedUsername = (String) user.get("username");
+        String storedPassword = (String) user.get("password");
+        String storedUserRole = (String) user.get("role");
+        if (U.equals(storedUsername) && P.equals(storedPassword)) {
+            userRole = storedUserRole;
+            JOptionPane.showMessageDialog(null, "login successful as " + userRole);
+            if (userRole.equals("admin")) {
                 // boh tipo adminframe
                 AdminFrame frame = new AdminFrame();
                 frame.setVisible(true);
-                System.out.println("admin");
+                System.out.println("login as admin");
             } else if (userRole.equals("user")) {
                 // costumer frame
                 UserFrame frame = new UserFrame(gson.fromJson(user.toJSONString(), User.class));
                 frame.setVisible(true);
-                System.out.println("user");
-                
+                System.out.println("loggin as user");
             }
-            } else {
-                JOptionPane.showMessageDialog(null, "Error: invalid username or password");
-                
-            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: invalid username or password");
+
+        }
 
     }
 
     public void registerOnAction(ActionEvent e) {
         RegisterFrame r = new RegisterFrame();
     }
-    
-    
-    //json file is an array, i have to find an index for a given username and password
-    public int findIndexOfJson(String U, String P, JSONArray users){
+
+    // json file is an array, i have to find an index for a given username and
+    // password
+    public int findIndexOfJson(String U, String P, JSONArray users) {
         int index = 0;
-        for(Object userObj : users){
+        for (Object userObj : users) {
             JSONObject user = (JSONObject) userObj;
             String storedUsername = (String) user.get("username");
             String storedPassword = (String) user.get("password");
@@ -148,7 +147,7 @@ public class LoginFrame extends JFrame {
             }
             index++;
         }
-        
+
         return index;
     }
 

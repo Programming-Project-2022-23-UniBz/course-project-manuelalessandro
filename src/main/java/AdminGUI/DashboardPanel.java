@@ -35,17 +35,17 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         roomsPanel = new javax.swing.JPanel();
         titleTxt = new javax.swing.JLabel();
-        panelGlowingGradient1 = new pggb.PanelGlowingGradient();
+        panelGlowingGradient1 = new DesignObjects.PanelGlowingGradient();
         jLabel1 = new javax.swing.JLabel();
         customersButton = new javax.swing.JButton();
-        panelGlowingGradient2 = new pggb.PanelGlowingGradient();
+        panelGlowingGradient2 = new DesignObjects.PanelGlowingGradient();
         jLabel2 = new javax.swing.JLabel();
         bookingsButton = new javax.swing.JButton();
-        panelGlowingGradient3 = new pggb.PanelGlowingGradient();
+        panelGlowingGradient3 = new DesignObjects.PanelGlowingGradient();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         chartsButton = new javax.swing.JButton();
-        panelGlowingGradient4 = new pggb.PanelGlowingGradient();
+        panelGlowingGradient4 = new DesignObjects.PanelGlowingGradient();
         jLabel4 = new javax.swing.JLabel();
         roomsButton = new javax.swing.JButton();
         appControlButtons1 = new Main.AppControlButtons();
@@ -266,10 +266,10 @@ public class DashboardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private pggb.PanelGlowingGradient panelGlowingGradient1;
-    private pggb.PanelGlowingGradient panelGlowingGradient2;
-    private pggb.PanelGlowingGradient panelGlowingGradient3;
-    private pggb.PanelGlowingGradient panelGlowingGradient4;
+    private DesignObjects.PanelGlowingGradient panelGlowingGradient1;
+    private DesignObjects.PanelGlowingGradient panelGlowingGradient2;
+    private DesignObjects.PanelGlowingGradient panelGlowingGradient3;
+    private DesignObjects.PanelGlowingGradient panelGlowingGradient4;
     private javax.swing.JButton roomsButton;
     private javax.swing.JPanel roomsPanel;
     private javax.swing.JLabel titleTxt;

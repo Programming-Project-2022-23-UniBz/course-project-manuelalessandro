@@ -17,7 +17,7 @@ public class Booking {
         this.checkOutDate = checkOutDate;
         this.room = room;
         this.user = user;
-        this.totalCost = calculateTotalCost();
+        this.totalCost = calculateTotalCost(room.getPrice(), calculateStay(checkInDate, checkOutDate));
     }
 
     // getters and setters
@@ -71,15 +71,15 @@ public class Booking {
 
     // --------------------------------------------------------
 
-    public int calculateStay() {
+    public static int calculateStay(Date checkInDate, Date checkOutDate) {
         long diff = checkOutDate.getTime() - checkInDate.getTime();
         return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
         // TODO test
     }
 
-    public double calculateTotalCost() {
-        return room.getPrice() * calculateStay();
+    public static double calculateTotalCost(double price, int stay) {
+        return price * stay;
     }
 
 }

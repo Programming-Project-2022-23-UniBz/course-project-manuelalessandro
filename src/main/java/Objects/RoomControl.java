@@ -64,7 +64,7 @@ public class RoomControl {
         int result = -1;
         for (int i = 0; i < rooms.length; i++)
             if (rooms[i] != null)
-                if (rooms[i].getRoomType().equals(roomType) && rooms[i].getCapacity() == capacity
+                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
                         && rooms[i].isOccupied() == false) {
                     result = i;
                     break;

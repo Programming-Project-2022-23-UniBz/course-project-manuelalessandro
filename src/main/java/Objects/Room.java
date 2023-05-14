@@ -8,7 +8,7 @@ public class Room {
 
     // instance variables
     private int id;
-    private RoomType roomType;
+    private RoomType type;
     private int capacity;
     private double price;
     private boolean isOccupied;
@@ -16,7 +16,7 @@ public class Room {
     public Room(int id, RoomType roomType, int capacity) {
 
         this.id = id;
-        this.roomType = roomType;
+        this.type = roomType;
         this.capacity = capacity;
         if (this.capacity > 2)
             this.capacity = 2;
@@ -45,12 +45,12 @@ public class Room {
         this.id = id;
     }
 
-    public RoomType getRoomType() {
-        return roomType;
+    public RoomType getType() {
+        return type;
     }
 
-    public void setRoomType(RoomType type) {
-        this.roomType = type;
+    public void setType(RoomType type) {
+        this.type = type;
     }
 
     public int getCapacity() {

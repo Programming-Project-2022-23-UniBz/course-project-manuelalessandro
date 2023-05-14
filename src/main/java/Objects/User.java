@@ -37,7 +37,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
-        this.password = Encrypt(password,110);
+        this.password = Encrypt(password, 110);
     }
 
     // getters and setters
@@ -95,6 +95,12 @@ public class User {
 
     public void setPassword(String password, int key) {
         this.password = Encrypt(password, key);
+    }
+
+    public boolean equals(User user) {
+        if (this.id == user.getId())
+            return true;
+        return false;
     }
     // ----------------------------------------------------------------
 

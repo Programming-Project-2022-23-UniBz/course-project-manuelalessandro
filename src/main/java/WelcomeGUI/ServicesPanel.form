@@ -155,7 +155,7 @@
                 <Property name="text" type="java.lang.String" value="Services and Facilities "/>
               </Properties>
             </Component>
-            <Container class="pggb.PanelGlowingGradient" name="panelGlowingGradient3">
+            <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient3">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -226,7 +226,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="pggb.PanelGlowingGradient" name="panelGlowingGradient1">
+            <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -297,7 +297,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="pggb.PanelGlowingGradient" name="panelGlowingGradient2">
+            <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -368,7 +368,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="pggb.PanelGlowingGradient" name="panelGlowingGradient5">
+            <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient5">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -441,7 +441,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="pggb.PanelGlowingGradient" name="panelGlowingGradient6">
+            <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient6">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -512,7 +512,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="pggb.PanelGlowingGradient" name="panelGlowingGradient4">
+            <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient4">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="0" type="rgb"/>

@@ -39,6 +39,17 @@ public class BookingControl {
         }
     }
 
+    public static Booking findBooking(User user) {
+        Booking result = null;
+        if (bookings != null)
+            for (int i = 0; i < bookings.length; i++)
+                if (bookings[i].getUser().equals(user)) {
+                    result = bookings[i];
+                    break;
+                }
+        return result;
+    }
+
     private static void incrementBookings() {
         Booking[] newArr = new Booking[bookings.length + 1];
         for (int i = 0; i < bookings.length; i++) {

@@ -2,6 +2,8 @@
 package UserGUI;
 
 import AdminGUI.*;
+import Objects.Booking;
+import Objects.BookingControl;
 import Objects.User;
 
 import java.awt.CardLayout;
@@ -41,18 +43,34 @@ public class UserFrame extends javax.swing.JFrame {
         userBookingPanel.setAppControlButtons(this, sideMenu.getWidth());
         userAccountPanel.setAppControlButtons(this, sideMenu.getWidth());
         userDashboardPanel.setAppControlButtons(this, sideMenu.getWidth());
+        createBookingPanel.setAppControlButtons(this, sideMenu.getWidth());
+
+        // refresh user infos
+        userBookingPanel.refreshInfos(user);
+        userAccountPanel.refreshInfos(user);
+    }
+
+    public User getCurrentUser() {
+        return user;
     }
 
     private void buttonCardAction(MouseEvent e) {
+        Booking booking = BookingControl.findBooking(user);
         if (e.getSource() == dashLabel)
             cardLayout.show(cardPanel, "dashboard");
-        else if (e.getSource() == bookingLabel)
-            cardLayout.show(cardPanel, "booking");
-        else if (e.getSource() == accountLabel)
+        else if (e.getSource() == bookingLabel) {
+            if (booking != null)
+                cardLayout.show(cardPanel, "booking");
+            else
+                cardLayout.show(cardPanel, "create");
+        } else if (e.getSource() == accountLabel)
             cardLayout.show(cardPanel, "account");
     }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -67,6 +85,7 @@ public class UserFrame extends javax.swing.JFrame {
         userDashboardPanel = new UserGUI.UserDashboardPanel();
         userBookingPanel = new UserGUI.UserBookingPanel();
         userAccountPanel = new UserGUI.UserAccountPanel();
+        createBookingPanel = new UserGUI.CreateBookingPanel();
         sideMenu = new javax.swing.JPanel();
         dashLabel = new javax.swing.JLabel();
         bookingLabel = new javax.swing.JLabel();
@@ -87,6 +106,7 @@ public class UserFrame extends javax.swing.JFrame {
         cardPanel.add(userDashboardPanel, "dashboard");
         cardPanel.add(userBookingPanel, "booking");
         cardPanel.add(userAccountPanel, "account");
+        cardPanel.add(createBookingPanel, "create");
 
         sideMenu.setBackground(new java.awt.Color(51, 153, 255));
         sideMenu.setMaximumSize(new java.awt.Dimension(167, 352));
@@ -245,6 +265,7 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel accountLabel;
     private javax.swing.JLabel bookingLabel;
     private javax.swing.JPanel cardPanel;
+    private UserGUI.CreateBookingPanel createBookingPanel;
     private javax.swing.JLabel dashLabel;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
