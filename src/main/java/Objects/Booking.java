@@ -3,16 +3,18 @@ package Objects;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.joda.time.DateTime;
+
 public class Booking {
 
     private String bookingId;
-    private Date checkInDate;
-    private Date checkOutDate;
+    private DateTime checkInDate;
+    private DateTime checkOutDate;
     private Room room;
     private User user;
     private double totalCost;
 
-    public Booking(Date checkInDate, Date checkOutDate, Room room, User user) {
+    public Booking(DateTime checkInDate, DateTime checkOutDate, Room room, User user) {
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.room = room;
@@ -29,19 +31,19 @@ public class Booking {
         this.bookingId = bookingId;
     }
 
-    public Date getCheckInDate() {
+    public DateTime getCheckInDate() {
         return checkInDate;
     }
 
-    public void setCheckInDate(Date checkInDate) {
+    public void setCheckInDate(DateTime checkInDate) {
         this.checkInDate = checkInDate;
     }
 
-    public Date getCheckOutDate() {
+    public DateTime getCheckOutDate() {
         return checkOutDate;
     }
 
-    public void setCheckOutDate(Date checkOutDate) {
+    public void setCheckOutDate(DateTime checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
 
@@ -71,11 +73,9 @@ public class Booking {
 
     // --------------------------------------------------------
 
-    public static int calculateStay(Date checkInDate, Date checkOutDate) {
-        long diff = checkOutDate.getTime() - checkInDate.getTime();
+    public static int calculateStay(DateTime checkInDate, DateTime checkOutDate) {
+        long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();
         return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-
-        // TODO test
     }
 
     public static double calculateTotalCost(double price, int stay) {

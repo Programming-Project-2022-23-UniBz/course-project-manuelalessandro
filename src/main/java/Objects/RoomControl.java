@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+import org.joda.time.DateTime;
+
 import com.google.gson.Gson;
 
 import Objects.Room.RoomType;
@@ -59,20 +61,30 @@ public class RoomControl {
     }
 
     // returns first free room that matches parameters
-    // returns -1 if no room matches
-    public static int getFreeRoomId(RoomType roomType, int capacity) throws Exception {
+    // throws Exception if no room matches
+    /**
+     * @param roomType
+     * @param capacity
+     * @param checkIn
+     * @param checkOut
+     * @return
+     * @throws Exception
+     */
+    public static int getFreeRoomId(RoomType roomType, int capacity, DateTime checkIn, DateTime checkOut)
+            throws Exception {
         int result = -1;
         for (int i = 0; i < rooms.length; i++)
             if (rooms[i] != null)
-                if (rooms[i].getType() == roomType && rooms[i].getCapacity() == capacity
-                        && rooms[i].isOccupied() == false) {
+                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
+                        && rooms[i].isOccupied(checkIn, checkOut) == false) {
                     result = i;
                     break;
                 }
 
         // throwing exception if no room matches
         if (result == -1)
-            throw new Exception("No room avaiable for the selected dates."); // message appears in the CreateRoomPanel
+            throw new Exception("No room avaiable for the selected dates."); // message appears in the
+                                                                             // CreateRoomPanel
         return result;
     }
 
