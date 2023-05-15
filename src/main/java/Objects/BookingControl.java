@@ -142,11 +142,8 @@ public class BookingControl {
     public static void main(String[] args) {
         RoomControl.pullData();
         UserControl.pullData();
-        try {
-            initBookingsForTest();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        pullData();
+        
         pushData();
         RoomControl.pushData();
         UserControl.pushData();
