@@ -1,6 +1,8 @@
 package Objects;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Booking {
@@ -17,7 +19,6 @@ public class Booking {
         this.checkOutDate = checkOutDate;
         this.room = room;
         this.user = user;
-        this.totalCost = calculateTotalCost(room.getPrice(), calculateStay(checkInDate, checkOutDate));
     }
 
     // getters and setters
@@ -25,8 +26,8 @@ public class Booking {
         return bookingId;
     }
 
-    public void setBookingId(String bookingId) {
-        this.bookingId = bookingId;
+    public void setBookingId() {
+        this.bookingId = bookingIdGenerator();
     }
 
     public Date getCheckInDate() {
@@ -65,21 +66,31 @@ public class Booking {
         return totalCost;
     }
 
-    public void setTotalCost(double totalCost) {
-        this.totalCost = totalCost;
+    public void setTotalCost() {
+        this.totalCost = calculateTotalCost();
     }
 
-    // --------------------------------------------------------
+    public String bookingIdGenerator() {
+        String prefix = "ADH_";
 
-    public static int calculateStay(Date checkInDate, Date checkOutDate) {
-        long diff = checkOutDate.getTime() - checkInDate.getTime();
-        return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        // Get today's date in the format "yyyyMMdd"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        String currentDate = dateFormat.format(new Date());
 
-        // TODO test
+        // Generate 4 random digits
+        int randomDigits = 1000 + new Random().nextInt(9000);
+
+        // Combine the components to form the booking ID
+        String generatedbookingId = prefix + currentDate + randomDigits;
+
+        return generatedbookingId;
     }
 
-    public static double calculateTotalCost(double price, int stay) {
-        return price * stay;
+    public double calculateTotalCost() {
+
+        long diff = this.checkOutDate.getTime() - this.checkInDate.getTime();
+        int stay = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        return stay * this.room.getPrice();
     }
 
 }

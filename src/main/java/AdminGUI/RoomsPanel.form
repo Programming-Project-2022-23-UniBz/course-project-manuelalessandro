@@ -55,45 +55,55 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="titleTxt" min="-2" pref="228" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
-                          <Component id="appControlButtons1" min="-2" pref="74" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="roomTypeLabel" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
-                                      <Component id="roomNrTxtField" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
-                                      <Component id="roomNrLabel" min="-2" pref="79" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="roomStatusComboBox" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="roomStatusLabel" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="roomPriceLabel" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
-                                      <Component id="roomPriceTxtField" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="roomTypeComboBox" min="-2" pref="169" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="editRoomBtn" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="deleteRoomBtn" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="addRoomBtn" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="684" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="titleTxt" min="-2" pref="228" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
+                                  <Component id="appControlButtons1" min="-2" pref="74" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="roomNrLabel" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
+                                              <Component id="roomNrTxtField" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="345" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="roomTypeLabel" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
+                                              <Component id="roomTypeTxtField" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jScrollPane1" min="-2" pref="684" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="268" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -105,81 +115,37 @@
                       <Component id="appControlButtons1" min="-2" max="-2" attributes="0"/>
                       <Component id="titleTxt" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="roomNrLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="roomNrTxtField" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="roomTypeLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="roomTypeComboBox" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="roomStatusLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="roomStatusComboBox" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="roomPriceLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="roomPriceTxtField" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="addRoomBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="editRoomBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="deleteRoomBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="102" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="roomNrLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="roomTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="325" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="roomNrTxtField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="roomTypeTxtField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="249" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="265" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="editRoomBtn">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="99" red="ff" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Edit existing room"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editRoomBtnActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="addRoomBtn">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="99" red="0" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Add new room"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addRoomBtnActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="roomNrLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -204,23 +170,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomNrTxtFieldActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="deleteRoomBtn">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="66" red="ff" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Delete room"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteRoomBtnActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="titleTxt">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -233,33 +182,7 @@
               <Color blue="ff" green="99" red="66" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Manage Rooms"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="roomTypeComboBox">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Single room deluxe"/>
-                <StringItem index="1" value="Double room deluxe"/>
-                <StringItem index="2" value="Double room Standard"/>
-                <StringItem index="3" value="King suite"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="roomPriceLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Yu Gothic UI" size="12" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Room price (&#x20ac;)"/>
+            <Property name="text" type="java.lang.String" value="Search Rooms"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="roomTypeLabel">
@@ -273,31 +196,7 @@
             <Property name="text" type="java.lang.String" value="Room type"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="roomStatusLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Yu Gothic UI" size="12" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Room status"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="roomStatusComboBox">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="Vacant"/>
-                <StringItem index="1" value="Booked"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="roomPriceTxtField">
+        <Component class="javax.swing.JTextField" name="roomTypeTxtField">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Yu Gothic UI Light" size="12" style="0"/>
@@ -307,7 +206,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomPriceTxtFieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomTypeTxtFieldActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -323,15 +222,21 @@
                   <Font name="Yu Gothic UI Light" size="12" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="50">
-                    <Column editable="true" title="Number" type="java.lang.Object"/>
-                    <Column editable="true" title="Type" type="java.lang.Object"/>
-                    <Column editable="true" title="Status" type="java.lang.Object"/>
+                  <Table columnCount="5" rowCount="50">
+                    <Column editable="false" title="Id" type="java.lang.Object"/>
+                    <Column editable="false" title="Room Type" type="java.lang.Object"/>
+                    <Column editable="false" title="Capacity" type="java.lang.Object"/>
                     <Column editable="true" title="Price" type="java.lang.Object"/>
+                    <Column editable="false" title="Availibility" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -364,10 +269,67 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="roomTableMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
         <Component class="Main.AppControlButtons" name="appControlButtons1">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Here you can search for rooms by entering the room number or by typing it&apos;s type."/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+            <Property name="verticalScrollBarPolicy" type="int" value="21"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea1">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="&#x9;Room numbers: &#x9;&#x9;&#x9;Enter one of the following room types: &#xa;&#x9;From 100 to 125 &#x9;&#x9;&#x9;           SINGLE ROOM STANDARD&#xa;&#x9;From 200 to 225 &#x9;&#x9;&#x9;              SINGLE ROOM DELUXE&#xa;&#x9;From 300 to 325 &#x9;&#x9;&#x9;          DOUBLE ROOM STANDARD&#xa;&#x9;From 400 to 425&#x9;&#x9;&#x9;             DOUBLE ROOM DELUXE&#xa;&#x9;From 500 to 525&#x9;&#x9;&#x9;&#x9;KING SUITE"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="2"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="(i)Tap on this table to search for a room"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="2"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="(i) After searching for the room, click on the table&apos;s row to proceed with the bookings."/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

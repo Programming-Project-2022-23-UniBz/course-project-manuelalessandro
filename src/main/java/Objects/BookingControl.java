@@ -39,17 +39,6 @@ public class BookingControl {
         }
     }
 
-    public static Booking findBooking(User user) {
-        Booking result = null;
-        if (bookings != null)
-            for (int i = 0; i < bookings.length; i++)
-                if (bookings[i].getUser().equals(user)) {
-                    result = bookings[i];
-                    break;
-                }
-        return result;
-    }
-
     private static void incrementBookings() {
         Booking[] newArr = new Booking[bookings.length + 1];
         for (int i = 0; i < bookings.length; i++) {
@@ -67,8 +56,15 @@ public class BookingControl {
         else
             return booking;
     }
+    
+    public static Booking[] getBookings() {
+        return bookings;
+    }
 
     public static void addBooking(Booking booking) {
+        if (bookings == null) {
+            bookings = new Booking[0];
+        }
         incrementBookings();
         bookings[bookings.length - 1] = booking;
     }
@@ -79,14 +75,14 @@ public class BookingControl {
         bookings = new Booking[2];
 
         // Admin Room
-        Room room1 = RoomControl.getRoom(RoomControl.getFreeRoomId(RoomType.DELUXE, 2));
+        Room room1 = RoomControl.getRoom(RoomControl.getFreeRoomId(RoomType.SINGLE_ROOM_DELUXE));
         User user1 = UserControl.getUser(0); // adminUser
         Booking booking1 = new Booking(new GregorianCalendar(2023, 2, 11).getTime(),
                 new GregorianCalendar(2023, 2, 16).getTime(), room1, user1);
         bookings[0] = booking1;
 
         // Guest Room
-        Room room2 = RoomControl.getRoom(RoomControl.getFreeRoomId(RoomType.DELUXE, 1));
+        Room room2 = RoomControl.getRoom(RoomControl.getFreeRoomId(RoomType.SINGLE_ROOM_DELUXE));
         User user2 = UserControl.getUser(1); // guestUser
         Booking booking2 = new Booking(new GregorianCalendar(2023, 5, 18).getTime(),
                 new GregorianCalendar(2023, 5, 26).getTime(), room2, user2);

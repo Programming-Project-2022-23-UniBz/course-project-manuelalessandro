@@ -3,6 +3,7 @@ package Objects;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
@@ -60,12 +61,11 @@ public class RoomControl {
 
     // returns first free room that matches parameters
     // returns -1 if no room matches
-    public static int getFreeRoomId(RoomType roomType, int capacity) {
+    public static int getFreeRoomId(RoomType roomType) {
         int result = -1;
         for (int i = 0; i < rooms.length; i++)
             if (rooms[i] != null)
-                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
-                        && rooms[i].isOccupied() == false) {
+                if (rooms[i].getRoomType().equals(roomType) && rooms[i].isAvailable() == true) {
                     result = i;
                     break;
                 }
@@ -75,30 +75,54 @@ public class RoomControl {
     // Used to initialize rooms.json
     // if used, json will be reset and old data lost
     private static void initRooms() {
-        rooms = new Room[400];
-
+        rooms = new Room[600];
+        
         for (int i = 100; i < rooms.length && i < 126; i++) {
-            if (i < 116)
-                rooms[i] = new Room(i, RoomType.STANDARD, 1);
-            else
-                rooms[i] = new Room(i, RoomType.STANDARD, 2);
+            rooms[i] = new Room(i, RoomType.SINGLE_ROOM_STANDARD);
         }
 
         for (int i = 200; i < rooms.length && i < 226; i++) {
-            if (i < 216)
-                rooms[i] = new Room(i, RoomType.DELUXE, 1);
-            else
-                rooms[i] = new Room(i, RoomType.DELUXE, 2);
+            rooms[i] = new Room(i, RoomType.SINGLE_ROOM_DELUXE);
         }
 
         for (int i = 300; i < rooms.length && i < 326; i++) {
-            rooms[i] = new Room(i, RoomType.KING, 1);
+            rooms[i] = new Room(i, RoomType.DOUBLE_ROOM_STANDARD);
         }
+
+        for (int i = 400; i < rooms.length && i < 426; i++) {
+            rooms[i] = new Room(i, RoomType.DOUBLE_ROOM_DELUXE);
+        }
+
+        for (int i = 500; i < rooms.length && i < 526; i++) {
+            rooms[i] = new Room(i, RoomType.KING_SUITE);
+        }
+
+    }
+    
+    public static ArrayList<Room> getRoomsByType(RoomType roomType) {
+        pullData();
+        ArrayList<Room> roomsByType = new ArrayList<>();
+        for (Room room : rooms) {
+            if (room != null && room.isAvailable() && room.getRoomType() == roomType) {
+                roomsByType.add(room);
+            }
+        }
+        return roomsByType;
+    }
+
+    public static Room getRoomById(int roomNr) {
+        pullData();
+        for (Room room : rooms) {
+            if (room != null && room.getId() == roomNr) {
+                return room;
+            }
+        }
+        return null;
     }
 
     public static void main(String[] args) {
         pullData();
-
+        initRooms();
         pushData();
     }
 }
