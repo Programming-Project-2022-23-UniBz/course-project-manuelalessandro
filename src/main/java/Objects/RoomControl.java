@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.joda.time.DateTime;
+
 import com.google.gson.Gson;
 
 import Objects.Room.RoomType;
@@ -60,50 +62,71 @@ public class RoomControl {
     }
 
     // returns first free room that matches parameters
-    // returns -1 if no room matches
-    public static int getFreeRoomId(RoomType roomType) {
+    // throws Exception if no room matches
+    /**
+     * @param roomType
+     * @param capacity
+     * @param checkIn
+     * @param checkOut
+     * @return
+     * @throws Exception
+     */
+    public static int getFreeRoomId(RoomType roomType, int capacity, DateTime checkIn, DateTime checkOut)
+            throws Exception {
         int result = -1;
         for (int i = 0; i < rooms.length; i++)
             if (rooms[i] != null)
-                if (rooms[i].getType().equals(roomType) && rooms[i].isAvailable() == true) {
+                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
+                        && rooms[i].isOccupied(checkIn, checkOut) == false) {
                     result = i;
                     break;
                 }
+
+        // throwing exception if no room matches
+        if (result == -1)
+            throw new Exception("No room avaiable for the selected dates."); // message appears in the
+                                                                             // CreateRoomPanel
         return result;
     }
 
     // Used to initialize rooms.json
     // if used, json will be reset and old data lost
-    private static void initRooms() {
-        rooms = new Room[600];
+    private static void initRoomsTest() {
+        rooms = new Room[400];
+        RoomType type = RoomType.STANDARD;
 
         for (int i = 100; i < rooms.length && i < 126; i++) {
-            rooms[i] = new Room(i, RoomType.SINGLE_ROOM_STANDARD);
+            if (i < 116)
+                rooms[i] = new Room(i, RoomType.STANDARD, 1);
+            else
+                rooms[i] = new Room(i, RoomType.STANDARD, 2);
         }
 
         for (int i = 200; i < rooms.length && i < 226; i++) {
-            rooms[i] = new Room(i, RoomType.SINGLE_ROOM_DELUXE);
+            if (i < 216)
+                rooms[i] = new Room(i, RoomType.DELUXE, 1);
+            else
+                rooms[i] = new Room(i, RoomType.DELUXE, 2);
         }
 
         for (int i = 300; i < rooms.length && i < 326; i++) {
-            rooms[i] = new Room(i, RoomType.DOUBLE_ROOM_STANDARD);
+            rooms[i] = new Room(i, RoomType.KING, 1);
         }
 
-        for (int i = 400; i < rooms.length && i < 426; i++) {
-            rooms[i] = new Room(i, RoomType.DOUBLE_ROOM_DELUXE);
-        }
+        System.out.println(type);
+    }
 
-        for (int i = 500; i < rooms.length && i < 526; i++) {
-            rooms[i] = new Room(i, RoomType.KING_SUITE);
-        }
-
+    // Used to initialize rooms.json to 0 rooms
+    // if used, json will be reset and old data lost
+    private static void initRooms() {
+        rooms = new Room[0];
     }
 
     public static ArrayList<Room> getRoomsByType(RoomType roomType) {
         pullData();
         ArrayList<Room> roomsByType = new ArrayList<>();
         for (Room room : rooms) {
-            if (room != null && room.isAvailable() && room.getType() == roomType) {
+            if (room != null && room.isOccupied(new DateTime(), new DateTime()) && room.getType() == roomType) {
                 roomsByType.add(room);
             }
         }
@@ -122,7 +145,7 @@ public class RoomControl {
 
     public static void main(String[] args) {
         pullData();
-        initRooms();
+
         pushData();
     }
 }

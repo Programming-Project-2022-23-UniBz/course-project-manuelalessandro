@@ -1,5 +1,8 @@
 package Objects;
 
+import java.util.ArrayList;
+import org.joda.time.DateTime;
+
 public class Room {
 
     public enum RoomType {
@@ -66,11 +69,35 @@ public class Room {
         this.price = price;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public boolean isOccupied(DateTime checkIn, DateTime checkOut) {
+        boolean result = false;
+        ArrayList<Booking> bookings = new ArrayList<Booking>();
+
+        for (int i = 0; i < bookings.size(); i++) {
+            if (checkIn.toDate().compareTo(bookings.get(i).getCheckInDate().toDate()) >= 0
+                    && checkOut.toDate().compareTo(bookings.get(i).getCheckOutDate().toDate()) <= 0)
+                result = true;
+        }
+
+        return result;
     }
 
-    public void setAvailability(boolean isAvailable) {
-        this.isAvailable = isAvailable;
+    // --------------------Help
+    // methods----------------------------------------------
+    /**
+     * @param checkIn
+     * @param checkOut
+     * @return ArrayList<Date> containing all dates between checkIn and checkOut
+     */
+    private static ArrayList<DateTime> generateAllDates(DateTime checkIn, DateTime checkOut) {
+        ArrayList<DateTime> result = new ArrayList<>();
+        DateTime date = checkIn;
+        while (!date.equals(checkOut)) {
+            result.add(date);
+            date = date.plusDays(1);
+        }
+        if (date != null)
+            result.add(date);
+        return result;
     }
 }
