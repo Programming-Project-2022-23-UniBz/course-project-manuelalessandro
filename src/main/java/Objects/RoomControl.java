@@ -121,11 +121,11 @@ public class RoomControl {
         rooms = new Room[0];
     }
 
-    public static ArrayList<Room> getRoomsByType(RoomType roomType) {
-        pullData();
+    public static ArrayList<Room> getRoomsByTypeCapacity(RoomType roomType, int capacity) {
         ArrayList<Room> roomsByType = new ArrayList<>();
         for (Room room : rooms) {
-            if (room != null && room.isOccupied(new DateTime(), new DateTime()) && room.getType() == roomType) {
+            if (room != null && !room.isOccupied(new DateTime(), new DateTime()) && room.getType() == roomType
+                    && room.getCapacity() == capacity) {
                 roomsByType.add(room);
             }
         }
@@ -133,7 +133,6 @@ public class RoomControl {
     }
 
     public static Room getRoomById(int roomNr) {
-        pullData();
         for (Room room : rooms) {
             if (room != null && room.getId() == roomNr) {
                 return room;
