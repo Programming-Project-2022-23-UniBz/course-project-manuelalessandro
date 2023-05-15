@@ -23,11 +23,11 @@ public class RoomControl {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        String userJson = null;
+        String roomJson = null;
         if (scanner.hasNextLine())
-            userJson = scanner.nextLine();
+            roomJson = scanner.nextLine();
         scanner.close();
-        rooms = gson.fromJson(userJson, Room[].class);
+        rooms = gson.fromJson(roomJson, Room[].class);
     }
 
     public static void pushData() {
@@ -90,8 +90,9 @@ public class RoomControl {
 
     // Used to initialize rooms.json
     // if used, json will be reset and old data lost
-    private static void initRooms() {
+    private static void initRoomsTest() {
         rooms = new Room[400];
+        RoomType type = RoomType.STANDARD;
 
         for (int i = 100; i < rooms.length && i < 126; i++) {
             if (i < 116)
@@ -110,6 +111,14 @@ public class RoomControl {
         for (int i = 300; i < rooms.length && i < 326; i++) {
             rooms[i] = new Room(i, RoomType.KING, 1);
         }
+
+        System.out.println(type);
+    }
+
+    // Used to initialize rooms.json to 0 rooms
+    // if used, json will be reset and old data lost
+    private static void initRooms() {
+        rooms = new Room[0];
     }
 
     public static void main(String[] args) {
