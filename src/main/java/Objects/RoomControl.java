@@ -65,7 +65,7 @@ public class RoomControl {
         int result = -1;
         for (int i = 0; i < rooms.length; i++)
             if (rooms[i] != null)
-                if (rooms[i].getRoomType().equals(roomType) && rooms[i].isAvailable() == true) {
+                if (rooms[i].getType().equals(roomType) && rooms[i].isAvailable() == true) {
                     result = i;
                     break;
                 }
@@ -76,7 +76,7 @@ public class RoomControl {
     // if used, json will be reset and old data lost
     private static void initRooms() {
         rooms = new Room[600];
-        
+
         for (int i = 100; i < rooms.length && i < 126; i++) {
             rooms[i] = new Room(i, RoomType.SINGLE_ROOM_STANDARD);
         }
@@ -98,12 +98,12 @@ public class RoomControl {
         }
 
     }
-    
+
     public static ArrayList<Room> getRoomsByType(RoomType roomType) {
         pullData();
         ArrayList<Room> roomsByType = new ArrayList<>();
         for (Room room : rooms) {
-            if (room != null && room.isAvailable() && room.getRoomType() == roomType) {
+            if (room != null && room.isAvailable() && room.getType() == roomType) {
                 roomsByType.add(room);
             }
         }

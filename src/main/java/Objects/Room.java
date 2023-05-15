@@ -3,46 +3,34 @@ package Objects;
 public class Room {
 
     public enum RoomType {
-        SINGLE_ROOM_STANDARD, SINGLE_ROOM_DELUXE, DOUBLE_ROOM_STANDARD, DOUBLE_ROOM_DELUXE, KING_SUITE
+        STANDARD, DELUXE, KING
     }
 
     // instance variables
     private int id;
-    private RoomType roomType;
+    private RoomType type;
     private int capacity;
     private double price;
-    private boolean isAvailable;
 
-    public Room(int id, RoomType roomType) {
+    public Room(int id, RoomType roomType, int capacity) {
 
         this.id = id;
-        this.roomType = roomType;
-
-        switch (roomType) {
-            case SINGLE_ROOM_STANDARD:
-                this.capacity = 1;
-                this.price = 150.00;
-                break;
-            case SINGLE_ROOM_DELUXE:
-                this.capacity = 1;
-                this.price = 200.00;
-                break;
-            case DOUBLE_ROOM_STANDARD:
-                this.capacity = 2;
-                this.price = 160.00;
-                break;
-            case DOUBLE_ROOM_DELUXE:
-                this.capacity = 2;
-                this.price = 280.00;
-                break;
-            case KING_SUITE:
-                this.capacity = 2;
-                this.price = 350.00;
-                break;
-            default:
-                break;
-        }
-        this.isAvailable = true;
+        this.type = roomType;
+        this.capacity = capacity;
+        if (this.capacity > 2)
+            this.capacity = 2;
+        if (roomType.equals(RoomType.STANDARD))
+            if (capacity == 1)
+                price = 100;
+            else
+                price = 150;
+        else if (roomType.equals(RoomType.DELUXE))
+            if (capacity == 1)
+                price = 200;
+            else
+                price = 250;
+        else
+            price = 400;
     }
 
     // getters and setters
@@ -54,12 +42,12 @@ public class Room {
         this.id = id;
     }
 
-    public RoomType getRoomType() {
-        return roomType;
+    public RoomType getType() {
+        return type;
     }
 
-    public void setRoomType(RoomType type) {
-        this.roomType = type;
+    public void setType(RoomType type) {
+        this.type = type;
     }
 
     public int getCapacity() {
