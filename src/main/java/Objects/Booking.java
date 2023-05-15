@@ -1,7 +1,11 @@
 package Objects;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import org.joda.time.DateTime;
 
 import org.joda.time.DateTime;
 
@@ -27,8 +31,8 @@ public class Booking {
         return bookingId;
     }
 
-    public void setBookingId(String bookingId) {
-        this.bookingId = bookingId;
+    public void setBookingId() {
+        this.bookingId = bookingIdGenerator();
     }
 
     public DateTime getCheckInDate() {
@@ -72,6 +76,22 @@ public class Booking {
     }
 
     // --------------------------------------------------------
+
+    public String bookingIdGenerator() {
+        String prefix = "ADH_";
+
+        // Get today's date in the format "yyyyMMdd"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        String currentDate = dateFormat.format(new Date());
+
+        // Generate 4 random digits
+        int randomDigits = 1000 + new Random().nextInt(9000);
+
+        // Combine the components to form the booking ID
+        String generatedbookingId = prefix + currentDate + randomDigits;
+
+        return generatedbookingId;
+    }
 
     public static int calculateStay(DateTime checkInDate, DateTime checkOutDate) {
         long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();

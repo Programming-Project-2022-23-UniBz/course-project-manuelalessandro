@@ -11,6 +11,8 @@ import java.util.*;
 
 import org.joda.time.DateTime;
 
+import org.joda.time.DateTime;
+
 public class BookingControl {
     private static Booking[] bookings;
     private static Gson gson = new Gson();
@@ -41,17 +43,6 @@ public class BookingControl {
         }
     }
 
-    public static Booking findBooking(User user) {
-        Booking result = null;
-        if (bookings != null)
-            for (int i = 0; i < bookings.length; i++)
-                if (bookings[i].getUser().equals(user)) {
-                    result = bookings[i];
-                    break;
-                }
-        return result;
-    }
-
     private static void incrementBookings() {
         Booking[] newArr = new Booking[bookings.length + 1];
         for (int i = 0; i < bookings.length; i++) {
@@ -70,6 +61,10 @@ public class BookingControl {
             return booking;
     }
 
+    public static Booking[] getBookings() {
+        return bookings;
+    }
+
     // @return ArrayList<Booking> that contains all the bookings that have that room
     public static ArrayList<Booking> getAllBookings(Room room) {
         ArrayList<Booking> result = new ArrayList<Booking>();
@@ -80,6 +75,9 @@ public class BookingControl {
     }
 
     public static void addBooking(Booking booking) {
+        if (bookings == null) {
+            bookings = new Booking[0];
+        }
         incrementBookings();
         bookings[bookings.length - 1] = booking;
     }

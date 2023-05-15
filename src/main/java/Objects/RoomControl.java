@@ -3,6 +3,7 @@ package Objects;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.joda.time.DateTime;
@@ -83,8 +84,7 @@ public class RoomControl {
 
         // throwing exception if no room matches
         if (result == -1)
-            throw new Exception("No room avaiable for the selected dates."); // message appears in the
-                                                                             // CreateRoomPanel
+            throw new Exception("No room avaiable for the selected dates."); // message appears in the CreateRoomPanel
         return result;
     }
 
@@ -119,6 +119,27 @@ public class RoomControl {
     // if used, json will be reset and old data lost
     private static void initRooms() {
         rooms = new Room[0];
+    }
+
+    public static ArrayList<Room> getRoomsByType(RoomType roomType) {
+        pullData();
+        ArrayList<Room> roomsByType = new ArrayList<>();
+        for (Room room : rooms) {
+            if (room != null && room.isOccupied(new DateTime(), new DateTime()) && room.getType() == roomType) {
+                roomsByType.add(room);
+            }
+        }
+        return roomsByType;
+    }
+
+    public static Room getRoomById(int roomNr) {
+        pullData();
+        for (Room room : rooms) {
+            if (room != null && room.getId() == roomNr) {
+                return room;
+            }
+        }
+        return null;
     }
 
     public static void main(String[] args) {

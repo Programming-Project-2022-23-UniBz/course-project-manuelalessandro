@@ -3,6 +3,9 @@ package Objects;
 import java.util.ArrayList;
 import org.joda.time.DateTime;
 
+import java.util.ArrayList;
+import org.joda.time.DateTime;
+
 public class Room {
 
     public enum RoomType {
@@ -82,8 +85,7 @@ public class Room {
         return result;
     }
 
-    // --------------------Help
-    // methods----------------------------------------------
+    // --------------------Help methods-----------------------------
     /**
      * @param checkIn
      * @param checkOut
