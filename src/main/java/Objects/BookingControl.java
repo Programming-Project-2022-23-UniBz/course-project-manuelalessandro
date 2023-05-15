@@ -51,6 +51,17 @@ public class BookingControl {
         bookings = newArr;
     }
 
+    public static Booking findBooking(User user) {
+        Booking result = null;
+        if (bookings != null)
+            for (int i = 0; i < bookings.length; i++)
+                if (bookings[i].getUser().equals(user)) {
+                    result = bookings[i];
+                    break;
+                }
+        return result;
+    }
+
     public static Booking getBooking(int id) throws IllegalArgumentException {
         Booking booking = null;
         if (bookings.length > id)
