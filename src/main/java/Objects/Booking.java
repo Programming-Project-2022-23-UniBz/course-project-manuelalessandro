@@ -22,6 +22,7 @@ public class Booking {
         this.room = room;
         this.user = user;
         this.totalCost = calculateTotalCost(room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
+        setBookingId();
     }
 
     // getters and setters

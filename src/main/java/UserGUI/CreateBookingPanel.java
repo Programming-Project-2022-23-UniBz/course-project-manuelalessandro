@@ -55,7 +55,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                 DateTime checkIn = new DateTime(jDateOfCheckInChooser.getDate());
                 DateTime checkOut = new DateTime(jDateOfCheckOutChooser.getDate());
 
-                int stay = Booking.calculateStay(checkIn, checkOut);
+                int stay = Booking.calculateStay(checkIn.toDate(), checkOut.toDate());
                 double totalCost;
                 try {
                         totalCost = Booking.calculateTotalCost(getSelectedRoomPrice(checkIn, checkOut), stay);

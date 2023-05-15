@@ -1,8 +1,6 @@
 package Objects;
 
-import java.util.ArrayList;
-import org.joda.time.DateTime;
-
+import java.util.Date;
 import java.util.ArrayList;
 import org.joda.time.DateTime;
 
@@ -74,11 +72,47 @@ public class Room {
 
     public boolean isOccupied(DateTime checkIn, DateTime checkOut) {
         boolean result = false;
-        ArrayList<Booking> bookings = new ArrayList<Booking>();
+        ArrayList<Booking> bookings = BookingControl.getAllBookings(this);
+
+        Date checkInDate = checkIn.toDate();
+        Date checkOutDate = checkOut.toDate();
 
         for (int i = 0; i < bookings.size(); i++) {
-            if (checkIn.toDate().compareTo(bookings.get(i).getCheckInDate().toDate()) >= 0
-                    && checkOut.toDate().compareTo(bookings.get(i).getCheckOutDate().toDate()) <= 0)
+            Booking booking = bookings.get(i);
+            // checks if dates are in between of the booking
+            if (checkInDate.compareTo(booking.getCheckInDate().toDate()) >= 0
+                    && checkOutDate.compareTo(booking.getCheckOutDate().toDate()) <= 0)
+                result = true;
+
+            // checks checkout is between
+            else if (checkOutDate.compareTo(booking.getCheckInDate().toDate()) >= 0
+                    && checkOutDate.compareTo(booking.getCheckOutDate().toDate()) <= 0)
+                result = true;
+
+            // checks checkin is between
+            else if (checkInDate.compareTo(booking.getCheckInDate().toDate()) >= 0
+                    && checkInDate.compareTo(booking.getCheckOutDate().toDate()) <= 0)
+                result = true;
+
+            // checks if booking is between dates
+            else if (checkInDate.compareTo(booking.getCheckInDate().toDate()) <= 0
+                    && checkOutDate.compareTo(booking.getCheckOutDate().toDate()) >= 0)
+                result = true;
+        }
+
+        return result;
+    }
+
+    // checks if room is free for today
+    public boolean isOccupied() {
+        DateTime today = new DateTime();
+        boolean result = false;
+
+        ArrayList<Booking> bookings = BookingControl.getAllBookings(this);
+
+        for (int i = 0; i < bookings.size(); i++) {
+            if (today.toDate().compareTo(bookings.get(i).getCheckInDate().toDate()) >= 0
+                    && today.toDate().compareTo(bookings.get(i).getCheckOutDate().toDate()) <= 0)
                 result = true;
         }
 

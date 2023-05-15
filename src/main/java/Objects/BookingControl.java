@@ -80,8 +80,9 @@ public class BookingControl {
     public static ArrayList<Booking> getAllBookings(Room room) {
         ArrayList<Booking> result = new ArrayList<Booking>();
         for (int i = 0; i < bookings.length; i++)
-            if (bookings[i].getRoom().equals(room))
-                result.add(bookings[i]);
+            if (bookings[i] != null)
+                if (bookings[i].getRoom().equals(room))
+                    result.add(bookings[i]);
         return result;
     }
 
@@ -102,8 +103,8 @@ public class BookingControl {
             // Admin Room
             DateTime checkInAdmin = new DateTime(2023, 2, 11, 0, 0);
             DateTime checkOutAdmin = new DateTime(2023, 2, 16, 0, 0);
-            Room room1 = RoomControl
-                    .getRoom(RoomControl.getFreeRoomId(RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin));
+            int id1 = RoomControl.getFreeRoomId(RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
+            Room room1 = RoomControl.getRoom(id1);
             User user1 = UserControl.getUser(0); // adminUser
             Booking booking1 = new Booking(checkInAdmin, checkOutAdmin, room1, user1);
             bookings[0] = booking1;
@@ -111,14 +112,15 @@ public class BookingControl {
             // Guest Room
             DateTime checkInGuest = new DateTime(2023, 5, 18, 0, 0);
             DateTime checkOutGuest = new DateTime(2023, 5, 26, 0, 0);
-            Room room2 = RoomControl
-                    .getRoom(RoomControl.getFreeRoomId(RoomType.DELUXE, 1, checkInGuest, checkOutGuest));
+            int id2 = RoomControl.getFreeRoomId(RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
+            Room room2 = RoomControl.getRoom(id2);
             User user2 = UserControl.getUser(1); // guestUser
             Booking booking2 = new Booking(checkInGuest, checkOutGuest, room2, user2);
             bookings[1] = booking2;
 
         } catch (Exception e) {
-            throw new Exception("Init bookings failes because guest room not found.");
+            e.printStackTrace();
+            throw new Exception("Init bookings failes because room not found.");
         }
     }
 
@@ -138,8 +140,15 @@ public class BookingControl {
     }
 
     public static void main(String[] args) {
-        pullData();
-
+        RoomControl.pullData();
+        UserControl.pullData();
+        try {
+            initBookingsForTest();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         pushData();
+        RoomControl.pushData();
+        UserControl.pushData();
     }
 }

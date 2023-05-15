@@ -655,7 +655,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                 rowData[1] = bookingRoom.getType();
                 rowData[2] = bookingRoom.getCapacity();
                 rowData[3] = bookingRoom.getPrice();
-                if (bookingRoom.isOccupied(new DateTime(), new DateTime()) == false) {
+                if (bookingRoom.isOccupied() == false) {
                         rowData[4] = "Yes";
                 } else {
                         rowData[4] = "No";
@@ -698,7 +698,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                 if (room == null) {
                         JOptionPane.showMessageDialog(this,
                                         "No room found with ID " + roomId + ". Please enter a valid room ID.");
-                } else if (room.isOccupied(new DateTime(), new DateTime())) {
+                } else if (room.isOccupied()) {
                         JOptionPane.showMessageDialog(this, "Room " + roomId + " is already occupied.");
                 } else {
                         bookingRoom = room; // If the room is available, update the bookingRoom variable with the new
