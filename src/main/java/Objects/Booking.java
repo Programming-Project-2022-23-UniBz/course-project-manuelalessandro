@@ -7,23 +7,21 @@ import java.util.concurrent.TimeUnit;
 
 import org.joda.time.DateTime;
 
-import org.joda.time.DateTime;
-
 public class Booking {
 
     private String bookingId;
-    private DateTime checkInDate;
-    private DateTime checkOutDate;
+    private Date checkInDate;
+    private Date checkOutDate;
     private Room room;
     private User user;
     private double totalCost;
 
     public Booking(DateTime checkInDate, DateTime checkOutDate, Room room, User user) {
-        this.checkInDate = checkInDate;
-        this.checkOutDate = checkOutDate;
+        this.checkInDate = checkInDate.toDate();
+        this.checkOutDate = checkOutDate.toDate();
         this.room = room;
         this.user = user;
-        this.totalCost = calculateTotalCost(room.getPrice(), calculateStay(checkInDate, checkOutDate));
+        this.totalCost = calculateTotalCost(room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
     }
 
     // getters and setters
@@ -36,19 +34,19 @@ public class Booking {
     }
 
     public DateTime getCheckInDate() {
-        return checkInDate;
+        return new DateTime(checkInDate);
     }
 
     public void setCheckInDate(DateTime checkInDate) {
-        this.checkInDate = checkInDate;
+        this.checkInDate = checkInDate.toDate();
     }
 
     public DateTime getCheckOutDate() {
-        return checkOutDate;
+        return new DateTime(checkOutDate);
     }
 
     public void setCheckOutDate(DateTime checkOutDate) {
-        this.checkOutDate = checkOutDate;
+        this.checkOutDate = checkOutDate.toDate();
     }
 
     public Room getRoom() {
@@ -93,7 +91,9 @@ public class Booking {
         return generatedbookingId;
     }
 
-    public static int calculateStay(DateTime checkInDate, DateTime checkOutDate) {
+    public static int calculateStay(Date checkIn, Date checkOut) {
+        DateTime checkInDate = new DateTime(checkIn);
+        DateTime checkOutDate = new DateTime(checkOut);
         long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();
         return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }

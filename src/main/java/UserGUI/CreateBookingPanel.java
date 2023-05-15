@@ -82,7 +82,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                 jDateOfCheckInChooser = new com.toedter.calendar.JDateChooser();
                 checkOutLabel1 = new javax.swing.JLabel();
                 jDateOfCheckOutChooser = new com.toedter.calendar.JDateChooser();
-                appControlButtons = new Main.AppControlButtons();
+                appControlButtons = new DesignObjects.AppControlButtons();
                 roomTypeComboBox = new DesignObjects.RoomTypeComboBox();
                 totalStayLabel = new javax.swing.JLabel();
                 errorLabel = new javax.swing.JLabel();
@@ -281,7 +281,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
         }// GEN-LAST:event_applyButtonActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private Main.AppControlButtons appControlButtons;
+        private DesignObjects.AppControlButtons appControlButtons;
         private javax.swing.JButton applyButton;
         private javax.swing.JPanel bookingPanel;
         private javax.swing.JLabel checkInLabel1;

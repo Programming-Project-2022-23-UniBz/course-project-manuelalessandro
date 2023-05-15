@@ -78,7 +78,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                 jDateOfBirthCustomerChooser = new com.toedter.calendar.JDateChooser();
                 checkInLabel = new javax.swing.JLabel();
                 jDateOfCheckInChooser = new com.toedter.calendar.JDateChooser();
-                appControlButtons1 = new Main.AppControlButtons();
+                appControlButtons1 = new DesignObjects.AppControlButtons();
                 jScrollPane2 = new javax.swing.JScrollPane();
                 bookingRoomDetailsTable = new javax.swing.JTable();
                 bookingRoomDetailsLabel = new javax.swing.JLabel();
@@ -935,7 +935,7 @@ public class BookingsPanel extends javax.swing.JPanel {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JLabel activeBookingListLabel;
         private javax.swing.JButton addBookingBtn;
-        private Main.AppControlButtons appControlButtons1;
+        private DesignObjects.AppControlButtons appControlButtons1;
         private javax.swing.JLabel bookingRoomDetailsLabel;
         private javax.swing.JTable bookingRoomDetailsTable;
         private javax.swing.JTable bookingTable;

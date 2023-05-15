@@ -268,7 +268,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioImage10ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="Main.AppControlButtons" name="appControlButtons1">
+        <Component class="DesignObjects.AppControlButtons" name="appControlButtons1">
         </Component>
       </SubComponents>
     </Container>

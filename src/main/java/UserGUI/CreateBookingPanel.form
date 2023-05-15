@@ -186,7 +186,7 @@
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateOfCheckOutChooser">
         </Component>
-        <Component class="Main.AppControlButtons" name="appControlButtons">
+        <Component class="DesignObjects.AppControlButtons" name="appControlButtons">
         </Component>
         <Component class="DesignObjects.RoomTypeComboBox" name="roomTypeComboBox">
         </Component>

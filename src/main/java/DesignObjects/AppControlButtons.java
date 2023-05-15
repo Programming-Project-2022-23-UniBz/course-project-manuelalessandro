@@ -1,5 +1,5 @@
 
-package Main;
+package DesignObjects;
 
 import WelcomeGUI.WelcomeFrame;
 import java.awt.event.MouseAdapter;
@@ -32,7 +32,7 @@ public class AppControlButtons extends javax.swing.JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (frame instanceof WelcomeFrame)
-                    System.exit(0);
+                    Main.Main.stopApplication();
                 else
                     frame.setVisible(false);
             }
@@ -83,7 +83,7 @@ public class AppControlButtons extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         closeLabel = new javax.swing.JLabel();

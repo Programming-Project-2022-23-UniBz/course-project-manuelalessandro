@@ -34,7 +34,7 @@ public class ReviewsPanel extends javax.swing.JPanel {
         private void initComponents() {
 
                 reviewsPanel = new javax.swing.JPanel();
-                appControlButtons1 = new Main.AppControlButtons();
+                appControlButtons1 = new DesignObjects.AppControlButtons();
 
                 setMaximumSize(new java.awt.Dimension(720, 548));
                 setMinimumSize(new java.awt.Dimension(720, 548));
@@ -83,7 +83,7 @@ public class ReviewsPanel extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private Main.AppControlButtons appControlButtons1;
+        private DesignObjects.AppControlButtons appControlButtons1;
         private javax.swing.JPanel reviewsPanel;
         // End of variables declaration//GEN-END:variables
 }

@@ -36,7 +36,7 @@ public class UserDashboardPanel extends javax.swing.JPanel {
 
                 bookingPanel = new javax.swing.JPanel();
                 titleTxt = new javax.swing.JLabel();
-                appControlButtons = new Main.AppControlButtons();
+                appControlButtons = new DesignObjects.AppControlButtons();
                 panelGlowingGradient4 = new DesignObjects.PanelGlowingGradient();
                 jLabel5 = new javax.swing.JLabel();
                 panelGlowingGradient5 = new DesignObjects.PanelGlowingGradient();
@@ -146,7 +146,7 @@ public class UserDashboardPanel extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private Main.AppControlButtons appControlButtons;
+        private DesignObjects.AppControlButtons appControlButtons;
         private javax.swing.JPanel bookingPanel;
         private javax.swing.JLabel jLabel4;
         private javax.swing.JLabel jLabel5;

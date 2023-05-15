@@ -114,7 +114,7 @@ public class ServicesPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         servicesPanel = new javax.swing.JPanel();
-        appControlButtons1 = new Main.AppControlButtons();
+        appControlButtons1 = new DesignObjects.AppControlButtons();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         panelGlowingGradient3 = new DesignObjects.PanelGlowingGradient();
@@ -387,7 +387,7 @@ public class ServicesPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Main.AppControlButtons appControlButtons1;
+    private DesignObjects.AppControlButtons appControlButtons1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

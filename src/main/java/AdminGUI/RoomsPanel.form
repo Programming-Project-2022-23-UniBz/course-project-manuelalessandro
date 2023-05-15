@@ -275,7 +275,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="Main.AppControlButtons" name="appControlButtons1">
+        <Component class="DesignObjects.AppControlButtons" name="appControlButtons1">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>

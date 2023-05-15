@@ -35,7 +35,7 @@ public class AccomodationPanel extends javax.swing.JPanel {
         private void initComponents() {
 
                 accomodationPanel = new javax.swing.JPanel();
-                appControlButtons1 = new Main.AppControlButtons();
+                appControlButtons1 = new DesignObjects.AppControlButtons();
 
                 setMaximumSize(new java.awt.Dimension(720, 548));
                 setMinimumSize(new java.awt.Dimension(720, 548));
@@ -83,6 +83,6 @@ public class AccomodationPanel extends javax.swing.JPanel {
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JPanel accomodationPanel;
-        private Main.AppControlButtons appControlButtons1;
+        private DesignObjects.AppControlButtons appControlButtons1;
         // End of variables declaration//GEN-END:variables
 }

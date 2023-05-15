@@ -52,7 +52,7 @@ public class RoomsPanel extends javax.swing.JPanel {
         roomTypeTxtField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         roomTable = new javax.swing.JTable();
-        appControlButtons1 = new Main.AppControlButtons();
+        appControlButtons1 = new DesignObjects.AppControlButtons();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -487,7 +487,7 @@ public class RoomsPanel extends javax.swing.JPanel {
         }// GEN-LAST:event_roomTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Main.AppControlButtons appControlButtons1;
+    private DesignObjects.AppControlButtons appControlButtons1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

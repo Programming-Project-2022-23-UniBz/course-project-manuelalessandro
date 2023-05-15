@@ -37,7 +37,7 @@ public class GuestsPanel extends javax.swing.JPanel {
         phoneNrTxtField = new javax.swing.JTextField();
         nameTxtField = new javax.swing.JTextField();
         jDateOfBirthChooser = new com.toedter.calendar.JDateChooser();
-        appControlButtons1 = new Main.AppControlButtons();
+        appControlButtons1 = new DesignObjects.AppControlButtons();
         addGuestBtn = new javax.swing.JButton();
         deleteGuestBtn = new javax.swing.JButton();
         editGuestBtn = new javax.swing.JButton();
@@ -398,7 +398,7 @@ public class GuestsPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addGuestBtn;
-    private Main.AppControlButtons appControlButtons1;
+    private DesignObjects.AppControlButtons appControlButtons1;
     private javax.swing.JButton deleteGuestBtn;
     private javax.swing.JLabel dobLabel;
     private javax.swing.JButton editGuestBtn;

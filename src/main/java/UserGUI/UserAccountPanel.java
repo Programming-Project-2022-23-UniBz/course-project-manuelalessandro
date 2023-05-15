@@ -49,7 +49,7 @@ public class UserAccountPanel extends javax.swing.JPanel {
         jDateOfCheckInChooser = new com.toedter.calendar.JDateChooser();
         checkOutLabel = new javax.swing.JLabel();
         jDateOfCheckOutChooser = new com.toedter.calendar.JDateChooser();
-        appControlButtons = new Main.AppControlButtons();
+        appControlButtons = new DesignObjects.AppControlButtons();
         nameLabel = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
         emailLabel = new javax.swing.JLabel();
@@ -369,7 +369,7 @@ public class UserAccountPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel accountPanel;
-    private Main.AppControlButtons appControlButtons;
+    private DesignObjects.AppControlButtons appControlButtons;
     private javax.swing.JButton applyChangesButton;
     private javax.swing.JLabel checkInLabel;
     private javax.swing.JLabel checkOutLabel;

@@ -48,7 +48,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         panelGlowingGradient4 = new DesignObjects.PanelGlowingGradient();
         jLabel4 = new javax.swing.JLabel();
         roomsButton = new javax.swing.JButton();
-        appControlButtons1 = new Main.AppControlButtons();
+        appControlButtons1 = new DesignObjects.AppControlButtons();
 
         setPreferredSize(new java.awt.Dimension(744, 546));
 
@@ -257,7 +257,7 @@ public class DashboardPanel extends javax.swing.JPanel {
     }// GEN-LAST:event_chartsButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Main.AppControlButtons appControlButtons1;
+    private DesignObjects.AppControlButtons appControlButtons1;
     private javax.swing.JButton bookingsButton;
     private javax.swing.JButton chartsButton;
     private javax.swing.JButton customersButton;

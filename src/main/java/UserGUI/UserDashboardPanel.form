@@ -102,7 +102,7 @@
             <Property name="text" type="java.lang.String" value="Dashboard"/>
           </Properties>
         </Component>
-        <Component class="Main.AppControlButtons" name="appControlButtons">
+        <Component class="DesignObjects.AppControlButtons" name="appControlButtons">
         </Component>
         <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient4">
           <Properties>
