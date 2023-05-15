@@ -41,332 +41,249 @@ public class RoomsPanel extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-                roomsPanel = new javax.swing.JPanel();
-                roomNrLabel = new javax.swing.JLabel();
-                roomNrTxtField = new javax.swing.JTextField();
-                titleTxt = new javax.swing.JLabel();
-                roomTypeLabel = new javax.swing.JLabel();
-                roomTypeTxtField = new javax.swing.JTextField();
-                jScrollPane1 = new javax.swing.JScrollPane();
-                roomTable = new javax.swing.JTable();
-                appControlButtons1 = new Main.AppControlButtons();
-                jLabel1 = new javax.swing.JLabel();
-                jScrollPane2 = new javax.swing.JScrollPane();
-                jTextArea1 = new javax.swing.JTextArea();
-                jLabel2 = new javax.swing.JLabel();
-                jLabel3 = new javax.swing.JLabel();
+        roomsPanel = new javax.swing.JPanel();
+        roomNrLabel = new javax.swing.JLabel();
+        roomNrTxtField = new javax.swing.JTextField();
+        titleTxt = new javax.swing.JLabel();
+        roomTypeLabel = new javax.swing.JLabel();
+        roomTypeTxtField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        roomTable = new javax.swing.JTable();
+        appControlButtons1 = new Main.AppControlButtons();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-                roomsPanel.setBackground(new java.awt.Color(255, 255, 255));
-                roomsPanel.setPreferredSize(new java.awt.Dimension(738, 546));
+        roomsPanel.setBackground(new java.awt.Color(255, 255, 255));
+        roomsPanel.setPreferredSize(new java.awt.Dimension(738, 546));
 
-                roomNrLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-                roomNrLabel.setForeground(new java.awt.Color(0, 0, 255));
-                roomNrLabel.setText("Room number");
+        roomNrLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        roomNrLabel.setForeground(new java.awt.Color(0, 0, 255));
+        roomNrLabel.setText("Room number");
 
-                roomNrTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-                roomNrTxtField.setForeground(new java.awt.Color(0, 153, 153));
-                roomNrTxtField.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                roomNrTxtFieldActionPerformed(evt);
-                        }
-                });
+        roomNrTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
+        roomNrTxtField.setForeground(new java.awt.Color(0, 153, 153));
+        roomNrTxtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomNrTxtFieldActionPerformed(evt);
+            }
+        });
 
-                titleTxt.setBackground(new java.awt.Color(255, 255, 255));
-                titleTxt.setFont(new java.awt.Font("Yu Gothic UI", 1, 25)); // NOI18N
-                titleTxt.setForeground(new java.awt.Color(102, 153, 255));
-                titleTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                titleTxt.setText("Search Rooms");
+        titleTxt.setBackground(new java.awt.Color(255, 255, 255));
+        titleTxt.setFont(new java.awt.Font("Yu Gothic UI", 1, 25)); // NOI18N
+        titleTxt.setForeground(new java.awt.Color(102, 153, 255));
+        titleTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleTxt.setText("Search Rooms");
 
-                roomTypeLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-                roomTypeLabel.setForeground(new java.awt.Color(0, 0, 255));
-                roomTypeLabel.setText("Room type");
+        roomTypeLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        roomTypeLabel.setForeground(new java.awt.Color(0, 0, 255));
+        roomTypeLabel.setText("Room type");
 
-                roomTypeTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-                roomTypeTxtField.setForeground(new java.awt.Color(0, 153, 153));
-                roomTypeTxtField.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                roomTypeTxtFieldActionPerformed(evt);
-                        }
-                });
+        roomTypeTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
+        roomTypeTxtField.setForeground(new java.awt.Color(0, 153, 153));
+        roomTypeTxtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomTypeTxtFieldActionPerformed(evt);
+            }
+        });
 
-                roomTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-                roomTable.setModel(new javax.swing.table.DefaultTableModel(
-                                new Object[][] {
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null },
-                                                { null, null, null, null, null }
-                                },
-                                new String[] {
-                                                "Id", "Room Type", "Capacity", "Price", "Availibility"
-                                }) {
-                        boolean[] canEdit = new boolean[] {
-                                        false, false, false, true, false
-                        };
+        roomTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
+        roomTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Room Type", "Capacity", "Price", "Availibility"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
 
-                        public boolean isCellEditable(int rowIndex, int columnIndex) {
-                                return canEdit[columnIndex];
-                        }
-                });
-                roomTable.setGridColor(new java.awt.Color(51, 153, 255));
-                roomTable.setRowHeight(25);
-                roomTable.setShowHorizontalLines(true);
-                roomTable.setShowVerticalLines(true);
-                roomTable.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                roomTableMouseClicked(evt);
-                        }
-                });
-                jScrollPane1.setViewportView(roomTable);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        roomTable.setGridColor(new java.awt.Color(51, 153, 255));
+        roomTable.setRowHeight(25);
+        roomTable.setShowHorizontalLines(true);
+        roomTable.setShowVerticalLines(true);
+        roomTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                roomTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(roomTable);
 
-                jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-                jLabel1.setText("Here you can search for rooms by entering the room number or by typing it's type.");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Here you can search for rooms by entering the room number or by typing it's type.");
 
-                jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
-                jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-                jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-                jTextArea1.setEditable(false);
-                jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-                jTextArea1.setColumns(20);
-                jTextArea1.setRows(5);
-                jTextArea1.setText(
-                                "\tRoom numbers: \t\t\tEnter one of the following room types: \n\tFrom 100 to 125 \t\t\t           SINGLE ROOM STANDARD\n\tFrom 200 to 225 \t\t\t              SINGLE ROOM DELUXE\n\tFrom 300 to 325 \t\t\t          DOUBLE ROOM STANDARD\n\tFrom 400 to 425\t\t\t             DOUBLE ROOM DELUXE\n\tFrom 500 to 525\t\t\t\tKING SUITE");
-                jTextArea1.setBorder(null);
-                jScrollPane2.setViewportView(jTextArea1);
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("\tRoom numbers: \t\t\tEnter one of the following room types: \n\tFrom 100 to 125 \t\t\t           SINGLE ROOM STANDARD\n\tFrom 200 to 225 \t\t\t              SINGLE ROOM DELUXE\n\tFrom 300 to 325 \t\t\t          DOUBLE ROOM STANDARD\n\tFrom 400 to 425\t\t\t             DOUBLE ROOM DELUXE\n\tFrom 500 to 525\t\t\t\tKING SUITE");
+        jTextArea1.setBorder(null);
+        jScrollPane2.setViewportView(jTextArea1);
 
-                jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-                jLabel2.setText("(i)Tap on this table to search for a room");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel2.setText("(i)Tap on this table to search for a room");
 
-                jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-                jLabel3.setText("(i) After searching for the room, click on the table's row to proceed with the bookings.");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel3.setText("(i) After searching for the room, click on the table's row to proceed with the bookings.");
 
-                javax.swing.GroupLayout roomsPanelLayout = new javax.swing.GroupLayout(roomsPanel);
-                roomsPanel.setLayout(roomsPanelLayout);
-                roomsPanelLayout.setHorizontalGroup(
-                                roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(roomsPanelLayout.createSequentialGroup()
-                                                                .addGap(27, 27, 27)
-                                                                .addGroup(roomsPanelLayout
-                                                                                .createParallelGroup(
-                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(roomsPanelLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addComponent(jLabel3)
-                                                                                                .addGap(0, 0, Short.MAX_VALUE))
-                                                                                .addGroup(roomsPanelLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addComponent(jScrollPane2)
-                                                                                                .addGap(27, 27, 27))
-                                                                                .addGroup(roomsPanelLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addComponent(jLabel1)
-                                                                                                .addContainerGap(
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                Short.MAX_VALUE))
-                                                                                .addGroup(roomsPanelLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGroup(roomsPanelLayout
-                                                                                                                .createParallelGroup(
-                                                                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                                                .addGroup(roomsPanelLayout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                                                                                                .addComponent(titleTxt,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                228,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                .addGap(167, 167,
-                                                                                                                                                167)
-                                                                                                                                .addComponent(appControlButtons1,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                74,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING,
-                                                                                                                                roomsPanelLayout.createSequentialGroup()
-                                                                                                                                                .addGroup(roomsPanelLayout
-                                                                                                                                                                .createParallelGroup(
-                                                                                                                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                                                                                                .addGroup(roomsPanelLayout
-                                                                                                                                                                                .createSequentialGroup()
-                                                                                                                                                                                .addGroup(roomsPanelLayout
-                                                                                                                                                                                                .createParallelGroup(
-                                                                                                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                                                                                                .addComponent(
-                                                                                                                                                                                                                roomNrLabel,
-                                                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                                                                                79,
-                                                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                .addComponent(
-                                                                                                                                                                                                                roomNrTxtField,
-                                                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                                                                                169,
-                                                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                                                                                .addGap(345, 345,
-                                                                                                                                                                                                345)
-                                                                                                                                                                                .addGroup(roomsPanelLayout
-                                                                                                                                                                                                .createParallelGroup(
-                                                                                                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                                                                                                .addComponent(
-                                                                                                                                                                                                                roomTypeLabel,
-                                                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                                                                                79,
-                                                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                .addComponent(
-                                                                                                                                                                                                                roomTypeTxtField,
-                                                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                                                                                170,
-                                                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                                                                                                                .addComponent(jScrollPane1,
-                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                                                684,
-                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                                                .addGap(0, 15, Short.MAX_VALUE)))
-                                                                                                .addContainerGap(12,
-                                                                                                                Short.MAX_VALUE))))
-                                                .addGroup(roomsPanelLayout.createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(roomsPanelLayout.createSequentialGroup()
-                                                                                .addGap(267, 267, 267)
-                                                                                .addComponent(jLabel2)
-                                                                                .addContainerGap(268,
-                                                                                                Short.MAX_VALUE))));
-                roomsPanelLayout.setVerticalGroup(
-                                roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout
-                                                                .createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addGroup(roomsPanelLayout
-                                                                                .createParallelGroup(
-                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(appControlButtons1,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addComponent(titleTxt))
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jLabel1)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jScrollPane2,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                102,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                Short.MAX_VALUE)
-                                                                .addGroup(
-                                                                                roomsPanelLayout.createParallelGroup(
-                                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                                .addComponent(roomNrLabel)
-                                                                                                .addComponent(roomTypeLabel))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(
-                                                                                roomsPanelLayout.createParallelGroup(
-                                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                                .addComponent(roomNrTxtField,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                .addComponent(roomTypeTxtField,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(27, 27, 27)
-                                                                .addComponent(jScrollPane1,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                249,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jLabel3)
-                                                                .addGap(17, 17, 17))
-                                                .addGroup(roomsPanelLayout.createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(roomsPanelLayout.createSequentialGroup()
-                                                                                .addGap(265, 265, 265)
-                                                                                .addComponent(jLabel2)
-                                                                                .addContainerGap(265,
-                                                                                                Short.MAX_VALUE))));
+        javax.swing.GroupLayout roomsPanelLayout = new javax.swing.GroupLayout(roomsPanel);
+        roomsPanel.setLayout(roomsPanelLayout);
+        roomsPanelLayout.setHorizontalGroup(
+            roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roomsPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addGap(27, 27, 27))
+                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(roomsPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(167, 167, 167)
+                                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roomsPanelLayout.createSequentialGroup()
+                                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(roomNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(roomNrLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(345, 345, 345)
+                                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(roomTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(roomTypeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 15, Short.MAX_VALUE)))
+                        .addContainerGap(12, Short.MAX_VALUE))))
+            .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(roomsPanelLayout.createSequentialGroup()
+                    .addGap(267, 267, 267)
+                    .addComponent(jLabel2)
+                    .addContainerGap(268, Short.MAX_VALUE)))
+        );
+        roomsPanelLayout.setVerticalGroup(
+            roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleTxt))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(roomNrLabel)
+                    .addComponent(roomTypeLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(roomNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roomTypeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(17, 17, 17))
+            .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(roomsPanelLayout.createSequentialGroup()
+                    .addGap(265, 265, 265)
+                    .addComponent(jLabel2)
+                    .addContainerGap(265, Short.MAX_VALUE)))
+        );
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-                this.setLayout(layout);
-                layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGap(0, 738, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(layout.createSequentialGroup()
-                                                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                                                .addComponent(roomsPanel,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addGap(0, 0, Short.MAX_VALUE))));
-                layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGap(0, 546, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(layout.createSequentialGroup()
-                                                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                                                .addComponent(roomsPanel,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addGap(0, 0, Short.MAX_VALUE))));
-        }// </editor-fold>//GEN-END:initComponents
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 738, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(roomsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 546, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(roomsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
         /*
          * roomNrTxtFieldActionPerformed method is an event handler triggered when the
@@ -569,20 +486,20 @@ public class RoomsPanel extends javax.swing.JPanel {
                 }
         }// GEN-LAST:event_roomTableMouseClicked
 
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private Main.AppControlButtons appControlButtons1;
-        private javax.swing.JLabel jLabel1;
-        private javax.swing.JLabel jLabel2;
-        private javax.swing.JLabel jLabel3;
-        private javax.swing.JScrollPane jScrollPane1;
-        private javax.swing.JScrollPane jScrollPane2;
-        private javax.swing.JTextArea jTextArea1;
-        private javax.swing.JLabel roomNrLabel;
-        private javax.swing.JTextField roomNrTxtField;
-        private javax.swing.JTable roomTable;
-        private javax.swing.JLabel roomTypeLabel;
-        private javax.swing.JTextField roomTypeTxtField;
-        private javax.swing.JPanel roomsPanel;
-        private javax.swing.JLabel titleTxt;
-        // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Main.AppControlButtons appControlButtons1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel roomNrLabel;
+    private javax.swing.JTextField roomNrTxtField;
+    private javax.swing.JTable roomTable;
+    private javax.swing.JLabel roomTypeLabel;
+    private javax.swing.JTextField roomTypeTxtField;
+    private javax.swing.JPanel roomsPanel;
+    private javax.swing.JLabel titleTxt;
+    // End of variables declaration//GEN-END:variables
 }

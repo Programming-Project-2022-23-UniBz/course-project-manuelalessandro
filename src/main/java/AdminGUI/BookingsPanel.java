@@ -192,9 +192,6 @@ public class BookingsPanel extends javax.swing.JPanel {
                 bookingTable.setRowHeight(25);
                 bookingTable.setShowGrid(true);
                 jScrollPane1.setViewportView(bookingTable);
-                if (bookingTable.getColumnModel().getColumnCount() > 0) {
-                        bookingTable.getColumnModel().getColumn(5).setHeaderValue("Cost per day");
-                }
 
                 customerDateOfBirth.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
                 customerDateOfBirth.setForeground(new java.awt.Color(0, 0, 255));
