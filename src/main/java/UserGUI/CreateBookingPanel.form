@@ -63,9 +63,10 @@
                                       <Component id="roomTypeLabel" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="totalCostLabel1" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="totalStayLabel" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="errorLabel" alignment="0" min="-2" pref="348" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="186" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -92,12 +93,14 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jDateOfCheckOutChooser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="totalCostLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="totalStayLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="totalCostLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="applyButton" min="-2" pref="23" max="-2" attributes="0"/>
-                  <EmptySpace pref="8" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="errorLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -187,7 +190,7 @@
         </Component>
         <Component class="DesignObjects.RoomTypeComboBox" name="roomTypeComboBox">
         </Component>
-        <Component class="javax.swing.JLabel" name="totalCostLabel1">
+        <Component class="javax.swing.JLabel" name="totalStayLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Yu Gothic UI" size="12" style="1"/>
@@ -196,6 +199,17 @@
               <Color blue="ff" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Total stay: 0 days"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="errorLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Yu Gothic UI" size="12" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Error Message"/>
           </Properties>
         </Component>
       </SubComponents>

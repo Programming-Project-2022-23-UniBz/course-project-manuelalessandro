@@ -4,58 +4,74 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import Objects.Booking;
-import Objects.Room;
 import Objects.RoomControl;
 import Objects.Room.RoomType;
 
 public class CreateBookingPanel extends javax.swing.JPanel {
 
-    public CreateBookingPanel() {
-        initComponents();
+        public CreateBookingPanel() {
+                initComponents();
 
-        jDateOfCheckInChooser.getDateEditor().addPropertyChangeListener(
-                new PropertyChangeListener() {
-                    @Override
-                    public void propertyChange(PropertyChangeEvent e) {
-                        refreshInfos();
-                    }
-                });
+                errorLabel.setText("");
 
-        jDateOfCheckOutChooser.getDateEditor().addPropertyChangeListener(
-                new PropertyChangeListener() {
-                    @Override
-                    public void propertyChange(PropertyChangeEvent e) {
-                        refreshInfos();
-                    }
-                });
+                jDateOfCheckInChooser.getDateEditor().addPropertyChangeListener(
+                                new PropertyChangeListener() {
+                                        @Override
+                                        public void propertyChange(PropertyChangeEvent e) {
+                                                refreshInfos();
+                                        }
+                                });
 
-    }
+                jDateOfCheckOutChooser.getDateEditor().addPropertyChangeListener(
+                                new PropertyChangeListener() {
+                                        @Override
+                                        public void propertyChange(PropertyChangeEvent e) {
+                                                refreshInfos();
+                                        }
+                                });
 
-    public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
-        appControlButtons.setAppControl(frame, appControlButtons.getX() + xBorder, appControlButtons.getY());
-    }
+        }
 
-    private double getSelectedRoomPrice() {
-        RoomType type = (RoomType) roomTypeComboBox.getSelectedItem().get(0);
-        int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
-        int id = RoomControl.getFreeRoomId(type, capacity);
-        return RoomControl.getRoom(id).getPrice();
-    }
+        public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
+                appControlButtons.setAppControl(frame, appControlButtons.getX() + xBorder, appControlButtons.getY());
+        }
 
-    private void refreshInfos() {
-        if (jDateOfCheckInChooser.getDate() == null || jDateOfCheckOutChooser.getDate() == null)
-            return;
-        int stay = Booking.calculateStay(jDateOfCheckInChooser.getDate(),
-                jDateOfCheckOutChooser.getDate());
-        double totalCost = Booking.calculateTotalCost(getSelectedRoomPrice(), stay);
+        // Checks which room is selected and returns the price for one day
+        private double getSelectedRoomPrice() throws Exception {
+                RoomType type = (RoomType) roomTypeComboBox.getSelectedItem().get(0);
+                int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
+                int id = RoomControl.getFreeRoomId(type, capacity);
+                return RoomControl.getRoom(id).getPrice();
 
-    }
+        }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
+        // Refreshes the total stay and total cost on the panel once some info changes
+        private void refreshInfos() {
+                if (jDateOfCheckInChooser.getDate() == null || jDateOfCheckOutChooser.getDate() == null)
+                        return;
+                int stay = Booking.calculateStay(jDateOfCheckInChooser.getDate(),
+                                jDateOfCheckOutChooser.getDate());
+                double totalCost;
+                try {
+                        totalCost = Booking.calculateTotalCost(getSelectedRoomPrice(), stay);
+                        totalStayLabel.setText("Total stay:" + stay + " days");
+                        totalCostLabel.setText("Total cost:" + totalCost + "€");
+                } catch (Exception e) {
+                        errorLabel.setText(e.getMessage());
+                        totalStayLabel.setText("Total stay: / days");
+                        totalCostLabel.setText("Total cost: 0€");
+                }
+        }
+
+        @SuppressWarnings("unchecked")
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -70,7 +86,8 @@ public class CreateBookingPanel extends javax.swing.JPanel {
         jDateOfCheckOutChooser = new com.toedter.calendar.JDateChooser();
         appControlButtons = new Main.AppControlButtons();
         roomTypeComboBox = new DesignObjects.RoomTypeComboBox();
-        totalCostLabel1 = new javax.swing.JLabel();
+        totalStayLabel = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
 
         bookingPanel.setBackground(new java.awt.Color(255, 255, 255));
         bookingPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
@@ -107,9 +124,13 @@ public class CreateBookingPanel extends javax.swing.JPanel {
         checkOutLabel1.setForeground(new java.awt.Color(0, 0, 255));
         checkOutLabel1.setText("Date of Check-Out");
 
-        totalCostLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        totalCostLabel1.setForeground(new java.awt.Color(0, 0, 255));
-        totalCostLabel1.setText("Total stay: 0 days");
+        totalStayLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        totalStayLabel.setForeground(new java.awt.Color(0, 0, 255));
+        totalStayLabel.setText("Total stay: 0 days");
+
+        errorLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        errorLabel.setForeground(new java.awt.Color(255, 51, 51));
+        errorLabel.setText("Error Message");
 
         javax.swing.GroupLayout bookingPanelLayout = new javax.swing.GroupLayout(bookingPanel);
         bookingPanel.setLayout(bookingPanelLayout);
@@ -135,8 +156,9 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                         .addComponent(checkInLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jDateOfCheckInChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
                                     .addComponent(roomTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(totalCostLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 186, Short.MAX_VALUE)))
+                            .addComponent(totalStayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 33, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         bookingPanelLayout.setVerticalGroup(
@@ -159,12 +181,14 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jDateOfCheckOutChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(totalCostLabel1)
+                .addComponent(totalStayLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totalCostLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(applyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(errorLabel)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -179,13 +203,13 @@ public class CreateBookingPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_applyButtonActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_applyButtonActionPerformed
+        private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_applyButtonActionPerformed
+                // TODO add your handling code here:
+        }// GEN-LAST:event_applyButtonActionPerformed
 
-    private void roomTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_roomTypeComboBoxActionPerformed
-        refreshInfos();
-    }// GEN-LAST:event_roomTypeComboBoxActionPerformed
+        private void roomTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_roomTypeComboBoxActionPerformed
+                refreshInfos();
+        }// GEN-LAST:event_roomTypeComboBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Main.AppControlButtons appControlButtons;
@@ -193,13 +217,14 @@ public class CreateBookingPanel extends javax.swing.JPanel {
     private javax.swing.JPanel bookingPanel;
     private javax.swing.JLabel checkInLabel1;
     private javax.swing.JLabel checkOutLabel1;
+    private javax.swing.JLabel errorLabel;
     private com.toedter.calendar.JDateChooser jDateOfCheckInChooser;
     private com.toedter.calendar.JDateChooser jDateOfCheckOutChooser;
     private DesignObjects.RoomTypeComboBox roomTypeComboBox;
     private javax.swing.JLabel roomTypeLabel;
     private javax.swing.JLabel titleTxt;
     private javax.swing.JLabel totalCostLabel;
-    private javax.swing.JLabel totalCostLabel1;
+    private javax.swing.JLabel totalStayLabel;
     // End of variables declaration//GEN-END:variables
 
 }

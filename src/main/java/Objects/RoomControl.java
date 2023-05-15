@@ -60,15 +60,19 @@ public class RoomControl {
 
     // returns first free room that matches parameters
     // returns -1 if no room matches
-    public static int getFreeRoomId(RoomType roomType, int capacity) {
+    public static int getFreeRoomId(RoomType roomType, int capacity) throws Exception {
         int result = -1;
         for (int i = 0; i < rooms.length; i++)
             if (rooms[i] != null)
-                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
+                if (rooms[i].getType() == roomType && rooms[i].getCapacity() == capacity
                         && rooms[i].isOccupied() == false) {
                     result = i;
                     break;
                 }
+
+        // throwing exception if no room matches
+        if (result == -1)
+            throw new Exception("No room avaiable for the selected dates."); // message appears in the CreateRoomPanel
         return result;
     }
 
