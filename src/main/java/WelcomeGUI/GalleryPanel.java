@@ -120,7 +120,7 @@ public class GalleryPanel extends javax.swing.JPanel {
         radioImage8 = new javax.swing.JRadioButton();
         radioImage9 = new javax.swing.JRadioButton();
         radioImage10 = new javax.swing.JRadioButton();
-        appControlButtons1 = new Main.AppControlButtons();
+        appControlButtons1 = new DesignObjects.AppControlButtons();
 
         setMaximumSize(new java.awt.Dimension(720, 548));
         setMinimumSize(new java.awt.Dimension(720, 548));
@@ -402,7 +402,7 @@ public class GalleryPanel extends javax.swing.JPanel {
     }// GEN-LAST:event_radioImage10ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Main.AppControlButtons appControlButtons1;
+    private DesignObjects.AppControlButtons appControlButtons1;
     private javax.swing.JButton btnLeft;
     private javax.swing.JButton btnRight;
     private javax.swing.JPanel galleryPanel;

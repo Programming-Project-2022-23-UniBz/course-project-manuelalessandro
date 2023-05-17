@@ -114,35 +114,35 @@ public class ServicesPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         servicesPanel = new javax.swing.JPanel();
-        appControlButtons1 = new Main.AppControlButtons();
+        appControlButtons1 = new DesignObjects.AppControlButtons();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        panelGlowingGradient3 = new pggb.PanelGlowingGradient();
+        panelGlowingGradient3 = new DesignObjects.PanelGlowingGradient();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        panelGlowingGradient1 = new pggb.PanelGlowingGradient();
+        panelGlowingGradient1 = new DesignObjects.PanelGlowingGradient();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        panelGlowingGradient2 = new pggb.PanelGlowingGradient();
+        panelGlowingGradient2 = new DesignObjects.PanelGlowingGradient();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        panelGlowingGradient5 = new pggb.PanelGlowingGradient();
+        panelGlowingGradient5 = new DesignObjects.PanelGlowingGradient();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        panelGlowingGradient6 = new pggb.PanelGlowingGradient();
+        panelGlowingGradient6 = new DesignObjects.PanelGlowingGradient();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        panelGlowingGradient4 = new pggb.PanelGlowingGradient();
+        panelGlowingGradient4 = new DesignObjects.PanelGlowingGradient();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -387,7 +387,7 @@ public class ServicesPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Main.AppControlButtons appControlButtons1;
+    private DesignObjects.AppControlButtons appControlButtons1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -415,12 +415,12 @@ public class ServicesPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private pggb.PanelGlowingGradient panelGlowingGradient1;
-    private pggb.PanelGlowingGradient panelGlowingGradient2;
-    private pggb.PanelGlowingGradient panelGlowingGradient3;
-    private pggb.PanelGlowingGradient panelGlowingGradient4;
-    private pggb.PanelGlowingGradient panelGlowingGradient5;
-    private pggb.PanelGlowingGradient panelGlowingGradient6;
+    private DesignObjects.PanelGlowingGradient panelGlowingGradient1;
+    private DesignObjects.PanelGlowingGradient panelGlowingGradient2;
+    private DesignObjects.PanelGlowingGradient panelGlowingGradient3;
+    private DesignObjects.PanelGlowingGradient panelGlowingGradient4;
+    private DesignObjects.PanelGlowingGradient panelGlowingGradient5;
+    private DesignObjects.PanelGlowingGradient panelGlowingGradient6;
     private javax.swing.JPanel servicesPanel;
     // End of variables declaration//GEN-END:variables
 }

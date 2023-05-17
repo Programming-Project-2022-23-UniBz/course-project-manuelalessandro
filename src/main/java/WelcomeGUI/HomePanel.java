@@ -42,7 +42,7 @@ public class HomePanel extends javax.swing.JPanel {
                 homeImageLabel = new javax.swing.JLabel();
                 titleLabel2 = new javax.swing.JLabel();
                 titleLabel1 = new javax.swing.JLabel();
-                appControlButtons1 = new Main.AppControlButtons();
+                appControlButtons1 = new DesignObjects.AppControlButtons();
 
                 setMaximumSize(new java.awt.Dimension(720, 548));
                 setMinimumSize(new java.awt.Dimension(720, 548));
@@ -142,7 +142,7 @@ public class HomePanel extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private Main.AppControlButtons appControlButtons1;
+        private DesignObjects.AppControlButtons appControlButtons1;
         private javax.swing.JLabel homeImageLabel;
         private javax.swing.JPanel homePanel;
         private javax.swing.JLabel titleLabel1;

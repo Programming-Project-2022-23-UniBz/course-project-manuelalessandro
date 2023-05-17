@@ -1,7 +1,11 @@
 package Objects;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import org.joda.time.DateTime;
 
 public class Booking {
 
@@ -12,12 +16,13 @@ public class Booking {
     private User user;
     private double totalCost;
 
-    public Booking(Date checkInDate, Date checkOutDate, Room room, User user) {
-        this.checkInDate = checkInDate;
-        this.checkOutDate = checkOutDate;
+    public Booking(DateTime checkInDate, DateTime checkOutDate, Room room, User user) {
+        this.checkInDate = checkInDate.toDate();
+        this.checkOutDate = checkOutDate.toDate();
         this.room = room;
         this.user = user;
-        this.totalCost = calculateTotalCost();
+        this.totalCost = calculateTotalCost(room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
+        setBookingId();
     }
 
     // getters and setters
@@ -25,24 +30,24 @@ public class Booking {
         return bookingId;
     }
 
-    public void setBookingId(String bookingId) {
-        this.bookingId = bookingId;
+    public void setBookingId() {
+        this.bookingId = bookingIdGenerator();
     }
 
-    public Date getCheckInDate() {
-        return checkInDate;
+    public DateTime getCheckInDate() {
+        return new DateTime(checkInDate);
     }
 
-    public void setCheckInDate(Date checkInDate) {
-        this.checkInDate = checkInDate;
+    public void setCheckInDate(DateTime checkInDate) {
+        this.checkInDate = checkInDate.toDate();
     }
 
-    public Date getCheckOutDate() {
-        return checkOutDate;
+    public DateTime getCheckOutDate() {
+        return new DateTime(checkOutDate);
     }
 
-    public void setCheckOutDate(Date checkOutDate) {
-        this.checkOutDate = checkOutDate;
+    public void setCheckOutDate(DateTime checkOutDate) {
+        this.checkOutDate = checkOutDate.toDate();
     }
 
     public Room getRoom() {
@@ -71,15 +76,31 @@ public class Booking {
 
     // --------------------------------------------------------
 
-    public int calculateStay() {
-        long diff = checkOutDate.getTime() - checkInDate.getTime();
-        return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+    public String bookingIdGenerator() {
+        String prefix = "ADH_";
 
-        // TODO test
+        // Get today's date in the format "yyyyMMdd"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        String currentDate = dateFormat.format(new Date());
+
+        // Generate 4 random digits
+        int randomDigits = 1000 + new Random().nextInt(9000);
+
+        // Combine the components to form the booking ID
+        String generatedbookingId = prefix + currentDate + randomDigits;
+
+        return generatedbookingId;
     }
 
-    public double calculateTotalCost() {
-        return room.getPrice() * calculateStay();
+    public static int calculateStay(Date checkIn, Date checkOut) {
+        DateTime checkInDate = new DateTime(checkIn);
+        DateTime checkOutDate = new DateTime(checkOut);
+        long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();
+        return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+    }
+
+    public static double calculateTotalCost(double price, int stay) {
+        return price * stay;
     }
 
 }

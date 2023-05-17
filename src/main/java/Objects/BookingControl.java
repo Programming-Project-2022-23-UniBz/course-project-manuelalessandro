@@ -9,6 +9,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.*;
 
+import org.joda.time.DateTime;
+
+import org.joda.time.DateTime;
+
 public class BookingControl {
     private static Booking[] bookings;
     private static Gson gson = new Gson();
@@ -47,6 +51,17 @@ public class BookingControl {
         bookings = newArr;
     }
 
+    public static Booking findBooking(User user) {
+        Booking result = null;
+        if (bookings != null)
+            for (int i = 0; i < bookings.length; i++)
+                if (bookings[i].getUser().equals(user)) {
+                    result = bookings[i];
+                    break;
+                }
+        return result;
+    }
+
     public static Booking getBooking(int id) throws IllegalArgumentException {
         Booking booking = null;
         if (bookings.length > id)
@@ -57,29 +72,61 @@ public class BookingControl {
             return booking;
     }
 
+    public static Booking[] getBookings() {
+        return bookings;
+    }
+
+    // @return ArrayList<Booking> that contains all the bookings that have that room
+    public static ArrayList<Booking> getAllBookings(Room room) {
+        ArrayList<Booking> result = new ArrayList<Booking>();
+        for (int i = 0; i < bookings.length; i++)
+            if (bookings[i] != null)
+                if (bookings[i].getRoom().equals(room))
+                    result.add(bookings[i]);
+        return result;
+    }
+
+    public static void createBooking(User user, Room room, Date checkIn, Date checkOut) {
+        Booking booking = new Booking(new DateTime(checkIn), new DateTime(checkOut), room, user);
+        addBooking(booking);
+    }
+
     public static void addBooking(Booking booking) {
+        if (bookings == null) {
+            bookings = new Booking[0];
+        }
         incrementBookings();
         bookings[bookings.length - 1] = booking;
     }
 
     // Used to initialize bookings.json for test purposes
     // if used, json will be reset and old data lost
-    private static void initBookingsForTest() {
-        bookings = new Booking[2];
+    private static void initBookingsForTest() throws Exception {
+        try {
+            bookings = new Booking[2];
 
-        // Admin Room
-        Room room1 = RoomControl.getRoom(RoomControl.getFreeRoomId(RoomType.DELUXE, 2));
-        User user1 = UserControl.getUser(0); // adminUser
-        Booking booking1 = new Booking(new GregorianCalendar(2023, 2, 11).getTime(),
-                new GregorianCalendar(2023, 2, 16).getTime(), room1, user1);
-        bookings[0] = booking1;
+            // Admin Room
+            DateTime checkInAdmin = new DateTime(2023, 2, 11, 0, 0);
+            DateTime checkOutAdmin = new DateTime(2023, 2, 16, 0, 0);
+            int id1 = RoomControl.getFreeRoomId(RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
+            Room room1 = RoomControl.getRoom(id1);
+            User user1 = UserControl.getUser(0); // adminUser
+            Booking booking1 = new Booking(checkInAdmin, checkOutAdmin, room1, user1);
+            bookings[0] = booking1;
 
-        // Guest Room
-        Room room2 = RoomControl.getRoom(RoomControl.getFreeRoomId(RoomType.DELUXE, 1));
-        User user2 = UserControl.getUser(1); // guestUser
-        Booking booking2 = new Booking(new GregorianCalendar(2023, 5, 18).getTime(),
-                new GregorianCalendar(2023, 5, 26).getTime(), room2, user2);
-        bookings[1] = booking2;
+            // Guest Room
+            DateTime checkInGuest = new DateTime(2023, 5, 18, 0, 0);
+            DateTime checkOutGuest = new DateTime(2023, 5, 26, 0, 0);
+            int id2 = RoomControl.getFreeRoomId(RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
+            Room room2 = RoomControl.getRoom(id2);
+            User user2 = UserControl.getUser(1); // guestUser
+            Booking booking2 = new Booking(checkInGuest, checkOutGuest, room2, user2);
+            bookings[1] = booking2;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("Init bookings failes because room not found.");
+        }
     }
 
     // Used to initialize bookings.json
@@ -98,8 +145,12 @@ public class BookingControl {
     }
 
     public static void main(String[] args) {
+        RoomControl.pullData();
+        UserControl.pullData();
         pullData();
 
         pushData();
+        RoomControl.pushData();
+        UserControl.pushData();
     }
 }

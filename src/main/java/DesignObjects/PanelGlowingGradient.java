@@ -1,4 +1,4 @@
-package pggb;
+package DesignObjects;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -10,7 +10,6 @@ import java.awt.geom.Area;
 import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import shadow.ShadowRenderer;
 import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
 

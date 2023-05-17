@@ -38,8 +38,23 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
+<<<<<<< HEAD
         this.password = Encrypt(password,110);
         this.role = role;
+=======
+        this.password = Encrypt(password, 110);
+    }
+    
+    //Creating the user from from AdminFrame
+    public User(String name, String surname, Date dateOfBirth, GenderType gender, String email)
+            throws IllegalArgumentException {
+        this.name = name;
+        this.surname = surname;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.email = email;
+        this.password = null;
+>>>>>>> a526cab955808c43dcd7efc1beaa3b2aa0e0d0af
     }
     
     //username is formed with name.surname+count+1
@@ -110,6 +125,16 @@ public class User {
 
     public void setPassword(String password, int key) {
         this.password = Encrypt(password, key);
+    }
+    
+    public String getFullName(){
+        return surname + " " + name;
+    }
+
+    public boolean equals(User user) {
+        if (this.id == user.getId())
+            return true;
+        return false;
     }
     // ----------------------------------------------------------------
 

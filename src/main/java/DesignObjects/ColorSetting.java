@@ -1,4 +1,4 @@
-package Main;
+package DesignObjects;
 
 import java.awt.Color;
 

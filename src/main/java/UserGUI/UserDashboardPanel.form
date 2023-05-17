@@ -102,9 +102,9 @@
             <Property name="text" type="java.lang.String" value="Dashboard"/>
           </Properties>
         </Component>
-        <Component class="Main.AppControlButtons" name="appControlButtons">
+        <Component class="DesignObjects.AppControlButtons" name="appControlButtons">
         </Component>
-        <Container class="pggb.PanelGlowingGradient" name="panelGlowingGradient4">
+        <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient4">
           <Properties>
             <Property name="backgroundLight" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -131,7 +131,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="pggb.PanelGlowingGradient" name="panelGlowingGradient5">
+        <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient5">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="backgroundLight" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

@@ -1,4 +1,4 @@
-package shadow;
+package DesignObjects;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;

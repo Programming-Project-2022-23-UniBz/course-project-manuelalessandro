@@ -100,6 +100,7 @@ public class LoginFrame extends JFrame {
             return;
         }
         // checking User in UserData.json
+<<<<<<< HEAD
         int index = findIndexOfJson(U, P, users);
         String userRole = "";
         JsonObject user = users.get(index).getAsJsonObject();
@@ -124,11 +125,40 @@ public class LoginFrame extends JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Error: invalid username or password");
             }     
+=======
+        System.out.println("index is: " + findIndexOfJson(U, P, users));
+        int index = findIndexOfJson(U, P, users);
+        String userRole = "";
+        JSONObject user = (JSONObject) users.get(index);
+        String storedUsername = (String) user.get("username");
+        String storedPassword = (String) user.get("password");
+        String storedUserRole = (String) user.get("role");
+        if (U.equals(storedUsername) && P.equals(storedPassword)) {
+            userRole = storedUserRole;
+            JOptionPane.showMessageDialog(null, "login successful as " + userRole);
+            if (userRole.equals("admin")) {
+                // boh tipo adminframe
+                AdminFrame frame = new AdminFrame();
+                frame.setVisible(true);
+                System.out.println("login as admin");
+            } else if (userRole.equals("user")) {
+                // costumer frame
+                UserFrame frame = new UserFrame(gson.fromJson(user.toJSONString(), User.class));
+                frame.setVisible(true);
+                System.out.println("loggin as user");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: invalid username or password");
+
+        }
+
+>>>>>>> a526cab955808c43dcd7efc1beaa3b2aa0e0d0af
     }
 
     public void registerOnAction(ActionEvent e) {
         RegisterFrame r = new RegisterFrame();
     }
+<<<<<<< HEAD
     
     
     //json file is an array, i have to find an index for a given username and password
@@ -139,12 +169,24 @@ public class LoginFrame extends JFrame {
             String storedUsername = user.get("username").getAsString();
             String storedPassword = user.get("password").getAsString();
             String storedUserRole = user.get("role").getAsString();
+=======
+
+    // json file is an array, i have to find an index for a given username and
+    // password
+    public int findIndexOfJson(String U, String P, JSONArray users) {
+        int index = 0;
+        for (Object userObj : users) {
+            JSONObject user = (JSONObject) userObj;
+            String storedUsername = (String) user.get("username");
+            String storedPassword = (String) user.get("password");
+            String storedUserRole = (String) user.get("role");
+>>>>>>> a526cab955808c43dcd7efc1beaa3b2aa0e0d0af
             if (U.equals(storedUsername) && P.equals(storedPassword)) {
                 break;
             }
             index++;
         }
-        
+
         return index;
     }
 

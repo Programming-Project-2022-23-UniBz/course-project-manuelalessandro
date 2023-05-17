@@ -1,4 +1,4 @@
-package shadow;
+package DesignObjects;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

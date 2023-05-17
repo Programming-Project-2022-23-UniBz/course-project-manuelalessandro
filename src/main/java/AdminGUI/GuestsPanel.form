@@ -346,7 +346,7 @@
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateOfBirthChooser">
         </Component>
-        <Component class="Main.AppControlButtons" name="appControlButtons1">
+        <Component class="DesignObjects.AppControlButtons" name="appControlButtons1">
         </Component>
         <Component class="javax.swing.JButton" name="addGuestBtn">
           <Properties>

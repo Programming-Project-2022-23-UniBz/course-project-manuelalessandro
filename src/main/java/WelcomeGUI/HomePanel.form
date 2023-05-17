@@ -127,7 +127,7 @@
             <Property name="text" type="java.lang.String" value="Welcome to"/>
           </Properties>
         </Component>
-        <Component class="Main.AppControlButtons" name="appControlButtons1">
+        <Component class="DesignObjects.AppControlButtons" name="appControlButtons1">
         </Component>
       </SubComponents>
     </Container>
