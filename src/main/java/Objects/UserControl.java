@@ -95,7 +95,7 @@ public class UserControl {
     // if used, json will be reset and old data lost
     private static void initUsers() {
         users = new User[2];
-        User admin = new User("admin", null, null, null, null, "admin", "password");
+        User admin = new User("admin", null, null, null, null, "password", "admin");
         admin.setId(0);
         users[0] = admin;
         User guestTest = null;

@@ -92,7 +92,7 @@ public class LoginFrame extends JFrame {
         JsonArray users;
 
         try {
-            FileReader file = new FileReader("src/main/java/Objects/json/UserData.json");
+            FileReader file = new FileReader("src/main/java/Objects/json/users.json");
             JsonElement jsonElement = JsonParser.parseReader(file);
             users = jsonElement.getAsJsonArray();
         } catch (Exception ex) {
@@ -129,6 +129,7 @@ public class LoginFrame extends JFrame {
 
     public void registerOnAction(ActionEvent e) {
         RegisterFrame r = new RegisterFrame();
+        this.setVisible(false);
     }
 
     

@@ -1,1 +1,7 @@
-[{"id":1,"name":"admin","email":"admin","password":"password"},{"id":1,"name":"GuestName","surname":"GuestSurname","gender":"OTHER","email":"guest@email.com","password":"guest"},{"id":2,"name":"user","surname":"user","email":"user","password":"password"}]
+[
+  {
+    "id": 0,
+    "name": "admin",
+    "role": "admin"
+  }
+]

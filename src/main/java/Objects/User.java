@@ -1,15 +1,37 @@
 package Objects;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.*;
+import com.google.gson.annotations.*;
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
+import com.google.gson.stream.JsonToken;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import java.util.ArrayList;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.List;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+
 
 //=======
 //>>>>>>> c5099d07ad4c6471a1724330b683cc5fe2d7e131
@@ -28,8 +50,10 @@ public class User {
     private Date dateOfBirth;
     private GenderType gender;
     private String email;
-    private String password;
+    private String encryptedPassword;
     private String role;
+    private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(";
+    private String username;
 
     public User(String name, String surname, Date dateOfBirth, GenderType gender, String email, String password, String role)
             throws IllegalArgumentException {
@@ -38,7 +62,18 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
-        this.password = Encrypt(password, 110);
+        this.encryptedPassword =encrypt(password);
+        
+        //ID is related to the length of the array
+        //so, to the number of users, admins have all a mod 10 id so these are skipped
+        if(getJsonCount()%10==0){
+            this.id = getJsonCount()+1;
+        }else{
+            this.id = getJsonCount();
+        }
+        
+        //useful for logins
+        this.username=getUsername();
     }
     
     //Creating the user from from AdminFrame
@@ -49,12 +84,12 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
-        this.password = null;
+        this.encryptedPassword = null;
     }
     
     //username is formed with name.surname+count+1
-    public String getUsername(){
-        return this.name+"."+this.surname;
+    public final String getUsername(){
+        return this.name+"."+this.surname+this.id;
     }
     
     // getters and setters
@@ -115,11 +150,11 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return decrypt(this.encryptedPassword);
     }
 
     public void setPassword(String password, int key) {
-        this.password = Encrypt(password, key);
+        this.encryptedPassword = encrypt(password);
     }
     
     public String getFullName(){
@@ -131,136 +166,82 @@ public class User {
             return true;
         return false;
     }
+    
+    public static int getJsonCount(){
+        int arrayLength=0;
+        try {
+            // Read the JSON file
+            FileReader fileReader = new FileReader("src/main/java/Objects/json/users.json");
+
+            // Parse the JSON contents
+            JsonElement jsonElement = JsonParser.parseReader(fileReader);
+            JsonArray jsonArray = jsonElement.getAsJsonArray();
+
+            // Check the length of the array
+            arrayLength = jsonArray.size();
+            System.out.println("Array length: " + arrayLength);
+
+            // Close the file reader
+            fileReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return arrayLength;
+    }
     // ----------------------------------------------------------------
 
-    // the ids are structured this way, every id with a 1 as first number is an
-    // admin, the ones with the 2 are costumers
-    // implementing this into this method: Work in Progress
+    //Admins will have ids, 0, 10, 20, 30, 40 and so on, 
+    //technically there should be just one admin, but just in case
     public boolean isAdmin() {
-        if (id == 1)
-            return true;
-        else
-            return false;
+        return this.id%10 == 0;
     }
 
-    // password encrypting using matrices and a public key
-    // temporary, because still to simple to break
-    public static String Encrypt(String text, int publicKey) {
-
-        // create Array with the length of the given String
-        // char pwd[][] = new char[text.length()][2];
-        // char encrypted [] = new char[text.length()];
-        // int key[][] = new int[2][2];
-        int pwd1[] = new int[text.length()];
-        int pwd2[] = new int[text.length()];
-        int pwd[] = new int[text.length() * 2];
-        // encode with a matrix, first number pwd[i][] is the ascii number of the letter
-        // second number pwd[j] is the number assigned to the ascii code of key/2 places
-        // forward
-        // fill first row
-
-        for (int i = 0; i < text.length(); i++) {
-            char ch = text.charAt(i);
-            int ascii = (int) ch;
-            pwd1[i] = (char) ascii;
-            ascii = (int) ch + publicKey + i;
-            pwd2[i] = (char) ascii;
-        }
-
-        // change places in array of pwd1 and pwd2
-        for (int i1 = 0; i1 < pwd1.length; i1++) {
-            pwd1[i1] = pwd1[pwd1.length - 1 - i1];
-            pwd2[i1] = pwd2[pwd2.length - 1 - i1];
-        }
-
-        // unite the two arrays into one
-        // first numbers are the pwd2 array
-        for (int i2 = 0; i2 < pwd2.length; i2++) {
-            pwd[i2] = pwd2[i2];
-        }
-
-        // second numbers are pwd1 array
-        for (int i3 = 0; i3 < pwd1.length; i3++) {
-            pwd[pwd2.length + i3] = pwd1[i3];
-        }
-
-        String str = "";
-        for (int i = 0; i < pwd.length - 1; i++) {
-            str += pwd[i];
-        }
-        return str;
-    }
-
-    public static String Decrypt(String encryptedText, int publicKey) {
-        // reverse engineering del metodo di sopra
-        // WORK IN PROGRESS //
-        return "";
-    }
-
-    // method to convert user info into json string
-    // uses Gson object to serialize the object to a JSon string
-    public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
-    }
-
-    // for the UserData.json that stores only credentials
-    // role is the role, during registering role can only be admin,
-    // "admin" is given only from the admin panel, only admins can create admins
-    public String toJsonCred(String role) {
-        JSONArray users = new JSONArray();
-        JSONParser jp = new JSONParser();
+     public static String encrypt(String plainText) {
         try {
-            FileWriter fileWriter = new FileWriter("src/main/java/Objects/json/users.json");
-            FileReader file = new FileReader("src/main/java/Objects/json/users.json");
-            users = (JSONArray) jp.parse(file);
-        } catch (Exception ex) {
-            System.out.println("" + ex);
+            Cipher cipher = Cipher.getInstance("AES");
+            Key key = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            byte[] encryptedBytes = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
+            return Base64.getEncoder().encodeToString(encryptedBytes);
+        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
         }
-
-        String storedUsername = "";
-        String storedPassword = "";
-        for (Object userObj : users) {
-            JSONObject user = (JSONObject) userObj;
-            storedUsername = (String) user.get("username");
-            storedPassword = (String) user.get("password");
-
-        }
-
-        return "{\"username\":\"" + storedUsername + "\",\"password\":\"" + storedPassword + "\",\"role\":\"" + role
-                + "\"}";
+        return null;
     }
 
-    // method to add the user to the json file
-    // should read the current file, copy all into a string, add the new user and
-    // rewrite the whole file
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!! NOT TESTED YET !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void addToJson() {
+    public String decrypt(String encryptedText) {
         try {
-            // writing in the users.json file
-            FileWriter fileWriter = new FileWriter("src/main/java/Objects/json/users.json");
-            FileReader file = new FileReader("src/main/java/Objects/json/users.json");
-            String fileToString = file.toString();
-            fileToString += toJson();
-            fileWriter.write(fileToString);
+            Cipher cipher = Cipher.getInstance("AES");
+            Key key = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            byte[] decodedBytes = Base64.getDecoder().decode(encryptedText);
+            byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+            return new String(decryptedBytes, StandardCharsets.UTF_8);
+        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
+        }
+        return null;
+    }
+    
+    public void addToJson(){
+        try {
+            // Read the existing JSON file
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/users.json"))
+                    .getAsJsonArray();
 
-            // writing credentials in the UserData.json
-            FileWriter fileWriterCred = new FileWriter("src/main/java/Objects/json/UserData.json");
-            FileReader fileCred = new FileReader("src/main/java/Objects/json/UserData.json");
-            String fileCredToString = fileCred.toString();
-            String role = "";
-            if (isAdmin() == true) { // checking user role
-                role = "admin";
-            } else {
-                role = "costumer";
+            // Create a Gson instance
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            // Convert the User object to JSON and add it to the array
+            jsonArray.add(gson.toJsonTree(this));
+
+            // Write the updated array back to the JSON file
+            try (FileWriter writer = new FileWriter("src/main/java/Objects/json/users.json")) {
+                gson.toJson(jsonArray, writer);
             }
-            fileCredToString += toJsonCred(role); // adding to the
-            fileWriterCred.write(fileCredToString);
-            // System.out.println(fileToString); //uncomment for debugging
-        } catch (Exception ex) {
-            System.out.println("" + ex);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JsonIOException e) {
+            e.printStackTrace();
         }
     }
 
