@@ -19,19 +19,21 @@ import java.io.FileWriter;
 import UserGUI.UserFrame;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-
+import com.google.gson.JsonSyntaxException;
+import java.io.FileNotFoundException;
 
 public class LoginFrame extends JFrame {
     // private variables, don't change
-    private JButton login, register;
-    private JTextField username;
-    private JPasswordField password;
-    private JLabel passwordLab, usernameLab;
-
-    private Gson gson = new Gson();
+    private final JButton login;
+    private final JButton register;
+    private final JTextField username;
+    private final JPasswordField password;
+    private final JLabel passwordLab;
+    private final JLabel usernameLab;
+    private final Gson gson = new Gson();
 
     public LoginFrame() {
 
@@ -57,20 +59,16 @@ public class LoginFrame extends JFrame {
         login.setBounds(150, 250, 100, 25);
         login.setForeground(Color.WHITE);
         login.setBackground(Color.BLACK);
-        login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginOnAction(evt);
-            }
+        login.addActionListener((java.awt.event.ActionEvent evt) -> {
+            loginOnAction(evt);
         });
 
         register = new JButton("Register");
         register.setBounds(150, 280, 100, 25);
         register.setForeground(Color.WHITE);
         register.setBackground(Color.BLACK);
-        register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerOnAction(evt);
-            }
+        register.addActionListener((java.awt.event.ActionEvent evt) -> {
+            registerOnAction(evt);
         });
 
         // adding every component to the panel
@@ -95,7 +93,7 @@ public class LoginFrame extends JFrame {
             FileReader file = new FileReader("src/main/java/Objects/json/users.json");
             JsonElement jsonElement = JsonParser.parseReader(file);
             users = jsonElement.getAsJsonArray();
-        } catch (Exception ex) {
+        } catch (JsonIOException | JsonSyntaxException | FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "error occurred: " + ex);
             return;
         }
@@ -107,24 +105,24 @@ public class LoginFrame extends JFrame {
         String storedUsername = user.get("username").getAsString();
         String storedPassword = user.get("password").getAsString();
         String storedUserRole = user.get("role").getAsString();
-  
-            if (U.equals(storedUsername) && P.equals(storedPassword)) {
-                userRole = storedUserRole;
-                JOptionPane.showMessageDialog(null, "login successful as " + userRole);
 
-                if (userRole.equals("admin")) {
-                    this.setVisible(false);
-                    AdminFrame frame = new AdminFrame();
-                    frame.setVisible(true);
-                    } else if (userRole.equals("user")) {
-                        this.setVisible(false);
-                        UserFrame frame = new UserFrame(new Gson().fromJson(user, User.class));
-                        frame.setVisible(true);
-                        System.out.println("user");
-                    }
-            } else {
-                JOptionPane.showMessageDialog(null, "Error: invalid username or password");
-            }     
+        if (U.equals(storedUsername) && P.equals(storedPassword)) {
+            userRole = storedUserRole;
+            JOptionPane.showMessageDialog(null, "login successful as " + userRole);
+
+            if (userRole.equals("admin")) {
+                this.setVisible(false);
+                AdminFrame frame = new AdminFrame();
+                frame.setVisible(true);
+            } else if (userRole.equals("user")) {
+                this.setVisible(false);
+                UserFrame frame = new UserFrame(new Gson().fromJson(user, User.class));
+                frame.setVisible(true);
+                System.out.println("user");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: invalid username or password");
+        }
     }
 
     public void registerOnAction(ActionEvent e) {
@@ -132,17 +130,16 @@ public class LoginFrame extends JFrame {
         this.setVisible(false);
     }
 
-    
-    
-    //json file is an array, i have to find an index for a given username and password
-    public int findIndexOfJson(String U, String P, JsonArray users){
+    // json file is an array, i have to find an index for a given username and
+    // password
+    public int findIndexOfJson(String U, String P, JsonArray users) {
         int index = 0;
-        for(Object userObj : users){
+        for (Object userObj : users) {
             JsonObject user = (JsonObject) userObj;
             String storedUsername = user.get("username").getAsString();
             String storedPassword = user.get("password").getAsString();
             String storedUserRole = user.get("role").getAsString();
-            
+
             if (U.equals(storedUsername) && P.equals(storedPassword)) {
                 break;
             }

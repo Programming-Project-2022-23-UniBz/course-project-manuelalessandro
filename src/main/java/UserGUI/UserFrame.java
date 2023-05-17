@@ -25,19 +25,19 @@ public class UserFrame extends javax.swing.JFrame {
         dashLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                buttonCardAction(e);
+                buttonCardAction("dash");
             }
         });
         bookingLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                buttonCardAction(e);
+                buttonCardAction("booking");
             }
         });
         accountLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                buttonCardAction(e);
+                buttonCardAction("account");
             }
         });
 
@@ -56,20 +56,18 @@ public class UserFrame extends javax.swing.JFrame {
         return user;
     }
 
-    private void buttonCardAction(MouseEvent e) {
+    // visibility to package
+    void buttonCardAction(String card) {
         Booking booking = BookingControl.findBooking(user);
-        if (e.getSource() == dashLabel)
-            cardLayout.show(cardPanel, "dashboard");
-        else if (e.getSource() == bookingLabel) {
-            if (booking != null)
-                cardLayout.show(cardPanel, "booking");
-            else
-                cardLayout.show(cardPanel, "create");
-        } else if (e.getSource() == accountLabel)
-            cardLayout.show(cardPanel, "account");
+        if (card.equals("booking") && booking == null) {
+            cardLayout.show(cardPanel, "create");
+            return;
+        }
+        cardLayout.show(cardPanel, card);
     }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -88,7 +86,7 @@ public class UserFrame extends javax.swing.JFrame {
         userDashboardPanel = new UserGUI.UserDashboardPanel();
         userBookingPanel = new UserGUI.UserBookingPanel();
         userAccountPanel = new UserGUI.UserAccountPanel();
-        createBookingPanel = new UserGUI.CreateBookingPanel(user);
+        createBookingPanel = new UserGUI.CreateBookingPanel();
         sideMenu = new javax.swing.JPanel();
         dashLabel = new javax.swing.JLabel();
         bookingLabel = new javax.swing.JLabel();

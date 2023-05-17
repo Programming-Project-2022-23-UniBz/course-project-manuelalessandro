@@ -4,6 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Date;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.joda.time.DateTime;
@@ -17,11 +18,10 @@ import Objects.Room.RoomType;
 
 public class CreateBookingPanel extends javax.swing.JPanel {
         private User user;
+        private UserFrame frame;
 
-        public CreateBookingPanel(User userIn) {
+        public CreateBookingPanel() {
                 initComponents();
-
-                user = userIn;
 
                 errorLabel.setText("");
 
@@ -44,6 +44,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
         }
 
         public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
+                this.frame = (UserFrame) frame;
                 appControlButtons.setAppControl(frame, appControlButtons.getX() + xBorder, appControlButtons.getY());
         }
 
@@ -75,6 +76,33 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                         errorLabel.setText(e.getMessage());
                         totalStayLabel.setText("Total stay: / days");
                         totalCostLabel.setText("Total cost: 0€");
+                }
+        }
+
+        private void confirmBooking() {
+                Date checkIn = checkInBox.getDate();
+                Date checkOut = checkOutBox.getDate();
+                if (checkIn != null && checkOut != null) {
+                        RoomType roomType = (RoomType) roomTypeComboBox.getSelectedItem().get(0);
+                        int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
+
+                        try {
+                                int roomId = RoomControl.getFreeRoomId(roomType, capacity, new DateTime(checkIn),
+                                                new DateTime(checkOut));
+                                Room room = RoomControl.getRoom(roomId);
+
+                                BookingControl.createBooking(user, room, checkIn, checkOut);
+
+                                JOptionPane.showMessageDialog(this,
+                                                "The booking was created successfully!", "",
+                                                JOptionPane.WARNING_MESSAGE);
+                        } catch (Exception e) {
+                                errorLabel.setText("Unfortunately, no room is avaiable for the selected dates.");
+                                return;
+                        }
+
+                        if (frame != null)
+                                frame.buttonCardAction("booking");
                 }
         }
 
@@ -288,28 +316,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
         private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_applyButtonActionPerformed
-                Date checkIn = checkInBox.getDate();
-                Date checkOut = checkOutBox.getDate();
-                if (checkIn != null && checkOut != null) {
-                        RoomType roomType = (RoomType) roomTypeComboBox.getSelectedItem().get(0);
-                        int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
-
-                        try {
-                                int roomId = RoomControl.getFreeRoomId(roomType, capacity, new DateTime(checkIn),
-                                                new DateTime(checkOut));
-                                Room room = RoomControl.getRoom(roomId);
-
-                                BookingControl.createBooking(user, room, checkIn, checkOut);
-
-                                JOptionPane.showMessageDialog(this,
-                                                "The booking was created successfully!", "",
-                                                JOptionPane.WARNING_MESSAGE);
-                        } catch (Exception e) {
-                                errorLabel.setText("Unfortunately, no room is avaiable for the selected dates.");
-                                return;
-                        }
-
-                }
+                confirmBooking();
         }// GEN-LAST:event_applyButtonActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

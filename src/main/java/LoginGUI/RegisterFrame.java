@@ -6,11 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import Objects.User;
 import java.util.Date;
 import javax.swing.*;
 import Objects.User.GenderType;
-
+import Objects.User;
 
 /**
  *

@@ -11,6 +11,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonIOException;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -32,9 +33,6 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-
-//=======
-//>>>>>>> c5099d07ad4c6471a1724330b683cc5fe2d7e131
 public class User {
 
     public static DateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
@@ -55,7 +53,8 @@ public class User {
     private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(";
     private String username;
 
-    public User(String name, String surname, Date dateOfBirth, GenderType gender, String email, String password, String role)
+    public User(String name, String surname, Date dateOfBirth, GenderType gender, String email, String password,
+            String role)
             throws IllegalArgumentException {
         this.name = name;
         this.surname = surname;
@@ -75,8 +74,8 @@ public class User {
         //useful for logins
         this.username=getUsername();
     }
-    
-    //Creating the user from from AdminFrame
+
+    // Creating the user from from AdminFrame
     public User(String name, String surname, Date dateOfBirth, GenderType gender, String email)
             throws IllegalArgumentException {
         this.name = name;
@@ -86,21 +85,23 @@ public class User {
         this.email = email;
         this.encryptedPassword = null;
     }
+
     
     //username is formed with name.surname+count+1
     public final String getUsername(){
         return this.name+"."+this.surname+this.id;
+
     }
-    
+
     // getters and setters
-    public String getRole(){
+    public String getRole() {
         return this.role;
     }
-    
-    public void setRole(String role){
+
+    public void setRole(String role) {
         this.role = role;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -156,35 +157,30 @@ public class User {
     public void setPassword(String password, int key) {
         this.encryptedPassword = encrypt(password);
     }
-    
-    public String getFullName(){
+
+    public String getFullName() {
         return surname + " " + name;
     }
 
     public boolean equals(User user) {
-        if (this.id == user.getId())
-            return true;
-        return false;
+        return this.id == user.getId();
     }
     
     public static int getJsonCount(){
         int arrayLength=0;
         try {
-            // Read the JSON file
-            FileReader fileReader = new FileReader("src/main/java/Objects/json/users.json");
-
             // Parse the JSON contents
-            JsonElement jsonElement = JsonParser.parseReader(fileReader);
-            JsonArray jsonArray = jsonElement.getAsJsonArray();
-
-            // Check the length of the array
-            arrayLength = jsonArray.size();
-            System.out.println("Array length: " + arrayLength);
-
-            // Close the file reader
-            fileReader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+            try ( // Read the JSON file
+                    FileReader fileReader = new FileReader("src/main/java/Objects/json/users.json")) {
+                // Parse the JSON contents
+                JsonElement jsonElement = JsonParser.parseReader(fileReader);
+                JsonArray jsonArray = jsonElement.getAsJsonArray();
+                // Check the length of the array
+                arrayLength = jsonArray.size();
+                System.out.println("Array length: " + arrayLength);
+                // Close the file reader
+            }
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
         }
         return arrayLength;
     }
@@ -238,10 +234,7 @@ public class User {
             try (FileWriter writer = new FileWriter("src/main/java/Objects/json/users.json")) {
                 gson.toJson(jsonArray, writer);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JsonIOException e) {
-            e.printStackTrace();
+        } catch (IOException | JsonIOException e) {
         }
     }
 
