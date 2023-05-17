@@ -12,16 +12,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileReader;
-import org.json.simple.*;
-import org.json.simple.parser.JSONParser;
-
 import com.google.gson.Gson;
-
 import AdminGUI.AdminFrame;
 import Objects.User;
-
 import java.io.FileWriter;
 import UserGUI.UserFrame;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+
 
 public class LoginFrame extends JFrame {
     // private variables, don't change
@@ -88,46 +89,41 @@ public class LoginFrame extends JFrame {
         String U = this.username.getText();
         String P = this.password.getText();
 
-        JSONArray users = new JSONArray();
-        JSONParser jp = new JSONParser();
+        JsonArray users;
 
-        // extracting data from the json file
         try {
             FileReader file = new FileReader("src/main/java/Objects/json/UserData.json");
-            users = (JSONArray) jp.parse(file);
+            JsonElement jsonElement = JsonParser.parseReader(file);
+            users = jsonElement.getAsJsonArray();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "error occured: " + ex);
+            JOptionPane.showMessageDialog(null, "error occurred: " + ex);
             return;
         }
-
         // checking User in UserData.json
-        System.out.println("index is: "+findIndexOfJson(U, P, users));
-        int index = findIndexOfJson(U,P,users);
+        int index = findIndexOfJson(U, P, users);
         String userRole = "";
-            JSONObject user = (JSONObject) users.get(index);
-            String storedUsername = (String) user.get("username");
-            String storedPassword = (String) user.get("password");
-            String storedUserRole = (String) user.get("role");
+        JsonObject user = users.get(index).getAsJsonObject();
+        String storedUsername = user.get("username").getAsString();
+        String storedPassword = user.get("password").getAsString();
+        String storedUserRole = user.get("role").getAsString();
+  
             if (U.equals(storedUsername) && P.equals(storedPassword)) {
                 userRole = storedUserRole;
                 JOptionPane.showMessageDialog(null, "login successful as " + userRole);
+
                 if (userRole.equals("admin")) {
-                // boh tipo adminframe
-                AdminFrame frame = new AdminFrame();
-                frame.setVisible(true);
-                System.out.println("admin");
-            } else if (userRole.equals("user")) {
-                // costumer frame
-                UserFrame frame = new UserFrame(gson.fromJson(user.toJSONString(), User.class));
-                frame.setVisible(true);
-                System.out.println("user");
-                
-            }
+                    this.setVisible(false);
+                    AdminFrame frame = new AdminFrame();
+                    frame.setVisible(true);
+                    } else if (userRole.equals("user")) {
+                        this.setVisible(false);
+                        UserFrame frame = new UserFrame(new Gson().fromJson(user, User.class));
+                        frame.setVisible(true);
+                        System.out.println("user");
+                    }
             } else {
                 JOptionPane.showMessageDialog(null, "Error: invalid username or password");
-                
-            }
-
+            }     
     }
 
     public void registerOnAction(ActionEvent e) {
@@ -136,13 +132,13 @@ public class LoginFrame extends JFrame {
     
     
     //json file is an array, i have to find an index for a given username and password
-    public int findIndexOfJson(String U, String P, JSONArray users){
+    public int findIndexOfJson(String U, String P, JsonArray users){
         int index = 0;
         for(Object userObj : users){
-            JSONObject user = (JSONObject) userObj;
-            String storedUsername = (String) user.get("username");
-            String storedPassword = (String) user.get("password");
-            String storedUserRole = (String) user.get("role");
+            JsonObject user = (JsonObject) userObj;
+            String storedUsername = user.get("username").getAsString();
+            String storedPassword = user.get("password").getAsString();
+            String storedUserRole = user.get("role").getAsString();
             if (U.equals(storedUsername) && P.equals(storedPassword)) {
                 break;
             }

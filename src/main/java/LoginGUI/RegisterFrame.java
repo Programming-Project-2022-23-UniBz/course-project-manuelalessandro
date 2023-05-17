@@ -101,8 +101,6 @@ public class RegisterFrame extends JFrame {
         String surname = this.surname.getText();
 
         // creating new user with the given info and adding it to the json
-        User user = new User(name, surname, null, null, email, password);
-        user.addToJson();
-
+        
     }
 }

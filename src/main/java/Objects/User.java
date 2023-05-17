@@ -29,8 +29,9 @@ public class User {
     private GenderType gender;
     private String email;
     private String password;
+    private String role;
 
-    public User(String name, String surname, Date dateOfBirth, GenderType gender, String email, String password)
+    public User(String name, String surname, Date dateOfBirth, GenderType gender, String email, String password, String role)
             throws IllegalArgumentException {
         this.name = name;
         this.surname = surname;
@@ -38,9 +39,23 @@ public class User {
         this.gender = gender;
         this.email = email;
         this.password = Encrypt(password,110);
+        this.role = role;
     }
-
+    
+    //username is formed with name.surname+count+1
+    public String getUsername(){
+        return this.name+"."+this.surname;
+    }
+    
     // getters and setters
+    public String getRole(){
+        return this.role;
+    }
+    
+    public void setRole(String role){
+        this.role = role;
+    }
+    
     public int getId() {
         return id;
     }
