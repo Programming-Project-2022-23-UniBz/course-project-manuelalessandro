@@ -31,7 +31,8 @@ public class User {
     private String password;
     private String role;
 
-    public User(String name, String surname, Date dateOfBirth, GenderType gender, String email, String password, String role)
+    public User(String name, String surname, Date dateOfBirth, GenderType gender, String email, String password,
+            String role)
             throws IllegalArgumentException {
         this.name = name;
         this.surname = surname;
@@ -40,8 +41,8 @@ public class User {
         this.email = email;
         this.password = Encrypt(password, 110);
     }
-    
-    //Creating the user from from AdminFrame
+
+    // Creating the user from from AdminFrame
     public User(String name, String surname, Date dateOfBirth, GenderType gender, String email)
             throws IllegalArgumentException {
         this.name = name;
@@ -51,21 +52,21 @@ public class User {
         this.email = email;
         this.password = null;
     }
-    
-    //username is formed with name.surname+count+1
-    public String getUsername(){
-        return this.name+"."+this.surname;
+
+    // username is formed with name.surname+count+1
+    public String getUsername() {
+        return this.name + "." + this.surname;
     }
-    
+
     // getters and setters
-    public String getRole(){
+    public String getRole() {
         return this.role;
     }
-    
-    public void setRole(String role){
+
+    public void setRole(String role) {
         this.role = role;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -121,8 +122,8 @@ public class User {
     public void setPassword(String password, int key) {
         this.password = Encrypt(password, key);
     }
-    
-    public String getFullName(){
+
+    public String getFullName() {
         return surname + " " + name;
     }
 

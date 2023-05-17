@@ -22,8 +22,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-
-
 public class LoginFrame extends JFrame {
     // private variables, don't change
     private JButton login, register;
@@ -107,41 +105,40 @@ public class LoginFrame extends JFrame {
         String storedUsername = user.get("username").getAsString();
         String storedPassword = user.get("password").getAsString();
         String storedUserRole = user.get("role").getAsString();
-  
-            if (U.equals(storedUsername) && P.equals(storedPassword)) {
-                userRole = storedUserRole;
-                JOptionPane.showMessageDialog(null, "login successful as " + userRole);
 
-                if (userRole.equals("admin")) {
-                    this.setVisible(false);
-                    AdminFrame frame = new AdminFrame();
-                    frame.setVisible(true);
-                    } else if (userRole.equals("user")) {
-                        this.setVisible(false);
-                        UserFrame frame = new UserFrame(new Gson().fromJson(user, User.class));
-                        frame.setVisible(true);
-                        System.out.println("user");
-                    }
-            } else {
-                JOptionPane.showMessageDialog(null, "Error: invalid username or password");
-            }     
+        if (U.equals(storedUsername) && P.equals(storedPassword)) {
+            userRole = storedUserRole;
+            JOptionPane.showMessageDialog(null, "login successful as " + userRole);
+
+            if (userRole.equals("admin")) {
+                this.setVisible(false);
+                AdminFrame frame = new AdminFrame();
+                frame.setVisible(true);
+            } else if (userRole.equals("user")) {
+                this.setVisible(false);
+                UserFrame frame = new UserFrame(new Gson().fromJson(user, User.class));
+                frame.setVisible(true);
+                System.out.println("user");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: invalid username or password");
+        }
     }
 
     public void registerOnAction(ActionEvent e) {
         RegisterFrame r = new RegisterFrame();
     }
 
-    
-    
-    //json file is an array, i have to find an index for a given username and password
-    public int findIndexOfJson(String U, String P, JsonArray users){
+    // json file is an array, i have to find an index for a given username and
+    // password
+    public int findIndexOfJson(String U, String P, JsonArray users) {
         int index = 0;
-        for(Object userObj : users){
+        for (Object userObj : users) {
             JsonObject user = (JsonObject) userObj;
             String storedUsername = user.get("username").getAsString();
             String storedPassword = user.get("password").getAsString();
             String storedUserRole = user.get("role").getAsString();
-            
+
             if (U.equals(storedUsername) && P.equals(storedPassword)) {
                 break;
             }
