@@ -2,21 +2,30 @@ package UserGUI;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Date;
+
+import javax.swing.JOptionPane;
 
 import org.joda.time.DateTime;
 
 import Objects.Booking;
+import Objects.BookingControl;
+import Objects.Room;
 import Objects.RoomControl;
+import Objects.User;
 import Objects.Room.RoomType;
 
 public class CreateBookingPanel extends javax.swing.JPanel {
+        private User user;
 
-        public CreateBookingPanel() {
+        public CreateBookingPanel(User userIn) {
                 initComponents();
+
+                user = userIn;
 
                 errorLabel.setText("");
 
-                jDateOfCheckInChooser.getDateEditor().addPropertyChangeListener(
+                checkInBox.getDateEditor().addPropertyChangeListener(
                                 new PropertyChangeListener() {
                                         @Override
                                         public void propertyChange(PropertyChangeEvent e) {
@@ -24,7 +33,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                         }
                                 });
 
-                jDateOfCheckOutChooser.getDateEditor().addPropertyChangeListener(
+                checkOutBox.getDateEditor().addPropertyChangeListener(
                                 new PropertyChangeListener() {
                                         @Override
                                         public void propertyChange(PropertyChangeEvent e) {
@@ -49,11 +58,11 @@ public class CreateBookingPanel extends javax.swing.JPanel {
 
         // Refreshes the total stay and total cost on the panel once some info changes
         private void refreshInfos() {
-                if (jDateOfCheckInChooser.getDate() == null || jDateOfCheckOutChooser.getDate() == null)
+                if (checkInBox.getDate() == null || checkOutBox.getDate() == null)
                         return;
 
-                DateTime checkIn = new DateTime(jDateOfCheckInChooser.getDate());
-                DateTime checkOut = new DateTime(jDateOfCheckOutChooser.getDate());
+                DateTime checkIn = new DateTime(checkInBox.getDate());
+                DateTime checkOut = new DateTime(checkOutBox.getDate());
 
                 int stay = Booking.calculateStay(checkIn.toDate(), checkOut.toDate());
                 double totalCost;
@@ -70,18 +79,20 @@ public class CreateBookingPanel extends javax.swing.JPanel {
         }
 
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 bookingPanel = new javax.swing.JPanel();
-                applyButton = new javax.swing.JButton();
+                confrimButton = new javax.swing.JButton();
                 roomTypeLabel = new javax.swing.JLabel();
                 titleTxt = new javax.swing.JLabel();
                 totalCostLabel = new javax.swing.JLabel();
                 checkInLabel1 = new javax.swing.JLabel();
-                jDateOfCheckInChooser = new com.toedter.calendar.JDateChooser();
+                checkInBox = new com.toedter.calendar.JDateChooser();
                 checkOutLabel1 = new javax.swing.JLabel();
-                jDateOfCheckOutChooser = new com.toedter.calendar.JDateChooser();
+                checkOutBox = new com.toedter.calendar.JDateChooser();
                 appControlButtons = new DesignObjects.AppControlButtons();
                 roomTypeComboBox = new DesignObjects.RoomTypeComboBox();
                 totalStayLabel = new javax.swing.JLabel();
@@ -90,13 +101,13 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                 bookingPanel.setBackground(new java.awt.Color(255, 255, 255));
                 bookingPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
 
-                applyButton.setBackground(new java.awt.Color(0, 153, 102));
-                applyButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-                applyButton.setForeground(new java.awt.Color(255, 255, 255));
-                applyButton.setText("Confirm booking");
-                applyButton.addActionListener(new java.awt.event.ActionListener() {
+                confrimButton.setBackground(new java.awt.Color(0, 153, 102));
+                confrimButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+                confrimButton.setForeground(new java.awt.Color(255, 255, 255));
+                confrimButton.setText("Confirm booking");
+                confrimButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                applyButtonActionPerformed(evt);
+                                confirmButtonActionPerformed(evt);
                         }
                 });
 
@@ -150,7 +161,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                                                                                 .addGroup(bookingPanelLayout
                                                                                                                 .createParallelGroup(
                                                                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                .addComponent(applyButton,
+                                                                                                                .addComponent(confrimButton,
                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                 172,
                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,7 +189,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                                                                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                                                                                                 116,
                                                                                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                .addComponent(jDateOfCheckOutChooser,
+                                                                                                                                                                                                .addComponent(checkOutBox,
                                                                                                                                                                                                                 javax.swing.GroupLayout.Alignment.LEADING,
                                                                                                                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -188,7 +199,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                                                                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                                                                                                 101,
                                                                                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                .addComponent(jDateOfCheckInChooser,
+                                                                                                                                                                                                .addComponent(checkInBox,
                                                                                                                                                                                                                 javax.swing.GroupLayout.Alignment.LEADING,
                                                                                                                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                                                                                                                 172,
@@ -234,7 +245,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                                                 .addComponent(checkInLabel1)
                                                                 .addPreferredGap(
                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jDateOfCheckInChooser,
+                                                                .addComponent(checkInBox,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                 22,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,7 +253,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                                                 .addComponent(checkOutLabel1)
                                                                 .addPreferredGap(
                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jDateOfCheckOutChooser,
+                                                                .addComponent(checkOutBox,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,7 +264,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                                                 .addComponent(totalCostLabel)
                                                                 .addPreferredGap(
                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(applyButton,
+                                                                .addComponent(confrimButton,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                 23,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,19 +287,40 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                                                 javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         }// </editor-fold>//GEN-END:initComponents
 
-        private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_applyButtonActionPerformed
-                // TODO add your handling code here:
+        private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_applyButtonActionPerformed
+                Date checkIn = checkInBox.getDate();
+                Date checkOut = checkOutBox.getDate();
+                if (checkIn != null && checkOut != null) {
+                        RoomType roomType = (RoomType) roomTypeComboBox.getSelectedItem().get(0);
+                        int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
+
+                        try {
+                                int roomId = RoomControl.getFreeRoomId(roomType, capacity, new DateTime(checkIn),
+                                                new DateTime(checkOut));
+                                Room room = RoomControl.getRoom(roomId);
+
+                                BookingControl.createBooking(user, room, checkIn, checkOut);
+
+                                JOptionPane.showMessageDialog(this,
+                                                "The booking was created successfully!", "",
+                                                JOptionPane.WARNING_MESSAGE);
+                        } catch (Exception e) {
+                                errorLabel.setText("Unfortunately, no room is avaiable for the selected dates.");
+                                return;
+                        }
+
+                }
         }// GEN-LAST:event_applyButtonActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private DesignObjects.AppControlButtons appControlButtons;
-        private javax.swing.JButton applyButton;
         private javax.swing.JPanel bookingPanel;
+        private com.toedter.calendar.JDateChooser checkInBox;
         private javax.swing.JLabel checkInLabel1;
+        private com.toedter.calendar.JDateChooser checkOutBox;
         private javax.swing.JLabel checkOutLabel1;
+        private javax.swing.JButton confrimButton;
         private javax.swing.JLabel errorLabel;
-        private com.toedter.calendar.JDateChooser jDateOfCheckInChooser;
-        private com.toedter.calendar.JDateChooser jDateOfCheckOutChooser;
         private DesignObjects.RoomTypeComboBox roomTypeComboBox;
         private javax.swing.JLabel roomTypeLabel;
         private javax.swing.JLabel titleTxt;

@@ -88,7 +88,7 @@ public class UserFrame extends javax.swing.JFrame {
         userDashboardPanel = new UserGUI.UserDashboardPanel();
         userBookingPanel = new UserGUI.UserBookingPanel();
         userAccountPanel = new UserGUI.UserAccountPanel();
-        createBookingPanel = new UserGUI.CreateBookingPanel();
+        createBookingPanel = new UserGUI.CreateBookingPanel(user);
         sideMenu = new javax.swing.JPanel();
         dashLabel = new javax.swing.JLabel();
         bookingLabel = new javax.swing.JLabel();

@@ -48,16 +48,16 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="applyButton" min="-2" pref="172" max="-2" attributes="0"/>
+                              <Component id="confrimButton" min="-2" pref="172" max="-2" attributes="0"/>
                               <Component id="titleTxt" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="roomTypeComboBox" alignment="0" pref="172" max="32767" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="checkOutLabel1" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
-                                          <Component id="jDateOfCheckOutChooser" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="checkOutBox" alignment="0" max="32767" attributes="0"/>
                                           <Component id="checkInLabel1" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
-                                          <Component id="jDateOfCheckInChooser" alignment="0" pref="172" max="32767" attributes="0"/>
+                                          <Component id="checkInBox" alignment="0" pref="172" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="roomTypeLabel" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
                                   </Group>
@@ -87,17 +87,17 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="checkInLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jDateOfCheckInChooser" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="checkInBox" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="checkOutLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jDateOfCheckOutChooser" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkOutBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="totalStayLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="totalCostLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="applyButton" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="confrimButton" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="errorLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -106,7 +106,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="applyButton">
+        <Component class="javax.swing.JButton" name="confrimButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="99" red="0" type="rgb"/>
@@ -120,7 +120,7 @@
             <Property name="text" type="java.lang.String" value="Confirm booking"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="applyButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confrimButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="roomTypeLabel">
@@ -171,7 +171,7 @@
             <Property name="text" type="java.lang.String" value="Date of Check-In"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateOfCheckInChooser">
+        <Component class="com.toedter.calendar.JDateChooser" name="checkInBox">
         </Component>
         <Component class="javax.swing.JLabel" name="checkOutLabel1">
           <Properties>
@@ -184,7 +184,7 @@
             <Property name="text" type="java.lang.String" value="Date of Check-Out"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateOfCheckOutChooser">
+        <Component class="com.toedter.calendar.JDateChooser" name="checkOutBox">
         </Component>
         <Component class="DesignObjects.AppControlButtons" name="appControlButtons">
         </Component>
