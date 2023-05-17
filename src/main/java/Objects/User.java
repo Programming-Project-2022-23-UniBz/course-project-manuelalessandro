@@ -38,10 +38,6 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
-<<<<<<< HEAD
-        this.password = Encrypt(password,110);
-        this.role = role;
-=======
         this.password = Encrypt(password, 110);
     }
     
@@ -54,7 +50,6 @@ public class User {
         this.gender = gender;
         this.email = email;
         this.password = null;
->>>>>>> a526cab955808c43dcd7efc1beaa3b2aa0e0d0af
     }
     
     //username is formed with name.surname+count+1
