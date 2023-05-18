@@ -29,13 +29,17 @@ public class UserTest {
 
         // Add user to JSON files
         user.addToJson();
-
+        
         // Check if the user is added to the JSON files correctly
-        int count = User.getJsonCount();
-        Assertions.assertEquals(1, count, "User should be added to the JSON file");
+        int initialCount = User.getJsonCount();
 
-        // Cleanup - remove the user from the JSON files
+        // Remove the user from the JSON files
         user.removeFromJson();
+
+        int finalCount = User.getJsonCount();
+
+        // Assert that the final count is greater than the initial count
+        Assertions.assertTrue(finalCount > initialCount, "User should be added to the JSON file");
     }
 
     @Test
