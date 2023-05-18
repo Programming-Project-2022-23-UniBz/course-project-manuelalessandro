@@ -14,6 +14,8 @@ import org.joda.time.DateTime;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -56,7 +58,6 @@ public class RoomsPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         roomsPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -180,12 +181,9 @@ public class RoomsPanel extends javax.swing.JPanel {
         jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("\tRoom numbers: \t\t\tEnter one of the following room types: \n\tFrom 100 to 125 \t\t\t           SINGLE ROOM STANDARD\n\tFrom 200 to 225 \t\t\t              SINGLE ROOM DELUXE\n\tFrom 300 to 325 \t\t\t          DOUBLE ROOM STANDARD\n\tFrom 400 to 425\t\t\t             DOUBLE ROOM DELUXE\n\tFrom 500 to 525\t\t\t\tKING SUITE");
+        jTextArea1.setText("\tRoom numbers: \t\tCapacity:\t                Enter one of the following room types: \n\tFrom 100 to 115\t\tSINGLE\t  \t           STANDARD\n\tFrom 116 to 125\t\tDOUBLE\t\t           STANDARD 2\n\tFrom 200 to 215\t\tSINGLE\t\t               DELUXE\n\tFrom 216 to 225\t\tDOUBLE\t\t              DELUXE 2\n\tFrom 300 to 325\t\tSINGLE\t\t                  KING");
         jTextArea1.setBorder(null);
         jScrollPane2.setViewportView(jTextArea1);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel2.setText("(i)Tap on this table to search for a room");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel3.setText("(i) After searching for the room, click on the table's row to proceed with the bookings.");
@@ -197,12 +195,6 @@ public class RoomsPanel extends javax.swing.JPanel {
             .addGroup(roomsPanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(roomsPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(roomsPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addGap(27, 27, 27))
                     .addGroup(roomsPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -225,12 +217,12 @@ public class RoomsPanel extends javax.swing.JPanel {
                                             .addComponent(roomTypeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 15, Short.MAX_VALUE)))
-                        .addContainerGap(12, Short.MAX_VALUE))))
-            .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(roomsPanelLayout.createSequentialGroup()
-                    .addGap(267, 267, 267)
-                    .addComponent(jLabel2)
-                    .addContainerGap(268, Short.MAX_VALUE)))
+                        .addContainerGap(12, Short.MAX_VALUE))
+                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         roomsPanelLayout.setVerticalGroup(
             roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,11 +248,6 @@ public class RoomsPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(17, 17, 17))
-            .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(roomsPanelLayout.createSequentialGroup()
-                    .addGap(265, 265, 265)
-                    .addComponent(jLabel2)
-                    .addContainerGap(265, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -344,99 +331,95 @@ public class RoomsPanel extends javax.swing.JPanel {
 
         // Another event handler but this time for the roomTypeTxtField text field
         private void roomTypeTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_roomTypeTxtFieldActionPerformed
-                String userInput = roomTypeTxtField.getText().toLowerCase();
-                // regular expression pattern roomTypePattern that represents valid room types
-                String roomTypePattern = "single[_ ]room[_ ]standard|single[_ ]room[_ ]deluxe|double[_ ]room[_ ]standard|double[_ ]room[_ ]deluxe|king[_ ]suite";
-                /*
-                 * This regular expression pattern will match any of the following variations:
-                 * 
-                 * single room standard
-                 * Single Room Standard
-                 * SINGLE_ROOM_STANDARD
-                 * single room deluxe
-                 * Single Room Deluxe
-                 * SINGLE_ROOM_DELUXE
-                 * double room standard
-                 * Double Room Standard
-                 * DOUBLE_ROOM_STANDARD
-                 * double room deluxe
-                 * Double Room Deluxe
-                 * DOUBLE_ROOM_DELUXE
-                 * king suite
-                 * King Suite
-                 * KING_SUITE
-                 */
+            String userInput = roomTypeTxtField.getText().toLowerCase();
 
-                // If the input matches the pattern, it maps the input to the
-                // corresponding RoomType enum value using a switch statement.
-                if (userInput.matches(roomTypePattern)) {
-                        RoomType roomType = null;
-                        int capacity = -1;
+            // Regular expression pattern roomTypePattern that represents valid room types
+            String roomTypePattern = "(standard|deluxe|king)\\s*(\\d*)";
+            /*
+             * This regular expression pattern will match any of the following variations:
+             *
+             * standard
+             * deluxe
+             * king
+             * standard 2
+             * deluxe 2
+             * king 2
+             * where the number after the room type represents the capacity.
+             */
 
-                        switch (userInput) {
-                                case "single room standard":
-                                case "single_room_standard":
-                                        roomType = RoomType.STANDARD;
-                                        capacity = 1;
-                                        break;
-                                case "single room deluxe":
-                                case "single_room_deluxe":
-                                        roomType = RoomType.DELUXE;
-                                        capacity = 1;
-                                        break;
-                                case "double room standard":
-                                case "double_room_standard":
-                                        roomType = RoomType.STANDARD;
-                                        capacity = 2;
-                                        break;
-                                case "double room deluxe":
-                                case "double_room_deluxe":
-                                        roomType = RoomType.DELUXE;
-                                        capacity = 2;
-                                        break;
-                                case "king suite":
-                                case "king_suite":
-                                        roomType = RoomType.KING;
-                                        capacity = 2;
-                                        break;
-                        }
+            // If the input matches the pattern, extract the room type and capacity
+            Pattern pattern = Pattern.compile(roomTypePattern);
+            Matcher matcher = pattern.matcher(userInput);
+            if (matcher.matches()) {
+                String roomTypeString = matcher.group(1);
+                String capacityString = matcher.group(2);
 
-                        if (capacity < 1)
-                                capacity = 1;
-                        if (capacity > 2)
-                                capacity = 2;
+                RoomType roomType = null;
+                int capacity = -1;
 
-                        // Retrieves a list of rooms that match the specified room type
-                        ArrayList<Room> roomsByType = RoomControl.getRoomsByTypeCapacity(roomType, capacity);
-
-                        DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
-                        model.setRowCount(0); // Clear the existing rows
-
-                        // Iterates over the list of rooms and populates the rowData array with the room
-                        // details.
-                        Object rowData[] = new Object[5];
-                        for (int i = 0; i < roomsByType.size(); i++) {
-                                rowData[0] = roomsByType.get(i).getId();
-                                rowData[1] = roomsByType.get(i).getType();
-                                rowData[2] = roomsByType.get(i).getCapacity();
-                                rowData[3] = roomsByType.get(i).getPrice();
-                                if (roomsByType.get(i).isOccupied(new DateTime(), new DateTime()) == false) {
-                                        rowData[4] = "Yes";
-                                } else {
-                                        rowData[4] = "No";
-                                }
-                                model.addRow(rowData);
-                        }
-
-                        // Make the table content uneditable
-                        roomTable.setDefaultEditor(Object.class, null);
-                        // Set the updated table model back to the JTable instance
-                        roomTable.setModel(model);
-                } else {
+                switch (roomTypeString) {
+                    case "standard":
+                        roomType = RoomType.STANDARD;
+                        break;
+                    case "deluxe":
+                        roomType = RoomType.DELUXE;
+                        break;
+                    case "king":
+                        roomType = RoomType.KING;
+                        break;
+                    default:
                         JOptionPane.showMessageDialog(this, "Invalid room type entered. Please try again.");
+                        roomTypeTxtField.setText("");
+                        roomNrTxtField.setText("");
+                        return; // Exit the method if the room type is not valid
                 }
-                roomTypeTxtField.setText("");
-                roomNrTxtField.setText("");
+
+                // If a capacity is specified, parse it as an integer
+                if (!capacityString.isEmpty()) {
+                    capacity = Integer.parseInt(capacityString);
+                }
+
+                // Validate the capacity
+                if (capacity < 1) {
+                    capacity = 1;
+                }
+                if (capacity > 2) {
+                    capacity = 2;
+                }
+
+                // Retrieves a list of rooms that match the specified room type and capacity
+                ArrayList<Room> roomsByType = RoomControl.getRoomsByTypeCapacity(roomType, capacity);
+
+                DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
+                model.setRowCount(0); // Clear the existing rows
+
+                // Iterates over the list of rooms and populates the rowData array with the room
+                // details.
+                Object rowData[] = new Object[5];
+                for (int i = 0; i < roomsByType.size(); i++) {
+                    rowData[0] = roomsByType.get(i).getId();
+                    rowData[1] = roomsByType.get(i).getType();
+                    rowData[2] = roomsByType.get(i).getCapacity();
+                    rowData[3] = roomsByType.get(i).getPrice();
+                    if (roomsByType.get(i).isOccupied(new DateTime(), new DateTime()) == false) {
+                        rowData[4] = "Yes";
+                    } else {
+                        rowData[4] = "No";
+                    }
+                    model.addRow(rowData);
+                }
+
+                // Make the table content uneditable
+                roomTable.setDefaultEditor(Object.class, null);
+                // Set the updated table model back to the JTable instance
+                roomTable.setModel(model);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid room type entered. Please try again.");
+            }
+
+            roomTypeTxtField.setText("");
+            roomNrTxtField.setText("");
         }// GEN-LAST:event_roomTypeTxtFieldActionPerformed
 
         // Event handler for when the user clicks on a row in the roomTable
@@ -489,7 +472,6 @@ public class RoomsPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private DesignObjects.AppControlButtons appControlButtons1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

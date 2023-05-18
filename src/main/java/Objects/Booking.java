@@ -95,8 +95,18 @@ public class Booking {
     public static int calculateStay(Date checkIn, Date checkOut) {
         DateTime checkInDate = new DateTime(checkIn);
         DateTime checkOutDate = new DateTime(checkOut);
+
+        // If check-in and check-out dates are on the same day, return 1
+        if (isSameDay(checkInDate, checkOutDate)) {
+            return 1;
+        }
+    
         long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();
         return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+    }
+
+    private static boolean isSameDay(DateTime dateTime1, DateTime dateTime2) {
+        return dateTime1.toLocalDate().isEqual(dateTime2.toLocalDate());
     }
 
     public static double calculateTotalCost(double price, int stay) {

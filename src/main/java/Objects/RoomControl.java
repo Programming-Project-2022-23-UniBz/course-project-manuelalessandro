@@ -122,6 +122,7 @@ public class RoomControl {
     }
 
     public static ArrayList<Room> getRoomsByTypeCapacity(RoomType roomType, int capacity) {
+        pullData();
         ArrayList<Room> roomsByType = new ArrayList<>();
         for (Room room : rooms) {
             if (room != null && !room.isOccupied(new DateTime(), new DateTime()) && room.getType() == roomType
@@ -133,6 +134,7 @@ public class RoomControl {
     }
 
     public static Room getRoomById(int roomNr) {
+        pullData();
         for (Room room : rooms) {
             if (room != null && room.getId() == roomNr) {
                 return room;
@@ -143,7 +145,7 @@ public class RoomControl {
 
     public static void main(String[] args) {
         pullData();
-
+        
         pushData();
     }
 }

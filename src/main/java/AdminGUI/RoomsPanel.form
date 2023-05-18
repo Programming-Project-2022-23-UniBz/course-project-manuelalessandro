@@ -57,14 +57,6 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jScrollPane2" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -96,13 +88,13 @@
                           </Group>
                           <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="268" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="684" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -134,13 +126,6 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="265" max="32767" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -307,7 +292,7 @@
                 </Property>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="&#x9;Room numbers: &#x9;&#x9;&#x9;Enter one of the following room types: &#xa;&#x9;From 100 to 125 &#x9;&#x9;&#x9;           SINGLE ROOM STANDARD&#xa;&#x9;From 200 to 225 &#x9;&#x9;&#x9;              SINGLE ROOM DELUXE&#xa;&#x9;From 300 to 325 &#x9;&#x9;&#x9;          DOUBLE ROOM STANDARD&#xa;&#x9;From 400 to 425&#x9;&#x9;&#x9;             DOUBLE ROOM DELUXE&#xa;&#x9;From 500 to 525&#x9;&#x9;&#x9;&#x9;KING SUITE"/>
+                <Property name="text" type="java.lang.String" value="&#x9;Room numbers: &#x9;&#x9;Capacity:&#x9;                Enter one of the following room types: &#xa;&#x9;From 100 to 115&#x9;&#x9;SINGLE&#x9;  &#x9;           STANDARD&#xa;&#x9;From 116 to 125&#x9;&#x9;DOUBLE&#x9;&#x9;           STANDARD 2&#xa;&#x9;From 200 to 215&#x9;&#x9;SINGLE&#x9;&#x9;               DELUXE&#xa;&#x9;From 216 to 225&#x9;&#x9;DOUBLE&#x9;&#x9;              DELUXE 2&#xa;&#x9;From 300 to 325&#x9;&#x9;SINGLE&#x9;&#x9;                  KING"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -315,14 +300,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="2"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="(i)Tap on this table to search for a room"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

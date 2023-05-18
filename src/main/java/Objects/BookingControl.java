@@ -78,6 +78,10 @@ public class BookingControl {
 
     // @return ArrayList<Booking> that contains all the bookings that have that room
     public static ArrayList<Booking> getAllBookings(Room room) {
+        if (bookings == null) {
+            bookings = new Booking[0];
+        }
+        
         ArrayList<Booking> result = new ArrayList<Booking>();
         for (int i = 0; i < bookings.length; i++)
             if (bookings[i] != null)
@@ -142,7 +146,8 @@ public class BookingControl {
     public static void main(String[] args) {
         RoomControl.pullData();
         UserControl.pullData();
-        pullData();
+        pullData();        
+        
         
         pushData();
         RoomControl.pushData();

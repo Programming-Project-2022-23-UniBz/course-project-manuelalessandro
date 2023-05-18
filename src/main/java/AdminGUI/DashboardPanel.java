@@ -30,14 +30,11 @@ public class DashboardPanel extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         roomsPanel = new javax.swing.JPanel();
         titleTxt = new javax.swing.JLabel();
-        panelGlowingGradient1 = new DesignObjects.PanelGlowingGradient();
-        jLabel1 = new javax.swing.JLabel();
-        customersButton = new javax.swing.JButton();
         panelGlowingGradient2 = new DesignObjects.PanelGlowingGradient();
         jLabel2 = new javax.swing.JLabel();
         bookingsButton = new javax.swing.JButton();
@@ -60,31 +57,6 @@ public class DashboardPanel extends javax.swing.JPanel {
         titleTxt.setForeground(new java.awt.Color(102, 153, 255));
         titleTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleTxt.setText("Dashboard");
-
-        panelGlowingGradient1.setForeground(new java.awt.Color(153, 0, 0));
-        panelGlowingGradient1.setBackgroundLight(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Perpetua Titling MT", 0, 20)); // NOI18N
-        jLabel1.setText("Customers");
-        panelGlowingGradient1.add(jLabel1);
-        jLabel1.setBounds(90, 40, 150, 25);
-
-        customersButton.setBackground(new java.awt.Color(255, 204, 204));
-        customersButton.setForeground(new java.awt.Color(153, 0, 153));
-        customersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/customer.png"))); // NOI18N
-        customersButton.setText("Customers");
-        customersButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-        customersButton.setBorderPainted(false);
-        customersButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        customersButton.setFocusPainted(false);
-        customersButton.setMargin(new java.awt.Insets(3, 2, 3, 2));
-        customersButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customersButtonActionPerformed(evt);
-            }
-        });
-        panelGlowingGradient1.add(customersButton);
-        customersButton.setBounds(90, 80, 120, 32);
 
         panelGlowingGradient2.setForeground(new java.awt.Color(153, 0, 0));
         panelGlowingGradient2.setBackgroundLight(new java.awt.Color(255, 255, 255));
@@ -168,76 +140,55 @@ public class DashboardPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout roomsPanelLayout = new javax.swing.GroupLayout(roomsPanel);
         roomsPanel.setLayout(roomsPanelLayout);
         roomsPanelLayout.setHorizontalGroup(
-                roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(roomsPanelLayout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addGroup(roomsPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(panelGlowingGradient2, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(panelGlowingGradient4, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                288, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61,
-                                        Short.MAX_VALUE)
-                                .addGroup(roomsPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(panelGlowingGradient3, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(panelGlowingGradient1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                288, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(65, 65, 65))
-                        .addGroup(roomsPanelLayout.createSequentialGroup()
-                                .addGap(243, 243, 243)
-                                .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 74,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap()));
+            roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roomsPanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(panelGlowingGradient2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(panelGlowingGradient3, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
+            .addGroup(roomsPanelLayout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(roomsPanelLayout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(panelGlowingGradient4, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
         roomsPanelLayout.setVerticalGroup(
-                roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout.createSequentialGroup()
-                                .addGroup(
-                                        roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(roomsPanelLayout.createSequentialGroup()
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(titleTxt))
-                                                .addGroup(roomsPanelLayout.createSequentialGroup()
-                                                        .addContainerGap()
-                                                        .addComponent(appControlButtons1,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68,
-                                        Short.MAX_VALUE)
-                                .addGroup(roomsPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(panelGlowingGradient1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(panelGlowingGradient4, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(25, 25, 25)
-                                .addGroup(roomsPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(panelGlowingGradient2, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(panelGlowingGradient3, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(61, 61, 61)));
+            roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout.createSequentialGroup()
+                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(titleTxt))
+                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(panelGlowingGradient4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelGlowingGradient2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelGlowingGradient3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(roomsPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(roomsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(roomsPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(roomsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void roomsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_roomsButtonActionPerformed
@@ -260,13 +211,10 @@ public class DashboardPanel extends javax.swing.JPanel {
     private DesignObjects.AppControlButtons appControlButtons1;
     private javax.swing.JButton bookingsButton;
     private javax.swing.JButton chartsButton;
-    private javax.swing.JButton customersButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private DesignObjects.PanelGlowingGradient panelGlowingGradient1;
     private DesignObjects.PanelGlowingGradient panelGlowingGradient2;
     private DesignObjects.PanelGlowingGradient panelGlowingGradient3;
     private DesignObjects.PanelGlowingGradient panelGlowingGradient4;
