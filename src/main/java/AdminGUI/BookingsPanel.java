@@ -70,10 +70,8 @@ public class BookingsPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         roomsPanel = new javax.swing.JPanel();
-        editBookingBtn = new javax.swing.JButton();
         addBookingBtn = new javax.swing.JButton();
         customerNameTxtField = new javax.swing.JTextField();
-        deleteBookingBtn = new javax.swing.JButton();
         titleTxt = new javax.swing.JLabel();
         customerNameLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -96,16 +94,12 @@ public class BookingsPanel extends javax.swing.JPanel {
         jDateOfCheckOutChooser = new com.toedter.calendar.JDateChooser();
         activeBookingListLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
         roomsPanel.setBackground(new java.awt.Color(255, 255, 255));
         roomsPanel.setPreferredSize(new java.awt.Dimension(738, 546));
-
-        editBookingBtn.setBackground(new java.awt.Color(255, 153, 0));
-        editBookingBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        editBookingBtn.setForeground(new java.awt.Color(255, 255, 255));
-        editBookingBtn.setText("Edit");
 
         addBookingBtn.setBackground(new java.awt.Color(0, 153, 102));
         addBookingBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -119,11 +113,6 @@ public class BookingsPanel extends javax.swing.JPanel {
 
         customerNameTxtField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
         customerNameTxtField.setForeground(new java.awt.Color(0, 153, 153));
-
-        deleteBookingBtn.setBackground(new java.awt.Color(255, 102, 51));
-        deleteBookingBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        deleteBookingBtn.setForeground(new java.awt.Color(255, 255, 255));
-        deleteBookingBtn.setText("Delete");
 
         titleTxt.setBackground(new java.awt.Color(255, 255, 255));
         titleTxt.setFont(new java.awt.Font("Yu Gothic UI", 1, 25)); // NOI18N
@@ -196,6 +185,11 @@ public class BookingsPanel extends javax.swing.JPanel {
         bookingTable.setGridColor(new java.awt.Color(51, 153, 255));
         bookingTable.setRowHeight(25);
         bookingTable.setShowGrid(true);
+        bookingTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bookingTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(bookingTable);
 
         customerDateOfBirth.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
@@ -313,6 +307,9 @@ public class BookingsPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel2.setText("(i)Tap on this table to search for a room.");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel3.setText("(i) Click on a row for more options");
+
         javax.swing.GroupLayout roomsPanelLayout = new javax.swing.GroupLayout(roomsPanel);
         roomsPanel.setLayout(roomsPanelLayout);
         roomsPanelLayout.setHorizontalGroup(
@@ -320,58 +317,56 @@ public class BookingsPanel extends javax.swing.JPanel {
             .addGroup(roomsPanelLayout.createSequentialGroup()
                 .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roomsPanelLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout.createSequentialGroup()
-                                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(customerNameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(customerNameLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(customerSurameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(customerSurameLabel))
-                                .addGap(91, 91, 91)
-                                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateOfBirthCustomerChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(customerDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane2)
-                            .addComponent(activeBookingListLabel)
-                            .addComponent(jScrollPane1)
-                            .addGroup(roomsPanelLayout.createSequentialGroup()
-                                .addComponent(bookingRoomDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout.createSequentialGroup()
-                                .addComponent(customerEmailLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
-                                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(customerGenderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(customerGenderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(39, 39, 39)
-                                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(roomsPanelLayout.createSequentialGroup()
-                                        .addComponent(checkInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(17, 17, 17))
-                                    .addComponent(jDateOfCheckInChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35)
-                                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(checkOutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateOfCheckOutChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(customerEmailTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 16, Short.MAX_VALUE))
-                    .addGroup(roomsPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(165, 165, 165)
-                        .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout.createSequentialGroup()
+                                    .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(customerNameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(customerNameLabel))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                                    .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(customerSurameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(customerSurameLabel))
+                                    .addGap(91, 91, 91)
+                                    .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jDateOfBirthCustomerChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(customerDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane2)
+                                .addComponent(activeBookingListLabel)
+                                .addComponent(jScrollPane1)
+                                .addGroup(roomsPanelLayout.createSequentialGroup()
+                                    .addComponent(bookingRoomDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout.createSequentialGroup()
+                                    .addComponent(customerEmailLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                                    .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(customerGenderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(customerGenderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(39, 39, 39)
+                                    .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(roomsPanelLayout.createSequentialGroup()
+                                            .addComponent(checkInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(17, 17, 17))
+                                        .addComponent(jDateOfCheckInChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(35, 35, 35)
+                                    .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(checkOutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jDateOfCheckOutChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(customerEmailTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 16, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(roomsPanelLayout.createSequentialGroup()
-                .addGap(205, 205, 205)
+                .addGap(291, 291, 291)
                 .addComponent(addBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(editBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(deleteBookingBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roomsPanelLayout.setVerticalGroup(
@@ -424,15 +419,14 @@ public class BookingsPanel extends javax.swing.JPanel {
                         .addGap(5, 5, 5)
                         .addComponent(customerGenderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addBookingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(editBookingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deleteBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(addBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(activeBookingListLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -456,6 +450,30 @@ public class BookingsPanel extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bookingTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingTableMouseClicked
+     int selectedRow = bookingTable.getSelectedRow();
+
+    if (selectedRow == -1) {
+        return;
+    }
+
+    // Retrieve the booking ID from the selected row
+    String bookingID = (String) bookingTable.getValueAt(selectedRow, 0);
+
+    // Show an option dialog to ask the user for action
+    int dialogResult = JOptionPane.showOptionDialog(this,
+            "What would you like to do with booking ID " + bookingID + "?",
+            "Booking Options", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+            new Object[] { "Modify", "Delete" }, "Modify");
+
+    if (dialogResult == 0) { // Modify option selected
+
+    } else if (dialogResult == 1) { // Delete option selected
+        BookingControl.removeBookingById(bookingID);
+        initBookingTable();
+    }
+    }//GEN-LAST:event_bookingTableMouseClicked
 
         /*
          * initBookingRoomTable() method initializes the booking room details table
@@ -784,13 +802,12 @@ public class BookingsPanel extends javax.swing.JPanel {
     private javax.swing.JTextField customerNameTxtField;
     private javax.swing.JLabel customerSurameLabel;
     private javax.swing.JTextField customerSurameTxtField;
-    private javax.swing.JButton deleteBookingBtn;
-    private javax.swing.JButton editBookingBtn;
     private com.toedter.calendar.JDateChooser jDateOfBirthCustomerChooser;
     private com.toedter.calendar.JDateChooser jDateOfCheckInChooser;
     private com.toedter.calendar.JDateChooser jDateOfCheckOutChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel roomsPanel;

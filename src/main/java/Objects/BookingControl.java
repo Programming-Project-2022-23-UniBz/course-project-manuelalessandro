@@ -62,15 +62,43 @@ public class BookingControl {
         return result;
     }
 
-    public static Booking getBooking(int id) throws IllegalArgumentException {
-        Booking booking = null;
-        if (bookings.length > id)
-            booking = bookings[id];
-        if (booking == null)
-            throw new IllegalArgumentException("Room does not exist");
-        else
+    public static Booking getBookingById(String id) throws IllegalArgumentException {
+        BookingControl.pullData();
+                
+    for (Booking booking : bookings) {
+        if (booking.getBookingId().equals(id)) {
             return booking;
+        }
     }
+    throw new IllegalArgumentException("Booking with ID " + id + " not found.");
+    }
+    
+public static void removeBookingById(String id) throws IllegalArgumentException {
+    pullData();
+    
+    int index = -1;
+    for (int i = 0; i < bookings.length; i++) {
+        if (bookings[i].getBookingId().equals(id)) {
+            index = i;
+            break;
+        }
+    }
+
+    if (index != -1) {
+        Booking[] updatedBookings = new Booking[bookings.length - 1];
+        if (index > 0) {
+            System.arraycopy(bookings, 0, updatedBookings, 0, index);
+        }
+        if (index < bookings.length - 1) {
+            System.arraycopy(bookings, index + 1, updatedBookings, index, bookings.length - index - 1);
+        }
+        bookings = updatedBookings;
+    } else {
+        throw new IllegalArgumentException("Booking with ID " + id + " not found.");
+    }
+    
+    pushData();
+}
 
     public static Booking[] getBookings() {
         return bookings;
