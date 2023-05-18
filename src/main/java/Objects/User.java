@@ -2,17 +2,12 @@ package Objects;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.google.gson.stream.*;
-import com.google.gson.annotations.*;
 import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonIOException;
-import com.google.gson.stream.JsonToken;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
-import com.google.gson.stream.JsonWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,7 +15,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.ArrayList;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -28,10 +22,15 @@ import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
-import java.util.List;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+
+
+///// PASSWORDS FOR TESTING                                 ///////
+////  admin = admin123                                      ///////
+////  Alessandro.Marconi2 = Alessandro45+-                  ///////
+////  GuestName.GuestSurname1 = Guest45+-                   ///////
 
 public class User {
 
@@ -73,6 +72,7 @@ public class User {
         
         //useful for logins
         this.username=getUsername();
+        this.role = role;
     }
 
     // Creating the user from from AdminFrame
@@ -95,7 +95,7 @@ public class User {
 
     // getters and setters
     public String getRole() {
-        return this.role;
+        return role;
     }
 
     public void setRole(String role) {
@@ -150,6 +150,10 @@ public class User {
         this.email = email;
     }
 
+    public String getEncPassword(){
+        return encryptedPassword;
+    }
+    
     public String getPassword() {
         return decrypt(this.encryptedPassword);
     }
@@ -164,6 +168,30 @@ public class User {
 
     public boolean equals(User user) {
         return this.id == user.getId();
+    }
+    
+    public void addReview(String review){
+        try {
+            // Read existing reviews from the JSON file
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
+
+            // Create a new review object
+            JsonObject reviewObject = new JsonObject();
+            reviewObject.addProperty("GuestName", getName());
+            reviewObject.addProperty("Review", review);
+
+            // Add the new review to the array
+            jsonArray.add(reviewObject);
+
+            // Write the updated array back to the JSON file
+            try (FileWriter writer = new FileWriter("reviews.json")) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                gson.toJson(jsonArray, writer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     public static int getJsonCount(){
@@ -217,7 +245,7 @@ public class User {
         return null;
     }
     
-    public void addToJson(){
+   public void addToJson() {
         try {
             // Read the existing JSON file
             JsonParser parser = new JsonParser();
@@ -228,14 +256,164 @@ public class User {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
             // Convert the User object to JSON and add it to the array
-            jsonArray.add(gson.toJsonTree(this));
+            JsonObject userJson = gson.toJsonTree(this).getAsJsonObject();
+            jsonArray.add(userJson);
 
             // Write the updated array back to the JSON file
             try (FileWriter writer = new FileWriter("src/main/java/Objects/json/users.json")) {
                 gson.toJson(jsonArray, writer);
             }
         } catch (IOException | JsonIOException e) {
+            e.printStackTrace();
         }
+
+        // Add the user data to the UserData.json file
+        try {
+            // Read the existing JSON file
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/UserData.json"))
+                    .getAsJsonArray();
+
+            // Create a Gson instance
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            // Convert the User object to a JsonObject
+            JsonObject userJson = new JsonObject();
+            userJson.addProperty("id", getId());
+            userJson.addProperty("username", getUsername());
+            userJson.addProperty("password", getEncPassword());
+            userJson.addProperty("role", getRole());
+
+            // Add the JsonObject to the array
+            jsonArray.add(userJson);
+
+            // Write the updated array back to the JSON file
+            try (FileWriter writer = new FileWriter("src/main/java/Objects/json/UserData.json")) {
+                gson.toJson(jsonArray, writer);
+            }
+        } catch (IOException | JsonIOException e) {
+            e.printStackTrace();
+        }
+    }
+   
+   
+    //to remove User from users.json and UserData.json
+    public void removeFromJson() {
+        try {
+            // Read the existing JSON file
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/users.json"))
+                    .getAsJsonArray();
+
+            // Remove the user from the array
+            int index = findIndexOfJson(jsonArray, "id", id);
+            if (index != -1) {
+                jsonArray.remove(index);
+            }
+
+            // Write the updated array back to the JSON file
+            try (FileWriter writer = new FileWriter("src/main/java/Objects/json/users.json")) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                gson.toJson(jsonArray, writer);
+            }
+        } catch (IOException | JsonIOException e) {
+            e.printStackTrace();
+        }
+
+        // Remove the user data from the UserData.json file
+        try {
+            // Read the existing JSON file
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/UserData.json"))
+                    .getAsJsonArray();
+
+            // Remove the user from the array
+            int index = findIndexOfJson(jsonArray, "id", id);
+            if (index != -1) {
+                jsonArray.remove(index);
+            }
+
+            // Write the updated array back to the JSON file
+            try (FileWriter writer = new FileWriter("src/main/java/Objects/json/UserData.json")) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                gson.toJson(jsonArray, writer);
+            }
+        } catch (IOException | JsonIOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    //to remove the review from reviews.json
+    public void removeReview(String review) {
+        try {
+            // Read existing reviews from the JSON file
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
+
+            // Find and remove the review from the array
+            int index = findIndexOfJson(jsonArray, "GuestName", getName());
+            if (index != -1) {
+                JsonObject reviewObject = jsonArray.get(index).getAsJsonObject();
+                String storedReview = reviewObject.get("Review").getAsString();
+                if (storedReview.equals(review)) {
+                    jsonArray.remove(index);
+                }
+            }
+
+            // Write the updated array back to the JSON file
+            try (FileWriter writer = new FileWriter("reviews.json")) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                gson.toJson(jsonArray, writer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }   
+    
+    private int findIndexOfJson(JsonArray jsonArray, String key, int value) {
+        int index = -1;
+        for (int i = 0; i < jsonArray.size(); i++) {
+            JsonObject jsonObject = jsonArray.get(i).getAsJsonObject();
+            JsonElement jsonElement = jsonObject.get(key);
+            if (jsonElement != null && jsonElement.getAsInt() == value) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    private int findIndexOfJson(JsonArray jsonArray, String key, String value) {
+        int index = -1;
+        for (int i = 0; i < jsonArray.size(); i++) {
+            JsonObject jsonObject = jsonArray.get(i).getAsJsonObject();
+            JsonElement jsonElement = jsonObject.get(key);
+            if (jsonElement != null && jsonElement.getAsString().equals(value)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+    
+    public boolean hasReview(String review) {
+        try {
+            // Read existing reviews from the JSON file
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
+
+            // Check if the user has the specified review
+            int index = findIndexOfJson(jsonArray, "GuestName", getName());
+            if (index != -1) {
+                JsonObject reviewObject = jsonArray.get(index).getAsJsonObject();
+                String storedReview = reviewObject.get("Review").getAsString();
+                return storedReview.equals(review);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
 }

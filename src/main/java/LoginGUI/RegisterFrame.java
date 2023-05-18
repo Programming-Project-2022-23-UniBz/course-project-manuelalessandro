@@ -100,15 +100,16 @@ public class RegisterFrame extends JFrame {
         String password = new String(passwordField.getPassword());
         Date birthDate = (Date) birthDateSpinner.getValue();
         GenderType gender = (GenderType) genderComboBox.getSelectedItem();
+        String role = "user";
 
         // TODO: Process the user registration logic here
-        User user = new User(name, surname, birthDate, gender, email, password, "user");
+        User user = new User(name, surname, birthDate, gender, email, password, role);
         user.addToJson();
         JOptionPane.showMessageDialog(null, "Username for login: "+ user.getUsername());
         closeApplication();
     }
 
     private void closeApplication() {
-        //this.dispose();
+        this.dispose();
     }
 }

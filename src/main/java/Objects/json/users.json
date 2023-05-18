@@ -2,6 +2,27 @@
   {
     "id": 0,
     "name": "admin",
+    "password": "ikcWNM6gcQAxbYqD0PPpJQ==",
     "role": "admin"
+  },
+  {
+    "id": 1,
+    "name": "GuestName",
+    "surname": "GuestSurname",
+    "dateOfBirth": "Apr 15, 2004, 12:00:00 AM",
+    "gender": "MALE",
+    "email": "GuestName.GuestSurname@guest.com",
+    "encryptedPassword": "r2UOG0w2uhy+5k5S42gjOQ\u003d\u003d",
+    "username": "GuestName.GuestSurname1"
+  },
+  {
+    "id": 2,
+    "name": "Alessandro",
+    "surname": "Marconi",
+    "dateOfBirth": "Apr 15, 2000, 12:00:00 AM",
+    "gender": "MALE",
+    "email": "ale@ale.com",
+    "encryptedPassword": "nVubSusSYvj9pU2et0PGgw\u003d\u003d",
+    "username": "Alessandro.Marconi2"
   }
 ]
