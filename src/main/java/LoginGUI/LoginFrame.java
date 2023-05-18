@@ -12,25 +12,40 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileReader;
-import org.json.simple.*;
-import org.json.simple.parser.JSONParser;
-
 import com.google.gson.Gson;
-
 import AdminGUI.AdminFrame;
 import Objects.User;
-
-import java.io.FileWriter;
 import UserGUI.UserFrame;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 
 public class LoginFrame extends JFrame {
     // private variables, don't change
-    private JButton login, register;
-    private JTextField username;
-    private JPasswordField password;
-    private JLabel passwordLab, usernameLab;
-
-    private Gson gson = new Gson();
+    private final JButton login;
+    private final JButton register;
+    private final JTextField username;
+    private final JPasswordField password;
+    private final JLabel passwordLab;
+    private final JLabel usernameLab;
+    private final Gson gson = new Gson();
+    private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(";
 
     public LoginFrame() {
 
@@ -56,20 +71,16 @@ public class LoginFrame extends JFrame {
         login.setBounds(150, 250, 100, 25);
         login.setForeground(Color.WHITE);
         login.setBackground(Color.BLACK);
-        login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginOnAction(evt);
-            }
+        login.addActionListener((java.awt.event.ActionEvent evt) -> {
+            loginOnAction(evt);
         });
 
         register = new JButton("Register");
         register.setBounds(150, 280, 100, 25);
         register.setForeground(Color.WHITE);
         register.setBackground(Color.BLACK);
-        register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerOnAction(evt);
-            }
+        register.addActionListener((java.awt.event.ActionEvent evt) -> {
+            registerOnAction(evt);
         });
 
         // adding every component to the panel
@@ -87,68 +98,127 @@ public class LoginFrame extends JFrame {
     public void loginOnAction(ActionEvent e) {
         String U = this.username.getText();
         String P = this.password.getText();
+        P = encrypt(P);
+        
+        JsonArray users;
 
-        JSONArray users = new JSONArray();
-        JSONParser jp = new JSONParser();
-
-        // extracting data from the json file
         try {
             FileReader file = new FileReader("src/main/java/Objects/json/UserData.json");
-            users = (JSONArray) jp.parse(file);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "error occured: " + ex);
+            JsonElement jsonElement = JsonParser.parseReader(file);
+            users = jsonElement.getAsJsonArray();
+        } catch (JsonIOException | JsonSyntaxException | FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "error occurred: " + ex);
             return;
         }
-
+        
         // checking User in UserData.json
-        System.out.println("index is: " + findIndexOfJson(U, P, users));
         int index = findIndexOfJson(U, P, users);
         String userRole = "";
-        JSONObject user = (JSONObject) users.get(index);
-        String storedUsername = (String) user.get("username");
-        String storedPassword = (String) user.get("password");
-        String storedUserRole = (String) user.get("role");
+        JsonObject user = null;
+        int storedId = -1;
+        String storedUsername = null;
+        String storedPassword = null;
+        String storedUserRole = null;
+        try {
+            user = users.get(index).getAsJsonObject();
+            storedId = user.get("id").getAsInt();
+            storedUsername = user.get("username").getAsString();
+            storedPassword = user.get("password").getAsString();
+            storedUserRole = user.get("role").getAsString();
+        } catch (IndexOutOfBoundsException | JsonParseException a) {
+        }
+        
         if (U.equals(storedUsername) && P.equals(storedPassword)) {
             userRole = storedUserRole;
             JOptionPane.showMessageDialog(null, "login successful as " + userRole);
+
             if (userRole.equals("admin")) {
-                // boh tipo adminframe
+                closeApplication();
                 AdminFrame frame = new AdminFrame();
                 frame.setVisible(true);
-                System.out.println("login as admin");
             } else if (userRole.equals("user")) {
-                // costumer frame
-                UserFrame frame = new UserFrame(gson.fromJson(user.toJSONString(), User.class));
+                closeApplication();
+                UserFrame frame = new UserFrame(getUserById(storedId));
                 frame.setVisible(true);
-                System.out.println("loggin as user");
+                System.out.println("user");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Error: invalid username or password");
-
         }
-
     }
 
     public void registerOnAction(ActionEvent e) {
         RegisterFrame r = new RegisterFrame();
+        closeApplication();
     }
 
     // json file is an array, i have to find an index for a given username and
     // password
-    public int findIndexOfJson(String U, String P, JSONArray users) {
+    public int findIndexOfJson(String U, String P, JsonArray users) {
         int index = 0;
-        for (Object userObj : users) {
-            JSONObject user = (JSONObject) userObj;
-            String storedUsername = (String) user.get("username");
-            String storedPassword = (String) user.get("password");
-            String storedUserRole = (String) user.get("role");
-            if (U.equals(storedUsername) && P.equals(storedPassword)) {
-                break;
+            for (JsonElement userObj : users) {
+                JsonObject user = userObj.getAsJsonObject();
+                String storedUsername = user.get("username").getAsString();
+                String storedPassword = user.get("password").getAsString();
+
+                if (U.equals(storedUsername) && P.equals(storedPassword)) {
+                    break;
+                }
+                index++;
             }
-            index++;
+    return index;
+}
+    
+    public static User getUserById(int id) {
+        try {
+            // Read the JSON file
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/users.json"))
+                    .getAsJsonArray();
+
+            // Create a Gson instance
+            Gson gson = new Gson();
+
+            // Iterate over the array to find the user with the specified ID
+            for (JsonElement jsonElement : jsonArray) {
+                User user = gson.fromJson(jsonElement, User.class);
+                if (user.getId() == id) {
+                    return user;
+                }
+            }
+        } catch (IOException | JsonIOException e) {
+            e.printStackTrace();
         }
 
-        return index;
+        return null; // User with the specified ID was not found
+    }
+    public static String encrypt(String plainText) {
+        try {
+            Cipher cipher = Cipher.getInstance("AES");
+            Key key = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            byte[] encryptedBytes = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
+            return Base64.getEncoder().encodeToString(encryptedBytes);
+        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
+        }
+        return null;
+    }
+
+    public String decrypt(String encryptedText) {
+        try {
+            Cipher cipher = Cipher.getInstance("AES");
+            Key key = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            byte[] decodedBytes = Base64.getDecoder().decode(encryptedText);
+            byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+            return new String(decryptedBytes, StandardCharsets.UTF_8);
+        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
+        }
+        return null;
+    }
+    
+    private void closeApplication() {
+        this.dispose();
     }
 
 }

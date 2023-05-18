@@ -1,108 +1,115 @@
 package LoginGUI;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import org.json.simple.*;
+import java.util.Date;
+import javax.swing.*;
+import Objects.User.GenderType;
 import Objects.User;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author aless
  */
 public class RegisterFrame extends JFrame {
-    private JButton login, register;
-    private JTextField username, email, name, surname;
-    private JPasswordField password;
-    private JLabel passwordLab, usernameLab, emailLab, nameLab;
-    private int x, y;
+   
+    //instance variables
+    private final JTextField nameField;
+    private final JTextField surnameField;
+    private final JTextField emailField;
+    private final JPasswordField passwordField;
+    private final JSpinner birthDateSpinner;
+    private final JComboBox<GenderType> genderComboBox;
+    private final int x;
+    private final int y;
 
     public RegisterFrame() {
-
-        // initiate coordinates
-        x = 100;
+        
+        x = 75;
         y = 125;
-
-        // setting panel
+        
         this.setSize(400, 500);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
 
-        // setting up all components
-        nameLab = new JLabel("Name and Surname");
-        nameLab.setBounds(x, y - 50, 200, 20);
+        JLabel nameLabel = new JLabel("Name:");
+        nameField = new JTextField();
+        nameLabel.setBounds(x, y - 45, 200, 20);
+        nameField.setBounds(x, y - 25, 90, 30);
 
-        name = new JTextField();
-        name.setBounds(x, y - 25, 90, 30);
+        JLabel surnameLabel = new JLabel("Surname:");
+        surnameField = new JTextField();
+        surnameLabel.setBounds(x+110, y-45, 200, 20);
+        surnameField.setBounds(x + 110, y - 25, 90, 30);
 
-        surname = new JTextField();
-        surname.setBounds(x + 110, y - 25, 90, 30);
+        JLabel emailLabel = new JLabel("Email:");
+        emailField = new JTextField();
+        emailLabel.setBounds(x, y+5, 70, 20);
+        emailField.setBounds(x, y + 25, 200, 30);
 
-        emailLab = new JLabel("Email");
-        emailLab.setBounds(x, y, 70, 20);
+        JLabel passwordLabel = new JLabel("Password:");
+        passwordField = new JPasswordField();
+        passwordLabel.setBounds(x, y + 55, 70, 20);
+        passwordField.setBounds(x, y + 75, 200, 30);
 
-        email = new JTextField();
-        email.setBounds(x, y + 25, 200, 30);
-
-        usernameLab = new JLabel("Username");
-        usernameLab.setBounds(x, y + 50, 70, 20);
-
-        username = new JTextField();
-        username.setBounds(x, y + 75, 200, 30);
-
-        passwordLab = new JLabel("Password");
-        passwordLab.setBounds(x, y + 100, 70, 20);
-
-        password = new JPasswordField();
-        password.setBounds(x, y + 125, 200, 30);
-
-        register = new JButton("Register");
-        register.setBounds(x + 50, y + 175, 100, 25);
-        register.setForeground(Color.WHITE);
-        register.setBackground(Color.BLACK);
-        register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    RegisterOnAction(evt);
-                } catch (IOException ex) {
-                    Logger.getLogger(RegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        JLabel birthDateLabel = new JLabel("Birth Date:");
+        SpinnerModel spinnerModel = new SpinnerDateModel();
+        birthDateSpinner = new JSpinner(spinnerModel);
+        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(birthDateSpinner, "dd/MM/yyyy");
+        birthDateSpinner.setEditor(dateEditor);
+        birthDateLabel.setBounds(x, y + 105, 70, 20);
+        birthDateSpinner.setBounds(x, y+125, 200, 30);
+        
+        JLabel genderLabel = new JLabel("Gender:");
+        GenderType[] genderOptions = GenderType.values();
+        genderComboBox = new JComboBox<>(genderOptions);
+        genderLabel.setBounds(x, y+155, 70, 20);
+        genderComboBox.setBounds(x, y+175, 200, 30);
+        
+        JButton registerButton = new JButton("Register");
+        registerButton.setBounds(x+50, y+250, 100, 25);
+        registerButton.addActionListener((ActionEvent e) -> {
+            registerUser();
         });
 
-        // adding every component to the panel
-        this.add(nameLab);
-        this.add(name);
-        this.add(surname);
-        this.add(emailLab);
-        this.add(email);
-        this.add(usernameLab);
-        this.add(username);
-        this.add(passwordLab);
-        this.add(password);
-        this.add(register);
+        add(nameLabel);
+        add(nameField);
+        add(surnameLabel);
+        add(surnameField);
+        add(emailLabel);
+        add(emailField);
+        add(passwordLabel);
+        add(passwordField);
+        add(birthDateLabel);
+        add(birthDateSpinner);
+        add(genderLabel);
+        add(genderComboBox);
+        add(registerButton);
 
-        this.setVisible(true);
+        setVisible(true);
     }
 
-    // register button on action
-    public void RegisterOnAction(ActionEvent e) throws IOException {
-        String email = this.email.getText();
-        String password = this.password.getText();
-        String username = this.username.getText();
-        String name = this.name.getText();
-        String surname = this.surname.getText();
+    private void registerUser() {
+        String name = nameField.getText();
+        String surname = surnameField.getText();
+        String email = emailField.getText();
+        String password = new String(passwordField.getPassword());
+        Date birthDate = (Date) birthDateSpinner.getValue();
+        GenderType gender = (GenderType) genderComboBox.getSelectedItem();
+        String role = "user";
 
-        // creating new user with the given info and adding it to the json
-        User user = new User(name, surname, null, null, email, password);
+        // TODO: Process the user registration logic here
+        User user = new User(name, surname, birthDate, gender, email, password, role);
         user.addToJson();
+        JOptionPane.showMessageDialog(null, "Username for login: "+ user.getUsername());
+        closeApplication();
+    }
 
+    private void closeApplication() {
+        this.dispose();
     }
 }

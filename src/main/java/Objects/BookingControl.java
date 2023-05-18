@@ -90,6 +90,11 @@ public class BookingControl {
         return result;
     }
 
+    public static void createBooking(User user, Room room, Date checkIn, Date checkOut) {
+        Booking booking = new Booking(new DateTime(checkIn), new DateTime(checkOut), room, user);
+        addBooking(booking);
+    }
+
     public static void addBooking(Booking booking) {
         if (bookings == null) {
             bookings = new Booking[0];
