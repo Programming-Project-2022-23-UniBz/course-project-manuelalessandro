@@ -11,6 +11,7 @@ import org.joda.time.DateTime;
 import com.google.gson.Gson;
 
 import Objects.Room.RoomType;
+import java.util.Date;
 
 public class RoomControl {
 

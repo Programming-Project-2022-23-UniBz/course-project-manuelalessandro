@@ -148,7 +148,6 @@ public class BookingControl {
         UserControl.pullData();
         pullData();        
         
-        
         pushData();
         RoomControl.pushData();
         UserControl.pushData();

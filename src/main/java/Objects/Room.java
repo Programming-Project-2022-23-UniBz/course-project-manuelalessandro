@@ -71,6 +71,7 @@ public class Room {
     }
 
     public boolean isOccupied(DateTime checkIn, DateTime checkOut) {
+        BookingControl.pullData();
         boolean result = false;
         ArrayList<Booking> bookings = BookingControl.getAllBookings(this);
 

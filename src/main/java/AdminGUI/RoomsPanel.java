@@ -9,11 +9,13 @@ import Objects.RoomControl;
 import Objects.Room;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
+import Objects.BookingControl;
 import org.joda.time.DateTime;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -59,6 +61,10 @@ public class RoomsPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
+        jDateOfCheckInChooser = new com.toedter.calendar.JDateChooser();
+        jDateOfCheckOutChooser = new com.toedter.calendar.JDateChooser();
+        checkInLabel = new javax.swing.JLabel();
+        checkOutLabel = new javax.swing.JLabel();
 
         roomsPanel.setBackground(new java.awt.Color(255, 255, 255));
         roomsPanel.setPreferredSize(new java.awt.Dimension(738, 546));
@@ -171,7 +177,7 @@ public class RoomsPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(roomTable);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Here you can search for rooms by entering the room number or by typing it's type.");
+        jLabel1.setText("Search rooms availibilty by enter first the dates and then ROOM NUMBER OR ROOM TYPE");
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -187,6 +193,14 @@ public class RoomsPanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel3.setText("(i) After searching for the room, click on the table's row to proceed with the bookings.");
+
+        checkInLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        checkInLabel.setForeground(new java.awt.Color(0, 0, 255));
+        checkInLabel.setText("Date of Check-In");
+
+        checkOutLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        checkOutLabel.setForeground(new java.awt.Color(0, 0, 255));
+        checkOutLabel.setText("Date of Check-Out");
 
         javax.swing.GroupLayout roomsPanelLayout = new javax.swing.GroupLayout(roomsPanel);
         roomsPanel.setLayout(roomsPanelLayout);
@@ -206,16 +220,7 @@ public class RoomsPanel extends javax.swing.JPanel {
                                 .addGap(167, 167, 167)
                                 .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roomsPanelLayout.createSequentialGroup()
-                                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(roomsPanelLayout.createSequentialGroup()
-                                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(roomNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(roomNrLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(345, 345, 345)
-                                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(roomTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(roomTypeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 15, Short.MAX_VALUE)))
                         .addContainerGap(12, Short.MAX_VALUE))
                     .addGroup(roomsPanelLayout.createSequentialGroup()
@@ -223,6 +228,26 @@ public class RoomsPanel extends javax.swing.JPanel {
                             .addComponent(jLabel3)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                        .addComponent(checkInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDateOfCheckInChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(roomsPanelLayout.createSequentialGroup()
+                        .addComponent(checkOutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateOfCheckOutChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(64, 64, 64)
+                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(roomNrLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(roomNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(roomTypeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roomTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
         );
         roomsPanelLayout.setVerticalGroup(
             roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,15 +260,28 @@ public class RoomsPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(roomNrLabel)
-                    .addComponent(roomTypeLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(roomNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(roomTypeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout.createSequentialGroup()
+                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(roomsPanelLayout.createSequentialGroup()
+                                .addComponent(roomTypeLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roomTypeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(roomsPanelLayout.createSequentialGroup()
+                                .addComponent(roomNrLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roomNrTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomsPanelLayout.createSequentialGroup()
+                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jDateOfCheckInChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkInLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateOfCheckOutChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkOutLabel))
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
@@ -272,67 +310,150 @@ public class RoomsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-        /*
-         * roomNrTxtFieldActionPerformed method is an event handler triggered when the
-         * user
-         * performs an action on the roomNrTxtField. It is responsible for searching
-         * and displaying room information based on the entered room number.
-         */
-        private void roomNrTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_roomNrTxtFieldActionPerformed
-                /*
-                 * Parses the room number from the text field, retrieves the corresponding room
-                 * using roomControl.getRoomById(roomNr), and updates the roomTable with
-                 * the room details if a match is found.
-                 */
-                try {
-                        int roomNr = Integer.parseInt(roomNrTxtField.getText());
-                        Room roomById = RoomControl.getRoomById(roomNr);
+    /*
+     * roomNrTxtFieldActionPerformed method is an event handler triggered when the
+     * user performs an action on the roomNrTxtField. It is responsible for searching
+     * and displaying room information based on the entered room number and dates.
+     */
+    private void roomNrTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_roomNrTxtFieldActionPerformed
+        RoomControl.pullData();
+        BookingControl.pullData();
 
-                        if (roomById == null) {
-                                JOptionPane.showMessageDialog(this, "No room found with ID " + roomNr, "Room Not Found",
-                                                JOptionPane.WARNING_MESSAGE);
-                                roomNrTxtField.setText("");
-                                return;
-                        }
+        // Check if any of the required fields are empty
+        if (roomNrTxtField.getText().isEmpty()
+                || jDateOfCheckInChooser.getDate() == null
+                || jDateOfCheckOutChooser.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Please fill in all the required fields.");
+            return;
+        }
 
-                        // retrieves the model of the roomTable as a DefaultTableModel
-                        DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
-                        model.setRowCount(0); // clearing any existing rows in the table
+        boolean isCheckInValidated = true;
+        boolean isCheckOutValidated = true;
 
-                        Object rowData[] = new Object[5];
-                        rowData[0] = roomById.getId();
-                        rowData[1] = roomById.getType();
-                        rowData[2] = roomById.getCapacity();
-                        rowData[3] = roomById.getPrice();
-                        if (roomById.isOccupied(new DateTime(), new DateTime()) == false) {
-                                rowData[4] = "Yes";
-                        } else {
-                                rowData[4] = "No";
-                        }
+        Date checkInDate = jDateOfCheckInChooser.getDate();
+        Date checkOutDate = jDateOfCheckOutChooser.getDate();
 
-                        model.addRow(rowData);
-                        // Make the table content uneditable
-                        roomTable.setDefaultEditor(Object.class, null);
-                        roomTable.setModel(model);
-                        jScrollPane1.setViewportView(roomTable);
+        // Validate check-in date
+        Date currentDate = new Date();
+        if (checkInDate.before(currentDate) && !isSameDay(checkInDate, currentDate)) {
+            JOptionPane.showMessageDialog(this, "Check-in date cannot be earlier than today.",
+                    "Invalid Check-in Date",
+                    JOptionPane.WARNING_MESSAGE);
+            isCheckInValidated = false;
+            return;
+        }
 
-                        // clear the textfields
-                        roomTypeTxtField.setText("");
-                        roomNrTxtField.setText("");
-                } catch (NumberFormatException ex) {
-                        // If the room number is not a valid integer, a NumberFormatException is caught,
-                        // and an error message is displayed to the user.
-                        JOptionPane.showMessageDialog(this, "Invalid input. Please enter a valid room number.",
-                                        "Input Error",
-                                        JOptionPane.ERROR_MESSAGE);
-                        roomNrTxtField.setText("");
+        // Validate check-out date
+        if (checkOutDate.before(checkInDate) && !checkOutDate.equals(checkInDate)) {
+            JOptionPane.showMessageDialog(this, "Check-out date cannot be before the check-in date.",
+                    "Invalid Check-out Date", JOptionPane.WARNING_MESSAGE);
+            isCheckOutValidated = false;
+            return;
+        }
+
+
+        if (isCheckInValidated && isCheckOutValidated){
+            /*
+             * Parses the room number from the text field, retrieves the corresponding room
+             * using roomControl.getRoomById(roomNr), and updates the roomTable with
+             * the room details if a match is found.
+             */
+            try {
+                int roomNr = Integer.parseInt(roomNrTxtField.getText());
+                Room roomById = RoomControl.getRoomById(roomNr);
+
+                if (roomById == null) {
+                    JOptionPane.showMessageDialog(this, "No room found with ID " + roomNr, "Room Not Found",
+                            JOptionPane.WARNING_MESSAGE);
+                    roomNrTxtField.setText("");
+                    return;
                 }
-        }// GEN-LAST:event_roomNrTxtFieldActionPerformed
 
-        // Another event handler but this time for the roomTypeTxtField text field
-        private void roomTypeTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_roomTypeTxtFieldActionPerformed
+                DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
+                DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
+
+                // retrieves the model of the roomTable as a DefaultTableModel
+                DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
+                model.setRowCount(0); // clearing any existing rows in the table
+
+                Object rowData[] = new Object[5];
+                rowData[0] = roomById.getId();
+                rowData[1] = roomById.getType();
+                rowData[2] = roomById.getCapacity();
+                rowData[3] = roomById.getPrice();
+                if (roomById.isOccupied(dateTimecheckIn, dateTimecheckOut) == false) {
+                    rowData[4] = "Yes";
+                } else {
+                    rowData[4] = "No";
+                }
+
+                model.addRow(rowData);
+                // Make the table content uneditable
+                roomTable.setDefaultEditor(Object.class, null);
+                roomTable.setModel(model);
+                jScrollPane1.setViewportView(roomTable);
+
+                // clear the textfields
+                roomTypeTxtField.setText("");
+                roomNrTxtField.setText("");
+            } catch (NumberFormatException ex) {
+                // If the room number is not a valid integer, a NumberFormatException is caught,
+                // and an error message is displayed to the user.
+                JOptionPane.showMessageDialog(this, "Invalid input. Please enter a valid room number.",
+                        "Input Error",
+                        JOptionPane.ERROR_MESSAGE);
+                roomNrTxtField.setText("");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Invalid input. Please enter valid dates.",
+                    "Input Error",
+                    JOptionPane.ERROR_MESSAGE);
+            roomNrTxtField.setText("");
+        }
+
+    }// GEN-LAST:event_roomNrTxtFieldActionPerformed
+
+    // Another event handler but this time for the roomTypeTxtField text field
+    private void roomTypeTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_roomTypeTxtFieldActionPerformed
+        RoomControl.pullData();
+        BookingControl.pullData();
+
+        // Check if any of the required fields are empty
+        if (roomTypeTxtField.getText().isEmpty()
+                || jDateOfCheckInChooser.getDate() == null
+                || jDateOfCheckOutChooser.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Please fill in all the required fields.");
+            return;
+        }
+
+        boolean isCheckInValidated = true;
+        boolean isCheckOutValidated = true;
+
+        Date checkInDate = jDateOfCheckInChooser.getDate();
+        Date checkOutDate = jDateOfCheckOutChooser.getDate();
+
+        // Validate check-in date
+        Date currentDate = new Date();
+        if (checkInDate.before(currentDate) && !isSameDay(checkInDate, currentDate)) {
+            JOptionPane.showMessageDialog(this, "Check-in date cannot be earlier than today.",
+                    "Invalid Check-in Date",
+                    JOptionPane.WARNING_MESSAGE);
+            isCheckInValidated = false;
+            return;
+        }
+
+        // Validate check-out date
+        if (checkOutDate.before(checkInDate) && !checkOutDate.equals(checkInDate)) {
+            JOptionPane.showMessageDialog(this, "Check-out date cannot be before the check-in date.",
+                    "Invalid Check-out Date", JOptionPane.WARNING_MESSAGE);
+            isCheckOutValidated = false;
+            return;
+        }
+
+        if (isCheckInValidated && isCheckOutValidated){
+
             String userInput = roomTypeTxtField.getText().toLowerCase();
-
             // Regular expression pattern roomTypePattern that represents valid room types
             String roomTypePattern = "(standard|deluxe|king)\\s*(\\d*)";
             /*
@@ -393,6 +514,9 @@ public class RoomsPanel extends javax.swing.JPanel {
                 DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
                 model.setRowCount(0); // Clear the existing rows
 
+                DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
+                DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
+
                 // Iterates over the list of rooms and populates the rowData array with the room
                 // details.
                 Object rowData[] = new Object[5];
@@ -401,7 +525,7 @@ public class RoomsPanel extends javax.swing.JPanel {
                     rowData[1] = roomsByType.get(i).getType();
                     rowData[2] = roomsByType.get(i).getCapacity();
                     rowData[3] = roomsByType.get(i).getPrice();
-                    if (roomsByType.get(i).isOccupied(new DateTime(), new DateTime()) == false) {
+                    if (roomsByType.get(i).isOccupied(dateTimecheckIn, dateTimecheckOut) == false) {
                         rowData[4] = "Yes";
                     } else {
                         rowData[4] = "No";
@@ -413,64 +537,83 @@ public class RoomsPanel extends javax.swing.JPanel {
                 roomTable.setDefaultEditor(Object.class, null);
                 // Set the updated table model back to the JTable instance
                 roomTable.setModel(model);
-
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid room type entered. Please try again.");
+                roomTypeTxtField.setText("");
+                roomNrTxtField.setText("");
             }
-
-            roomTypeTxtField.setText("");
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Invalid input. Please enter a valid dates.",
+                    "Input Error",
+                    JOptionPane.ERROR_MESSAGE);
             roomNrTxtField.setText("");
-        }// GEN-LAST:event_roomTypeTxtFieldActionPerformed
+        }
+    }// GEN-LAST:event_roomTypeTxtFieldActionPerformed
 
-        // Event handler for when the user clicks on a row in the roomTable
-        private void roomTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_roomTableMouseClicked
-                // Retrieves the index of the selected row
-                int selectedRow = roomTable.getSelectedRow();
+    // Event handler for when the user clicks on a row in the roomTable
+    private void roomTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_roomTableMouseClicked
+        // Retrieves the index of the selected row
+        int selectedRow = roomTable.getSelectedRow();
 
-                // If no row is selected , the method returns and nothing happens
-                if (selectedRow == -1) {
-                        return;
-                }
-                // Otherwise retrieves the room ID from the selected row
-                int roomID = (int) roomTable.getValueAt(selectedRow, 0);
+        // If no row is selected , the method returns and nothing happens
+        if (selectedRow == -1) {
+            return;
+        }
+        // Otherwise retrieves the room ID from the selected row
+        int roomID = (int) roomTable.getValueAt(selectedRow, 0);
 
-                if (roomTable.getValueAt(selectedRow, 4) == "No") {
-                        JOptionPane.showMessageDialog(this, "Room " + roomID + " is already booked.");
-                        return;
-                }
+        if (roomTable.getValueAt(selectedRow, 4) == "No") {
+            JOptionPane.showMessageDialog(this, "Room " + roomID + " is already booked.");
+            return;
+        }
 
-                // Retrieves the value of the "Available" column from the selected row ()check
-                // if room available or not
-                int dialogResult = JOptionPane.showConfirmDialog(this,
-                                "Are you sure you want to proceed with the booking of room nr. " + roomID + "?",
-                                "Confirm selected room", JOptionPane.YES_NO_OPTION);
-                //
-                if (dialogResult == JOptionPane.YES_OPTION) {
-                        /*
-                         * Couldn't modify the constructor of the RoomPanel class to pass
-                         * the instance of AdminFrame, so used
-                         * SwingUtilities.getWindowAncestor(Component c)
-                         * method to get the top-level container of the RoomPanel component,
-                         * which is the AdminFrame in this case.
-                         */
-                        // Retrieves the instance of AdminFrame and gets the CardLayout and JPanel from
-                        // the AdminFrame
-                        AdminFrame adminFrame = (AdminFrame) SwingUtilities.getWindowAncestor(this);
-                        CardLayout cardLayout = adminFrame.getCardLayout();
-                        JPanel cardPanel = adminFrame.getCardPanel();
+        // Retrieves the value of the "Available" column from the selected row ()check
+        // if room available or not
+        int dialogResult = JOptionPane.showConfirmDialog(this,
+                "Are you sure you want to proceed with the booking of room nr. " + roomID + "?",
+                "Confirm selected room", JOptionPane.YES_NO_OPTION);
+        //
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            /*
+             * Couldn't modify the constructor of the RoomPanel class to pass
+             * the instance of AdminFrame, so used
+             * SwingUtilities.getWindowAncestor(Component c)
+             * method to get the top-level container of the RoomPanel component,
+             * which is the AdminFrame in this case.
+             */
+            // Retrieves the instance of AdminFrame and gets the CardLayout and JPanel from
+            // the AdminFrame
+            AdminFrame adminFrame = (AdminFrame) SwingUtilities.getWindowAncestor(this);
+            CardLayout cardLayout = adminFrame.getCardLayout();
+            JPanel cardPanel = adminFrame.getCardPanel();
 
-                        Room roomToBook = RoomControl.getRoomById(roomID);
+            Room roomToBook = RoomControl.getRoomById(roomID);
 
-                        // Create a new instance of the BookingPanel with the roomID and add it to the
-                        // cardPanel
-                        BookingsPanel bookingsPanel = new BookingsPanel(roomToBook);
-                        cardPanel.add(bookingsPanel, "bookings");
-                        cardLayout.show(cardPanel, "bookings");
-                }
-        }// GEN-LAST:event_roomTableMouseClicked
+            // Create a new instance of the BookingPanel with the roomID and add it to the
+            // cardPanel
+            BookingsPanel bookingsPanel = new BookingsPanel(roomToBook);
+            cardPanel.add(bookingsPanel, "bookings");
+            cardLayout.show(cardPanel, "bookings");
+        }
+    }// GEN-LAST:event_roomTableMouseClicked
+
+    private boolean isSameDay(Date date1, Date date2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(date1);
+        cal2.setTime(date2);
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)
+                && cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private DesignObjects.AppControlButtons appControlButtons1;
+    private javax.swing.JLabel checkInLabel;
+    private javax.swing.JLabel checkOutLabel;
+    private com.toedter.calendar.JDateChooser jDateOfCheckInChooser;
+    private com.toedter.calendar.JDateChooser jDateOfCheckOutChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
