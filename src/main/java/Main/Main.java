@@ -7,18 +7,27 @@ import WelcomeGUI.WelcomeFrame;
 
 public class Main {
     public static void main(String[] args) {
-        //UserControl.pullData();
-        RoomControl.pullData();
-        //BookingControl.pullData();
+        pullAllData();
+
         WelcomeFrame frame = new WelcomeFrame();
         frame.setVisible(true);
     }
 
     public static void stopApplication() {
-        //UserControl.pushData();
-        RoomControl.pushData();
-        //BookingControl.pushData();
+        pushAllData();
 
         System.exit(0);
+    }
+
+    public static void pullAllData() {
+        UserControl.pullData();
+        RoomControl.pullData();
+        BookingControl.pullData();
+    }
+
+    public static void pushAllData() {
+        UserControl.pushData();
+        RoomControl.pushData();
+        BookingControl.pushData();
     }
 }
