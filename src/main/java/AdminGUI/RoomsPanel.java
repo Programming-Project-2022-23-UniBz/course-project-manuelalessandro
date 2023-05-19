@@ -84,10 +84,10 @@ public class RoomsPanel extends javax.swing.JPanel {
         });
 
         titleTxt.setBackground(new java.awt.Color(255, 255, 255));
-        titleTxt.setFont(new java.awt.Font("Yu Gothic UI", 1, 25)); // NOI18N
-        titleTxt.setForeground(new java.awt.Color(102, 153, 255));
+        titleTxt.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        titleTxt.setForeground(new java.awt.Color(0, 51, 153));
         titleTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleTxt.setText("Search Rooms");
+        titleTxt.setText("SEARCH ROOMS");
 
         roomTypeLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         roomTypeLabel.setForeground(new java.awt.Color(0, 0, 255));
@@ -223,7 +223,7 @@ public class RoomsPanel extends javax.swing.JPanel {
                             .addGroup(roomsPanelLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(167, 167, 167)
+                                .addGap(150, 150, 150)
                                 .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roomsPanelLayout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -262,7 +262,7 @@ public class RoomsPanel extends javax.swing.JPanel {
                 .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(roomTypeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roomTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                .addGap(59, 59, 59))
         );
         roomsPanelLayout.setVerticalGroup(
             roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +277,7 @@ public class RoomsPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(roomsPanelLayout.createSequentialGroup()
                         .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,12 +293,12 @@ public class RoomsPanel extends javax.swing.JPanel {
                     .addGroup(roomsPanelLayout.createSequentialGroup()
                         .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jDateOfCheckInChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(checkInLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(checkInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
                         .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDateOfCheckOutChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkOutLabel))))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -348,11 +348,14 @@ public class RoomsPanel extends javax.swing.JPanel {
 
         boolean isCheckInValidated = true;
         boolean isCheckOutValidated = true;
-
         Date checkInDate = jDateOfCheckInChooser.getDate();
         Date checkOutDate = jDateOfCheckOutChooser.getDate();
 
         // Validate check-in date
+        /*
+        Compares the checkInDate with the currentDate using the before().
+        If the check-in date is before the current date or not the same day, it displays a warning message
+         */
         Date currentDate = new Date();
         if (checkInDate.before(currentDate) && !isSameDay(checkInDate, currentDate)) {
             JOptionPane.showMessageDialog(this, "Check-in date cannot be earlier than today.",
@@ -363,6 +366,10 @@ public class RoomsPanel extends javax.swing.JPanel {
         }
 
         // Validate check-out date
+        /*
+        Compares the checkOutDate with the checkInDate using the before() method.
+        If the check-out date is before the check-in date or not equal to the check-in date, it displays a warning message.
+         */
         if (checkOutDate.before(checkInDate) && !checkOutDate.equals(checkInDate)) {
             JOptionPane.showMessageDialog(this, "Check-out date cannot be before the check-in date.",
                     "Invalid Check-out Date", JOptionPane.WARNING_MESSAGE);
@@ -370,62 +377,31 @@ public class RoomsPanel extends javax.swing.JPanel {
             return;
         }
 
+        /*
+         * Parses the room number from the text field, retrieves the corresponding room
+         * using roomControl.getRoomById(roomNr), and updates the roomTable with
+         * the room details if a match is found.
+         */
+        try {
+            int roomNr = Integer.parseInt(roomNrTxtField.getText());
+            Room roomById = RoomControl.getRoomById(roomNr);
 
-        if (isCheckInValidated && isCheckOutValidated){
-            /*
-             * Parses the room number from the text field, retrieves the corresponding room
-             * using roomControl.getRoomById(roomNr), and updates the roomTable with
-             * the room details if a match is found.
-             */
-            try {
-                int roomNr = Integer.parseInt(roomNrTxtField.getText());
-                Room roomById = RoomControl.getRoomById(roomNr);
-
-                if (roomById == null) {
-                    JOptionPane.showMessageDialog(this, "No room found with ID " + roomNr, "Room Not Found",
-                            JOptionPane.WARNING_MESSAGE);
-                    roomNrTxtField.setText("");
-                    return;
-                }
-
-                DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
-                DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
-
-                // retrieves the model of the roomTable as a DefaultTableModel
-                DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
-                model.setRowCount(0); // clearing any existing rows in the table
-
-                Object rowData[] = new Object[5];
-                rowData[0] = roomById.getId();
-                rowData[1] = roomById.getType();
-                rowData[2] = roomById.getCapacity();
-                rowData[3] = roomById.getPrice();
-                if (roomById.isOccupied(dateTimecheckIn, dateTimecheckOut) == false) {
-                    rowData[4] = "Yes";
-                } else {
-                    rowData[4] = "No";
-                }
-
-                model.addRow(rowData);
-                // Make the table content uneditable
-                roomTable.setDefaultEditor(Object.class, null);
-                roomTable.setModel(model);
-                jScrollPane1.setViewportView(roomTable);
-
-                // clear the textfields
-                roomTypeTxtField.setText("");
+            if (roomById == null) {
+                JOptionPane.showMessageDialog(this, "No room found with ID " + roomNr, "Room Not Found",
+                        JOptionPane.WARNING_MESSAGE);
                 roomNrTxtField.setText("");
-            } catch (NumberFormatException ex) {
-                // If the room number is not a valid integer, a NumberFormatException is caught,
-                // and an error message is displayed to the user.
-                JOptionPane.showMessageDialog(this, "Invalid input. Please enter a valid room number.",
-                        "Input Error",
-                        JOptionPane.ERROR_MESSAGE);
-                roomNrTxtField.setText("");
+                return;
             }
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Invalid input. Please enter valid dates.",
+
+            initRoomTableById(roomById); // Initialize the table for that room
+
+            // clear the textfields
+            roomTypeTxtField.setText("");
+            roomNrTxtField.setText("");
+        } catch (NumberFormatException ex) {
+            // If the room number is not a valid integer, a NumberFormatException is caught,
+            // and an error message is displayed to the user.
+            JOptionPane.showMessageDialog(this, "Invalid input. Please enter a valid room number.",
                     "Input Error",
                     JOptionPane.ERROR_MESSAGE);
             roomNrTxtField.setText("");
@@ -448,7 +424,6 @@ public class RoomsPanel extends javax.swing.JPanel {
 
         boolean isCheckInValidated = true;
         boolean isCheckOutValidated = true;
-
         Date checkInDate = jDateOfCheckInChooser.getDate();
         Date checkOutDate = jDateOfCheckOutChooser.getDate();
 
@@ -470,107 +445,76 @@ public class RoomsPanel extends javax.swing.JPanel {
             return;
         }
 
-        if (isCheckInValidated && isCheckOutValidated){
+        String userInput = roomTypeTxtField.getText().toLowerCase();
+        // Regular expression pattern roomTypePattern that represents valid room types
+        String roomTypePattern = "(standard|deluxe|king)\\s*(\\d*)";
+        /*
+         * This regular expression pattern will match any of the following variations:
+         *
+         * standard
+         * deluxe
+         * king
+         * standard 2
+         * deluxe 2
+         * king 2
+         * where the number after the room type represents the capacity.
+         */
 
-            String userInput = roomTypeTxtField.getText().toLowerCase();
-            // Regular expression pattern roomTypePattern that represents valid room types
-            String roomTypePattern = "(standard|deluxe|king)\\s*(\\d*)";
-            /*
-             * This regular expression pattern will match any of the following variations:
-             *
-             * standard
-             * deluxe
-             * king
-             * standard 2
-             * deluxe 2
-             * king 2
-             * where the number after the room type represents the capacity.
-             */
+        // If the input matches the pattern, extract the room type and capacity
+        Pattern pattern = Pattern.compile(roomTypePattern);
+        Matcher matcher = pattern.matcher(userInput);
 
-            // If the input matches the pattern, extract the room type and capacity
-            Pattern pattern = Pattern.compile(roomTypePattern);
-            Matcher matcher = pattern.matcher(userInput);
-            if (matcher.matches()) {
-                String roomTypeString = matcher.group(1);
-                String capacityString = matcher.group(2);
+        if (matcher.matches()) {
+            String roomTypeString = matcher.group(1);
+            String capacityString = matcher.group(2);
+            RoomType roomType = null;
+            int capacity = -1;
 
-                RoomType roomType = null;
-                int capacity = -1;
-
-                switch (roomTypeString) {
-                    case "standard":
-                        roomType = RoomType.STANDARD;
-                        break;
-                    case "deluxe":
-                        roomType = RoomType.DELUXE;
-                        break;
-                    case "king":
-                        roomType = RoomType.KING;
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(this, "Invalid room type entered. Please try again.");
-                        roomTypeTxtField.setText("");
-                        roomNrTxtField.setText("");
-                        return; // Exit the method if the room type is not valid
-                }
-
-                // If a capacity is specified, parse it as an integer
-                if (!capacityString.isEmpty()) {
-                    capacity = Integer.parseInt(capacityString);
-                }
-
-                // Validate the capacity
-                if (capacity < 1) {
-                    capacity = 1;
-                }
-                if (capacity > 2) {
-                    capacity = 2;
-                }
-
-                // Retrieves a list of rooms that match the specified room type and capacity
-                ArrayList<Room> roomsByType = RoomControl.getRoomsByTypeCapacity(roomType, capacity);
-
-                DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
-                model.setRowCount(0); // Clear the existing rows
-
-                DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
-                DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
-
-                // Iterates over the list of rooms and populates the rowData array with the room
-                // details.
-                Object rowData[] = new Object[5];
-                for (int i = 0; i < roomsByType.size(); i++) {
-                    rowData[0] = roomsByType.get(i).getId();
-                    rowData[1] = roomsByType.get(i).getType();
-                    rowData[2] = roomsByType.get(i).getCapacity();
-                    rowData[3] = roomsByType.get(i).getPrice();
-                    if (roomsByType.get(i).isOccupied(dateTimecheckIn, dateTimecheckOut) == false) {
-                        rowData[4] = "Yes";
-                    } else {
-                        rowData[4] = "No";
-                    }
-                    model.addRow(rowData);
-                }
-
-                // Make the table content uneditable
-                roomTable.setDefaultEditor(Object.class, null);
-                // Set the updated table model back to the JTable instance
-                roomTable.setModel(model);
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid room type entered. Please try again.");
-                roomTypeTxtField.setText("");
-                roomNrTxtField.setText("");
+            switch (roomTypeString) {
+                case "standard":
+                    roomType = RoomType.STANDARD;
+                    break;
+                case "deluxe":
+                    roomType = RoomType.DELUXE;
+                    break;
+                case "king":
+                    roomType = RoomType.KING;
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this, "Invalid room type entered. Please try again.");
+                    roomTypeTxtField.setText("");
+                    roomNrTxtField.setText("");
+                    return; // Exit the method if the room type is not valid
             }
-        }
-        else {
-            JOptionPane.showMessageDialog(this, "Invalid input. Please enter a valid dates.",
-                    "Input Error",
-                    JOptionPane.ERROR_MESSAGE);
+
+            // If a capacity is specified, parse it as an integer
+            if (!capacityString.isEmpty()) {
+                capacity = Integer.parseInt(capacityString);
+            }
+
+            // Validate the capacity
+            if (capacity < 1) {
+                capacity = 1;
+            }
+            if (capacity > 2) {
+                capacity = 2;
+            }
+
+            // Retrieves a list of rooms that match the specified room type and capacity
+            ArrayList<Room> roomsByType = RoomControl.getRoomsByTypeCapacity(roomType, capacity);
+
+            initRoomTableByType(roomsByType);
+
+            roomTypeTxtField.setText("");
+            roomNrTxtField.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid room type entered. Please try again.");
+            roomTypeTxtField.setText("");
             roomNrTxtField.setText("");
         }
     }// GEN-LAST:event_roomTypeTxtFieldActionPerformed
 
-    // Event handler for when the user clicks on a row in the roomTable
+    // Event handler when the user clicks on a row in the roomTable and wants to preceed with the booking of that room
     private void roomTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_roomTableMouseClicked
         // Retrieves the index of the selected row
         int selectedRow = roomTable.getSelectedRow();
@@ -582,17 +526,17 @@ public class RoomsPanel extends javax.swing.JPanel {
         // Otherwise retrieves the room ID from the selected row
         int roomID = (int) roomTable.getValueAt(selectedRow, 0);
 
+        // Retrieves the value of the "Available" column from the selected row ()check
+        // if room available or not
         if (roomTable.getValueAt(selectedRow, 4) == "No") {
             JOptionPane.showMessageDialog(this, "Room " + roomID + " is already booked.");
             return;
         }
 
-        // Retrieves the value of the "Available" column from the selected row ()check
-        // if room available or not
         int dialogResult = JOptionPane.showConfirmDialog(this,
                 "Are you sure you want to proceed with the booking of room nr. " + roomID + "?",
                 "Confirm selected room", JOptionPane.YES_NO_OPTION);
-        //
+
         if (dialogResult == JOptionPane.YES_OPTION) {
             /*
              * Couldn't modify the constructor of the RoomPanel class to pass
@@ -608,20 +552,80 @@ public class RoomsPanel extends javax.swing.JPanel {
             JPanel cardPanel = adminFrame.getCardPanel();
 
             Room roomToBook = RoomControl.getRoomById(roomID);
+            Date checkIn = jDateOfCheckInChooser.getDate();
+            Date checkOut = jDateOfCheckOutChooser.getDate();
 
             // Create a new instance of the BookingPanel with the roomID and add it to the
             // cardPanel
-            BookingsPanel bookingsPanel = new BookingsPanel(roomToBook);
+            BookingsPanel bookingsPanel = new BookingsPanel(roomToBook, checkIn, checkOut);
             cardPanel.add(bookingsPanel, "bookings");
             cardLayout.show(cardPanel, "bookings");
         }
     }// GEN-LAST:event_roomTableMouseClicked
 
+    private void initRoomTableById(Room roomById){
+        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
+        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
+
+        // retrieves the model of the roomTable as a DefaultTableModel
+        DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
+        model.setRowCount(0); // clearing any existing rows in the table
+
+        Object rowData[] = new Object[5];
+        rowData[0] = roomById.getId();
+        rowData[1] = roomById.getType();
+        rowData[2] = roomById.getCapacity();
+        rowData[3] = roomById.getPrice();
+        if (roomById.isOccupied(dateTimecheckIn, dateTimecheckOut) == false) {
+            rowData[4] = "Yes";
+        } else {
+            rowData[4] = "No";
+        }
+
+        model.addRow(rowData);
+        // Make the table content uneditable
+        roomTable.setDefaultEditor(Object.class, null);
+        roomTable.setModel(model);
+        jScrollPane1.setViewportView(roomTable);
+    }
+
+    private void initRoomTableByType(ArrayList<Room> roomsByType){
+
+        DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
+        model.setRowCount(0); // Clear the existing rows
+
+        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
+        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
+
+        // Iterates over the list of rooms and populates the rowData array with the room
+        // details.
+        Object rowData[] = new Object[5];
+        for (int i = 0; i < roomsByType.size(); i++) {
+            rowData[0] = roomsByType.get(i).getId();
+            rowData[1] = roomsByType.get(i).getType();
+            rowData[2] = roomsByType.get(i).getCapacity();
+            rowData[3] = roomsByType.get(i).getPrice();
+            if (roomsByType.get(i).isOccupied(dateTimecheckIn, dateTimecheckOut) == false) {
+                rowData[4] = "Yes";
+            } else {
+                rowData[4] = "No";
+            }
+            model.addRow(rowData);
+        }
+
+        // Make the table content uneditable
+        roomTable.setDefaultEditor(Object.class, null);
+        // Set the updated table model back to the JTable instance
+        roomTable.setModel(model);
+    }
+
     private boolean isSameDay(Date date1, Date date2) {
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
+
         cal1.setTime(date1);
         cal2.setTime(date2);
+        
         return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
                 && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)
                 && cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);

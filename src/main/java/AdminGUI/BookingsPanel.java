@@ -47,9 +47,11 @@ public class BookingsPanel extends javax.swing.JPanel {
 
         }
 
-        public BookingsPanel(Room selectedRoom) {
+        public BookingsPanel(Room selectedRoom, Date checkIn, Date checkOut) {
                 initComponents();
                 this.bookingRoom = selectedRoom;
+                jDateOfCheckInChooser.setDate(checkIn);
+                jDateOfCheckOutChooser.setDate(checkOut);
                 initBookingRoomTable();
                 initBookingTable();
                 
@@ -119,10 +121,10 @@ public class BookingsPanel extends javax.swing.JPanel {
         customerNameTxtField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         titleTxt.setBackground(new java.awt.Color(255, 255, 255));
-        titleTxt.setFont(new java.awt.Font("Yu Gothic UI", 1, 25)); // NOI18N
-        titleTxt.setForeground(new java.awt.Color(102, 153, 255));
+        titleTxt.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        titleTxt.setForeground(new java.awt.Color(0, 0, 153));
         titleTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleTxt.setText("Manage Bookings");
+        titleTxt.setText("MANAGE BOOKINGS");
 
         customerNameLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         customerNameLabel.setForeground(new java.awt.Color(0, 0, 255));
@@ -341,8 +343,8 @@ public class BookingsPanel extends javax.swing.JPanel {
                 .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roomsPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(165, 165, 165)
+                        .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(155, 155, 155)
                         .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(roomsPanelLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
