@@ -99,18 +99,18 @@ public class LoginFrame extends JFrame {
         String U = this.username.getText();
         String P = this.password.getText();
         P = encrypt(P);
-        
+
         JsonArray users;
 
         try {
-            FileReader file = new FileReader("src/main/java/Objects/json/UserData.json");
+            FileReader file = new FileReader("src/main/resources/json/UserData.json");
             JsonElement jsonElement = JsonParser.parseReader(file);
             users = jsonElement.getAsJsonArray();
         } catch (JsonIOException | JsonSyntaxException | FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "error occurred: " + ex);
             return;
         }
-        
+
         // checking User in UserData.json
         int index = findIndexOfJson(U, P, users);
         String userRole = "";
@@ -127,7 +127,7 @@ public class LoginFrame extends JFrame {
             storedUserRole = user.get("role").getAsString();
         } catch (IndexOutOfBoundsException | JsonParseException a) {
         }
-        
+
         if (U.equals(storedUsername) && P.equals(storedPassword)) {
             userRole = storedUserRole;
             JOptionPane.showMessageDialog(null, "login successful as " + userRole);
@@ -156,24 +156,24 @@ public class LoginFrame extends JFrame {
     // password
     public int findIndexOfJson(String U, String P, JsonArray users) {
         int index = 0;
-            for (JsonElement userObj : users) {
-                JsonObject user = userObj.getAsJsonObject();
-                String storedUsername = user.get("username").getAsString();
-                String storedPassword = user.get("password").getAsString();
+        for (JsonElement userObj : users) {
+            JsonObject user = userObj.getAsJsonObject();
+            String storedUsername = user.get("username").getAsString();
+            String storedPassword = user.get("password").getAsString();
 
-                if (U.equals(storedUsername) && P.equals(storedPassword)) {
-                    break;
-                }
-                index++;
+            if (U.equals(storedUsername) && P.equals(storedPassword)) {
+                break;
             }
-    return index;
-}
-    
+            index++;
+        }
+        return index;
+    }
+
     public static User getUserById(int id) {
         try {
             // Read the JSON file
             JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/users.json"))
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/users.json"))
                     .getAsJsonArray();
 
             // Create a Gson instance
@@ -192,6 +192,7 @@ public class LoginFrame extends JFrame {
 
         return null; // User with the specified ID was not found
     }
+
     public static String encrypt(String plainText) {
         try {
             Cipher cipher = Cipher.getInstance("AES");
@@ -199,7 +200,8 @@ public class LoginFrame extends JFrame {
             cipher.init(Cipher.ENCRYPT_MODE, key);
             byte[] encryptedBytes = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
             return Base64.getEncoder().encodeToString(encryptedBytes);
-        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
+        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException
+                | NoSuchPaddingException e) {
         }
         return null;
     }
@@ -212,11 +214,12 @@ public class LoginFrame extends JFrame {
             byte[] decodedBytes = Base64.getDecoder().decode(encryptedText);
             byte[] decryptedBytes = cipher.doFinal(decodedBytes);
             return new String(decryptedBytes, StandardCharsets.UTF_8);
-        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
+        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException
+                | NoSuchPaddingException e) {
         }
         return null;
     }
-    
+
     private void closeApplication() {
         this.dispose();
     }

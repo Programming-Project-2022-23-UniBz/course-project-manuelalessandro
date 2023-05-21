@@ -41,6 +41,19 @@
             <artifactId>joda-time</artifactId>
             <version>2.12.5</version>
         </dependency>
+        <!-- For path (compiler and resources): -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.2.0</version>
+          <scope>provided</scope>
+        </dependency>
     </dependencies>
     
     <properties>

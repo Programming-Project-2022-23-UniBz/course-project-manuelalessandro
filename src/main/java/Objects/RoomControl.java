@@ -21,7 +21,7 @@ public class RoomControl {
     public static void pullData() {
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new File("src/main/java/Objects/json/rooms.json"));
+            scanner = new Scanner(new File("src/main/resources/json/rooms.json"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -35,7 +35,7 @@ public class RoomControl {
     public static void pushData() {
         String usersJson = gson.toJson(rooms);
         try {
-            FileWriter writer = new FileWriter("src/main/java/Objects/json/rooms.json");
+            FileWriter writer = new FileWriter("src/main/resources/json/rooms.json");
             writer.append(usersJson);
             writer.flush();
             writer.close();
@@ -146,7 +146,7 @@ public class RoomControl {
 
     public static void main(String[] args) {
         pullData();
-        
+
         pushData();
     }
 }

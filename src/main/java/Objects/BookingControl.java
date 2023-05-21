@@ -20,7 +20,7 @@ public class BookingControl {
     public static void pullData() {
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new File("src/main/java/Objects/json/bookings.json"));
+            scanner = new Scanner(new File("src/main/resources/json/bookings.json"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class BookingControl {
     public static void pushData() {
         String json = gson.toJson(bookings);
         try {
-            FileWriter writer = new FileWriter("src/main/java/Objects/json/bookings.json");
+            FileWriter writer = new FileWriter("src/main/resources/json/bookings.json");
             writer.append(json);
             writer.flush();
             writer.close();
@@ -64,41 +64,41 @@ public class BookingControl {
 
     public static Booking getBookingById(String id) throws IllegalArgumentException {
         BookingControl.pullData();
-                
-    for (Booking booking : bookings) {
-        if (booking.getBookingId().equals(id)) {
-            return booking;
-        }
-    }
-    throw new IllegalArgumentException("Booking with ID " + id + " not found.");
-    }
-    
-public static void removeBookingById(String id) throws IllegalArgumentException {
-    pullData();
-    
-    int index = -1;
-    for (int i = 0; i < bookings.length; i++) {
-        if (bookings[i].getBookingId().equals(id)) {
-            index = i;
-            break;
-        }
-    }
 
-    if (index != -1) {
-        Booking[] updatedBookings = new Booking[bookings.length - 1];
-        if (index > 0) {
-            System.arraycopy(bookings, 0, updatedBookings, 0, index);
+        for (Booking booking : bookings) {
+            if (booking.getBookingId().equals(id)) {
+                return booking;
+            }
         }
-        if (index < bookings.length - 1) {
-            System.arraycopy(bookings, index + 1, updatedBookings, index, bookings.length - index - 1);
-        }
-        bookings = updatedBookings;
-    } else {
         throw new IllegalArgumentException("Booking with ID " + id + " not found.");
     }
-    
-    pushData();
-}
+
+    public static void removeBookingById(String id) throws IllegalArgumentException {
+        pullData();
+
+        int index = -1;
+        for (int i = 0; i < bookings.length; i++) {
+            if (bookings[i].getBookingId().equals(id)) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            Booking[] updatedBookings = new Booking[bookings.length - 1];
+            if (index > 0) {
+                System.arraycopy(bookings, 0, updatedBookings, 0, index);
+            }
+            if (index < bookings.length - 1) {
+                System.arraycopy(bookings, index + 1, updatedBookings, index, bookings.length - index - 1);
+            }
+            bookings = updatedBookings;
+        } else {
+            throw new IllegalArgumentException("Booking with ID " + id + " not found.");
+        }
+
+        pushData();
+    }
 
     public static Booking[] getBookings() {
         return bookings;
@@ -109,7 +109,7 @@ public static void removeBookingById(String id) throws IllegalArgumentException 
         if (bookings == null) {
             bookings = new Booking[0];
         }
-        
+
         ArrayList<Booking> result = new ArrayList<Booking>();
         for (int i = 0; i < bookings.length; i++)
             if (bookings[i] != null)
@@ -179,8 +179,8 @@ public static void removeBookingById(String id) throws IllegalArgumentException 
     public static void main(String[] args) {
         RoomControl.pullData();
         UserControl.pullData();
-        pullData();        
-        
+        pullData();
+
         pushData();
         RoomControl.pushData();
         UserControl.pushData();

@@ -17,7 +17,7 @@ public class UserControl {
     public static void pullData() {
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new File("src/main/java/Objects/json/users.json"));
+            scanner = new Scanner(new File("src/main/resources/json/users.json"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -25,13 +25,14 @@ public class UserControl {
         if (scanner.hasNextLine())
             userJson = scanner.nextLine();
         scanner.close();
+        System.out.println(userJson);
         users = gson.fromJson(userJson, User[].class);
     }
 
     public static void pushData() {
         String usersJson = gson.toJson(users);
         try {
-            FileWriter writer = new FileWriter("src/main/java/Objects/json/users.json");
+            FileWriter writer = new FileWriter("src/main/resources/json/users.json");
             writer.append(usersJson);
             writer.flush();
             writer.close();

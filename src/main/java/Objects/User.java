@@ -26,7 +26,6 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-
 ///// PASSWORDS FOR TESTING                                 ///////
 ////  admin = admin123                                      ///////
 ////  Alessandro.Marconi2 = Alessandro45+-                  ///////
@@ -60,18 +59,18 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
-        this.encryptedPassword =encrypt(password);
-        
-        //ID is related to the length of the array
-        //so, to the number of users, admins have all a mod 10 id so these are skipped
-        if(getJsonCount()%10==0){
-            this.id = getJsonCount()+1;
-        }else{
+        this.encryptedPassword = encrypt(password);
+
+        // ID is related to the length of the array
+        // so, to the number of users, admins have all a mod 10 id so these are skipped
+        if (getJsonCount() % 10 == 0) {
+            this.id = getJsonCount() + 1;
+        } else {
             this.id = getJsonCount();
         }
-        
-        //useful for logins
-        this.username=getUsername();
+
+        // useful for logins
+        this.username = getUsername();
         this.role = role;
     }
 
@@ -86,10 +85,9 @@ public class User {
         this.encryptedPassword = null;
     }
 
-    
-    //username is formed with name.surname+count+1
-    public final String getUsername(){
-        return this.name+"."+this.surname+this.id;
+    // username is formed with name.surname+count+1
+    public final String getUsername() {
+        return this.name + "." + this.surname + this.id;
 
     }
 
@@ -150,10 +148,10 @@ public class User {
         this.email = email;
     }
 
-    public String getEncPassword(){
+    public String getEncPassword() {
         return encryptedPassword;
     }
-    
+
     public String getPassword() {
         return decrypt(this.encryptedPassword);
     }
@@ -169,8 +167,8 @@ public class User {
     public boolean equals(User user) {
         return this.id == user.getId();
     }
-    
-    public void addReview(String review){
+
+    public void addReview(String review) {
         try {
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
@@ -193,13 +191,13 @@ public class User {
             e.printStackTrace();
         }
     }
-    
-    public static int getJsonCount(){
-        int arrayLength=0;
+
+    public static int getJsonCount() {
+        int arrayLength = 0;
         try {
             // Parse the JSON contents
             try ( // Read the JSON file
-                    FileReader fileReader = new FileReader("src/main/java/Objects/json/users.json")) {
+                    FileReader fileReader = new FileReader("src/main/resources/json/users.json")) {
                 // Parse the JSON contents
                 JsonElement jsonElement = JsonParser.parseReader(fileReader);
                 JsonArray jsonArray = jsonElement.getAsJsonArray();
@@ -214,20 +212,21 @@ public class User {
     }
     // ----------------------------------------------------------------
 
-    //Admins will have ids, 0, 10, 20, 30, 40 and so on, 
-    //technically there should be just one admin, but just in case
+    // Admins will have ids, 0, 10, 20, 30, 40 and so on,
+    // technically there should be just one admin, but just in case
     public boolean isAdmin() {
-        return this.id%10 == 0;
+        return this.id % 10 == 0;
     }
 
-     public static String encrypt(String plainText) {
+    public static String encrypt(String plainText) {
         try {
             Cipher cipher = Cipher.getInstance("AES");
             Key key = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
             cipher.init(Cipher.ENCRYPT_MODE, key);
             byte[] encryptedBytes = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
             return Base64.getEncoder().encodeToString(encryptedBytes);
-        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
+        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException
+                | NoSuchPaddingException e) {
         }
         return null;
     }
@@ -240,16 +239,17 @@ public class User {
             byte[] decodedBytes = Base64.getDecoder().decode(encryptedText);
             byte[] decryptedBytes = cipher.doFinal(decodedBytes);
             return new String(decryptedBytes, StandardCharsets.UTF_8);
-        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
+        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException
+                | NoSuchPaddingException e) {
         }
         return null;
     }
-    
-   public void addToJson() {
+
+    public void addToJson() {
         try {
             // Read the existing JSON file
             JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/users.json"))
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/users.json"))
                     .getAsJsonArray();
 
             // Create a Gson instance
@@ -260,7 +260,7 @@ public class User {
             jsonArray.add(userJson);
 
             // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("src/main/java/Objects/json/users.json")) {
+            try (FileWriter writer = new FileWriter("src/main/resources/json/users.json")) {
                 gson.toJson(jsonArray, writer);
             }
         } catch (IOException | JsonIOException e) {
@@ -271,7 +271,7 @@ public class User {
         try {
             // Read the existing JSON file
             JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/UserData.json"))
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/UserData.json"))
                     .getAsJsonArray();
 
             // Create a Gson instance
@@ -288,21 +288,20 @@ public class User {
             jsonArray.add(userJson);
 
             // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("src/main/java/Objects/json/UserData.json")) {
+            try (FileWriter writer = new FileWriter("src/main/resources/json/UserData.json")) {
                 gson.toJson(jsonArray, writer);
             }
         } catch (IOException | JsonIOException e) {
             e.printStackTrace();
         }
     }
-   
-   
-    //to remove User from users.json and UserData.json
+
+    // to remove User from users.json and UserData.json
     public void removeFromJson() {
         try {
             // Read the existing JSON file
             JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/users.json"))
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/users.json"))
                     .getAsJsonArray();
 
             // Remove the user from the array
@@ -312,7 +311,7 @@ public class User {
             }
 
             // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("src/main/java/Objects/json/users.json")) {
+            try (FileWriter writer = new FileWriter("src/main/resources/json/users.json")) {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
@@ -324,7 +323,7 @@ public class User {
         try {
             // Read the existing JSON file
             JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/UserData.json"))
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/UserData.json"))
                     .getAsJsonArray();
 
             // Remove the user from the array
@@ -334,7 +333,7 @@ public class User {
             }
 
             // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("src/main/java/Objects/json/UserData.json")) {
+            try (FileWriter writer = new FileWriter("src/main/resources/json/UserData.json")) {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
@@ -342,8 +341,8 @@ public class User {
             e.printStackTrace();
         }
     }
-    
-    //to remove the review from reviews.json
+
+    // to remove the review from reviews.json
     public void removeReview(String review) {
         try {
             // Read existing reviews from the JSON file
@@ -368,8 +367,8 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }   
-    
+    }
+
     private int findIndexOfJson(JsonArray jsonArray, String key, int value) {
         int index = -1;
         for (int i = 0; i < jsonArray.size(); i++) {
@@ -395,7 +394,7 @@ public class User {
         }
         return index;
     }
-    
+
     public boolean hasReview(String review) {
         try {
             // Read existing reviews from the JSON file
