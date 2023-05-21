@@ -1,7 +1,9 @@
 import Objects.Room;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.joda.time.DateTime;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class RoomTest {
 
@@ -16,24 +18,24 @@ public class RoomTest {
         boolean occupied = room.isOccupied(checkIn, checkOut);
 
         // Assert
-        Assert.assertFalse(occupied);
+        assertFalse(occupied);
     }
 
     @Test
     public void testIsOccupied_WithOccupiedDates_ReturnsTrue() {
-        //TODO
+        // TODO
     }
 
     @Test
     public void testIsOccupied_WithPartialOverlap_ReturnsTrue() {
-        //TODO
+        // TODO
     }
 
     @Test
     public void testIsOccupied_WithNoOverlap_ReturnsFalse() {
-        //TODO
+        // TODO
     }
-    
+
     @Test
     public void testIsOccupied_WithNoBookingsForToday() {
         // Arrange
@@ -46,8 +48,7 @@ public class RoomTest {
         boolean occupied = room.isOccupied();
 
         // Assert
-        Assert.assertFalse(occupied);
+        assertFalse(occupied);
     }
-    
-}
 
+}

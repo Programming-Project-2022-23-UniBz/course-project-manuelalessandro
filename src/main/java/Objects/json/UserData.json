@@ -2,19 +2,19 @@
   {
     "id": 0,
     "username": "admin",
-    "password": "ikcWNM6gcQAxbYqD0PPpJQ==", 
+    "password": "ikcWNM6gcQAxbYqD0PPpJQ\u003d\u003d",
     "role": "admin"
   },
   {
     "id": 1,
     "username": "GuestName.GuestSurname1",
-    "password": "r2UOG0w2uhy+5k5S42gjOQ==",
+    "password": "r2UOG0w2uhy+5k5S42gjOQ\u003d\u003d",
     "role": "user"
   },
   {
     "id": 2,
     "username": "Alessandro.Marconi2",
-    "password": "nVubSusSYvj9pU2et0PGgw==",
+    "password": "nVubSusSYvj9pU2et0PGgw\u003d\u003d",
     "role": "user"
   }
 ]
