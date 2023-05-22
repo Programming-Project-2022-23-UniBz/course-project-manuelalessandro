@@ -850,10 +850,13 @@ public class BookingsPanel extends javax.swing.JPanel {
             model.setRowCount(0); // Clear existing rows
 
             for (Booking booking : BookingControl.getBookings()) {
-
+                User bookingUser = booking.getUser();
                 Object rowData[] = new Object[6];
                 rowData[0] = booking.getBookingId();
-                rowData[1] = booking.getUser().getFullName();
+                if(bookingUser != null)
+                    rowData[1] = bookingUser.getFullName();
+                else
+                    rowData[1] = "null";
                 rowData[2] = booking.getRoom().getId();
                 rowData[3] = booking.getCheckInDate();
                 rowData[4] = booking.getCheckOutDate();

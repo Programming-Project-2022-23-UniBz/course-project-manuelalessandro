@@ -17,6 +17,7 @@ public class UserFrame extends javax.swing.JFrame {
     private User user;
 
     public UserFrame(User user) {
+        System.out.println("Login as " + user.getFullName());
         this.user = user;
         initComponents();
 
@@ -67,6 +68,7 @@ public class UserFrame extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated

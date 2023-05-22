@@ -161,7 +161,10 @@ public class User {
     }
 
     public String getFullName() {
-        return surname + " " + name;
+        if (surname != null && name != null)
+            return surname + " " + name;
+        else
+            return "null";
     }
 
     public boolean equals(User user) {
@@ -246,26 +249,8 @@ public class User {
     }
 
     public void addToJson() {
-        try {
-            // Read the existing JSON file
-            JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/users.json"))
-                    .getAsJsonArray();
 
-            // Create a Gson instance
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-            // Convert the User object to JSON and add it to the array
-            JsonObject userJson = gson.toJsonTree(this).getAsJsonObject();
-            jsonArray.add(userJson);
-
-            // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("src/main/resources/json/users.json")) {
-                gson.toJson(jsonArray, writer);
-            }
-        } catch (IOException | JsonIOException e) {
-            e.printStackTrace();
-        }
+        UserControl.addUser(this);
 
         // Add the user data to the UserData.json file
         try {

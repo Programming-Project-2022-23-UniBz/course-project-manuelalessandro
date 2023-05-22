@@ -20,11 +20,8 @@ public class Main {
     }
 
     public static void pullAllData() {
-        System.out.println("Initial pull");
         UserControl.pullData();
-        System.out.println("user pull success");
         RoomControl.pullData();
-        System.out.println("room pull success");
         BookingControl.pullData();
     }
 

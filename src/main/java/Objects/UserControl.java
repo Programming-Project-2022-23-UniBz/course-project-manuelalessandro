@@ -3,6 +3,7 @@ package Objects;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.security.InvalidParameterException;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
@@ -25,7 +26,6 @@ public class UserControl {
         if (scanner.hasNextLine())
             userJson = scanner.nextLine();
         scanner.close();
-        System.out.println(userJson);
         users = gson.fromJson(userJson, User[].class);
     }
 
@@ -67,7 +67,7 @@ public class UserControl {
             users = newArr;
             setRightId();
         } else {
-            System.out.println("Id does not exist");
+            throw new InvalidParameterException("Id does not exist");
         }
     }
 
@@ -94,7 +94,7 @@ public class UserControl {
 
     // Used to initialize users.json
     // if used, json will be reset and old data lost
-    private static void initUsers() {
+    private static void initUsersTest() {
         users = new User[2];
         User admin = new User("admin", null, null, null, null, "password", "admin");
         admin.setId(0);
@@ -111,10 +111,15 @@ public class UserControl {
         }
     }
 
+    // Used to initialize users.json
+    // if used, json will be reset and old data lost
+    private static void initUsers() {
+        users = new User[0];
+    }
+
     public static void main(String[] args) {
         pullData();
 
-        System.out.println(users.length);
         pushData();
     }
 }
