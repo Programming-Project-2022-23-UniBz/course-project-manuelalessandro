@@ -170,30 +170,6 @@ public class User {
         return this.id == user.getId();
     }
     
-    public void addReview(String review){
-        try {
-            // Read existing reviews from the JSON file
-            JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
-
-            // Create a new review object
-            JsonObject reviewObject = new JsonObject();
-            reviewObject.addProperty("GuestName", getName());
-            reviewObject.addProperty("Review", review);
-
-            // Add the new review to the array
-            jsonArray.add(reviewObject);
-
-            // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("reviews.json")) {
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                gson.toJson(jsonArray, writer);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
     public static int getJsonCount(){
         int arrayLength=0;
         try {
@@ -342,33 +318,6 @@ public class User {
             e.printStackTrace();
         }
     }
-    
-    //to remove the review from reviews.json
-    public void removeReview(String review) {
-        try {
-            // Read existing reviews from the JSON file
-            JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
-
-            // Find and remove the review from the array
-            int index = findIndexOfJson(jsonArray, "GuestName", getName());
-            if (index != -1) {
-                JsonObject reviewObject = jsonArray.get(index).getAsJsonObject();
-                String storedReview = reviewObject.get("Review").getAsString();
-                if (storedReview.equals(review)) {
-                    jsonArray.remove(index);
-                }
-            }
-
-            // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("reviews.json")) {
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                gson.toJson(jsonArray, writer);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }   
     
     private int findIndexOfJson(JsonArray jsonArray, String key, int value) {
         int index = -1;

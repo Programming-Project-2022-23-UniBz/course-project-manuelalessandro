@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -5,11 +9,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import Objects.Reviews;
 import Objects.User;
-
-public class UserTest {
+/**
+ *
+ * @author aless
+ */
+public class ReviewsTest {
     @Test
-    public void testAddUserToJson() {
+    public void testAddingToJson(){
         // Create a new user
         String name = "John";
         String surname = "Doe";
@@ -26,20 +34,22 @@ public class UserTest {
         String role = "user";
 
         User user = new User(name, surname, dateOfBirth, gender, email, password, role);
-
-        // Add user to JSON files
-        user.addToJson();
         
-        // Check if the user is added to the JSON files correctly
-        int initialCount = User.getJsonCount();
-
-        // Remove the user from the JSON files
-        user.removeFromJson();
-
-        int finalCount = User.getJsonCount();
-
-        // Assert that the final count is greater than the initial count
-        Assertions.assertTrue(finalCount > initialCount, "User should be added to the JSON file");
+        String reviewText = "This Hotel is very nice!";
+        
+        int Stars = 4;
+        
+        Reviews review = new Reviews(user, reviewText, Stars);
+        
+        review.addToJson();
+        
+        int initialCount = review.getJsonCount();
+        
+        review.removeFromJson();
+        
+        int finalCount = review.getJsonCount();
+        
+        Assertions.assertTrue(finalCount > initialCount, "Review should be added to the JSON file");
+        
     }
-    
 }

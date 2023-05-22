@@ -1,6 +1,103 @@
 [
     {
-    "GuestName": "GuestName",
-    "Review":"Very Nice!"
+        "GuestName": "John Doe",
+        "Review": "Great experience! The hotel staff was friendly and helpful.",
+        "Stars": 5
+    },
+    {
+        "GuestName": "Jane Smith",
+        "Review": "Comfortable rooms and excellent amenities. Highly recommended.",
+        "Stars": 5
+    },
+    {
+        "GuestName": "David Johnson",
+        "Review": "Average hotel. The room was clean but the service could be better.",
+        "Stars": 3
+    },
+    {
+        "GuestName": "Sarah Wilson",
+        "Review": "Good value for money. The hotel is conveniently located.",
+        "Stars": 4
+    },
+    {
+        "GuestName": "Michael Brown",
+        "Review": "Disappointing experience. The room was not up to expectations.",
+        "Stars": 2
+    },
+    {
+        "GuestName": "Emily Davis",
+        "Review": "Excellent service and well-maintained facilities. Will definitely come back.",
+        "Stars": 5
+    },
+    {
+        "GuestName": "Christopher Taylor",
+        "Review": "Average hotel. Nothing exceptional but nothing terrible either.",
+        "Stars": 3
+    },
+    {
+        "GuestName": "Olivia Anderson",
+        "Review": "Lovely hotel with a friendly atmosphere. Enjoyed my stay here.",
+        "Stars": 4
+    },
+    {
+        "GuestName": "Daniel Martinez",
+        "Review": "Below average experience. The room was not clean upon arrival.",
+        "Stars": 2
+    },
+    {
+        "GuestName": "Sophia Rodriguez",
+        "Review": "Great location and comfortable rooms. Would recommend to others.",
+        "Stars": 4
+    },
+    {
+        "GuestName": "William Wilson",
+        "Review": "Poor service and outdated facilities. Not worth the price.",
+        "Stars": 1
+    },
+    {
+        "GuestName": "Ava Lopez",
+        "Review": "Wonderful staff and a pleasant stay. Will come back again.",
+        "Stars": 5
+    },
+    {
+        "GuestName": "James White",
+        "Review": "Decent hotel for a short stay. The room was clean and comfortable.",
+        "Stars": 3
+    },
+    {
+        "GuestName": "Mia Martin",
+        "Review": "Exceptional service and luxurious accommodations. Highly recommended.",
+        "Stars": 5
+    },
+    {
+        "GuestName": "Benjamin Thompson",
+        "Review": "Average hotel. The room was spacious but lacked proper maintenance.",
+        "Stars": 3
+    },
+    {
+        "GuestName": "Charlotte Harris",
+        "Review": "Good experience overall. The staff was friendly and helpful.",
+        "Stars": 4
+    },
+    {
+        "GuestName": "Joseph Clark",
+        "Review": "Unpleasant stay. The hotel did not meet my expectations.",
+        "Stars": 2
+    },
+    {
+        "GuestName": "Harper Young",
+        "Review": "Excellent value for money. The hotel exceeded my expectations.",
+        "Stars": 5
+    },
+    {
+        "GuestName": "Henry Lewis",
+        "Review": "Average hotel with decent amenities. Nothing extraordinary.",
+        "Stars": 3
+    },
+    {
+        "GuestName": "Amelia Walker",
+        "Review": "Friendly staff and comfortable rooms. Enjoyed my stay here.",
+        "Stars": 4
     }
+    
 ]
