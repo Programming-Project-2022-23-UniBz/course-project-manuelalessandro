@@ -24,31 +24,31 @@ public class Reviews {
     private User user;
     private String review;
     private int stars;
-    
-    public Reviews(User user, String Review, int Stars){
+
+    public Reviews(User user, String Review, int Stars) {
         this.user = user;
         this.review = Review;
         this.stars = Stars;
     }
-    
-    public User getUser(){
+
+    public User getUser() {
         return this.user;
     }
-    
-    public String getReview(){
+
+    public String getReview() {
         return this.review;
     }
-    
-    public int getStars(){
+
+    public int getStars() {
         return this.stars;
     }
-    
-    //to remove the review from reviews.json
+
+    // to remove the review from reviews.json
     public void removeFromJson() {
         try {
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/reviews.json")).getAsJsonArray();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
 
             // Find and remove the review from the array
             int index = findIndexOfJson(jsonArray, "GuestName", this.user.getName());
@@ -61,19 +61,20 @@ public class Reviews {
             }
 
             // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("src/main/java/Objects/json/reviews.json")) {
+            try (FileWriter writer = new FileWriter("src/main/resources/json/reviews.json")) {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }   
-    public void addToJson(){
+    }
+
+    public void addToJson() {
         try {
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/java/Objects/json/reviews.json")).getAsJsonArray();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
 
             // Create a new review object
             JsonObject reviewObject = new JsonObject();
@@ -84,7 +85,7 @@ public class Reviews {
             jsonArray.add(reviewObject);
 
             // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("src/main/java/Objects/json/reviews.json")) {
+            try (FileWriter writer = new FileWriter("src/main/resources/json/reviews.json")) {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
@@ -92,7 +93,7 @@ public class Reviews {
             e.printStackTrace();
         }
     }
-    
+
     private int findIndexOfJson(JsonArray jsonArray, String key, String value) {
         int index = -1;
         for (int i = 0; i < jsonArray.size(); i++) {
@@ -105,12 +106,13 @@ public class Reviews {
         }
         return index;
     }
-    public static int getJsonCount(){
-        int arrayLength=0;
+
+    public static int getJsonCount() {
+        int arrayLength = 0;
         try {
             // Parse the JSON contents
             try ( // Read the JSON file
-                    FileReader fileReader = new FileReader("src/main/java/Objects/json/reviews.json")) {
+                    FileReader fileReader = new FileReader("src/main/resources/json/reviews.json")) {
                 // Parse the JSON contents
                 JsonElement jsonElement = JsonParser.parseReader(fileReader);
                 JsonArray jsonArray = jsonElement.getAsJsonArray();
@@ -123,5 +125,5 @@ public class Reviews {
         }
         return arrayLength;
     }
-    
+
 }

@@ -76,7 +76,7 @@ public class Booking {
 
     // --------------------------------------------------------
 
-    public String bookingIdGenerator() {
+    public String bookingIdGenerator() { // TODO: controllare se id non e' gia' presente anche se random
         String prefix = "ADH_";
 
         // Get today's date in the format "yyyyMMdd"
@@ -100,7 +100,7 @@ public class Booking {
         if (isSameDay(checkInDate, checkOutDate)) {
             return 1;
         }
-    
+
         long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();
         return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
