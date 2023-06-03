@@ -42,6 +42,26 @@ public class BookingControl {
             e.printStackTrace();
         }
     }
+    
+    public static int getBookingCount(){
+        pullData();
+        return bookings.length;
+    }
+    
+    public static double calculateAverageCost() {
+        pullData();
+        
+        if (bookings.length == 0) {
+            return 0; // Return 0 if there are no bookings
+        }
+
+        double totalCost = 0;
+        for (Booking booking : bookings) {
+            totalCost += booking.getTotalCost();
+        }
+
+        return totalCost / bookings.length;
+    }
 
     private static void incrementBookings() {
         Booking[] newArr = new Booking[bookings.length + 1];
@@ -162,6 +182,33 @@ public class BookingControl {
             e.printStackTrace();
             throw new Exception("Init bookings failes because room not found.");
         }
+    }
+
+    public static double calculateTotalAmountForMonth(int month) {
+        pullData();
+        
+        double totalAmount = 0;
+        boolean hasBookings = false;
+
+        for (Booking booking : bookings) {
+            DateTime startDate = new DateTime(booking.getCheckInDate());
+            DateTime endDate = new DateTime(booking.getCheckOutDate());
+
+            // Iterate through each day between check-in and check-out dates
+            while (startDate.isBefore(endDate)) {
+                if (startDate.getMonthOfYear() == month) {
+                    totalAmount += booking.getRoom().getPrice();
+                    hasBookings = true;
+                }
+                startDate = startDate.plusDays(1);
+            }
+        }
+
+        if (!hasBookings) {
+            return -1;
+        }
+
+        return totalAmount;
     }
 
     // Used to initialize bookings.json

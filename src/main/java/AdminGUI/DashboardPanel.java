@@ -91,9 +91,9 @@ public class DashboardPanel extends javax.swing.JPanel {
         jLabel3.setBounds(80, 30, 150, 0);
 
         jLabel5.setFont(new java.awt.Font("Perpetua Titling MT", 0, 20)); // NOI18N
-        jLabel5.setText("Income charts");
+        jLabel5.setText("report");
         panelGlowingGradient3.add(jLabel5);
-        jLabel5.setBounds(60, 40, 190, 25);
+        jLabel5.setBounds(110, 40, 90, 24);
 
         chartsButton.setBackground(new java.awt.Color(255, 204, 204));
         chartsButton.setForeground(new java.awt.Color(153, 0, 153));
@@ -204,7 +204,11 @@ public class DashboardPanel extends javax.swing.JPanel {
     }// GEN-LAST:event_bookingsButtonActionPerformed
 
     private void chartsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chartsButtonActionPerformed
-        // TODO add your handling code here:
+    // Create the new panel
+    ReportPanel chartPanel = new ReportPanel();
+    // Switch to the new panel
+    adminFrame.setCard("chart"); // Replace "charts" with the appropriate card name
+    
     }// GEN-LAST:event_chartsButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

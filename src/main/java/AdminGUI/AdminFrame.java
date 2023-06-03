@@ -22,6 +22,9 @@ public class AdminFrame extends javax.swing.JFrame {
         roomsPanel.setAppControlButtons(this, sideMenu.getWidth());
         dashboardPanel.setAppControlButtons(this, sideMenu.getWidth());
         bookingsPanel.setAppControlButtons(this, sideMenu.getWidth());
+        
+        ReportPanel chartPanel = new AdminGUI.ReportPanel();
+        cardPanel.add(chartPanel, "chart");
     }
     
     public CardLayout getCardLayout() {
