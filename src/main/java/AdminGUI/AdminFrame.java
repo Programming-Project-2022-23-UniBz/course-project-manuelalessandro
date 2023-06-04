@@ -18,13 +18,14 @@ public class AdminFrame extends javax.swing.JFrame {
         cardLayout = (CardLayout) cardPanel.getLayout();
         initMouseActionListener();
 
+        ReportPanel reportPanel = new AdminGUI.ReportPanel();
+        cardPanel.add(reportPanel, "chart");
+
         // App control settings
         roomsPanel.setAppControlButtons(this, sideMenu.getWidth());
         dashboardPanel.setAppControlButtons(this, sideMenu.getWidth());
         bookingsPanel.setAppControlButtons(this, sideMenu.getWidth());
-        
-        ReportPanel chartPanel = new AdminGUI.ReportPanel();
-        cardPanel.add(chartPanel, "chart");
+        reportPanel.setAppControlButtons(this, sideMenu.getWidth());
     }
     
     public CardLayout getCardLayout() {

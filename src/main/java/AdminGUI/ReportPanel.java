@@ -21,6 +21,10 @@ public class ReportPanel extends javax.swing.JPanel {
         monthlyAverageLabel.setText("" + BookingControl.calculateAverageCost());
     }
 
+    public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
+        appControlButtons1.setAppControl(frame, appControlButtons1.getX() + xBorder, appControlButtons1.getY());
+    }
+
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -34,6 +38,8 @@ public class ReportPanel extends javax.swing.JPanel {
         monthlyAvgLabel = new javax.swing.JLabel();
         monthlyAverageLabel = new javax.swing.JLabel();
         showChartBtn1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         chartPanel.setBackground(new java.awt.Color(255, 255, 255));
         chartPanel.setPreferredSize(new java.awt.Dimension(738, 546));
@@ -73,6 +79,11 @@ public class ReportPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/info.png"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel3.setText("Only months with avalible data will be shown");
+
         javax.swing.GroupLayout chartPanelLayout = new javax.swing.GroupLayout(chartPanel);
         chartPanel.setLayout(chartPanelLayout);
         chartPanelLayout.setHorizontalGroup(
@@ -82,10 +93,6 @@ public class ReportPanel extends javax.swing.JPanel {
                 .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(185, 185, 185)
                 .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(chartPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(chartJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(chartPanelLayout.createSequentialGroup()
                 .addGroup(chartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(chartPanelLayout.createSequentialGroup()
@@ -103,6 +110,16 @@ public class ReportPanel extends javax.swing.JPanel {
                         .addGap(45, 45, 45)
                         .addComponent(monthlyAverageLabel)))
                 .addGap(73, 73, 73))
+            .addGroup(chartPanelLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(chartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chartJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chartPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addGap(211, 211, 211)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         chartPanelLayout.setVerticalGroup(
             chartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,8 +141,12 @@ public class ReportPanel extends javax.swing.JPanel {
                         .addComponent(monthlyAverageLabel))
                     .addComponent(showChartBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(chartJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(chartJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(chartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel3))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -145,32 +166,32 @@ public class ReportPanel extends javax.swing.JPanel {
     private void showChartBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showChartBtn1ActionPerformed
         DefaultCategoryDataset barChartData = new DefaultCategoryDataset();
 
-    int[] months = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    String[] monthLabels = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        int[] months = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+        String[] monthLabels = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
-    for (int i = 0; i < months.length; i++) {
-        double totalAmount = BookingControl.calculateTotalAmountForMonth(months[i]);
-        if (totalAmount == -1) {
-            // No data available for the month, skip adding to the dataset
-            continue;
+        for (int i = 0; i < months.length; i++) {
+            double totalAmount = BookingControl.calculateTotalAmountForMonth(months[i]);
+            if (totalAmount == -1) {
+                // No data available for the month, skip adding to the dataset
+                continue;
+            }
+            barChartData.addValue(totalAmount, "Amount", monthLabels[i]);
         }
-        barChartData.addValue(totalAmount, "Amount", monthLabels[i]);
-    }
 
-    JFreeChart barChart = ChartFactory.createBarChart("Hotel income", "Monthly", "Amount (€)", barChartData, PlotOrientation.VERTICAL, false, true, false);
-    CategoryPlot barchrt = barChart.getCategoryPlot();
-    barchrt.setRangeGridlinePaint(Color.ORANGE);
+        JFreeChart barChart = ChartFactory.createBarChart("Hotel income", "Monthly", "Amount (€)", barChartData, PlotOrientation.VERTICAL, false, true, false);
+        CategoryPlot barchrt = barChart.getCategoryPlot();
+        barchrt.setRangeGridlinePaint(Color.BLACK);
 
-    ChartPanel barPanel = new ChartPanel(barChart);
-    chartJPanel.removeAll();
-    chartJPanel.add(barPanel, BorderLayout.CENTER);
-    chartJPanel.validate();
+        ChartPanel barPanel = new ChartPanel(barChart);
+        chartJPanel.removeAll();
+        chartJPanel.add(barPanel, BorderLayout.CENTER);
+        chartJPanel.validate();
 
-    CategoryAxis xAxis = barchrt.getDomainAxis();
-    xAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_90); // Rotate labels 90 degrees
-    
-    totalActiveBookingCountLabel.setText(""+ BookingControl.getBookingCount());
-    monthlyAverageLabel.setText("" + BookingControl.calculateAverageCost());
+        CategoryAxis xAxis = barchrt.getDomainAxis();
+        xAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_90); // Rotate labels 90 degrees
+
+        totalActiveBookingCountLabel.setText(""+ BookingControl.getBookingCount());
+        monthlyAverageLabel.setText("" + BookingControl.calculateAverageCost());
     }//GEN-LAST:event_showChartBtn1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -178,6 +199,8 @@ public class ReportPanel extends javax.swing.JPanel {
     private DesignObjects.AppControlButtons appControlButtons1;
     private javax.swing.JPanel chartJPanel;
     private javax.swing.JPanel chartPanel;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel monthlyAverageLabel;
     private javax.swing.JLabel monthlyAvgLabel;
     private javax.swing.JButton showChartBtn1;
