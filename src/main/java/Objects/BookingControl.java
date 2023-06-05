@@ -8,9 +8,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.*;
-
-import org.joda.time.DateTime;
-
 import org.joda.time.DateTime;
 
 public class BookingControl {
@@ -45,14 +42,19 @@ public class BookingControl {
     
     public static int getBookingCount(){
         pullData();
+        
+        if (bookings == null) {
+            return 0; // Return 0 if there are no bookings
+        }
+        
         return bookings.length;
     }
     
     public static double calculateAverageCost() {
         pullData();
         
-        if (bookings.length == 0) {
-            return 0; // Return 0 if there are no bookings
+        if (bookings == null || bookings.length == 0) {
+            return 0.0; // Return 0 if there are no bookings
         }
 
         double totalCost = 0;
@@ -100,6 +102,7 @@ public class BookingControl {
         pullData();
 
         int index = -1;
+        //Find the index of the booking to remove
         for (int i = 0; i < bookings.length; i++) {
             if (bookings[i].getBookingId().equals(id)) {
                 index = i;
@@ -109,10 +112,15 @@ public class BookingControl {
 
         if (index != -1) {
             Booking[] updatedBookings = new Booking[bookings.length - 1];
+
+            //Operations to copy the bookings before and after the index to the updatedBookings array.
             if (index > 0) {
+                //starts from index 0 in the source array (bookings) and index 0 in the destination array
+                //copies index number of elements from the source array to the destination array
                 System.arraycopy(bookings, 0, updatedBookings, 0, index);
             }
             if (index < bookings.length - 1) {
+                //skips the element at the index position and copies the remaining elements after that position
                 System.arraycopy(bookings, index + 1, updatedBookings, index, bookings.length - index - 1);
             }
             bookings = updatedBookings;
@@ -121,10 +129,6 @@ public class BookingControl {
         }
 
         pushData();
-    }
-
-    public static Booking[] getBookings() {
-        return bookings;
     }
 
     // @return ArrayList<Booking> that contains all the bookings that have that room
@@ -184,23 +188,28 @@ public class BookingControl {
         }
     }
 
+    public static Booking[] getBookings() {
+        return bookings;
+    }
+
+    // @returns the total amount earned for a specific month
     public static double calculateTotalAmountForMonth(int month) {
         pullData();
-        
+
         double totalAmount = 0;
         boolean hasBookings = false;
 
         for (Booking booking : bookings) {
-            DateTime startDate = new DateTime(booking.getCheckInDate());
-            DateTime endDate = new DateTime(booking.getCheckOutDate());
+            DateTime checkInDate = new DateTime(booking.getCheckInDate());
 
-            // Iterate through each day between check-in and check-out dates
-            while (startDate.isBefore(endDate)) {
-                if (startDate.getMonthOfYear() == month) {
-                    totalAmount += booking.getRoom().getPrice();
-                    hasBookings = true;
-                }
-                startDate = startDate.plusDays(1);
+            /*
+            It retrieves the check-in date of each booking and checks if
+            the month of the check-in date matches the specified month.
+            If there is a match, that particular booking will be counted in the total income for the given month
+             */
+            if (checkInDate.getMonthOfYear() == month) {
+                totalAmount += booking.getTotalCost();
+                hasBookings = true;
             }
         }
 
@@ -209,6 +218,17 @@ public class BookingControl {
         }
 
         return totalAmount;
+    }
+
+    public static double totalEarningFromBookings(){
+        pullData();
+        double amount = 0.0;
+
+        for (Booking booking: bookings) {
+            amount+= booking.getTotalCost();
+        }
+
+        return amount;
     }
 
     // Used to initialize bookings.json

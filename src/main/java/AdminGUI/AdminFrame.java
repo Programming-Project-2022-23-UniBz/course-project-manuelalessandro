@@ -14,6 +14,7 @@ public class AdminFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);// center position of JFrame
         setResizable(false);
+        
         // Buttons settings
         cardLayout = (CardLayout) cardPanel.getLayout();
         initMouseActionListener();

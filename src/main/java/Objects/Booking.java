@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
 import org.joda.time.DateTime;
+import static Objects.BookingControl.getBookings;
 
 public class Booking {
 
@@ -76,7 +76,7 @@ public class Booking {
 
     // --------------------------------------------------------
 
-    public String bookingIdGenerator() { // TODO: controllare se id non e' gia' presente anche se random
+    public String bookingIdGenerator() {
         String prefix = "ADH_";
 
         // Get today's date in the format "yyyyMMdd"
@@ -87,9 +87,24 @@ public class Booking {
         int randomDigits = 1000 + new Random().nextInt(9000);
 
         // Combine the components to form the booking ID
-        String generatedbookingId = prefix + currentDate + randomDigits;
+        String generatedBookingId = prefix + currentDate + randomDigits;
 
-        return generatedbookingId;
+        if (isBookingIdUnique(generatedBookingId)) {
+            return generatedBookingId;
+        } else {
+            // If the generated booking ID is not unique, recursively call the method to generate another ID
+            return bookingIdGenerator();
+        }
+    }
+    private boolean isBookingIdUnique(String bookingId) {
+        Booking[] bookings = getBookings();
+
+        for (Booking booking : bookings) {
+            if (booking.getBookingId().equals(bookingId)) {
+                return false; // Matching booking ID found, not unique
+            }
+        }
+        return true; //unique
     }
 
     public static int calculateStay(Date checkIn, Date checkOut) {

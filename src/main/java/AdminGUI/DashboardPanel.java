@@ -204,9 +204,7 @@ public class DashboardPanel extends javax.swing.JPanel {
     }// GEN-LAST:event_bookingsButtonActionPerformed
 
     private void chartsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chartsButtonActionPerformed
-    // Switch to the new panel
-    adminFrame.setCard("chart");
-    
+        adminFrame.setCard("chart");
     }// GEN-LAST:event_chartsButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
