@@ -406,7 +406,6 @@ public class RoomsPanel extends javax.swing.JPanel {
                     JOptionPane.ERROR_MESSAGE);
             roomNrTxtField.setText("");
         }
-
     }// GEN-LAST:event_roomNrTxtFieldActionPerformed
 
     // Another event handler but this time for the roomTypeTxtField text field
@@ -514,7 +513,7 @@ public class RoomsPanel extends javax.swing.JPanel {
         }
     }// GEN-LAST:event_roomTypeTxtFieldActionPerformed
 
-    // Event handler when the user clicks on a row in the roomTable and wants to preceed with the booking of that room
+    //Event handler when the user clicks on a row in the roomTable and wants to proceed with the booking of that room
     private void roomTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_roomTableMouseClicked
         // Retrieves the index of the selected row
         int selectedRow = roomTable.getSelectedRow();

@@ -107,6 +107,7 @@ public class Booking {
         return true; //unique
     }
 
+    //@returns the duration of a stay in terms of the number of nights
     public static int calculateStay(Date checkIn, Date checkOut) {
         DateTime checkInDate = new DateTime(checkIn);
         DateTime checkOutDate = new DateTime(checkOut);
@@ -117,9 +118,9 @@ public class Booking {
         }
 
         long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();
+        //converts the time difference from milliseconds to days.
         return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
-
     private static boolean isSameDay(DateTime dateTime1, DateTime dateTime2) {
         return dateTime1.toLocalDate().isEqual(dateTime2.toLocalDate());
     }
