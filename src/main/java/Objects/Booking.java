@@ -17,8 +17,10 @@ public class Booking {
     private double totalCost;
 
     public Booking(DateTime checkInDate, DateTime checkOutDate, Room room, User user) {
-        this.checkInDate = checkInDate.toDate();
-        this.checkOutDate = checkOutDate.toDate();
+        // Set check-in time to 2 PM
+        this.checkInDate = checkInDate.withHourOfDay(14).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0).toDate();
+        // Set check-out time to 10 AM
+        this.checkOutDate = checkOutDate.withHourOfDay(10).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0).toDate();
         this.room = room;
         this.user = user;
         this.totalCost = calculateTotalCost(room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));

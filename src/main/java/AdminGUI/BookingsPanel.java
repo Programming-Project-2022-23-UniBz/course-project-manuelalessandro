@@ -31,7 +31,6 @@ public class BookingsPanel extends javax.swing.JPanel {
         private Room bookingRoom;
         boolean isCheckInValidated = true;
         boolean isCheckOutValidated = true;
-        private boolean isBookingCreated=false;
 
         /*
          * Two constructors for the BookingsPanel class: first one is used when the
@@ -591,6 +590,7 @@ public class BookingsPanel extends javax.swing.JPanel {
 
         // Validate check-in date
         Date currentDate = new Date();
+
         if (checkInDate.before(currentDate) && !isSameDay(checkInDate, currentDate)) {
             JOptionPane.showMessageDialog(this, "Check-in date cannot be earlier than today.",
                     "Invalid Check-in Date",
@@ -607,50 +607,40 @@ public class BookingsPanel extends javax.swing.JPanel {
             return;
         }
 
-        // Dates are valid at this point, so reset the validation flags
-        isCheckInValidated = true;
-        isCheckOutValidated = true;
+        /*
+         * Display an input dialog box using
+         * to prompt the user to enter a room ID to search for
+         */
+        String input = JOptionPane.showInputDialog(this, "Enter a room ID to look for:");
 
-        if (isCheckInValidated && isCheckOutValidated){
-            /*
-             * Display an input dialog box using
-             * to prompt the user to enter a room ID to search for
-             */
-            String input = JOptionPane.showInputDialog(this, "Enter a room ID to look for:");
+        if (input == null || input.isEmpty()) {
+            return; // if the input is null or empty, return from the method.
+        }
 
-            if (input == null || input.isEmpty()) {
-                return; // if the input is null or empty, return from the method.
-            }
-
-            int roomId;
-            try {
-                roomId = Integer.parseInt(input);
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Invalid room ID. Please enter a valid number.");
-                return;
-            }
-            // getRoomById method of RoomControl to retrieve the room with the specified ID
-            Room room = RoomControl.getRoomById(roomId);
-
-            DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
-            DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
-
-            if (room == null) {
-                JOptionPane.showMessageDialog(this,
-                        "No room found with ID " + roomId + ". Please enter a valid room ID.");
-            } else if (room.isOccupied(dateTimecheckIn, dateTimecheckOut)) {
-                // Check if the selected room is available
-                JOptionPane.showMessageDialog(this,
-                        "Selected room is not available. Please choose another room.",
-                        "Invalid Room Selection", JOptionPane.WARNING_MESSAGE);
-            } else {
-                bookingRoom = room; // If the room is available, update the bookingRoom variable with the new room
-                initBookingRoomTable(); // initBookingRoomTable() to update the booking room details table with the new room's information.
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Invalid dates.",
-                    "Invalid Check-out Date", JOptionPane.WARNING_MESSAGE);
+        int roomId;
+        try {
+            roomId = Integer.parseInt(input);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid room ID. Please enter a valid number.");
             return;
+        }
+        // getRoomById method of RoomControl to retrieve the room with the specified ID
+        Room room = RoomControl.getRoomById(roomId);
+
+        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
+        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
+
+        if (room == null) {
+            JOptionPane.showMessageDialog(this,
+                    "No room found with ID " + roomId + ". Please enter a valid room ID.");
+        } else if (!isRoomAvailable(room, dateTimecheckIn, dateTimecheckOut)) {
+            // Check if the selected room is available
+            JOptionPane.showMessageDialog(this,
+                    "Selected room is not available. Please choose another room.",
+                    "Invalid Room Selection", JOptionPane.WARNING_MESSAGE);
+        } else {
+            bookingRoom = room; // If the room is available, update the bookingRoom variable with the new room
+            initBookingRoomTable(); // initBookingRoomTable() to update the booking room details table with the new room's information.
         }
 
     }// GEN-LAST:event_bookingRoomDetailsTableMouseClicked
@@ -707,7 +697,6 @@ public class BookingsPanel extends javax.swing.JPanel {
                 BookingControl.pullData();
                 BookingControl.addBooking(booking);
                 BookingControl.pushData();
-                isBookingCreated=true;
                 initBookingTable();
 
                 // Display a success message
@@ -721,15 +710,18 @@ public class BookingsPanel extends javax.swing.JPanel {
         }
     }// GEN-LAST:event_addBookingBtnActionPerformed
 
-    private boolean isRoomAvailable(Room room, Date checkInDate, Date checkOutDate) {
+    private boolean isRoomAvailable(Room room, DateTime checkInDateTime, DateTime checkOutDateTime) {
         if (BookingControl.getBookings() == null)
             return true;
 
         for (Booking booking : BookingControl.getBookings()) {
             if (booking.getRoom().equals(room)) {
                 // Check if the booking overlaps with the desired check-in and check-out dates
-                if (checkInDate.before(booking.getCheckOutDate().toDate())
-                        && checkOutDate.after(booking.getCheckInDate().toDate())) {
+                DateTime existingCheckInDateTime = booking.getCheckInDate();
+                DateTime existingCheckOutDateTime = booking.getCheckOutDate();
+
+                boolean overlap = (checkInDateTime.isBefore(existingCheckOutDateTime) && checkOutDateTime.isAfter(existingCheckInDateTime));
+                if (overlap) {
                     return false; // Room is not available
                 }
             }
