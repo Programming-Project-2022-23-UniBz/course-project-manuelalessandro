@@ -133,7 +133,13 @@ public class Booking {
 
         long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();
         //converts the time difference from milliseconds to days.
-        return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        
+        int stayDays = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+
+        if(stayDays < 1)
+            return 1;
+        
+        return stayDays;
     }
     private static boolean isSameDay(DateTime dateTime1, DateTime dateTime2) {
         return dateTime1.toLocalDate().isEqual(dateTime2.toLocalDate());

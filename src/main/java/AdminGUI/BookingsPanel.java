@@ -498,6 +498,210 @@ public class BookingsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+     * bookingRoomDetailsTableMouseClicked method is an event handler that is
+     * triggered when a
+     * mouse click event occurs on the booking room details table
+     */
+    private void bookingRoomDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_bookingRoomDetailsTableMouseClicked
+        RoomControl.pullData();
+        BookingControl.pullData();
+
+        // Check if any of the required fields are empty
+        if (jDateOfCheckInChooser.getDate() == null || jDateOfCheckOutChooser.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Enter the dates first.");
+            return;
+        }
+
+        Date checkInDate = jDateOfCheckInChooser.getDate();
+        Date checkOutDate = jDateOfCheckOutChooser.getDate();
+
+        // Validate check-in and check-out dates
+        Date currentDate = new Date();
+
+        // Check-in date cannot be earlier than today
+        if (checkInDate.before(currentDate) && !isSameDay(checkInDate, currentDate)) {
+            JOptionPane.showMessageDialog(this, "Check-in date cannot be earlier than today.",
+                    "Invalid Check-in Date",
+                    JOptionPane.WARNING_MESSAGE);
+            isCheckInValidated = false;
+            return;
+        }
+
+        // Check-out date must be after the check-in date and not the same day
+        if (checkOutDate.before(checkInDate) || isSameDay(checkInDate, checkOutDate)) {
+            JOptionPane.showMessageDialog(this, "Check-out date must be after the check-in date and not the same day.",
+                    "Invalid Check-out Date", JOptionPane.WARNING_MESSAGE);
+            isCheckOutValidated = false;
+            return;
+        }
+
+        /*
+         * Display an input dialog box using
+         * to prompt the user to enter a room ID to search for
+         */
+        String input = JOptionPane.showInputDialog(this, "Enter a room ID to look for:");
+
+        if (input == null || input.isEmpty()) {
+            return; // if the input is null or empty, return from the method.
+        }
+
+        int roomId;
+        try {
+            roomId = Integer.parseInt(input);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid room ID. Please enter a valid number.");
+            return;
+        }
+        // getRoomById method of RoomControl to retrieve the room with the specified ID
+        Room room = RoomControl.getRoomById(roomId);
+
+        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate()).withHourOfDay(14).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
+        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate()).withHourOfDay(10).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
+
+        if (room == null) {
+            JOptionPane.showMessageDialog(this,
+                    "No room found with ID " + roomId + ". Please enter a valid room ID.");
+        } else if (!room.isRoomAvailable(dateTimecheckIn, dateTimecheckOut)) {
+            // Check if the selected room is available
+            JOptionPane.showMessageDialog(this,
+                    "Selected room is not available for these dates. Please choose another room.",
+                    "Invalid Room Selection", JOptionPane.WARNING_MESSAGE);
+        } else {
+            bookingRoom = room; // If the room is available, update the bookingRoom variable with the new room
+            initBookingRoomTable(); // initBookingRoomTable() to update the booking room details table with the new room's information.
+        }
+
+    }// GEN-LAST:event_bookingRoomDetailsTableMouseClicked
+
+    /*
+     * initBookingRoomTable() method initializes the booking room details table
+     */
+    private void initBookingRoomTable() {
+        RoomControl.pullData();
+        BookingControl.pullData();
+
+        DefaultTableModel model = (DefaultTableModel) bookingRoomDetailsTable.getModel();
+        model.setRowCount(0); // Clear the existing rows
+
+        Object rowData[] = new Object[5];
+        rowData[0] = bookingRoom.getId();
+        rowData[1] = bookingRoom.getType();
+        rowData[2] = bookingRoom.getCapacity();
+        rowData[3] = bookingRoom.getPrice();
+        rowData[4] = "Yes";
+        model.addRow(rowData);
+
+        // Make the table content uneditable
+        bookingRoomDetailsTable.setDefaultEditor(Object.class, null);
+        // Set the updated table model back to the JTable instance
+        bookingRoomDetailsTable.setModel(model);
+    }
+
+    private void addBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addBookingBtnActionPerformed
+        boolean isUserCreated = true;
+
+        // Check if any of the required fields are empty
+        if (customerNameTxtField.getText().isEmpty()
+                || customerSurnameTxtField.getText().isEmpty()
+                || jDateOfBirthCustomerChooser.getDate() == null
+                || jDateOfCheckInChooser.getDate() == null
+                || jDateOfCheckOutChooser.getDate() == null
+                || customerGenderComboBox.getSelectedItem() == null
+                || bookingRoom == null
+                || customerEmailTxtField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all the required fields.");
+            return;
+        }
+
+        User user;
+        try {
+            /*
+             * Call the processUserInputs method to extract and validate the user input
+             * fields. This method is responsible for creating a User object based on the
+             * input
+             * provided by the user.
+             */
+            user = processUserInputs();
+            if(user == null){
+                JOptionPane.showMessageDialog(this,
+                        "An error occurred while processing user inputs. Please check your input.");
+                isUserCreated = false;
+                return;
+            }
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this,
+                    "An error occurred while processing user inputs. Please check your input.");
+            isUserCreated = false;
+            return;
+        }
+
+        Date checkInDate = jDateOfCheckInChooser.getDate();
+        Date checkOutDate = jDateOfCheckOutChooser.getDate();
+
+        if (!isUserCreated || !isCheckInValidated || !isCheckOutValidated) {
+            JOptionPane.showMessageDialog(this, "Booking was not created successfully.", "Invalid Booking",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        } else if(!bookingRoom.isRoomAvailable(new DateTime(checkInDate), new DateTime(checkOutDate))){
+            // Check if the selected room is available
+            JOptionPane.showMessageDialog(this,
+                    "Room is not available for the selected dates. Please choose another room.",
+                    "Invalid Room Selection", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if(isUserCreated || isCheckInValidated || isCheckOutValidated){
+                Booking booking = new Booking(new DateTime(checkInDate), new DateTime(checkOutDate), bookingRoom, user);
+                booking.setBookingId();
+                BookingControl.pullData();
+                BookingControl.addBooking(booking);
+                BookingControl.pushData();
+                initBookingTable();
+
+                // Display a success message
+                JOptionPane.showMessageDialog(this, "Booking added successfully!");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Booking was not created successfully.", "Invalid Booking",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+    }// GEN-LAST:event_addBookingBtnActionPerformed
+
+    /*
+    Shows in a table all the bookings that has been created
+     */
+    public void initBookingTable() {
+
+        BookingControl.pullData();
+
+        if(BookingControl.getBookings() != null){
+            DefaultTableModel model = (DefaultTableModel) bookingTable.getModel();
+            model.setRowCount(0); // Clear existing rows
+
+            for (Booking booking : BookingControl.getBookings()) {
+                User bookingUser = booking.getUser();
+                Object rowData[] = new Object[6];
+                rowData[0] = booking.getBookingId();
+                if(bookingUser != null)
+                    rowData[1] = bookingUser.getFullName();
+                else
+                    rowData[1] = "null";
+                rowData[2] = booking.getRoom().getId();
+                rowData[3] = booking.getCheckInDate();
+                rowData[4] = booking.getCheckOutDate();
+                rowData[5] = booking.getTotalCost();
+                // Add a row to the table with booking information
+                model.addRow(rowData);
+            }
+
+            // Make the table content uneditable
+            bookingTable.setDefaultEditor(Object.class, null);
+            // Set the updated table model back to the JTable instance
+            bookingTable.setModel(model);
+        }
+    }
+
     private void bookingTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingTableMouseClicked
      int selectedRow = bookingTable.getSelectedRow();
 
@@ -543,195 +747,6 @@ public class BookingsPanel extends javax.swing.JPanel {
         initBookingRoomTable();
         BookingControl.removeBookingById(bookingId);
         BookingControl.pushData();
-    }
-    /*
-     * initBookingRoomTable() method initializes the booking room details table
-     */
-    private void initBookingRoomTable() {
-
-        DefaultTableModel model = (DefaultTableModel) bookingRoomDetailsTable.getModel();
-        model.setRowCount(0); // Clear the existing rows
-
-        Object rowData[] = new Object[5];
-        rowData[0] = bookingRoom.getId();
-        rowData[1] = bookingRoom.getType();
-        rowData[2] = bookingRoom.getCapacity();
-        rowData[3] = bookingRoom.getPrice();
-        if (bookingRoom.isOccupied() == false) {
-            rowData[4] = "Yes";
-        } else {
-            rowData[4] = "No";
-        }
-        model.addRow(rowData);
-
-        // Make the table content uneditable
-        bookingRoomDetailsTable.setDefaultEditor(Object.class, null);
-        // Set the updated table model back to the JTable instance
-        bookingRoomDetailsTable.setModel(model);
-    }
-
-    /*
-     * bookingRoomDetailsTableMouseClicked method is an event handler that is
-     * triggered when a
-     * mouse click event occurs on the booking room details table
-     */
-    private void bookingRoomDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_bookingRoomDetailsTableMouseClicked
-        RoomControl.pullData();
-        BookingControl.pullData();
-
-        // Check if any of the required fields are empty
-        if (jDateOfCheckInChooser.getDate() == null || jDateOfCheckOutChooser.getDate() == null) {
-            JOptionPane.showMessageDialog(this, "Enter the dates first.");
-            return;
-        }
-
-        Date checkInDate = jDateOfCheckInChooser.getDate();
-        Date checkOutDate = jDateOfCheckOutChooser.getDate();
-
-        // Validate check-in date
-        Date currentDate = new Date();
-
-        if (checkInDate.before(currentDate) && !isSameDay(checkInDate, currentDate)) {
-            JOptionPane.showMessageDialog(this, "Check-in date cannot be earlier than today.",
-                    "Invalid Check-in Date",
-                    JOptionPane.WARNING_MESSAGE);
-            isCheckInValidated = false;
-            return;
-        }
-
-        // Validate check-out date
-        if (checkOutDate.before(checkInDate) && !checkOutDate.equals(checkInDate)) {
-            JOptionPane.showMessageDialog(this, "Check-out date cannot be before the check-in date.",
-                    "Invalid Check-out Date", JOptionPane.WARNING_MESSAGE);
-            isCheckOutValidated = false;
-            return;
-        }
-
-        /*
-         * Display an input dialog box using
-         * to prompt the user to enter a room ID to search for
-         */
-        String input = JOptionPane.showInputDialog(this, "Enter a room ID to look for:");
-
-        if (input == null || input.isEmpty()) {
-            return; // if the input is null or empty, return from the method.
-        }
-
-        int roomId;
-        try {
-            roomId = Integer.parseInt(input);
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Invalid room ID. Please enter a valid number.");
-            return;
-        }
-        // getRoomById method of RoomControl to retrieve the room with the specified ID
-        Room room = RoomControl.getRoomById(roomId);
-
-        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate()).withHourOfDay(14).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
-        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate()).withHourOfDay(10).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
-
-        if (room == null) {
-            JOptionPane.showMessageDialog(this,
-                    "No room found with ID " + roomId + ". Please enter a valid room ID.");
-        } else if (!isRoomAvailable(room, dateTimecheckIn, dateTimecheckOut)) {
-            // Check if the selected room is available
-            JOptionPane.showMessageDialog(this,
-                    "Selected room is not available. Please choose another room.",
-                    "Invalid Room Selection", JOptionPane.WARNING_MESSAGE);
-        } else {
-            bookingRoom = room; // If the room is available, update the bookingRoom variable with the new room
-            initBookingRoomTable(); // initBookingRoomTable() to update the booking room details table with the new room's information.
-        }
-
-    }// GEN-LAST:event_bookingRoomDetailsTableMouseClicked
-
-    private void addBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addBookingBtnActionPerformed
-        boolean isUserCreated = true;
-
-        // Check if any of the required fields are empty
-        if (customerNameTxtField.getText().isEmpty()
-                || customerSurnameTxtField.getText().isEmpty()
-                || jDateOfBirthCustomerChooser.getDate() == null
-                || jDateOfCheckInChooser.getDate() == null
-                || jDateOfCheckOutChooser.getDate() == null
-                || customerGenderComboBox.getSelectedItem() == null
-                || bookingRoom == null
-                || customerEmailTxtField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in all the required fields.");
-            return;
-        }
-
-        User user;
-        try {
-            /*
-             * Call the processUserInputs method to extract and validate the user input
-             * fields. This method is responsible for creating a User object based on the
-             * input
-             * provided by the user.
-             */
-            user = processUserInputs();
-            if(user == null){
-                JOptionPane.showMessageDialog(this,
-                        "An error occurred while processing user inputs. Please check your input.");
-                isUserCreated = false;
-                return;
-            }
-        } catch (IllegalArgumentException e) {
-            JOptionPane.showMessageDialog(this,
-                    "An error occurred while processing user inputs. Please check your input.");
-            isUserCreated = false;
-            return;
-        }
-
-        if (!isUserCreated || !isCheckInValidated || !isCheckOutValidated) {
-            JOptionPane.showMessageDialog(this, "Booking was not created successfully.", "Invalid Booking",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        } else {
-            if(isUserCreated || isCheckInValidated || isCheckOutValidated){
-                Date checkInDate = jDateOfCheckInChooser.getDate();
-                Date checkOutDate = jDateOfCheckOutChooser.getDate();
-
-                Booking booking = new Booking(new DateTime(checkInDate), new DateTime(checkOutDate), bookingRoom, user);
-                booking.setBookingId();
-                BookingControl.pullData();
-                BookingControl.addBooking(booking);
-                BookingControl.pushData();
-                initBookingTable();
-
-                // Display a success message
-                JOptionPane.showMessageDialog(this, "Booking added successfully!");
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Booking was not created successfully.", "Invalid Booking",
-                        JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-        }
-    }// GEN-LAST:event_addBookingBtnActionPerformed
-
-    private boolean isRoomAvailable(Room room, DateTime checkInDateTime, DateTime checkOutDateTime) {
-        if (BookingControl.getBookings() == null)
-            return true;
-
-        Booking[] bookings = BookingControl.getBookings();
-
-        for (Booking booking : bookings) {
-            if (booking.getRoom().equals(room)) {
-
-                // Check if the booking overlaps with the desired check-in and check-out dates
-                DateTime existingCheckInDateTime = booking.getCheckInDate();
-                DateTime existingCheckOutDateTime = booking.getCheckOutDate();
-
-                boolean overlap = (checkInDateTime.isBefore(existingCheckOutDateTime) || checkInDateTime.isEqual(existingCheckOutDateTime))
-                        && (checkOutDateTime.isAfter(existingCheckInDateTime) || checkOutDateTime.isEqual(existingCheckInDateTime));
-
-                if (overlap) {
-                    return false; // Room is not available
-                }
-            }
-        }
-        return true; // Room is available
     }
 
     private User processUserInputs() {
@@ -838,38 +853,6 @@ public class BookingsPanel extends javax.swing.JPanel {
                 && cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
     }
 
-    public void initBookingTable() {
-
-        BookingControl.pullData();
-
-        if(BookingControl.getBookings() != null){
-            DefaultTableModel model = (DefaultTableModel) bookingTable.getModel();
-            model.setRowCount(0); // Clear existing rows
-
-            for (Booking booking : BookingControl.getBookings()) {
-                User bookingUser = booking.getUser();
-                Object rowData[] = new Object[6];
-                rowData[0] = booking.getBookingId();
-                if(bookingUser != null)
-                    rowData[1] = bookingUser.getFullName();
-                else
-                    rowData[1] = "null";
-                rowData[2] = booking.getRoom().getId();
-                rowData[3] = booking.getCheckInDate();
-                rowData[4] = booking.getCheckOutDate();
-                rowData[5] = booking.getTotalCost();
-                // Add a row to the table with booking information
-                model.addRow(rowData);
-            }
-
-            // Make the table content uneditable
-            bookingTable.setDefaultEditor(Object.class, null);
-            // Set the updated table model back to the JTable instance
-            bookingTable.setModel(model);
-        }
-
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel activeBookingListLabel;

@@ -351,12 +351,10 @@ public class RoomsPanel extends javax.swing.JPanel {
         Date checkInDate = jDateOfCheckInChooser.getDate();
         Date checkOutDate = jDateOfCheckOutChooser.getDate();
 
-        // Validate check-in date
-        /*
-        Compares the checkInDate with the currentDate using the before().
-        If the check-in date is before the current date or not the same day, it displays a warning message
-         */
+        // Validate check-in and check-out dates
         Date currentDate = new Date();
+
+        // Check-in date cannot be earlier than today
         if (checkInDate.before(currentDate) && !isSameDay(checkInDate, currentDate)) {
             JOptionPane.showMessageDialog(this, "Check-in date cannot be earlier than today.",
                     "Invalid Check-in Date",
@@ -365,13 +363,9 @@ public class RoomsPanel extends javax.swing.JPanel {
             return;
         }
 
-        // Validate check-out date
-        /*
-        Compares the checkOutDate with the checkInDate using the before() method.
-        If the check-out date is before the check-in date or not equal to the check-in date, it displays a warning message.
-         */
-        if (checkOutDate.before(checkInDate) && !checkOutDate.equals(checkInDate)) {
-            JOptionPane.showMessageDialog(this, "Check-out date cannot be before the check-in date.",
+        // Check-out date must be after the check-in date and not the same day
+        if (checkOutDate.before(checkInDate) || isSameDay(checkInDate, checkOutDate)) {
+            JOptionPane.showMessageDialog(this, "Check-out date must be after the check-in date and not the same day.",
                     "Invalid Check-out Date", JOptionPane.WARNING_MESSAGE);
             isCheckOutValidated = false;
             return;
@@ -394,7 +388,6 @@ public class RoomsPanel extends javax.swing.JPanel {
             }
 
             initRoomTableById(roomById); // Initialize the table for that room
-
             // clear the textfields
             roomTypeTxtField.setText("");
             roomNrTxtField.setText("");
@@ -426,8 +419,10 @@ public class RoomsPanel extends javax.swing.JPanel {
         Date checkInDate = jDateOfCheckInChooser.getDate();
         Date checkOutDate = jDateOfCheckOutChooser.getDate();
 
-        // Validate check-in date
+        // Validate check-in and check-out dates
         Date currentDate = new Date();
+
+        // Check-in date cannot be earlier than today
         if (checkInDate.before(currentDate) && !isSameDay(checkInDate, currentDate)) {
             JOptionPane.showMessageDialog(this, "Check-in date cannot be earlier than today.",
                     "Invalid Check-in Date",
@@ -436,9 +431,9 @@ public class RoomsPanel extends javax.swing.JPanel {
             return;
         }
 
-        // Validate check-out date
-        if (checkOutDate.before(checkInDate) && !checkOutDate.equals(checkInDate)) {
-            JOptionPane.showMessageDialog(this, "Check-out date cannot be before the check-in date.",
+        // Check-out date must be after the check-in date and not the same day
+        if (checkOutDate.before(checkInDate) || isSameDay(checkInDate, checkOutDate)) {
+            JOptionPane.showMessageDialog(this, "Check-out date must be after the check-in date and not the same day.",
                     "Invalid Check-out Date", JOptionPane.WARNING_MESSAGE);
             isCheckOutValidated = false;
             return;
@@ -563,6 +558,9 @@ public class RoomsPanel extends javax.swing.JPanel {
     }// GEN-LAST:event_roomTableMouseClicked
 
     private void initRoomTableById(Room roomById){
+        BookingControl.pullData();
+        RoomControl.pullData();
+
         DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
         DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
 
@@ -575,7 +573,7 @@ public class RoomsPanel extends javax.swing.JPanel {
         rowData[1] = roomById.getType();
         rowData[2] = roomById.getCapacity();
         rowData[3] = roomById.getPrice();
-        if (roomById.isOccupied(dateTimecheckIn, dateTimecheckOut) == false) {
+        if (roomById.isRoomAvailable(dateTimecheckIn, dateTimecheckOut)) {
             rowData[4] = "Yes";
         } else {
             rowData[4] = "No";
@@ -589,6 +587,8 @@ public class RoomsPanel extends javax.swing.JPanel {
     }
 
     private void initRoomTableByType(ArrayList<Room> roomsByType){
+        BookingControl.pullData();
+        RoomControl.pullData();
 
         DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
         model.setRowCount(0); // Clear the existing rows
@@ -604,7 +604,7 @@ public class RoomsPanel extends javax.swing.JPanel {
             rowData[1] = roomsByType.get(i).getType();
             rowData[2] = roomsByType.get(i).getCapacity();
             rowData[3] = roomsByType.get(i).getPrice();
-            if (roomsByType.get(i).isOccupied(dateTimecheckIn, dateTimecheckOut) == false) {
+            if (roomsByType.get(i).isRoomAvailable(dateTimecheckIn, dateTimecheckOut)) {
                 rowData[4] = "Yes";
             } else {
                 rowData[4] = "No";

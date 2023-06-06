@@ -142,6 +142,30 @@ public class Room {
         return result;
     }
 
+    public boolean isRoomAvailable(DateTime checkInDateTime, DateTime checkOutDateTime) {
+        if (BookingControl.getBookings() == null)
+            return true;
+
+        Booking[] bookings = BookingControl.getBookings();
+
+        for (Booking booking : bookings) {
+            if (booking.getRoom().equals(this)) {
+
+                // Check if the booking overlaps with the desired check-in and check-out dates
+                DateTime existingCheckInDateTime = booking.getCheckInDate();
+                DateTime existingCheckOutDateTime = booking.getCheckOutDate();
+
+                boolean overlap = (checkInDateTime.isBefore(existingCheckOutDateTime) || checkInDateTime.isEqual(existingCheckOutDateTime))
+                        && (checkOutDateTime.isAfter(existingCheckInDateTime) || checkOutDateTime.isEqual(existingCheckInDateTime));
+
+                if (overlap) {
+                    return false; // Room is not available
+                }
+            }
+        }
+        return true; // Room is available
+    }
+
     // --------------------Help methods-----------------------------
     /**
      * @param checkIn
