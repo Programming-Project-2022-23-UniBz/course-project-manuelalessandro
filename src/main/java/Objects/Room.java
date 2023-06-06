@@ -70,6 +70,28 @@ public class Room {
         this.price = price;
     }
 
+    @Override
+    public String toString() {
+        return "Room{" +
+                "id=" + id +
+                ", type=" + type +
+                ", capacity=" + capacity +
+                ", price=" + price +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Room other = (Room) obj;
+        return id == other.id;
+    }
+
     public boolean isOccupied(DateTime checkIn, DateTime checkOut) {
         BookingControl.pullData();
         boolean result = false;

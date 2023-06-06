@@ -627,8 +627,8 @@ public class BookingsPanel extends javax.swing.JPanel {
         // getRoomById method of RoomControl to retrieve the room with the specified ID
         Room room = RoomControl.getRoomById(roomId);
 
-        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
-        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
+        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate()).withHourOfDay(14).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
+        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate()).withHourOfDay(10).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
 
         if (room == null) {
             JOptionPane.showMessageDialog(this,
@@ -714,13 +714,18 @@ public class BookingsPanel extends javax.swing.JPanel {
         if (BookingControl.getBookings() == null)
             return true;
 
-        for (Booking booking : BookingControl.getBookings()) {
+        Booking[] bookings = BookingControl.getBookings();
+
+        for (Booking booking : bookings) {
             if (booking.getRoom().equals(room)) {
+
                 // Check if the booking overlaps with the desired check-in and check-out dates
                 DateTime existingCheckInDateTime = booking.getCheckInDate();
                 DateTime existingCheckOutDateTime = booking.getCheckOutDate();
 
-                boolean overlap = (checkInDateTime.isBefore(existingCheckOutDateTime) && checkOutDateTime.isAfter(existingCheckInDateTime));
+                boolean overlap = (checkInDateTime.isBefore(existingCheckOutDateTime) || checkInDateTime.isEqual(existingCheckOutDateTime))
+                        && (checkOutDateTime.isAfter(existingCheckInDateTime) || checkOutDateTime.isEqual(existingCheckInDateTime));
+
                 if (overlap) {
                     return false; // Room is not available
                 }

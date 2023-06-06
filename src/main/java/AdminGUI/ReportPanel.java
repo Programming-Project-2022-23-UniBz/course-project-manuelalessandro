@@ -15,7 +15,7 @@ public class ReportPanel extends javax.swing.JPanel {
 
     public ReportPanel() {
         initComponents();
-        totalActiveBookingCountLabel.setText(""+ BookingControl.getBookingCount());
+        totalActiveBookingCountLabel.setText(""+ BookingControl.getBookingsLength());
         monthlyAverageLabel.setText("" + BookingControl.calculateAverageCost());
     }
 
@@ -213,7 +213,7 @@ public class ReportPanel extends javax.swing.JPanel {
         CategoryAxis xAxis = barchrt.getDomainAxis();
         xAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_90); // Rotate labels 90 degrees for better readability
 
-        totalActiveBookingCountLabel.setText(""+ BookingControl.getBookingCount());
+        totalActiveBookingCountLabel.setText(""+ BookingControl.getBookingsLength());
         monthlyAverageLabel.setText("" + BookingControl.calculateAverageCost());
     }//GEN-LAST:event_showChartBtn1ActionPerformed
 

@@ -40,7 +40,7 @@ public class BookingControl {
         }
     }
     
-    public static int getBookingCount(){
+    public static int getBookingsLength(){
         pullData();
         
         if (bookings == null) {

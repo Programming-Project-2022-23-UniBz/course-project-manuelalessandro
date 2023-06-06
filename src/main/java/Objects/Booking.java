@@ -78,8 +78,20 @@ public class Booking {
 
     // --------------------------------------------------------
 
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "bookingId='" + bookingId + '\'' +
+                ", checkInDate=" + checkInDate +
+                ", checkOutDate=" + checkOutDate +
+                ", room=" + room +
+                ", user=" + user +
+                ", totalCost=" + totalCost +
+                '}';
+    }
+
     public String bookingIdGenerator() {
-        String prefix = "ADH_";
+        String prefix = "APH_";
 
         // Get today's date in the format "yyyyMMdd"
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
@@ -89,7 +101,7 @@ public class Booking {
         int randomDigits = 1000 + new Random().nextInt(9000);
 
         // Combine the components to form the booking ID
-        String generatedBookingId = prefix + currentDate + randomDigits;
+        String generatedBookingId = prefix + currentDate + "_" + randomDigits;
 
         if (isBookingIdUnique(generatedBookingId)) {
             return generatedBookingId;
