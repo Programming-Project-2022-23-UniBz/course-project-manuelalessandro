@@ -1,6 +1,7 @@
 package Objects;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -126,23 +127,12 @@ public class Booking {
         DateTime checkInDate = new DateTime(checkIn);
         DateTime checkOutDate = new DateTime(checkOut);
 
-        // If check-in and check-out dates are on the same day, return 1
-        if (isSameDay(checkInDate, checkOutDate)) {
-            return 1;
-        }
-
         long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();
-        //converts the time difference from milliseconds to days.
-        
-        int stayDays = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
-        if(stayDays < 1)
-            return 1;
+        int stay = 1+ (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        System.out.println("Duration of stay: " + stay + " nights");
         
-        return stayDays;
-    }
-    private static boolean isSameDay(DateTime dateTime1, DateTime dateTime2) {
-        return dateTime1.toLocalDate().isEqual(dateTime2.toLocalDate());
+        return stay;
     }
 
     public static double calculateTotalCost(double price, int stay) {

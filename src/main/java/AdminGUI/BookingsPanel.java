@@ -599,6 +599,9 @@ public class BookingsPanel extends javax.swing.JPanel {
     }
 
     private void addBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addBookingBtnActionPerformed
+        BookingControl.pullData();
+        RoomControl.pullData();
+
         boolean isUserCreated = true;
 
         // Check if any of the required fields are empty
@@ -636,23 +639,22 @@ public class BookingsPanel extends javax.swing.JPanel {
             return;
         }
 
-        Date checkInDate = jDateOfCheckInChooser.getDate();
-        Date checkOutDate = jDateOfCheckOutChooser.getDate();
+        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
+        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
 
         if (!isUserCreated || !isCheckInValidated || !isCheckOutValidated) {
             JOptionPane.showMessageDialog(this, "Booking was not created successfully.", "Invalid Booking",
                     JOptionPane.WARNING_MESSAGE);
             return;
-        } else if(!bookingRoom.isRoomAvailable(new DateTime(checkInDate), new DateTime(checkOutDate))){
+        } else if(!bookingRoom.isRoomAvailable(dateTimecheckIn, dateTimecheckOut)){
             // Check if the selected room is available
             JOptionPane.showMessageDialog(this,
                     "Room is not available for the selected dates. Please choose another room.",
                     "Invalid Room Selection", JOptionPane.WARNING_MESSAGE);
         } else {
             if(isUserCreated || isCheckInValidated || isCheckOutValidated){
-                Booking booking = new Booking(new DateTime(checkInDate), new DateTime(checkOutDate), bookingRoom, user);
+                Booking booking = new Booking(dateTimecheckIn, dateTimecheckOut, bookingRoom, user);
                 booking.setBookingId();
-                BookingControl.pullData();
                 BookingControl.addBooking(booking);
                 BookingControl.pushData();
                 initBookingTable();
@@ -703,30 +705,29 @@ public class BookingsPanel extends javax.swing.JPanel {
     }
 
     private void bookingTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingTableMouseClicked
-     int selectedRow = bookingTable.getSelectedRow();
+        int selectedRow = bookingTable.getSelectedRow();
 
-    if (selectedRow == -1) {
-        return;
-    }
+        if (selectedRow == -1) {
+            return;
+        }
 
-    // Retrieve the booking ID from the selected row
-    String bookingID = (String) bookingTable.getValueAt(selectedRow, 0);
+        // Retrieve the booking ID from the selected row
+        String bookingID = (String) bookingTable.getValueAt(selectedRow, 0);
 
-    // Show an option dialog to ask the user for action
-    int dialogResult = JOptionPane.showOptionDialog(this,
-            "What would you like to do with booking ID " + bookingID + "?",
-            "Booking Options", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-            new Object[] { "Modify", "Delete" }, "Modify");
+        // Show an option dialog to ask the user for action
+        int dialogResult = JOptionPane.showOptionDialog(this,
+                "What would you like to do with booking ID " + bookingID + "?",
+                "Booking Options", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                new Object[] { "Modify", "Delete" }, "Modify");
 
-    if (dialogResult == 0) { // Modify option selected
-        processBookingEdit(bookingID);
-    } else if (dialogResult == 1) { // Delete option selected
-        BookingControl.removeBookingById(bookingID);
-        initBookingTable();
-    }
+        if (dialogResult == 0) { // Modify option selected
+            processBookingEdit(bookingID);
+        } else if (dialogResult == 1) { // Delete option selected
+            BookingControl.removeBookingById(bookingID);
+            initBookingTable();
+        }
     }//GEN-LAST:event_bookingTableMouseClicked
 
-    
     private void processBookingEdit(String bookingId){
 
         Booking booking = BookingControl.getBookingById(bookingId);
@@ -743,7 +744,7 @@ public class BookingsPanel extends javax.swing.JPanel {
         jDateOfBirthCustomerChooser.setDate(DOB);
 
         bookingRoom = booking.getRoom();
-
+        
         initBookingRoomTable();
         BookingControl.removeBookingById(bookingId);
         BookingControl.pushData();
