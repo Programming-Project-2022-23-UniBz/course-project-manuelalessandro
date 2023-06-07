@@ -110,7 +110,7 @@ public class BookingsPanel extends javax.swing.JPanel {
         addBookingBtn.setBackground(new java.awt.Color(0, 153, 102));
         addBookingBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         addBookingBtn.setForeground(new java.awt.Color(255, 255, 255));
-        addBookingBtn.setText("ADD NEW BOOKING");
+        addBookingBtn.setText("ADD BOOKING");
         addBookingBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBookingBtnActionPerformed(evt);
@@ -363,7 +363,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                                         .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(customerSurameLabel)
                                             .addComponent(customerSurnameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                                         .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(customerNameLabel)
                                             .addComponent(customerNameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -724,6 +724,8 @@ public class BookingsPanel extends javax.swing.JPanel {
                 new Object[] { "Modify", "Delete" }, "Modify");
 
         if (dialogResult == 0) { // Modify option selected
+            String message = "The existing booking will be replaced with a new booking. Change the parameters as needed. Then click on ADD BOOKING.";
+            JOptionPane.showMessageDialog(this, message, "Modify Booking", JOptionPane.INFORMATION_MESSAGE);
             processBookingEdit(bookingID);
         } else if (dialogResult == 1) { // Delete option selected
             BookingControl.removeBookingById(bookingID);
