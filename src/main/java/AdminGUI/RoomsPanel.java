@@ -562,14 +562,13 @@ public class RoomsPanel extends javax.swing.JPanel {
         BookingControl.pullData();
         RoomControl.pullData();
 
-        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
-        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
+        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate()).withTime(14, 0, 0, 0);
+        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate()).withTime(10, 0, 0, 0);
 
-        // retrieves the model of the roomTable as a DefaultTableModel
         DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
-        model.setRowCount(0); // clearing any existing rows in the table
+        model.setRowCount(0); // Clearing any existing rows in the table
 
-        Object rowData[] = new Object[5];
+        Object[] rowData = new Object[5];
         rowData[0] = roomById.getId();
         rowData[1] = roomById.getType();
         rowData[2] = roomById.getCapacity();
@@ -578,29 +577,21 @@ public class RoomsPanel extends javax.swing.JPanel {
         if (dateTimecheckIn != null && dateTimecheckOut != null) {
             if (roomById.isRoomAvailable(dateTimecheckIn, dateTimecheckOut)) {
                 rowData[4] = "Yes";
-                model.addRow(rowData);
-                // Set row color to green
-                roomTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-                    @Override
-                    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                        super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                        setBackground(Color.GREEN);
-                        return this;
-                    }
-                });
             } else {
                 rowData[4] = "No";
-                model.addRow(rowData);
-                // Set row color to red
-                roomTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-                    @Override
-                    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                        super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                        setBackground(Color.RED);
-                        return this;
-                    }
-                });
             }
+
+            model.addRow(rowData);
+            // Set row color based on availability
+            roomTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+                @Override
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                    super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                    String availability = (String) table.getValueAt(row, 4);
+                    setBackground(availability.equals("Yes") ? new Color(0, 255, 60) : new Color(255, 102, 102));
+                    return this;
+                }
+            });
         } else {
             rowData[4] = ""; // Empty value if check-in and check-out dates are not selected
             model.addRow(rowData);
@@ -619,48 +610,34 @@ public class RoomsPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) roomTable.getModel();
         model.setRowCount(0); // Clear the existing rows
 
-        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
-        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
+        DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate()).withTime(14, 0, 0, 0);
+        DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate()).withTime(10, 0, 0, 0);
 
-        // Iterates over the list of rooms and populates the rowData array with the room
-        // details.
-        Object rowData[] = new Object[5];
-        for (int i = 0; i < roomsByType.size(); i++) {
-            rowData[0] = roomsByType.get(i).getId();
-            rowData[1] = roomsByType.get(i).getType();
-            rowData[2] = roomsByType.get(i).getCapacity();
-            rowData[3] = roomsByType.get(i).getPrice();
-
-            if (dateTimecheckIn != null && dateTimecheckOut != null) {
-                if (roomsByType.get(i).isRoomAvailable(dateTimecheckIn, dateTimecheckOut)) {
-                    rowData[4] = "Yes";
-                    model.addRow(rowData);
-                    // Set row color to green
-                    roomTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-                        @Override
-                        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                            setBackground(Color.GREEN);
-                            return this;
-                        }
-                    });
-                } else {
-                    rowData[4] = "No";
-                    model.addRow(rowData);
-                    // Set row color to red
-                    roomTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-                        @Override
-                        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                            setBackground(Color.RED);
-                            return this;
-                        }
-                    });
-                }
-            } else {
-                rowData[4] = ""; // Empty value if check-in and check-out dates are not selected
-                model.addRow(rowData);
+        // Set the renderer for the whole table outside the loop
+        roomTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                boolean isRoomAvailable = table.getValueAt(row, 4).equals("Yes");
+                setBackground(isRoomAvailable ? new Color(0, 255, 60) : new Color(255, 102, 102));
+                return this;
             }
+        });
+
+        for (Room room : roomsByType) {
+            Object[] rowData = new Object[5];
+            rowData[0] = room.getId();
+            rowData[1] = room.getType();
+            rowData[2] = room.getCapacity();
+            rowData[3] = room.getPrice();
+
+            boolean isRoomAvailable = false;
+            if (dateTimecheckIn != null && dateTimecheckOut != null) {
+                isRoomAvailable = room.isRoomAvailable(dateTimecheckIn, dateTimecheckOut);
+            }
+
+            rowData[4] = isRoomAvailable ? "Yes" : "No";
+            model.addRow(rowData);
         }
 
         // Make the table content uneditable
