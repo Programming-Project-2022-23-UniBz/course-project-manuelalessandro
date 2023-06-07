@@ -273,7 +273,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Room Nr.", "Room Type", "Capacity", "Price", "Availibility"
+                "Room Nr.", "Room Type", "Capacity", "Price per night", "Availibility"
             }
         ));
         bookingRoomDetailsTable.setGridColor(new java.awt.Color(255, 255, 255));

@@ -61,6 +61,19 @@ public class RoomControl {
             return room;
     }
 
+    public static Room[] getRoomsArray(){
+        for (Room room: rooms) {
+            System.out.println(room.toString());
+        }
+        return rooms;
+    }
+
+    public static void setRoomsArray(Room[] newRooms){
+       rooms = newRooms;
+    }
+
+
+
     // returns first free room that matches parameters
     // throws Exception if no room matches
     /**

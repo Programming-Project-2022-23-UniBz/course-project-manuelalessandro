@@ -159,7 +159,7 @@ public class RoomsPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Room Type", "Capacity", "Price", "Availibility"
+                "Id", "Room Type", "Capacity", "Price per night", "Availibility"
             }
         ) {
             boolean[] canEdit = new boolean [] {
