@@ -785,12 +785,8 @@ public class BookingsPanel extends javax.swing.JPanel {
         }
 
         // Validate date of birth
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.YEAR, -18); // Subtract 18 years from the current date
-        Date eighteenYearsAgo = calendar.getTime();
-
-        if (dateOfBirth == null || dateOfBirth.toInstant().isAfter(eighteenYearsAgo.toInstant()) || !DOBIsValidated) {
-            JOptionPane.showMessageDialog(this, "Guest must be at least 18 years old.", "Invalid Date of Birth", JOptionPane.WARNING_MESSAGE);
+        if (dateOfBirth == null || !DOBIsValidated || isGuestUnder18(dateOfBirth) || isGuestOver100(dateOfBirth)) {
+            JOptionPane.showMessageDialog(this, "Guest age must be between 18 and 100 years.", "Invalid Date of Birth", JOptionPane.WARNING_MESSAGE);
             DOBIsValidated = false;
         } else {
             DOBIsValidated = true;
@@ -822,12 +818,31 @@ public class BookingsPanel extends javax.swing.JPanel {
         return user;
     }
 
+    // Method to check if the guest is under 18 years old
+    private boolean isGuestUnder18(Date dateOfBirth) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.YEAR, -18); // Subtract 18 years from the current date
+        Date eighteenYearsAgo = calendar.getTime();
+
+        return dateOfBirth.toInstant().isAfter(eighteenYearsAgo.toInstant());
+    }
+
+    // Method to check if the guest is over 100 years old
+    private boolean isGuestOver100(Date dateOfBirth) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.YEAR, -100); // Subtract 100 years from the current date
+        Date hundredYearsAgo = calendar.getTime();
+
+        return dateOfBirth.toInstant().isBefore(hundredYearsAgo.toInstant());
+    }
+
     private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
 
         // Compile the regex pattern
         Pattern pattern = Pattern.compile(emailRegex);
-        // Match the input email to the created pattern
+
+        // Match the input email against the pattern
         Matcher matcher = pattern.matcher(email);
 
         return matcher.matches();
