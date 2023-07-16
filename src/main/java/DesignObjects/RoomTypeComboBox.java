@@ -72,6 +72,9 @@ public class RoomTypeComboBox extends JComboBox {
             result.add(RoomType.KING);
             result.add(2);
         }
+        else {
+            result.add(super.getSelectedItem());
+        }
         return result;
     }
 

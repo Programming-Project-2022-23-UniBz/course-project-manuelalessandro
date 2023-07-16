@@ -19,9 +19,11 @@ public class Booking {
 
     public Booking(DateTime checkInDate, DateTime checkOutDate, Room room, User user) {
         // Set check-in time to 2 PM
-        this.checkInDate = checkInDate.withHourOfDay(14).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0).toDate();
+        this.checkInDate = checkInDate.withHourOfDay(14).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
+                .toDate();
         // Set check-out time to 10 AM
-        this.checkOutDate = checkOutDate.withHourOfDay(10).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0).toDate();
+        this.checkOutDate = checkOutDate.withHourOfDay(10).withMinuteOfHour(0).withSecondOfMinute(0)
+                .withMillisOfSecond(0).toDate();
         this.room = room;
         this.user = user;
         this.totalCost = calculateTotalCost(room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
@@ -107,10 +109,12 @@ public class Booking {
         if (isBookingIdUnique(generatedBookingId)) {
             return generatedBookingId;
         } else {
-            // If the generated booking ID is not unique, recursively call the method to generate another ID
+            // If the generated booking ID is not unique, recursively call the method to
+            // generate another ID
             return bookingIdGenerator();
         }
     }
+
     private boolean isBookingIdUnique(String bookingId) {
         Booking[] bookings = getBookings();
 
@@ -119,19 +123,18 @@ public class Booking {
                 return false; // Matching booking ID found, not unique
             }
         }
-        return true; //unique
+        return true; // unique
     }
 
-    //@returns the duration of a stay in terms of the number of nights
+    // @returns the duration of a stay in terms of the number of nights
     public static int calculateStay(Date checkIn, Date checkOut) {
         DateTime checkInDate = new DateTime(checkIn);
         DateTime checkOutDate = new DateTime(checkOut);
 
         long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();
 
-        int stay = 1+ (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-        System.out.println("Duration of stay: " + stay + " nights");
-        
+        int stay = 1 + (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+
         return stay;
     }
 

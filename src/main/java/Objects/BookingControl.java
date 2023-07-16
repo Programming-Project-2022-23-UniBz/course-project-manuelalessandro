@@ -39,20 +39,20 @@ public class BookingControl {
             e.printStackTrace();
         }
     }
-    
-    public static int getBookingsLength(){
+
+    public static int getBookingsLength() {
         pullData();
-        
+
         if (bookings == null) {
             return 0; // Return 0 if there are no bookings
         }
-        
+
         return bookings.length;
     }
-    
+
     public static double calculateAverageCost() {
         pullData();
-        
+
         if (bookings == null || bookings.length == 0) {
             return 0.0; // Return 0 if there are no bookings
         }
@@ -102,7 +102,7 @@ public class BookingControl {
         pullData();
 
         int index = -1;
-        //Find the index of the booking to remove
+        // Find the index of the booking to remove
         for (int i = 0; i < bookings.length; i++) {
             if (bookings[i].getBookingId().equals(id)) {
                 index = i;
@@ -113,14 +113,18 @@ public class BookingControl {
         if (index != -1) {
             Booking[] updatedBookings = new Booking[bookings.length - 1];
 
-            //Operations to copy the bookings before and after the index to the updatedBookings array.
+            // Operations to copy the bookings before and after the index to the
+            // updatedBookings array.
             if (index > 0) {
-                //starts from index 0 in the source array (bookings) and index 0 in the destination array
-                //copies index number of elements from the source array to the destination array
+                // starts from index 0 in the source array (bookings) and index 0 in the
+                // destination array
+                // copies index number of elements from the source array to the destination
+                // array
                 System.arraycopy(bookings, 0, updatedBookings, 0, index);
             }
             if (index < bookings.length - 1) {
-                //skips the element at the index position and copies the remaining elements after that position
+                // skips the element at the index position and copies the remaining elements
+                // after that position
                 System.arraycopy(bookings, index + 1, updatedBookings, index, bookings.length - index - 1);
             }
             bookings = updatedBookings;
@@ -145,9 +149,24 @@ public class BookingControl {
         return result;
     }
 
+    // @return ArrayList<Booking> that contains all the bookings that have that user
+    public static ArrayList<Booking> getAllBookings(User user) {
+        if (bookings == null) {
+            bookings = new Booking[0];
+        }
+
+        ArrayList<Booking> result = new ArrayList<Booking>();
+        for (int i = 0; i < bookings.length; i++)
+            if (bookings[i] != null)
+                if (bookings[i].getUser().equals(user))
+                    result.add(bookings[i]);
+        return result;
+    }
+
     public static void createBooking(User user, Room room, Date checkIn, Date checkOut) {
         Booking booking = new Booking(new DateTime(checkIn), new DateTime(checkOut), room, user);
         addBooking(booking);
+
     }
 
     public static void addBooking(Booking booking) {
@@ -203,9 +222,10 @@ public class BookingControl {
             DateTime checkInDate = new DateTime(booking.getCheckInDate());
 
             /*
-            It retrieves the check-in date of each booking and checks if
-            the month of the check-in date matches the specified month.
-            If there is a match, that particular booking will be counted in the total income for the given month
+             * It retrieves the check-in date of each booking and checks if
+             * the month of the check-in date matches the specified month.
+             * If there is a match, that particular booking will be counted in the total
+             * income for the given month
              */
             if (checkInDate.getMonthOfYear() == month) {
                 totalAmount += booking.getTotalCost();
@@ -220,12 +240,12 @@ public class BookingControl {
         return totalAmount;
     }
 
-    public static double totalEarningFromBookings(){
+    public static double totalEarningFromBookings() {
         pullData();
         double amount = 0.0;
 
-        for (Booking booking: bookings) {
-            amount+= booking.getTotalCost();
+        for (Booking booking : bookings) {
+            amount += booking.getTotalCost();
         }
 
         return amount;
