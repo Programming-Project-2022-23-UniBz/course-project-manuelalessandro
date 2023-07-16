@@ -27,15 +27,15 @@ public class Booking {
         this.room = room;
         this.user = user;
         this.totalCost = calculateTotalCost(room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
-        setBookingId();
+        setId();
     }
 
     // getters and setters
-    public String getBookingId() {
+    public String getId() {
         return bookingId;
     }
 
-    public void setBookingId() {
+    public void setId() {
         this.bookingId = bookingIdGenerator();
     }
 
@@ -45,6 +45,7 @@ public class Booking {
 
     public void setCheckInDate(DateTime checkInDate) {
         this.checkInDate = checkInDate.toDate();
+        this.totalCost = calculateTotalCost(this.room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
     }
 
     public DateTime getCheckOutDate() {
@@ -53,6 +54,7 @@ public class Booking {
 
     public void setCheckOutDate(DateTime checkOutDate) {
         this.checkOutDate = checkOutDate.toDate();
+        this.totalCost = calculateTotalCost(this.room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
     }
 
     public Room getRoom() {
@@ -61,6 +63,7 @@ public class Booking {
 
     public void setRoom(Room room) {
         this.room = room;
+        this.totalCost = calculateTotalCost(this.room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
     }
 
     public User getUser() {
@@ -119,7 +122,7 @@ public class Booking {
         Booking[] bookings = getBookings();
 
         for (Booking booking : bookings) {
-            if (booking.getBookingId().equals(bookingId)) {
+            if (booking.getId().equals(bookingId)) {
                 return false; // Matching booking ID found, not unique
             }
         }
@@ -133,7 +136,7 @@ public class Booking {
 
         long diff = checkOutDate.toDate().getTime() - checkInDate.toDate().getTime();
 
-        int stay = 1 + (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        int stay = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
         return stay;
     }

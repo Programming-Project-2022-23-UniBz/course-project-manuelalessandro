@@ -91,7 +91,7 @@ public class BookingControl {
         BookingControl.pullData();
 
         for (Booking booking : bookings) {
-            if (booking.getBookingId().equals(id)) {
+            if (booking.getId().equals(id)) {
                 return booking;
             }
         }
@@ -104,7 +104,7 @@ public class BookingControl {
         int index = -1;
         // Find the index of the booking to remove
         for (int i = 0; i < bookings.length; i++) {
-            if (bookings[i].getBookingId().equals(id)) {
+            if (bookings[i].getId().equals(id)) {
                 index = i;
                 break;
             }

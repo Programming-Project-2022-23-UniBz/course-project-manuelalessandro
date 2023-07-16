@@ -44,6 +44,10 @@ public class CreateBookingPanel extends javax.swing.JPanel {
 
         }
 
+        public void setUser(User user) {
+                this.user = user;
+        }
+
         public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
                 this.frame = (UserFrame) frame;
                 appControlButtons.setAppControl(frame, appControlButtons.getX() + xBorder, appControlButtons.getY());
@@ -83,30 +87,38 @@ public class CreateBookingPanel extends javax.swing.JPanel {
         private void confirmBooking() {
                 Date checkIn = checkInBox.getDate();
                 Date checkOut = checkOutBox.getDate();
+                if (user == null) {
+                        errorLabel.setText("Your account was not identified, please restart the application");
+                        System.out.println("-- User is null");
+                }
+
                 if (checkIn != null && checkOut != null) {
                         RoomType roomType = (RoomType) roomTypeComboBox.getSelectedItem().get(0);
                         int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
 
                         try {
-                                int roomId = RoomControl.getFreeRoomId(roomType, capacity, new DateTime(checkIn),
+                                int roomId = RoomControl.getFreeRoomId(roomType, capacity,
+                                                new DateTime(checkIn),
                                                 new DateTime(checkOut));
                                 Room room = RoomControl.getRoom(roomId);
-
                                 BookingControl.createBooking(user, room, checkIn, checkOut);
 
                                 JOptionPane.showMessageDialog(this,
                                                 "The booking was created successfully!", "",
                                                 JOptionPane.WARNING_MESSAGE);
+
                         } catch (Exception e) {
-                                errorLabel.setText("Unfortunately, no room is avaiable for the selected dates.");
+                                errorLabel.setText(
+                                                "Unfortunately, no room is avaiable for the selected dates.");
                                 return;
                         }
 
                         if (frame != null)
-                                frame.buttonCardAction("booking");
+                                frame.buttonCardAction(UserFrame.Card.BOOKING);
                 } else {
                         errorLabel.setText("You have to select valid dates!");
                 }
+
         }
 
         // <editor-fold defaultstate="collapsed" desc="Generated
