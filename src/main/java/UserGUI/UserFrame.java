@@ -75,6 +75,9 @@ public class UserFrame extends javax.swing.JFrame {
             cardLayout.show(cardPanel, "account");
         else
             cardLayout.show(cardPanel, "dash");
+
+        userBookingPanel.refreshInfos();
+        userAccountPanel.refreshInfos();
     }
 
     @SuppressWarnings("unchecked")

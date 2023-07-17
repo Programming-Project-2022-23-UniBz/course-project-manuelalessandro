@@ -400,4 +400,25 @@ public class User {
         return false;
     }
 
+    // Valid entries checkers
+
+    public boolean emailValid(String mail) {
+        // TODO
+        return true;
+    }
+
+    public boolean passwordValid(String pass1, String pass2) {
+        // TODO
+        return true;
+    }
+
+    public boolean nameValid(String name, String surname) {
+        // TODO
+        return true;
+    }
+
+    public boolean birthDateValid(Date birthDate) {
+        // TODO
+        return true;
+    }
 }
