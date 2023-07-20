@@ -54,11 +54,21 @@ public class UserAccountPanel extends javax.swing.JPanel {
                         String surname = surnameField.getText();
                         Date birth = birthField.getDate();
                         GenderType gender = (GenderType) genderComboBox.getSelectedItem();
-                        System.out.println(gender);
                         String email = emailField.getText();
                         String pass1 = passField1.getSelectedText();
                         String pass2 = passField2.getSelectedText();
-                        // TODO: finish changes validation
+
+                        if (!User.nameValid(name, surname) || !User.emailValid(email)
+                                        || !User.passwordValid(pass1, pass2) || !User.birthDateValid(birth))
+                                throw new Exception();
+                        else {
+                                user.setName(name);
+                                user.setSurname(surname);
+                                user.setDateOfBirth(birth);
+                                user.setGender(gender);
+                                user.setEmail(email);
+                                user.setPassword(pass1, 2); // TODO: change key as it is written randomly
+                        }
                 } catch (Exception e) {
                 }
         }

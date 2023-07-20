@@ -402,22 +402,22 @@ public class User {
 
     // Valid entries checkers
 
-    public boolean emailValid(String mail) {
+    public static boolean emailValid(String mail) {
         // TODO
         return true;
     }
 
-    public boolean passwordValid(String pass1, String pass2) {
+    public static boolean passwordValid(String pass1, String pass2) {
         // TODO
         return true;
     }
 
-    public boolean nameValid(String name, String surname) {
+    public static boolean nameValid(String name, String surname) {
         // TODO
         return true;
     }
 
-    public boolean birthDateValid(Date birthDate) {
+    public static boolean birthDateValid(Date birthDate) {
         // TODO
         return true;
     }
