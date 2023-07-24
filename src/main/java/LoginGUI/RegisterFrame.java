@@ -110,6 +110,6 @@ public class RegisterFrame extends JFrame {
     }
 
     private void closeApplication() {
-        this.dispose();z
+        this.dispose();
     }
 }

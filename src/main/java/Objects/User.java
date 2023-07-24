@@ -36,7 +36,7 @@ public class User {
     public static DateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
 
     public enum GenderType {
-        MALE, FEMALE, OTHER
+        MAN, WOMAN, OTHER
     }
 
     // instance variables
@@ -156,7 +156,7 @@ public class User {
         return decrypt(this.encryptedPassword);
     }
 
-    public void setPassword(String password, int key) {
+    public void setPassword(String password) {
         this.encryptedPassword = encrypt(password);
     }
 

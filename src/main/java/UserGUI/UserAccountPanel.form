@@ -223,12 +223,14 @@
         <Component class="javax.swing.JComboBox" name="genderComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Single room deluxe"/>
-                <StringItem index="1" value="Double room deluxe"/>
-                <StringItem index="2" value="Double room Standard"/>
-                <StringItem index="3" value="King suite"/>
+              <StringArray count="3">
+                <StringItem index="0" value="Man"/>
+                <StringItem index="1" value="Woman"/>
+                <StringItem index="2" value="Other"/>
               </StringArray>
+            </Property>
+            <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Other&quot;" type="code"/>
             </Property>
           </Properties>
           <Events>
