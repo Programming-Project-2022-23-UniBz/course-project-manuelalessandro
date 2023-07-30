@@ -15,7 +15,7 @@ public class Main {
 
     public static void stopApplication() {
         pushAllData();
-
+        System.out.println("\n\n STOPPING \n\n");
         System.exit(0);
     }
 
@@ -31,4 +31,3 @@ public class Main {
         BookingControl.pushData();
     }
 }
-    

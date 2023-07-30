@@ -119,7 +119,7 @@ public class UserControl {
 
     public static void main(String[] args) {
         pullData();
-
+        initUsersTest();
         pushData();
     }
 }

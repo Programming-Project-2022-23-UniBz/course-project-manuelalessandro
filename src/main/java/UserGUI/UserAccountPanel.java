@@ -93,9 +93,16 @@ public class UserAccountPanel extends javax.swing.JPanel {
                                 user.setEmail(email);
                                 if (pass1 != null) // if pass1 is null than don't change
                                         user.setPassword(pass1);
+
                                 JOptionPane.showMessageDialog(this,
                                                 "You account was edited successfully", "",
                                                 JOptionPane.WARNING_MESSAGE);
+
+                                // troubleshoot // TODO: remove
+                                Main.Main.pushAllData();
+                                Main.Main.pullAllData();
+                                System.out.println(birth);
+                                System.out.println(user.getDateOfBirth());
                         }
                 } catch (Exception e) {
                         errorLabel.setText("Error: " + e.getMessage());
