@@ -2,11 +2,19 @@ package Objects;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.security.InvalidParameterException;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 
 import Objects.User.GenderType;
 
@@ -15,7 +23,8 @@ public class UserControl {
     private static User[] users;
     private static Gson gson = new Gson();
 
-    public static void pullData() {
+    // Todo: remove following method
+    public static void OLDpullData() {
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File("src/main/resources/json/users.json"));
@@ -27,6 +36,17 @@ public class UserControl {
             userJson = scanner.nextLine();
         scanner.close();
         users = gson.fromJson(userJson, User[].class);
+    }
+
+    public static void pullData() {
+        try {
+            FileReader file = new FileReader("src/main/resources/json/users.json");
+            JsonElement jsonElement = JsonParser.parseReader(file);
+            users = gson.fromJson(jsonElement.getAsJsonArray(), User[].class);
+        } catch (JsonIOException | JsonSyntaxException | FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "error occurred: " + ex);
+            return;
+        }
     }
 
     public static void pushData() {
