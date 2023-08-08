@@ -3,7 +3,7 @@ package UserGUI;
 
 import AdminGUI.*;
 import Objects.Booking;
-import Objects.BookingControl;
+import Objects.GeneralController;
 import Objects.RoomControl;
 import Objects.User;
 import Objects.UserControl;
@@ -65,7 +65,7 @@ public class UserFrame extends javax.swing.JFrame {
 
     // visibility to package
     void buttonCardAction(Card card) {
-        Booking booking = BookingControl.findBooking(user);
+        Booking booking = GeneralController.findBooking(user);
         if (card.equals(Card.BOOKING) && booking == null) {
             cardLayout.show(cardPanel, "create");
             return;
@@ -264,7 +264,6 @@ public class UserFrame extends javax.swing.JFrame {
 
         UserControl.pullData();
         RoomControl.pullData();
-        BookingControl.pullData();
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

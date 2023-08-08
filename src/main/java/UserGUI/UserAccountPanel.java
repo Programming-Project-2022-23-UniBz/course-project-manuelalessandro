@@ -99,8 +99,6 @@ public class UserAccountPanel extends javax.swing.JPanel {
                                                 JOptionPane.WARNING_MESSAGE);
 
                                 // troubleshoot // TODO: remove
-                                Main.Main.pushAllData();
-                                Main.Main.pullAllData();
                                 System.out.println(birth);
                                 System.out.println(user.getDateOfBirth());
                         }

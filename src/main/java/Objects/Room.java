@@ -93,9 +93,11 @@ public class Room {
     }
 
     public boolean isOccupied(DateTime checkIn, DateTime checkOut) {
-        BookingControl.pullData();
         boolean result = false;
-        ArrayList<Booking> bookings = BookingControl.getAllBookings(this);
+
+        // get all bookings that have this room
+        ArrayList<Booking> bookings = GeneralController
+                .getAllBookings((Booking[]) GeneralController.pullData(Booking.class), this);
 
         Date checkInDate = checkIn.toDate();
         Date checkOutDate = checkOut.toDate();
@@ -129,24 +131,12 @@ public class Room {
     // checks if room is free for today
     public boolean isOccupied() {
         DateTime today = new DateTime();
-        boolean result = false;
-
-        ArrayList<Booking> bookings = BookingControl.getAllBookings(this);
-
-        for (int i = 0; i < bookings.size(); i++) {
-            if (today.toDate().compareTo(bookings.get(i).getCheckInDate().toDate()) >= 0
-                    && today.toDate().compareTo(bookings.get(i).getCheckOutDate().toDate()) <= 0)
-                result = true;
-        }
-
-        return result;
+        return isOccupied(today, today);
     }
 
     public boolean isRoomAvailable(DateTime checkInDateTime, DateTime checkOutDateTime) {
-        if (BookingControl.getBookings() == null)
-            return true;
 
-        Booking[] bookings = BookingControl.getBookings();
+        Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
 
         for (Booking booking : bookings) {
             if (booking.getRoom().equals(this)) {
@@ -155,8 +145,10 @@ public class Room {
                 DateTime existingCheckInDateTime = booking.getCheckInDate();
                 DateTime existingCheckOutDateTime = booking.getCheckOutDate();
 
-                boolean overlap = (checkInDateTime.isBefore(existingCheckOutDateTime) || checkInDateTime.isEqual(existingCheckOutDateTime))
-                        && (checkOutDateTime.isAfter(existingCheckInDateTime) || checkOutDateTime.isEqual(existingCheckInDateTime));
+                boolean overlap = (checkInDateTime.isBefore(existingCheckOutDateTime)
+                        || checkInDateTime.isEqual(existingCheckOutDateTime))
+                        && (checkOutDateTime.isAfter(existingCheckInDateTime)
+                                || checkOutDateTime.isEqual(existingCheckInDateTime));
 
                 if (overlap) {
                     return false; // Room is not available

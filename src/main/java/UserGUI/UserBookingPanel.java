@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import org.joda.time.DateTime;
 
 import Objects.Booking;
-import Objects.BookingControl;
+import Objects.GeneralController;
 import Objects.Room;
 import Objects.Room.RoomType;
 import Objects.RoomControl;
@@ -36,7 +36,7 @@ public class UserBookingPanel extends javax.swing.JPanel {
 
         public void setUser(User user) {
                 this.user = user;
-                booking = BookingControl.findBooking(user);
+                booking = GeneralController.findBooking(user);
         }
 
         public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
@@ -120,7 +120,7 @@ public class UserBookingPanel extends javax.swing.JPanel {
 
         public void deleteBooking() {
                 try {
-                        BookingControl.removeBookingById(booking.getId());
+                        GeneralController.removeBookingById(booking.getId());
 
                         JOptionPane.showMessageDialog(this,
                                         "The booking was deleted!", "",

@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.joda.time.DateTime;
-import static Objects.BookingControl.getBookings;
 
 public class Booking {
 
@@ -119,7 +118,7 @@ public class Booking {
     }
 
     private boolean isBookingIdUnique(String bookingId) {
-        Booking[] bookings = getBookings();
+        Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
 
         for (Booking booking : bookings) {
             if (booking.getId().equals(bookingId)) {

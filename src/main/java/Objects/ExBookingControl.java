@@ -10,7 +10,7 @@ import java.io.FileWriter;
 import java.util.*;
 import org.joda.time.DateTime;
 
-public class BookingControl {
+public class ExBookingControl {
     private static Booking[] bookings;
     private static Gson gson = new Gson();
 
@@ -40,6 +40,7 @@ public class BookingControl {
         }
     }
 
+    // TODO remove because useless
     public static int getBookingsLength() {
         pullData();
 
@@ -88,7 +89,6 @@ public class BookingControl {
     }
 
     public static Booking getBookingById(String id) throws IllegalArgumentException {
-        BookingControl.pullData();
 
         for (Booking booking : bookings) {
             if (booking.getId().equals(id)) {

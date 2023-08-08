@@ -721,7 +721,6 @@ public class BookingsPanel extends javax.swing.JPanel {
          */
         private void bookingRoomDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_bookingRoomDetailsTableMouseClicked
                 RoomControl.pullData();
-                BookingControl.pullData();
 
                 // Check if any of the required fields are empty
                 if (jDateOfCheckInChooser.getDate() == null || jDateOfCheckOutChooser.getDate() == null) {
@@ -803,7 +802,6 @@ public class BookingsPanel extends javax.swing.JPanel {
          */
         private void initBookingRoomTable() {
                 RoomControl.pullData();
-                BookingControl.pullData();
 
                 if (bookingRoom == null)
                         return;
@@ -826,7 +824,6 @@ public class BookingsPanel extends javax.swing.JPanel {
         }
 
         private void addBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addBookingBtnActionPerformed
-                BookingControl.pullData();
                 RoomControl.pullData();
 
                 boolean isUserCreated = true;
@@ -882,8 +879,9 @@ public class BookingsPanel extends javax.swing.JPanel {
                         if (isUserCreated || isCheckInValidated || isCheckOutValidated) {
                                 Booking booking = new Booking(dateTimecheckIn, dateTimecheckOut, bookingRoom, user);
                                 booking.setId();
-                                BookingControl.addBooking(booking);
-                                BookingControl.pushData();
+                                Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
+                                GeneralController.addBooking(bookings, booking);
+                                GeneralController.pushData(Booking.class, bookings);
                                 initBookingTable();
 
                                 // Display a success message
@@ -902,13 +900,13 @@ public class BookingsPanel extends javax.swing.JPanel {
          */
         public void initBookingTable() {
 
-                BookingControl.pullData();
+                Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
 
-                if (BookingControl.getBookings() != null) {
+                if (bookings != null) {
                         DefaultTableModel model = (DefaultTableModel) bookingTable.getModel();
                         model.setRowCount(0); // Clear existing rows
 
-                        for (Booking booking : BookingControl.getBookings()) {
+                        for (Booking booking : bookings) {
                                 User bookingUser = booking.getUser();
                                 Object rowData[] = new Object[6];
                                 rowData[0] = booking.getId();
@@ -952,14 +950,13 @@ public class BookingsPanel extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, message, "Modify Booking", JOptionPane.INFORMATION_MESSAGE);
                         processBookingEdit(bookingID);
                 } else if (dialogResult == 1) { // Delete option selected
-                        BookingControl.removeBookingById(bookingID);
+                        GeneralController.removeBookingById(bookingID);
                         initBookingTable();
                 }
         }// GEN-LAST:event_bookingTableMouseClicked
 
         private void processBookingEdit(String bookingId) {
-
-                Booking booking = BookingControl.getBookingById(bookingId);
+                Booking booking = GeneralController.getBookingById(bookingId);
 
                 customerSurnameTxtField.setText(booking.getUser().getSurname());
                 customerNameTxtField.setText(booking.getUser().getName());
@@ -975,8 +972,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                 bookingRoom = booking.getRoom();
 
                 initBookingRoomTable();
-                BookingControl.removeBookingById(bookingId);
-                BookingControl.pushData();
+                GeneralController.removeBookingById(bookingId);
         }
 
         private User processUserInputs() {

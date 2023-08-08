@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import org.joda.time.DateTime;
 
 import Objects.Booking;
-import Objects.BookingControl;
+import Objects.GeneralController;
 import Objects.Room;
 import Objects.RoomControl;
 import Objects.User;
@@ -101,7 +101,10 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                                 new DateTime(checkIn),
                                                 new DateTime(checkOut));
                                 Room room = RoomControl.getRoom(roomId);
-                                BookingControl.createBooking(user, room, checkIn, checkOut);
+
+                                GeneralController.addBooking(
+                                                new Booking(new DateTime(checkIn), new DateTime(checkOut), room,
+                                                                user));
 
                                 JOptionPane.showMessageDialog(this,
                                                 "The booking was created successfully!", "",
