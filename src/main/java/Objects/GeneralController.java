@@ -2,22 +2,18 @@ package Objects;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.io.FileWriter;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.swing.JOptionPane;
 
 import org.joda.time.DateTime;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
 
 import Objects.Room.RoomType;
+import Objects.User.GenderType;
 
 public class GeneralController {
     static Gson gson = new Gson();
@@ -25,6 +21,14 @@ public class GeneralController {
     // ----------------------------------------------------------------
     // -------------------- General part ------------------------------
     // ----------------------------------------------------------------
+
+    public static void main(String[] args) {
+        User[] users = new User[2];
+        pushData(User.class, users);
+
+        users = (User[]) pullData(User[].class);
+        System.out.println(users.length);
+    }
 
     public static Object[] pullData(Class c) {
 
@@ -60,7 +64,7 @@ public class GeneralController {
         return array;
     }
 
-    public static <T> void pushData(Class<T> c, T[] content) {
+    public static <T> void pushData(Class<T> c, Object[] content) {
 
         String path = "src/main/resources/json/";
         if (c.equals(User.class))
@@ -77,7 +81,7 @@ public class GeneralController {
         pushData(path, content);
     }
 
-    public static <T> void pushData(String path, T[] content) {
+    public static <T> void pushData(String path, Object[] content) {
         String json = gson.toJson(content);
         try {
             FileWriter writer = new FileWriter(path);
@@ -89,12 +93,19 @@ public class GeneralController {
         }
     }
 
-    public static void main(String[] args) {
-        User[] users = new User[2];
-        pushData(User.class, users);
+    public static void increment(Object[] array) {
+        Object[] newArray = new Object[array.length + 1];
+        for (int i = 0; i < array.length; i++)
+            newArray[i] = array[i];
+        array = newArray;
+    }
 
-        users = (User[]) pullData(User[].class);
-        System.out.println(users.length);
+    public static <T> void increment(Class<T> c) {
+        Object[] array = pullData(c);
+        Object[] newArray = new Object[array.length + 1];
+        for (int i = 0; i < array.length; i++)
+            newArray[i] = array[i];
+        pushData(c, newArray);
     }
 
     // ----------------------------------------------------------------
@@ -312,26 +323,18 @@ public class GeneralController {
         return result;
     }
 
-    private static void incrementBookings(Booking[] bookings) {
-        Booking[] newArr = new Booking[bookings.length + 1];
-        for (int i = 0; i < bookings.length; i++) {
-            newArr[i] = bookings[i];
-        }
-        bookings = newArr;
-    }
-
     public static void addBooking(Booking[] bookings, Booking booking) {
         if (bookings == null) {
             bookings = new Booking[0];
         }
-        incrementBookings(bookings);
+        increment(bookings);
         bookings[bookings.length - 1] = booking;
         pushData(Booking.class, bookings);
     }
 
     public static void addBooking(Booking booking) {
         Booking[] bookings = (Booking[]) pullData(Booking.class);
-        incrementBookings(bookings);
+        increment(bookings);
         bookings[bookings.length - 1] = booking;
         pushData(Booking.class, bookings);
     }
@@ -439,7 +442,7 @@ public class GeneralController {
 
     // Used to initialize bookings.json for test purposes
     // if used, json will be reset and old data lost
-    private static void initBookingsForTest() throws Exception {
+    private static void initBookings() throws Exception {
         Booking[] bookings;
         try {
             bookings = new Booking[2];
@@ -449,7 +452,7 @@ public class GeneralController {
             DateTime checkOutAdmin = new DateTime(2023, 2, 16, 0, 0);
             int id1 = RoomControl.getFreeRoomId(RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
             Room room1 = RoomControl.getRoom(id1);
-            User user1 = UserControl.getUser(0); // adminUser
+            User user1 = getUser(0); // adminUser
             Booking booking1 = new Booking(checkInAdmin, checkOutAdmin, room1, user1);
             bookings[0] = booking1;
 
@@ -458,7 +461,7 @@ public class GeneralController {
             DateTime checkOutGuest = new DateTime(2023, 5, 26, 0, 0);
             int id2 = RoomControl.getFreeRoomId(RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
             Room room2 = RoomControl.getRoom(id2);
-            User user2 = UserControl.getUser(1); // guestUser
+            User user2 = getUser(1); // guestUser
             Booking booking2 = new Booking(checkInGuest, checkOutGuest, room2, user2);
             bookings[1] = booking2;
 
@@ -475,4 +478,126 @@ public class GeneralController {
     // ----------------------------------------------------------------
     // ----------------------------------------------------------------
 
+    private static void setUsersRightId(User[] users) {
+        for (int i = 1; i < users.length; i++) {
+            users[i].setId(i);
+        }
+    }
+
+    private static void setUsersRightId() {
+        User[] users = (User[]) pullData(User.class);
+
+        for (int i = 1; i < users.length; i++) {
+            users[i].setId(i);
+        }
+
+        pushData(User.class, users);
+    }
+
+    public static void removeUser(User[] users, int id) {
+        User[] newArr = new User[users.length - 1];
+        if (users.length > id) {
+            for (int i = 0; i < id; i++) {
+                newArr[i] = users[i];
+            }
+            for (int i = id; i < newArr.length; i++) {
+                newArr[i] = users[i + 1];
+            }
+            users = newArr;
+            setUsersRightId(users);
+        } else {
+            throw new InvalidParameterException("Id does not exist");
+        }
+    }
+
+    public static void removeUser(int id) {
+        User[] users = (User[]) pullData(User.class);
+
+        User[] newArr = new User[users.length - 1];
+        if (users.length > id) {
+            for (int i = 0; i < id; i++) {
+                newArr[i] = users[i];
+            }
+            for (int i = id; i < newArr.length; i++) {
+                newArr[i] = users[i + 1];
+            }
+            users = newArr;
+            setUsersRightId();
+        } else {
+            throw new InvalidParameterException("Id does not exist");
+        }
+
+        pushData(User.class, users);
+    }
+
+    public static void addUser(User[] users, User user) {
+        increment(users);
+        int index = users.length - 1;
+        users[index] = user;
+        users[index].setId(index);
+    }
+
+    public static void addUser(User user) {
+        User[] users = (User[]) pullData(User.class);
+
+        increment(users);
+        int index = users.length - 1;
+        users[index] = user;
+        users[index].setId(index);
+
+        pushData(User.class, users);
+    }
+
+    public static User searchUser(User[] users, String email) throws IllegalArgumentException {
+        for (int i = 1; i < users.length; i++)
+            if (users[i].getEmail().equals(email))
+                return users[i];
+        throw new IllegalArgumentException("Email does not exist");
+    }
+
+    public static User searchUser(String email) throws IllegalArgumentException {
+        User[] users = (User[]) pullData(User.class);
+
+        for (int i = 1; i < users.length; i++)
+            if (users[i].getEmail().equals(email))
+                return users[i];
+        throw new IllegalArgumentException("Email does not exist");
+    }
+
+    public static User getUser(User[] users, int id) throws IllegalArgumentException {
+        if (users.length > id)
+            return users[id];
+        else
+            throw new IllegalArgumentException("Id does not exist");
+    }
+
+    public static User getUser(int id) throws IllegalArgumentException {
+        User[] users = (User[]) pullData(User.class);
+
+        if (users.length > id)
+            return users[id];
+        else
+            throw new IllegalArgumentException("Id does not exist");
+    }
+
+    // Used to initialize users.json
+    // if used, json will be reset and old data lost
+    private static void initUsers() {
+        User[] users = new User[2];
+        User admin = new User("admin", null, null, null, null, "password", "admin");
+        admin.setId(0);
+        users[0] = admin;
+        User guestTest = null;
+        try {
+            guestTest = new User("GuestName", "GuestSurname", User.dateFormatter.parse("01/01/1990"),
+                    GenderType.OTHER, "guest@email.com", "password",
+                    "guest");
+            guestTest.setId(1);
+            users[1] = guestTest;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        pushData(User.class, users);
+    }
 }

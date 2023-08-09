@@ -6,7 +6,6 @@ import Objects.Booking;
 import Objects.GeneralController;
 import Objects.RoomControl;
 import Objects.User;
-import Objects.UserControl;
 
 import java.awt.CardLayout;
 import java.awt.event.*;
@@ -262,7 +261,6 @@ public class UserFrame extends javax.swing.JFrame {
          * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
 
-        UserControl.pullData();
         RoomControl.pullData();
 
         try {
@@ -286,7 +284,7 @@ public class UserFrame extends javax.swing.JFrame {
         // </editor-fold>
         // </editor-fold>
 
-        User user = UserControl.getUser(1);
+        User user = GeneralController.getUser(1);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

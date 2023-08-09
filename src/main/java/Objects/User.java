@@ -250,7 +250,7 @@ public class User {
 
     public void addToJson() {
 
-        UserControl.addUser(this);
+        GeneralController.addUser(this);
 
         // Add the user data to the UserData.json file
         try {

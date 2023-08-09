@@ -18,7 +18,7 @@ import com.google.gson.JsonSyntaxException;
 
 import Objects.User.GenderType;
 
-public class UserControl {
+public class ExUserControl {
 
     private static User[] users;
     private static Gson gson = new Gson();
@@ -137,8 +137,4 @@ public class UserControl {
         users = new User[0];
     }
 
-    public static void main(String[] args) {
-        pullData();
-        pushData();
-    }
 }

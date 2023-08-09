@@ -16,15 +16,17 @@ public class ExBookingControl {
 
     public static void pullData() {
         Scanner scanner = null;
+        String json = null;
+
         try {
             scanner = new Scanner(new File("src/main/resources/json/bookings.json"));
+            if (scanner.hasNextLine())
+                json = scanner.nextLine();
+            scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        String json = null;
-        if (scanner.hasNextLine())
-            json = scanner.nextLine();
-        scanner.close();
+
         bookings = gson.fromJson(json, Booking[].class);
     }
 
@@ -188,7 +190,7 @@ public class ExBookingControl {
             DateTime checkOutAdmin = new DateTime(2023, 2, 16, 0, 0);
             int id1 = RoomControl.getFreeRoomId(RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
             Room room1 = RoomControl.getRoom(id1);
-            User user1 = UserControl.getUser(0); // adminUser
+            User user1 = GeneralController.getUser(0); // adminUser
             Booking booking1 = new Booking(checkInAdmin, checkOutAdmin, room1, user1);
             bookings[0] = booking1;
 
@@ -197,7 +199,7 @@ public class ExBookingControl {
             DateTime checkOutGuest = new DateTime(2023, 5, 26, 0, 0);
             int id2 = RoomControl.getFreeRoomId(RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
             Room room2 = RoomControl.getRoom(id2);
-            User user2 = UserControl.getUser(1); // guestUser
+            User user2 = GeneralController.getUser(1); // guestUser
             Booking booking2 = new Booking(checkInGuest, checkOutGuest, room2, user2);
             bookings[1] = booking2;
 
@@ -266,13 +268,4 @@ public class ExBookingControl {
         return result;
     }
 
-    public static void main(String[] args) {
-        RoomControl.pullData();
-        UserControl.pullData();
-        pullData();
-
-        pushData();
-        RoomControl.pushData();
-        UserControl.pushData();
-    }
 }
