@@ -1,1 +1,1 @@
-[null,null]
+[{"id":0,"name":"admin","encryptedPassword":"t0FVBTcvPQf2BnaIPE3n/g\u003d\u003d","role":"admin","username":"admin.null0"},{"id":1,"name":"GuestName","surname":"GuestSurname","dateOfBirth":"Jan 1, 1990, 12:00:00 AM","gender":"OTHER","email":"guest@email.com","encryptedPassword":"t0FVBTcvPQf2BnaIPE3n/g\u003d\u003d","role":"guest","username":"GuestName.GuestSurname0"}]

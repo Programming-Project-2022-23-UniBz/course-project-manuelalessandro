@@ -14,6 +14,7 @@ import java.awt.event.*;
 import java.io.FileReader;
 import com.google.gson.Gson;
 import AdminGUI.AdminFrame;
+import Objects.GeneralController;
 import Objects.User;
 import UserGUI.UserFrame;
 import com.google.gson.JsonArray;
@@ -138,7 +139,7 @@ public class LoginFrame extends JFrame {
                 frame.setVisible(true);
             } else if (userRole.equals("user")) {
                 closeApplication();
-                UserFrame frame = new UserFrame(getUserById(storedId));
+                UserFrame frame = new UserFrame(GeneralController.getUser(storedId));
                 frame.setVisible(true);
                 System.out.println("user");
             }
@@ -167,30 +168,6 @@ public class LoginFrame extends JFrame {
             index++;
         }
         return index;
-    }
-
-    public static User getUserById(int id) {
-        try {
-            // Read the JSON file
-            JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/users.json"))
-                    .getAsJsonArray();
-
-            // Create a Gson instance
-            Gson gson = new Gson();
-
-            // Iterate over the array to find the user with the specified ID
-            for (JsonElement jsonElement : jsonArray) {
-                User user = gson.fromJson(jsonElement, User.class);
-                if (user.getId() == id) {
-                    return user;
-                }
-            }
-        } catch (IOException | JsonIOException e) {
-            e.printStackTrace();
-        }
-
-        return null; // User with the specified ID was not found
     }
 
     public static String encrypt(String plainText) {

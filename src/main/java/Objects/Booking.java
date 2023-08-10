@@ -119,12 +119,12 @@ public class Booking {
 
     private boolean isBookingIdUnique(String bookingId) {
         Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
-
-        for (Booking booking : bookings) {
-            if (booking.getId().equals(bookingId)) {
-                return false; // Matching booking ID found, not unique
+        if (bookings != null)
+            for (Booking booking : bookings) {
+                if (booking.getId().equals(bookingId)) {
+                    return false; // Matching booking ID found, not unique
+                }
             }
-        }
         return true; // unique
     }
 

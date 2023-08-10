@@ -4,13 +4,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import java.io.FileWriter;
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 import org.joda.time.DateTime;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import Objects.Room.RoomType;
 import Objects.User.GenderType;
@@ -23,28 +27,22 @@ public class GeneralController {
     // ----------------------------------------------------------------
 
     public static void main(String[] args) {
-        User[] users = new User[2];
-        pushData(User.class, users);
 
-        users = (User[]) pullData(User[].class);
-        System.out.println(users.length);
     }
 
     public static Object[] pullData(Class c) {
 
         String path = "src/main/resources/json/";
-        if (c.equals(User[].class))
+        if (c.equals(User.class))
             path += "users.json";
-        else if (c.equals(Booking[].class))
+        else if (c.equals(Booking.class))
             path += "bookings.json";
-        else if (c.equals(Room[].class))
+        else if (c.equals(Room.class))
             path += "rooms.json";
-        else if (c.equals(Reviews[].class))
+        else if (c.equals(Review.class))
             path += "reviews.json";
         else
             throw new IllegalArgumentException("Invalid class to pull data from: " + c);
-
-        System.out.println(path); // todo remove
 
         return pullData(c, path);
     }
@@ -60,11 +58,23 @@ public class GeneralController {
         if (scanner.hasNextLine())
             json = scanner.nextLine();
         scanner.close();
-        Object[] array = (Object[]) gson.fromJson(json, c);
+
+        Object[] array;
+        if (c.equals(User.class))
+            array = (User[]) gson.fromJson(json, User[].class);
+        else if (c.equals(Booking.class))
+            array = (Booking[]) gson.fromJson(json, Booking[].class);
+        else if (c.equals(Room.class))
+            array = (Room[]) gson.fromJson(json, Room[].class);
+        else if (c.equals(Review.class))
+            array = (Review[]) gson.fromJson(json, Review[].class);
+        else
+            throw new IllegalArgumentException("Invalid class to pull data from: " + c);
+
         return array;
     }
 
-    public static <T> void pushData(Class<T> c, Object[] content) {
+    public static <T> void pushData(Class<T> c, T[] content) {
 
         String path = "src/main/resources/json/";
         if (c.equals(User.class))
@@ -73,15 +83,15 @@ public class GeneralController {
             path += "bookings.json";
         else if (c.equals(Room.class))
             path += "rooms.json";
-        else if (c.equals(Reviews.class))
+        else if (c.equals(Review.class))
             path += "reviews.json";
         else
             throw new IllegalArgumentException("Invalid class to push data to: " + c);
 
-        pushData(path, content);
+        pushData(c, path, content);
     }
 
-    public static <T> void pushData(String path, Object[] content) {
+    public static <T> void pushData(Class<T> c, String path, T[] content) {
         String json = gson.toJson(content);
         try {
             FileWriter writer = new FileWriter(path);
@@ -98,14 +108,6 @@ public class GeneralController {
         for (int i = 0; i < array.length; i++)
             newArray[i] = array[i];
         array = newArray;
-    }
-
-    public static <T> void increment(Class<T> c) {
-        Object[] array = pullData(c);
-        Object[] newArray = new Object[array.length + 1];
-        for (int i = 0; i < array.length; i++)
-            newArray[i] = array[i];
-        pushData(c, newArray);
     }
 
     // ----------------------------------------------------------------
@@ -566,7 +568,7 @@ public class GeneralController {
     }
 
     public static User getUser(User[] users, int id) throws IllegalArgumentException {
-        if (users.length > id)
+        if (users != null && users.length > id)
             return users[id];
         else
             throw new IllegalArgumentException("Id does not exist");
@@ -575,7 +577,7 @@ public class GeneralController {
     public static User getUser(int id) throws IllegalArgumentException {
         User[] users = (User[]) pullData(User.class);
 
-        if (users.length > id)
+        if (users != null && users.length > id)
             return users[id];
         else
             throw new IllegalArgumentException("Id does not exist");

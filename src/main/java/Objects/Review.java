@@ -20,12 +20,12 @@ import java.io.IOException;
  *
  * @author aless
  */
-public class Reviews {
+public class Review {
     private User user;
     private String review;
     private int stars;
 
-    public Reviews(User user, String Review, int Stars) {
+    public Review(User user, String Review, int Stars) {
         this.user = user;
         this.review = Review;
         this.stars = Stars;

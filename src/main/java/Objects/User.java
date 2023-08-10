@@ -61,14 +61,6 @@ public class User {
         this.email = email;
         this.encryptedPassword = encrypt(password);
 
-        // ID is related to the length of the array
-        // so, to the number of users, admins have all a mod 10 id so these are skipped
-        if (getJsonCount() % 10 == 0) {
-            this.id = getJsonCount() + 1;
-        } else {
-            this.id = getJsonCount();
-        }
-
         // useful for logins
         this.username = getUsername();
         this.role = role;
@@ -195,24 +187,6 @@ public class User {
         }
     }
 
-    public static int getJsonCount() {
-        int arrayLength = 0;
-        try {
-            // Parse the JSON contents
-            try ( // Read the JSON file
-                    FileReader fileReader = new FileReader("src/main/resources/json/users.json")) {
-                // Parse the JSON contents
-                JsonElement jsonElement = JsonParser.parseReader(fileReader);
-                JsonArray jsonArray = jsonElement.getAsJsonArray();
-                // Check the length of the array
-                arrayLength = jsonArray.size();
-                System.out.println("Array length: " + arrayLength);
-                // Close the file reader
-            }
-        } catch (JsonIOException | JsonSyntaxException | IOException e) {
-        }
-        return arrayLength;
-    }
     // ----------------------------------------------------------------
 
     // Admins will have ids, 0, 10, 20, 30, 40 and so on,
