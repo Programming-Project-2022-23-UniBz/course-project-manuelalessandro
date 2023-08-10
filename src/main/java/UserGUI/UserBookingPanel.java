@@ -14,7 +14,6 @@ import Objects.Booking;
 import Objects.GeneralController;
 import Objects.Room;
 import Objects.Room.RoomType;
-import Objects.RoomControl;
 import Objects.User;
 
 /**
@@ -79,10 +78,9 @@ public class UserBookingPanel extends javax.swing.JPanel {
 
                         try {
                                 // find free room
-                                int roomId = RoomControl.getFreeRoomId(roomType, capacity,
+                                Room room = GeneralController.getFreeRoom(roomType, capacity,
                                                 new DateTime(checkIn),
                                                 new DateTime(checkOut));
-                                Room room = RoomControl.getRoom(roomId);
 
                                 // ask for confirmation
                                 int stay = Booking.calculateStay(checkIn, checkOut);

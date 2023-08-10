@@ -8,6 +8,6 @@ package Objects;
  *
  * @author aless
  */
-public class ReviewsControl {
-    
+public class ExReviewsControl {
+
 }

@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 
 import Objects.Room.RoomType;
 
-public class RoomControl {
+public class ExRoomControl {
 
     private static Room[] rooms;
     private static Gson gson = new Gson();
@@ -61,18 +61,16 @@ public class RoomControl {
             return room;
     }
 
-    public static Room[] getRoomsArray(){
-        for (Room room: rooms) {
+    public static Room[] getRoomsArray() {
+        for (Room room : rooms) {
             System.out.println(room.toString());
         }
         return rooms;
     }
 
-    public static void setRoomsArray(Room[] newRooms){
-       rooms = newRooms;
+    public static void setRoomsArray(Room[] newRooms) {
+        rooms = newRooms;
     }
-
-
 
     // returns first free room that matches parameters
     // throws Exception if no room matches

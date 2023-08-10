@@ -4,7 +4,6 @@ package UserGUI;
 import AdminGUI.*;
 import Objects.Booking;
 import Objects.GeneralController;
-import Objects.RoomControl;
 import Objects.User;
 
 import java.awt.CardLayout;
@@ -243,7 +242,7 @@ public class UserFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logOutBtnActionPerformed
-        // TODO add your handling code here:
+        this.dispose(); // closes the frame
     }// GEN-LAST:event_logOutBtnActionPerformed
 
     private void logOutBtnActionPerformed() {// GEN-FIRST:event_logOutBtnActionPerformed
@@ -260,8 +259,6 @@ public class UserFrame extends javax.swing.JFrame {
          * For details see
          * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
-
-        RoomControl.pullData();
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

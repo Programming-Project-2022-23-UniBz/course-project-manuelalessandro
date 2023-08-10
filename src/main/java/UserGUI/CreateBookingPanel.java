@@ -13,7 +13,6 @@ import org.joda.time.DateTime;
 import Objects.Booking;
 import Objects.GeneralController;
 import Objects.Room;
-import Objects.RoomControl;
 import Objects.User;
 import Objects.Room.RoomType;
 
@@ -57,9 +56,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
         private double getSelectedRoomPrice(DateTime checkIn, DateTime checkOut) throws Exception {
                 RoomType type = (RoomType) roomTypeComboBox.getSelectedItem().get(0);
                 int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
-                int id = RoomControl.getFreeRoomId(type, capacity, checkIn, checkOut);
-                return RoomControl.getRoom(id).getPrice();
-
+                return GeneralController.getFreeRoom(type, capacity, checkIn, checkOut).getPrice();
         }
 
         // Refreshes the total stay and total cost on the panel once some info changes
@@ -97,10 +94,9 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                         int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
 
                         try {
-                                int roomId = RoomControl.getFreeRoomId(roomType, capacity,
+                                Room room = GeneralController.getFreeRoom(roomType, capacity,
                                                 new DateTime(checkIn),
                                                 new DateTime(checkOut));
-                                Room room = RoomControl.getRoom(roomId);
 
                                 GeneralController.addBooking(
                                                 new Booking(new DateTime(checkIn), new DateTime(checkOut), room,

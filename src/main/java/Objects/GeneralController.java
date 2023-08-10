@@ -442,16 +442,17 @@ public class GeneralController {
 
     // Used to initialize bookings.json for test purposes
     // if used, json will be reset and old data lost
-    private static void initBookings() throws Exception {
+    private static void initBookingsTest() throws Exception {
         Booking[] bookings;
         try {
             bookings = new Booking[2];
+            Room[] rooms = (Room[]) pullData(Room.class);
 
             // Admin Room
             DateTime checkInAdmin = new DateTime(2023, 2, 11, 0, 0);
             DateTime checkOutAdmin = new DateTime(2023, 2, 16, 0, 0);
-            int id1 = RoomControl.getFreeRoomId(RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
-            Room room1 = RoomControl.getRoom(id1);
+            int id1 = getFreeRoomId(rooms, RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
+            Room room1 = getRoom(rooms, id1);
             User user1 = getUser(0); // adminUser
             Booking booking1 = new Booking(checkInAdmin, checkOutAdmin, room1, user1);
             bookings[0] = booking1;
@@ -459,8 +460,8 @@ public class GeneralController {
             // Guest Room
             DateTime checkInGuest = new DateTime(2023, 5, 18, 0, 0);
             DateTime checkOutGuest = new DateTime(2023, 5, 26, 0, 0);
-            int id2 = RoomControl.getFreeRoomId(RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
-            Room room2 = RoomControl.getRoom(id2);
+            int id2 = getFreeRoomId(rooms, RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
+            Room room2 = getRoom(rooms, id2);
             User user2 = getUser(1); // guestUser
             Booking booking2 = new Booking(checkInGuest, checkOutGuest, room2, user2);
             bookings[1] = booking2;
@@ -474,7 +475,7 @@ public class GeneralController {
 
     // ----------------------------------------------------------------
     // ----------------------------------------------------------------
-    // -------------------- Users control --------------------------
+    // -------------------- Users control -----------------------------
     // ----------------------------------------------------------------
     // ----------------------------------------------------------------
 
@@ -599,5 +600,196 @@ public class GeneralController {
         }
 
         pushData(User.class, users);
+    }
+
+    // ----------------------------------------------------------------
+    // ----------------------------------------------------------------
+    // -------------------- Room control ------------------------------
+    // ----------------------------------------------------------------
+    // ----------------------------------------------------------------
+
+    public static Room getRoom(Room[] rooms, int id) throws IllegalArgumentException {
+        Room room = null;
+        if (rooms.length > id)
+            room = rooms[id];
+        if (room == null)
+            throw new IllegalArgumentException("Room does not exist");
+        else
+            return room;
+    }
+
+    public static Room getRoom(int id) throws IllegalArgumentException {
+        Room[] rooms = (Room[]) pullData(Room.class);
+
+        Room room = null;
+        if (rooms.length > id)
+            room = rooms[id];
+        if (room == null)
+            throw new IllegalArgumentException("Room does not exist");
+        else
+            return room;
+    }
+
+    // returns first free room that matches parameters
+    // throws Exception if no room matches
+    /**
+     * @param roomType
+     * @param capacity
+     * @param checkIn
+     * @param checkOut
+     * @return
+     * @throws Exception
+     */
+    public static int getFreeRoomId(Room[] rooms, RoomType roomType, int capacity, DateTime checkIn, DateTime checkOut)
+            throws Exception {
+        int result = -1;
+        for (int i = 0; i < rooms.length; i++)
+            if (rooms[i] != null)
+                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
+                        && rooms[i].isOccupied(checkIn, checkOut) == false) {
+                    result = i;
+                    break;
+                }
+
+        // throwing exception if no room matches
+        if (result == -1)
+            throw new Exception("No room avaiable for the selected dates."); // message appears in the CreateRoomPanel
+        return result;
+    }
+
+    // returns first free room that matches parameters
+    // throws Exception if no room matches
+    /**
+     * @param roomType
+     * @param capacity
+     * @param checkIn
+     * @param checkOut
+     * @return
+     * @throws Exception
+     */
+    public static int getFreeRoomId(RoomType roomType, int capacity, DateTime checkIn, DateTime checkOut)
+            throws Exception {
+        Room[] rooms = (Room[]) pullData(Room.class);
+
+        int result = -1;
+        for (int i = 0; i < rooms.length; i++)
+            if (rooms[i] != null)
+                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
+                        && rooms[i].isOccupied(checkIn, checkOut) == false) {
+                    result = i;
+                    break;
+                }
+
+        // throwing exception if no room matches
+        if (result == -1)
+            throw new Exception("No room avaiable for the selected dates."); // message appears in the CreateRoomPanel
+        return result;
+    }
+
+    public static Room getFreeRoom(Room[] rooms, RoomType roomType, int capacity, DateTime checkIn, DateTime checkOut)
+            throws Exception {
+        Room result = null;
+        for (int i = 0; i < rooms.length; i++)
+            if (rooms[i] != null)
+                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
+                        && rooms[i].isOccupied(checkIn, checkOut) == false) {
+                    result = rooms[i];
+                    break;
+                }
+
+        // throwing exception if no room matches
+        if (result == null)
+            throw new Exception("No room avaiable for the selected dates."); // message appears in the CreateRoomPanel
+        return result;
+    }
+
+    public static Room getFreeRoom(RoomType roomType, int capacity, DateTime checkIn, DateTime checkOut)
+            throws Exception {
+        Room[] rooms = (Room[]) pullData(Room.class);
+
+        Room result = null;
+        for (int i = 0; i < rooms.length; i++)
+            if (rooms[i] != null)
+                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
+                        && rooms[i].isOccupied(checkIn, checkOut) == false) {
+                    result = rooms[i];
+                    break;
+                }
+
+        // throwing exception if no room matches
+        if (result == null)
+            throw new Exception("No room avaiable for the selected dates."); // message appears in the CreateRoomPanel
+        return result;
+    }
+
+    public static ArrayList<Room> getRoomsByTypeCapacity(Room[] rooms, RoomType roomType, int capacity) {
+        ArrayList<Room> roomsByType = new ArrayList<>();
+        for (Room room : rooms) {
+            if (room != null && !room.isOccupied(new DateTime(), new DateTime()) && room.getType() == roomType
+                    && room.getCapacity() == capacity) {
+                roomsByType.add(room);
+            }
+        }
+        return roomsByType;
+    }
+
+    public static ArrayList<Room> getRoomsByTypeCapacity(RoomType roomType, int capacity) {
+        Room[] rooms = (Room[]) pullData(Room.class);
+
+        ArrayList<Room> roomsByType = new ArrayList<>();
+        for (Room room : rooms) {
+            if (room != null && !room.isOccupied(new DateTime(), new DateTime()) && room.getType() == roomType
+                    && room.getCapacity() == capacity) {
+                roomsByType.add(room);
+            }
+        }
+        return roomsByType;
+    }
+
+    public static Room getRoomById(Room[] rooms, int roomNr) {
+        for (Room room : rooms) {
+            if (room != null && room.getId() == roomNr) {
+                return room;
+            }
+        }
+        return null;
+    }
+
+    public static Room getRoomById(int roomNr) {
+        Room[] rooms = (Room[]) pullData(Room.class);
+
+        for (Room room : rooms) {
+            if (room != null && room.getId() == roomNr) {
+                return room;
+            }
+        }
+        return null;
+    }
+
+    // Used to initialize rooms.json
+    // if used, json will be reset and old data lost
+    private static void initRooms() {
+        Room[] rooms = new Room[400];
+        RoomType type = RoomType.STANDARD;
+
+        for (int i = 100; i < rooms.length && i < 126; i++) {
+            if (i < 116)
+                rooms[i] = new Room(i, RoomType.STANDARD, 1);
+            else
+                rooms[i] = new Room(i, RoomType.STANDARD, 2);
+        }
+
+        for (int i = 200; i < rooms.length && i < 226; i++) {
+            if (i < 216)
+                rooms[i] = new Room(i, RoomType.DELUXE, 1);
+            else
+                rooms[i] = new Room(i, RoomType.DELUXE, 2);
+        }
+
+        for (int i = 300; i < rooms.length && i < 326; i++) {
+            rooms[i] = new Room(i, RoomType.KING, 1);
+        }
+
+        pushData(Room.class, rooms);
     }
 }

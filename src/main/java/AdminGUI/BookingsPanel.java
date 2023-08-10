@@ -4,7 +4,6 @@
  */
 package AdminGUI;
 
-import Objects.RoomControl;
 import Objects.Room;
 import Objects.*;
 import javax.swing.*;
@@ -720,7 +719,6 @@ public class BookingsPanel extends javax.swing.JPanel {
          * mouse click event occurs on the booking room details table
          */
         private void bookingRoomDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_bookingRoomDetailsTableMouseClicked
-                RoomControl.pullData();
 
                 // Check if any of the required fields are empty
                 if (jDateOfCheckInChooser.getDate() == null || jDateOfCheckOutChooser.getDate() == null) {
@@ -770,7 +768,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                         return;
                 }
                 // getRoomById method of RoomControl to retrieve the room with the specified ID
-                Room room = RoomControl.getRoomById(roomId);
+                Room room = GeneralController.getRoomById(roomId);
 
                 DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate()).withHourOfDay(14)
                                 .withMinuteOfHour(0)
@@ -801,7 +799,6 @@ public class BookingsPanel extends javax.swing.JPanel {
          * initBookingRoomTable() method initializes the booking room details table
          */
         private void initBookingRoomTable() {
-                RoomControl.pullData();
 
                 if (bookingRoom == null)
                         return;
@@ -824,8 +821,6 @@ public class BookingsPanel extends javax.swing.JPanel {
         }
 
         private void addBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addBookingBtnActionPerformed
-                RoomControl.pullData();
-
                 boolean isUserCreated = true;
 
                 // Check if any of the required fields are empty
