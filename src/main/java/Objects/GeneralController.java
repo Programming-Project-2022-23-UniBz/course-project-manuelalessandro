@@ -4,17 +4,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import java.io.FileWriter;
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Scanner;
 
 import org.joda.time.DateTime;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import Objects.Room.RoomType;
 import Objects.User.GenderType;
@@ -453,8 +449,7 @@ public class GeneralController {
             // Admin Room
             DateTime checkInAdmin = new DateTime(2023, 2, 11, 0, 0);
             DateTime checkOutAdmin = new DateTime(2023, 2, 16, 0, 0);
-            int id1 = getFreeRoomId(rooms, RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
-            Room room1 = getRoom(rooms, id1);
+            Room room1 = getFreeRoom(rooms, RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
             User user1 = getUser(0); // adminUser
             Booking booking1 = new Booking(checkInAdmin, checkOutAdmin, room1, user1);
             bookings[0] = booking1;
@@ -462,8 +457,7 @@ public class GeneralController {
             // Guest Room
             DateTime checkInGuest = new DateTime(2023, 5, 18, 0, 0);
             DateTime checkOutGuest = new DateTime(2023, 5, 26, 0, 0);
-            int id2 = getFreeRoomId(rooms, RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
-            Room room2 = getRoom(rooms, id2);
+            Room room2 = getFreeRoom(rooms, RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
             User user2 = getUser(1); // guestUser
             Booking booking2 = new Booking(checkInGuest, checkOutGuest, room2, user2);
             bookings[1] = booking2;

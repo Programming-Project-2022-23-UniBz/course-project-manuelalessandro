@@ -188,8 +188,7 @@ public class ExBookingControl {
             // Admin Room
             DateTime checkInAdmin = new DateTime(2023, 2, 11, 0, 0);
             DateTime checkOutAdmin = new DateTime(2023, 2, 16, 0, 0);
-            int id1 = GeneralController.getFreeRoomId(RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
-            Room room1 = GeneralController.getRoom(id1);
+            Room room1 = GeneralController.getFreeRoom(RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
             User user1 = GeneralController.getUser(0); // adminUser
             Booking booking1 = new Booking(checkInAdmin, checkOutAdmin, room1, user1);
             bookings[0] = booking1;
@@ -197,8 +196,7 @@ public class ExBookingControl {
             // Guest Room
             DateTime checkInGuest = new DateTime(2023, 5, 18, 0, 0);
             DateTime checkOutGuest = new DateTime(2023, 5, 26, 0, 0);
-            int id2 = GeneralController.getFreeRoomId(RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
-            Room room2 = GeneralController.getRoom(id2);
+            Room room2 = GeneralController.getFreeRoom(RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
             User user2 = GeneralController.getUser(1); // guestUser
             Booking booking2 = new Booking(checkInGuest, checkOutGuest, room2, user2);
             bookings[1] = booking2;
