@@ -15,6 +15,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -40,13 +42,13 @@ public class User {
     }
 
     // instance variables
-    private int id;
+    private String id;
     private String name;
     private String surname;
     private Date dateOfBirth;
     private GenderType gender;
     private String email;
-    private String encryptedPassword;
+    private String password;
     private String role;
     private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(";
     private String username;
@@ -59,7 +61,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
-        this.encryptedPassword = encrypt(password);
+        this.password = password;
 
         // useful for logins
         this.username = getUsername();
@@ -74,7 +76,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
-        this.encryptedPassword = null;
+        this.password = null;
     }
 
     // username is formed with name.surname+count+1
@@ -92,11 +94,11 @@ public class User {
         this.role = role;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -140,16 +142,12 @@ public class User {
         this.email = email;
     }
 
-    public String getEncPassword() {
-        return encryptedPassword;
-    }
-
     public String getPassword() {
-        return decrypt(this.encryptedPassword);
+        return this.password;
     }
 
     public void setPassword(String password) {
-        this.encryptedPassword = encrypt(password);
+        this.password = password;
     }
 
     public String getFullName() {
@@ -161,6 +159,62 @@ public class User {
 
     public boolean equals(User user) {
         return this.id == user.getId();
+    }
+
+    public static String generateId() {
+        String prefix = "UID_";
+
+        // Get today's date in the format "yyyyMMdd"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        String currentDate = dateFormat.format(new Date());
+
+        // Generate 4 random digits
+        int randomDigits = 1000 + new Random().nextInt(9000);
+
+        // Combine the components to form the ID
+        String generatedBookingId = prefix + currentDate + "_" + randomDigits;
+
+        User[] users = (User[]) GeneralController.pullData(User.class);
+
+        if (isIdUnique(users, generatedBookingId)) {
+            return generatedBookingId;
+        } else {
+            // If the generated ID is not unique, recursively call the method to
+            // generate another ID
+            return generateId();
+        }
+    }
+
+    public static String generateId(User[] users) {
+        String prefix = "UID_";
+
+        // Get today's date in the format "yyyyMMdd"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        String currentDate = dateFormat.format(new Date());
+
+        // Generate 4 random digits
+        int randomDigits = 1000 + new Random().nextInt(9000);
+
+        // Combine the components to form the ID
+        String generatedBookingId = prefix + currentDate + "_" + randomDigits;
+
+        if (isIdUnique(users, generatedBookingId)) {
+            return generatedBookingId;
+        } else {
+            // If the generated ID is not unique, recursively call the method to
+            // generate another ID
+            return generateId();
+        }
+    }
+
+    private static boolean isIdUnique(User[] users, String bookingId) {
+        if (users != null)
+            for (User user : users) {
+                if (user.getId().equals(bookingId)) {
+                    return false; // Matching booking ID found, not unique
+                }
+            }
+        return true; // unique
     }
 
     public void addReview(String review) {
@@ -189,10 +243,11 @@ public class User {
 
     // ----------------------------------------------------------------
 
-    // Admins will have ids, 0, 10, 20, 30, 40 and so on,
     // technically there should be just one admin, but just in case
     public boolean isAdmin() {
-        return this.id % 10 == 0;
+        if (this.role.equals("admin"))
+            return true;
+        return false;
     }
 
     public static String encrypt(String plainText) {
@@ -208,7 +263,7 @@ public class User {
         return null;
     }
 
-    public String decrypt(String encryptedText) {
+    public static String decrypt(String encryptedText) {
         try {
             Cipher cipher = Cipher.getInstance("AES");
             Key key = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
@@ -220,85 +275,6 @@ public class User {
                 | NoSuchPaddingException e) {
         }
         return null;
-    }
-
-    public void addToJson() {
-
-        GeneralController.addUser(this);
-
-        // Add the user data to the UserData.json file
-        try {
-            // Read the existing JSON file
-            JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/UserData.json"))
-                    .getAsJsonArray();
-
-            // Create a Gson instance
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-            // Convert the User object to a JsonObject
-            JsonObject userJson = new JsonObject();
-            userJson.addProperty("id", getId());
-            userJson.addProperty("username", getUsername());
-            userJson.addProperty("password", getEncPassword());
-            userJson.addProperty("role", getRole());
-
-            // Add the JsonObject to the array
-            jsonArray.add(userJson);
-
-            // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("src/main/resources/json/UserData.json")) {
-                gson.toJson(jsonArray, writer);
-            }
-        } catch (IOException | JsonIOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // to remove User from users.json and UserData.json
-    public void removeFromJson() {
-        try {
-            // Read the existing JSON file
-            JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/users.json"))
-                    .getAsJsonArray();
-
-            // Remove the user from the array
-            int index = findIndexOfJson(jsonArray, "id", id);
-            if (index != -1) {
-                jsonArray.remove(index);
-            }
-
-            // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("src/main/resources/json/users.json")) {
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                gson.toJson(jsonArray, writer);
-            }
-        } catch (IOException | JsonIOException e) {
-            e.printStackTrace();
-        }
-
-        // Remove the user data from the UserData.json file
-        try {
-            // Read the existing JSON file
-            JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/UserData.json"))
-                    .getAsJsonArray();
-
-            // Remove the user from the array
-            int index = findIndexOfJson(jsonArray, "id", id);
-            if (index != -1) {
-                jsonArray.remove(index);
-            }
-
-            // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("src/main/resources/json/UserData.json")) {
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                gson.toJson(jsonArray, writer);
-            }
-        } catch (IOException | JsonIOException e) {
-            e.printStackTrace();
-        }
     }
 
     // to remove the review from reviews.json

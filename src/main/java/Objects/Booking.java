@@ -35,7 +35,7 @@ public class Booking {
     }
 
     public void setId() {
-        this.bookingId = bookingIdGenerator();
+        this.bookingId = generateId();
     }
 
     public DateTime getCheckInDate() {
@@ -95,7 +95,7 @@ public class Booking {
                 '}';
     }
 
-    public String bookingIdGenerator() {
+    public String generateId() {
         String prefix = "APH_";
 
         // Get today's date in the format "yyyyMMdd"
@@ -108,16 +108,16 @@ public class Booking {
         // Combine the components to form the booking ID
         String generatedBookingId = prefix + currentDate + "_" + randomDigits;
 
-        if (isBookingIdUnique(generatedBookingId)) {
+        if (isIdUnique(generatedBookingId)) {
             return generatedBookingId;
         } else {
             // If the generated booking ID is not unique, recursively call the method to
             // generate another ID
-            return bookingIdGenerator();
+            return generateId();
         }
     }
 
-    private boolean isBookingIdUnique(String bookingId) {
+    private boolean isIdUnique(String bookingId) {
         Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
         if (bookings != null)
             for (Booking booking : bookings) {

@@ -46,7 +46,6 @@ public class LoginFrame extends JFrame {
     private final JLabel passwordLab;
     private final JLabel usernameLab;
     private final Gson gson = new Gson();
-    private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(";
 
     public LoginFrame() {
 
@@ -99,39 +98,11 @@ public class LoginFrame extends JFrame {
     public void loginOnAction(ActionEvent e) {
         String U = this.username.getText();
         String P = this.password.getText();
-        P = encrypt(P);
-
-        JsonArray users;
 
         try {
-            FileReader file = new FileReader("src/main/resources/json/UserData.json");
-            JsonElement jsonElement = JsonParser.parseReader(file);
-            users = jsonElement.getAsJsonArray();
-        } catch (JsonIOException | JsonSyntaxException | FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "error occurred: " + ex);
-            return;
-        }
-
-        // checking User in UserData.json
-        int index = findIndexOfJson(U, P, users);
-        String userRole = "";
-        JsonObject user = null;
-        int storedId = -1;
-        String storedUsername = null;
-        String storedPassword = null;
-        String storedUserRole = null;
-        try {
-            user = users.get(index).getAsJsonObject();
-            storedId = user.get("id").getAsInt();
-            storedUsername = user.get("username").getAsString();
-            storedPassword = user.get("password").getAsString();
-            storedUserRole = user.get("role").getAsString();
-        } catch (IndexOutOfBoundsException | JsonParseException a) {
-        }
-
-        if (U.equals(storedUsername) && P.equals(storedPassword)) {
-            userRole = storedUserRole;
-            JOptionPane.showMessageDialog(null, "login successful as " + userRole);
+            // searching for user that logged in
+            User user = GeneralController.searchUser(U, P);
+            String userRole = user.getRole();
 
             if (userRole.equals("admin")) {
                 closeApplication();
@@ -139,13 +110,16 @@ public class LoginFrame extends JFrame {
                 frame.setVisible(true);
             } else if (userRole.equals("user")) {
                 closeApplication();
-                UserFrame frame = new UserFrame(GeneralController.getUser(storedId));
+                UserFrame frame = new UserFrame(user);
                 frame.setVisible(true);
                 System.out.println("user");
             }
-        } else {
+            JOptionPane.showMessageDialog(null, "login successful as " + userRole);
+        } catch (Exception exception) {
             JOptionPane.showMessageDialog(null, "Error: invalid username or password");
+            exception.printStackTrace();
         }
+
     }
 
     public void registerOnAction(ActionEvent e) {
@@ -168,33 +142,6 @@ public class LoginFrame extends JFrame {
             index++;
         }
         return index;
-    }
-
-    public static String encrypt(String plainText) {
-        try {
-            Cipher cipher = Cipher.getInstance("AES");
-            Key key = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
-            cipher.init(Cipher.ENCRYPT_MODE, key);
-            byte[] encryptedBytes = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
-            return Base64.getEncoder().encodeToString(encryptedBytes);
-        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException
-                | NoSuchPaddingException e) {
-        }
-        return null;
-    }
-
-    public String decrypt(String encryptedText) {
-        try {
-            Cipher cipher = Cipher.getInstance("AES");
-            Key key = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
-            cipher.init(Cipher.DECRYPT_MODE, key);
-            byte[] decodedBytes = Base64.getDecoder().decode(encryptedText);
-            byte[] decryptedBytes = cipher.doFinal(decodedBytes);
-            return new String(decryptedBytes, StandardCharsets.UTF_8);
-        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException
-                | NoSuchPaddingException e) {
-        }
-        return null;
     }
 
     private void closeApplication() {

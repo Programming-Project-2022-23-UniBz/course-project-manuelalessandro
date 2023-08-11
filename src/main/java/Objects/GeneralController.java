@@ -23,7 +23,13 @@ public class GeneralController {
     // ----------------------------------------------------------------
 
     public static void main(String[] args) {
-
+        initUsers();
+        try {
+            initBookingsTest();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public static Object[] pullData(Class c) {
@@ -475,33 +481,21 @@ public class GeneralController {
     // ----------------------------------------------------------------
     // ----------------------------------------------------------------
 
-    private static void setUsersRightId(User[] users) {
-        for (int i = 1; i < users.length; i++) {
-            users[i].setId(i);
-        }
-    }
-
-    private static void setUsersRightId() {
-        User[] users = (User[]) pullData(User.class);
-
-        for (int i = 1; i < users.length; i++) {
-            users[i].setId(i);
-        }
-
-        pushData(User.class, users);
-    }
-
-    public static void removeUser(User[] users, int id) {
+    public static void removeUser(User[] users, String id) {
         User[] newArr = new User[users.length - 1];
-        if (users.length > id) {
-            for (int i = 0; i < id; i++) {
+        int index = -1;
+        for (int i = 0; i < users.length; i++)
+            if (users[i].getId().equals(id))
+                index = i;
+
+        if (index != -1) {
+            for (int i = 0; i < index; i++) {
                 newArr[i] = users[i];
             }
-            for (int i = id; i < newArr.length; i++) {
+            for (int i = index; i < newArr.length; i++) {
                 newArr[i] = users[i + 1];
             }
             users = newArr;
-            setUsersRightId(users);
         } else {
             throw new InvalidParameterException("Id does not exist");
         }
@@ -511,15 +505,19 @@ public class GeneralController {
         User[] users = (User[]) pullData(User.class);
 
         User[] newArr = new User[users.length - 1];
-        if (users.length > id) {
-            for (int i = 0; i < id; i++) {
+        int index = -1;
+        for (int i = 0; i < users.length; i++)
+            if (users[i].getId().equals(id))
+                index = i;
+
+        if (index != -1) {
+            for (int i = 0; i < index; i++) {
                 newArr[i] = users[i];
             }
-            for (int i = id; i < newArr.length; i++) {
+            for (int i = index; i < newArr.length; i++) {
                 newArr[i] = users[i + 1];
             }
             users = newArr;
-            setUsersRightId();
         } else {
             throw new InvalidParameterException("Id does not exist");
         }
@@ -531,7 +529,7 @@ public class GeneralController {
         increment(users);
         int index = users.length - 1;
         users[index] = user;
-        users[index].setId(index);
+        users[index].generateId();
     }
 
     public static void addUser(User user) {
@@ -540,7 +538,7 @@ public class GeneralController {
         increment(users);
         int index = users.length - 1;
         users[index] = user;
-        users[index].setId(index);
+        users[index].generateId();
 
         pushData(User.class, users);
     }
@@ -559,6 +557,22 @@ public class GeneralController {
             if (users[i].getEmail().equals(email))
                 return users[i];
         throw new IllegalArgumentException("Email does not exist");
+    }
+
+    public static User searchUser(User[] users, String username, String password) throws IllegalArgumentException {
+        for (int i = 1; i < users.length; i++)
+            if (users[i].getUsername().equals(username) && users[i].getPassword().equals(password))
+                return users[i];
+        throw new IllegalArgumentException("Username not found");
+    }
+
+    public static User searchUser(String username, String password) throws IllegalArgumentException {
+        User[] users = (User[]) pullData(User.class);
+        System.out.println("username: " + username + " password: " + password);
+        for (int i = 1; i < users.length; i++)
+            if (users[i].getUsername().equals(username) && users[i].getPassword().equals(password))
+                return users[i];
+        throw new IllegalArgumentException("Username not found");
     }
 
     public static User getUser(User[] users, int id) throws IllegalArgumentException {
@@ -582,14 +596,15 @@ public class GeneralController {
     private static void initUsers() {
         User[] users = new User[2];
         User admin = new User("admin", null, null, null, null, "password", "admin");
-        admin.setId(0);
+        admin.setId(User.generateId(users));
+
         users[0] = admin;
         User guestTest = null;
         try {
             guestTest = new User("GuestName", "GuestSurname", User.dateFormatter.parse("01/01/1990"),
                     GenderType.OTHER, "guest@email.com", "password",
                     "guest");
-            guestTest.setId(1);
+            guestTest.setId(User.generateId(users));
             users[1] = guestTest;
         } catch (Exception e) {
             e.printStackTrace();

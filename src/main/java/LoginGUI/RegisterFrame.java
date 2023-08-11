@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import java.util.Date;
 import javax.swing.*;
 import Objects.User.GenderType;
+import Objects.GeneralController;
 import Objects.User;
 
 /**
@@ -104,7 +105,7 @@ public class RegisterFrame extends JFrame {
 
         // TODO: Process the user registration logic here
         User user = new User(name, surname, birthDate, gender, email, password, role);
-        user.addToJson();
+        GeneralController.addUser(user);
         JOptionPane.showMessageDialog(null, "Username for login: " + user.getUsername());
         closeApplication();
     }
