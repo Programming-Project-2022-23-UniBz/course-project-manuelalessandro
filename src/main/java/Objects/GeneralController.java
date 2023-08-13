@@ -14,6 +14,8 @@ import com.google.gson.Gson;
 
 import Objects.Room.RoomType;
 import Objects.User.GenderType;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GeneralController {
     static Gson gson = new Gson();
@@ -22,14 +24,8 @@ public class GeneralController {
     // -------------------- General part ------------------------------
     // ----------------------------------------------------------------
 
-    public static void main(String[] args) {
-        initUsers();
-        try {
-            initBookingsTest();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws Exception {
+
     }
 
     public static Object[] pullData(Class c) {
@@ -505,19 +501,21 @@ public class GeneralController {
     }
 
     public static void addUser(User[] users, User user) {
+        user.setId(User.generateId(users));
+
         increment(users);
         int index = users.length - 1;
         users[index] = user;
-        users[index].setId(User.generateId(users));
     }
 
     public static void addUser(User user) {
         User[] users = (User[]) pullData(User.class);
 
+        user.setId(User.generateId(users));
+
         increment(users);
         int index = users.length - 1;
         users[index] = user;
-        users[index].setId(User.generateId(users));
 
         pushData(User.class, users);
     }
@@ -532,14 +530,14 @@ public class GeneralController {
     public static User searchUser(String email) throws IllegalArgumentException {
         User[] users = (User[]) pullData(User.class);
 
-        for (int i = 1; i < users.length; i++)
+        for (int i = 0; i < users.length; i++)
             if (users[i].getEmail().equals(email))
                 return users[i];
         throw new IllegalArgumentException("Email does not exist");
     }
 
     public static User searchUser(User[] users, String username, String password) throws IllegalArgumentException {
-        for (int i = 1; i < users.length; i++)
+        for (int i = 0; i < users.length; i++)
             if (users[i].getUsername().equals(username) && users[i].getPassword().equals(password))
                 return users[i];
         throw new IllegalArgumentException("Username not found");

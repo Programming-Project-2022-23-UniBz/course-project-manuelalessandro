@@ -207,10 +207,10 @@ public class User {
         }
     }
 
-    private static boolean isIdUnique(User[] users, String bookingId) {
+    private static boolean isIdUnique(User[] users, String userId) {
         if (users != null)
             for (User user : users) {
-                if (user.getId().equals(bookingId)) {
+                if (user != null && user.getId().equals(userId)) {
                     return false; // Matching booking ID found, not unique
                 }
             }

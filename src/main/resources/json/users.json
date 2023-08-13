@@ -1,1 +1,1 @@
-[{"id":"0","name":"admin","password":"password","role":"admin","username":"admin"},{"name":"","surname":"","dateOfBirth":"Aug 11, 2023, 6:16:04 PM","gender":"MAN","email":"","password":"","role":"user","username":"password"}]
+[{"id":"UID_20230813_9042","name":"admin","email":"admin@email.com","password":"password","role":"admin"},{"id":"UID_20230813_1347","name":"GuestName","surname":"GuestSurname","dateOfBirth":"Jan 1, 1990, 12:00:00 AM","gender":"OTHER","email":"guest@email.com","password":"password","role":"guest"}]
