@@ -77,12 +77,12 @@ public class User {
         this.gender = gender;
         this.email = email;
         this.password = null;
+        this.role = "user";
     }
 
     // username is formed with name.surname+count+1
     public final String getUsername() {
-        return this.name + "." + this.surname + this.id;
-
+        return this.username;
     }
 
     // getters and setters

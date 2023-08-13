@@ -513,7 +513,7 @@ public class RoomsPanel extends javax.swing.JPanel {
                  */
                 try {
                         int roomNr = Integer.parseInt(roomNrTxtField.getText());
-                        Room roomById = GeneralController.getRoomById(roomNr);
+                        Room roomById = GeneralController.getRoom(roomNr);
 
                         if (roomById == null) {
                                 JOptionPane.showMessageDialog(this, "No room found with ID " + roomNr, "Room Not Found",
@@ -681,7 +681,7 @@ public class RoomsPanel extends javax.swing.JPanel {
                         CardLayout cardLayout = adminFrame.getCardLayout();
                         JPanel cardPanel = adminFrame.getCardPanel();
 
-                        Room roomToBook = GeneralController.getRoomById(roomID);
+                        Room roomToBook = GeneralController.getRoom(roomID);
                         Date checkIn = jDateOfCheckInChooser.getDate();
                         Date checkOut = jDateOfCheckOutChooser.getDate();
 

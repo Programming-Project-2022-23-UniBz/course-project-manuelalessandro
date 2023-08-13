@@ -63,7 +63,7 @@ public class UserFrame extends javax.swing.JFrame {
 
     // visibility to package
     void buttonCardAction(Card card) {
-        Booking booking = GeneralController.findBooking(user);
+        Booking booking = GeneralController.findBooking(user.getId());
         if (card.equals(Card.BOOKING) && booking == null) {
             cardLayout.show(cardPanel, "create");
             return;
@@ -281,7 +281,7 @@ public class UserFrame extends javax.swing.JFrame {
         // </editor-fold>
         // </editor-fold>
 
-        User user = GeneralController.getUser(1);
+        User user = GeneralController.searchUser("guest@email.com");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

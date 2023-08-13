@@ -19,23 +19,7 @@ import Objects.User;
 import UserGUI.UserFrame;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
 
 public class LoginFrame extends JFrame {
     // private variables, don't change
@@ -99,9 +83,12 @@ public class LoginFrame extends JFrame {
         String U = this.username.getText();
         String P = this.password.getText();
 
+        System.out.println("Inserted: " + U + " " + P); // TODO: remove
+
         try {
             // searching for user that logged in
             User user = GeneralController.searchUser(U, P);
+            System.out.println("User trovato: " + user); // TODO: remove
             String userRole = user.getRole();
 
             if (userRole.equals("admin")) {
@@ -125,23 +112,6 @@ public class LoginFrame extends JFrame {
     public void registerOnAction(ActionEvent e) {
         RegisterFrame r = new RegisterFrame();
         closeApplication();
-    }
-
-    // json file is an array, i have to find an index for a given username and
-    // password
-    public int findIndexOfJson(String U, String P, JsonArray users) {
-        int index = 0;
-        for (JsonElement userObj : users) {
-            JsonObject user = userObj.getAsJsonObject();
-            String storedUsername = user.get("username").getAsString();
-            String storedPassword = user.get("password").getAsString();
-
-            if (U.equals(storedUsername) && P.equals(storedPassword)) {
-                break;
-            }
-            index++;
-        }
-        return index;
     }
 
     private void closeApplication() {

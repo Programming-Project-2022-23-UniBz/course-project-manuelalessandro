@@ -97,7 +97,7 @@ public class Room {
 
         // get all bookings that have this room
         ArrayList<Booking> bookings = GeneralController
-                .getAllBookings((Booking[]) GeneralController.pullData(Booking.class), this);
+                .getAllBookings((Booking[]) GeneralController.pullData(Booking.class), this.getId());
 
         Date checkInDate = checkIn.toDate();
         Date checkOutDate = checkOut.toDate();
@@ -139,7 +139,7 @@ public class Room {
         Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
 
         for (Booking booking : bookings) {
-            if (booking.getRoom().equals(this)) {
+            if (booking.getRoomId() == this.getId()) {
 
                 // Check if the booking overlaps with the desired check-in and check-out dates
                 DateTime existingCheckInDateTime = booking.getCheckInDate();

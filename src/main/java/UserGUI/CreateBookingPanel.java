@@ -99,8 +99,8 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                                 new DateTime(checkOut));
 
                                 GeneralController.addBooking(
-                                                new Booking(new DateTime(checkIn), new DateTime(checkOut), room,
-                                                                user));
+                                                new Booking(new DateTime(checkIn), new DateTime(checkOut), room.getId(),
+                                                                user.getId()));
 
                                 JOptionPane.showMessageDialog(this,
                                                 "The booking was created successfully!", "",

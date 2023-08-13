@@ -12,20 +12,21 @@ public class Booking {
     private String bookingId;
     private Date checkInDate;
     private Date checkOutDate;
-    private Room room;
-    private User user;
+    private int roomId;
+    private String userId;
     private double totalCost;
 
-    public Booking(DateTime checkInDate, DateTime checkOutDate, Room room, User user) {
+    public Booking(DateTime checkInDate, DateTime checkOutDate, int roomId, String userId) {
         // Set check-in time to 2 PM
         this.checkInDate = checkInDate.withHourOfDay(14).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0)
                 .toDate();
         // Set check-out time to 10 AM
         this.checkOutDate = checkOutDate.withHourOfDay(10).withMinuteOfHour(0).withSecondOfMinute(0)
                 .withMillisOfSecond(0).toDate();
-        this.room = room;
-        this.user = user;
-        this.totalCost = calculateTotalCost(room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
+        this.roomId = roomId;
+        this.userId = userId;
+        this.totalCost = calculateTotalCost(GeneralController.getRoom(roomId).getPrice(),
+                calculateStay(this.checkInDate, this.checkOutDate));
         setId();
     }
 
@@ -44,7 +45,8 @@ public class Booking {
 
     public void setCheckInDate(DateTime checkInDate) {
         this.checkInDate = checkInDate.toDate();
-        this.totalCost = calculateTotalCost(this.room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
+        this.totalCost = calculateTotalCost(GeneralController.getRoom(roomId).getPrice(),
+                calculateStay(this.checkInDate, this.checkOutDate));
     }
 
     public DateTime getCheckOutDate() {
@@ -53,24 +55,26 @@ public class Booking {
 
     public void setCheckOutDate(DateTime checkOutDate) {
         this.checkOutDate = checkOutDate.toDate();
-        this.totalCost = calculateTotalCost(this.room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
+        this.totalCost = calculateTotalCost(GeneralController.getRoom(roomId).getPrice(),
+                calculateStay(this.checkInDate, this.checkOutDate));
     }
 
-    public Room getRoom() {
-        return room;
+    public int getRoomId() {
+        return roomId;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
-        this.totalCost = calculateTotalCost(this.room.getPrice(), calculateStay(this.checkInDate, this.checkOutDate));
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+        this.totalCost = calculateTotalCost(GeneralController.getRoom(roomId).getPrice(),
+                calculateStay(this.checkInDate, this.checkOutDate));
     }
 
-    public User getUser() {
-        return user;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public double getTotalCost() {
@@ -89,8 +93,8 @@ public class Booking {
                 "bookingId='" + bookingId + '\'' +
                 ", checkInDate=" + checkInDate +
                 ", checkOutDate=" + checkOutDate +
-                ", room=" + room +
-                ", user=" + user +
+                ", room=" + roomId +
+                ", user=" + userId +
                 ", totalCost=" + totalCost +
                 '}';
     }

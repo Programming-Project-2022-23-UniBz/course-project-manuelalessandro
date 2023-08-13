@@ -768,7 +768,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                         return;
                 }
                 // getRoomById method of RoomControl to retrieve the room with the specified ID
-                Room room = GeneralController.getRoomById(roomId);
+                Room room = GeneralController.getRoom(roomId);
 
                 DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate()).withHourOfDay(14)
                                 .withMinuteOfHour(0)
@@ -872,7 +872,8 @@ public class BookingsPanel extends javax.swing.JPanel {
                                         "Invalid Room Selection", JOptionPane.WARNING_MESSAGE);
                 } else {
                         if (isUserCreated || isCheckInValidated || isCheckOutValidated) {
-                                Booking booking = new Booking(dateTimecheckIn, dateTimecheckOut, bookingRoom, user);
+                                Booking booking = new Booking(dateTimecheckIn, dateTimecheckOut, bookingRoom.getId(),
+                                                user.getId());
                                 booking.setId();
                                 Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
                                 GeneralController.addBooking(bookings, booking);
@@ -902,14 +903,14 @@ public class BookingsPanel extends javax.swing.JPanel {
                         model.setRowCount(0); // Clear existing rows
 
                         for (Booking booking : bookings) {
-                                User bookingUser = booking.getUser();
+                                User bookingUser = GeneralController.getUser(booking.getUserId());
                                 Object rowData[] = new Object[6];
                                 rowData[0] = booking.getId();
                                 if (bookingUser != null)
                                         rowData[1] = bookingUser.getFullName();
                                 else
                                         rowData[1] = "null";
-                                rowData[2] = booking.getRoom().getId();
+                                rowData[2] = booking.getRoomId();
                                 rowData[3] = booking.getCheckInDate();
                                 rowData[4] = booking.getCheckOutDate();
                                 rowData[5] = booking.getTotalCost();
@@ -952,19 +953,19 @@ public class BookingsPanel extends javax.swing.JPanel {
 
         private void processBookingEdit(String bookingId) {
                 Booking booking = GeneralController.getBookingById(bookingId);
-
-                customerSurnameTxtField.setText(booking.getUser().getSurname());
-                customerNameTxtField.setText(booking.getUser().getName());
-                customerEmailTxtField.setText(booking.getUser().getEmail());
+                User user = GeneralController.getUser(booking.getUserId());
+                customerSurnameTxtField.setText(user.getSurname());
+                customerNameTxtField.setText(user.getName());
+                customerEmailTxtField.setText(user.getEmail());
 
                 Date checkIn = booking.getCheckInDate().toDate();
                 Date checkOut = booking.getCheckOutDate().toDate();
-                Date DOB = booking.getUser().getDateOfBirth();
+                Date DOB = user.getDateOfBirth();
                 jDateOfCheckInChooser.setDate(checkIn);
                 jDateOfCheckOutChooser.setDate(checkOut);
                 jDateOfBirthCustomerChooser.setDate(DOB);
 
-                bookingRoom = booking.getRoom();
+                bookingRoom = GeneralController.getRoom(booking.getRoomId());
 
                 initBookingRoomTable();
                 GeneralController.removeBookingById(bookingId);
@@ -982,6 +983,8 @@ public class BookingsPanel extends javax.swing.JPanel {
                 boolean DOBIsValidated = true;
                 boolean genderIsValidated = true;
                 boolean emailIsValidated = true;
+
+                // TODO: change all validations to static references reusable
 
                 // Validate name
                 if (!name.matches("[a-zA-Z]+")) {

@@ -145,12 +145,12 @@ public class GeneralController {
         return totalCost / bookings.length;
     }
 
-    public static Booking findBooking(Booking[] bookings, User user) {
+    public static Booking findBooking(Booking[] bookings, String userId) {
         Booking result = null;
         if (bookings != null)
             for (int i = 0; i < bookings.length; i++) {
-                User bookingUser = bookings[i].getUser();
-                if (bookingUser != null && bookingUser.equals(user)) {
+                String bookingUserId = bookings[i].getUserId();
+                if (bookingUserId != null && bookingUserId.equals(userId)) {
                     result = bookings[i];
                     break;
                 }
@@ -159,14 +159,14 @@ public class GeneralController {
         return result;
     }
 
-    public static Booking findBooking(User user) {
+    public static Booking findBooking(String userId) {
         Booking[] bookings = (Booking[]) pullData(Booking.class);
 
         Booking result = null;
         if (bookings != null)
             for (int i = 0; i < bookings.length; i++) {
-                User bookingUser = bookings[i].getUser();
-                if (bookingUser != null && bookingUser.equals(user)) {
+                String bookingUserId = bookings[i].getUserId();
+                if (bookingUserId != null && bookingUserId.equals(userId)) {
                     result = bookings[i];
                     break;
                 }
@@ -268,7 +268,7 @@ public class GeneralController {
     }
 
     // @return ArrayList<Booking> that contains all the bookings that have that room
-    public static ArrayList<Booking> getAllBookings(Booking[] bookings, Room room) {
+    public static ArrayList<Booking> getAllBookings(Booking[] bookings, int roomId) {
         if (bookings == null) {
             bookings = new Booking[0];
         }
@@ -276,13 +276,13 @@ public class GeneralController {
         ArrayList<Booking> result = new ArrayList<Booking>();
         for (int i = 0; i < bookings.length; i++)
             if (bookings[i] != null)
-                if (bookings[i].getRoom().equals(room))
+                if (bookings[i].getRoomId() == roomId)
                     result.add(bookings[i]);
         return result;
     }
 
     // @return ArrayList<Booking> that contains all the bookings that have that room
-    public static ArrayList<Booking> getAllBookings(Room room) {
+    public static ArrayList<Booking> getAllBookings(int roomId) {
         Booking[] bookings = (Booking[]) pullData(Booking.class);
 
         if (bookings == null) {
@@ -292,7 +292,7 @@ public class GeneralController {
         ArrayList<Booking> result = new ArrayList<Booking>();
         for (int i = 0; i < bookings.length; i++)
             if (bookings[i] != null)
-                if (bookings[i].getRoom().equals(room))
+                if (bookings[i].getRoomId() == roomId)
                     result.add(bookings[i]);
         return result;
     }
@@ -306,7 +306,7 @@ public class GeneralController {
         ArrayList<Booking> result = new ArrayList<Booking>();
         for (int i = 0; i < bookings.length; i++)
             if (bookings[i] != null)
-                if (bookings[i].getUser().equals(user))
+                if (bookings[i].getUserId().equals(user))
                     result.add(bookings[i]);
         return result;
     }
@@ -322,7 +322,7 @@ public class GeneralController {
         ArrayList<Booking> result = new ArrayList<Booking>();
         for (int i = 0; i < bookings.length; i++)
             if (bookings[i] != null)
-                if (bookings[i].getUser().equals(user))
+                if (bookings[i].getUserId().equals(user))
                     result.add(bookings[i]);
         return result;
     }
@@ -419,26 +419,6 @@ public class GeneralController {
         return amount;
     }
 
-    public static String getBookingsString(Booking[] bookings) {
-        String result = "";
-        for (int i = 0; i < bookings.length; i++) {
-            result += "User email: " + bookings[i].getUser().getEmail() + ", Room Nr: " + bookings[i].getRoom().getId()
-                    + "\n";
-        }
-        return result;
-    }
-
-    public static String getBookingsString() {
-        Booking[] bookings = (Booking[]) pullData(Booking.class);
-
-        String result = "";
-        for (int i = 0; i < bookings.length; i++) {
-            result += "User email: " + bookings[i].getUser().getEmail() + ", Room Nr: " + bookings[i].getRoom().getId()
-                    + "\n";
-        }
-        return result;
-    }
-
     public static int getBookingsLength() {
         Booking[] bookings = (Booking[]) pullData(Booking.class);
         return bookings.length;
@@ -450,22 +430,21 @@ public class GeneralController {
         Booking[] bookings;
         try {
             bookings = new Booking[2];
-            Room[] rooms = (Room[]) pullData(Room.class);
 
             // Admin Room
             DateTime checkInAdmin = new DateTime(2023, 2, 11, 0, 0);
             DateTime checkOutAdmin = new DateTime(2023, 2, 16, 0, 0);
-            Room room1 = getFreeRoom(rooms, RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
-            User user1 = getUser(0); // adminUser
-            Booking booking1 = new Booking(checkInAdmin, checkOutAdmin, room1, user1);
+            Room room1 = getFreeRoom(RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
+            User user1 = searchUser("admin@email.com"); // adminUser
+            Booking booking1 = new Booking(checkInAdmin, checkOutAdmin, room1.getId(), user1.getId());
             bookings[0] = booking1;
 
             // Guest Room
             DateTime checkInGuest = new DateTime(2023, 5, 18, 0, 0);
             DateTime checkOutGuest = new DateTime(2023, 5, 26, 0, 0);
-            Room room2 = getFreeRoom(rooms, RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
-            User user2 = getUser(1); // guestUser
-            Booking booking2 = new Booking(checkInGuest, checkOutGuest, room2, user2);
+            Room room2 = getFreeRoom(RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
+            User user2 = searchUser("guest@email.com"); // guestUser
+            Booking booking2 = new Booking(checkInGuest, checkOutGuest, room2.getId(), user2.getId());
             bookings[1] = booking2;
 
         } catch (Exception e) {
@@ -501,7 +480,7 @@ public class GeneralController {
         }
     }
 
-    public static void removeUser(int id) {
+    public static void removeUser(String id) {
         User[] users = (User[]) pullData(User.class);
 
         User[] newArr = new User[users.length - 1];
@@ -529,7 +508,7 @@ public class GeneralController {
         increment(users);
         int index = users.length - 1;
         users[index] = user;
-        users[index].generateId();
+        users[index].setId(User.generateId(users));
     }
 
     public static void addUser(User user) {
@@ -538,7 +517,7 @@ public class GeneralController {
         increment(users);
         int index = users.length - 1;
         users[index] = user;
-        users[index].generateId();
+        users[index].setId(User.generateId(users));
 
         pushData(User.class, users);
     }
@@ -568,25 +547,40 @@ public class GeneralController {
 
     public static User searchUser(String username, String password) throws IllegalArgumentException {
         User[] users = (User[]) pullData(User.class);
-        System.out.println("username: " + username + " password: " + password);
-        for (int i = 1; i < users.length; i++)
+        // TODO remove
+        System.out.println("Users length:" + users.length + ", username: " + username + ", password: " + password);
+        // TODO remove
+        System.out.println("\n\nFirst user: " + users[0].getUsername() + ", pass: " + users[0].getPassword());
+        for (int i = 0; i < users.length; i++)
             if (users[i].getUsername().equals(username) && users[i].getPassword().equals(password))
                 return users[i];
         throw new IllegalArgumentException("Username not found");
     }
 
-    public static User getUser(User[] users, int id) throws IllegalArgumentException {
-        if (users != null && users.length > id)
-            return users[id];
+    public static User getUser(User[] users, String id) throws IllegalArgumentException {
+        User result = null;
+        if (users != null)
+            for (int i = 0; i < users.length; i++)
+                if (users[i].getId().equals(id))
+                    result = users[i];
+
+        if (result != null)
+            return result;
         else
             throw new IllegalArgumentException("Id does not exist");
     }
 
-    public static User getUser(int id) throws IllegalArgumentException {
+    public static User getUser(String id) throws IllegalArgumentException {
         User[] users = (User[]) pullData(User.class);
 
-        if (users != null && users.length > id)
-            return users[id];
+        User result = null;
+        if (users != null)
+            for (int i = 0; i < users.length; i++)
+                if (users[i].getId().equals(id))
+                    result = users[i];
+
+        if (result != null)
+            return result;
         else
             throw new IllegalArgumentException("Id does not exist");
     }
@@ -595,7 +589,7 @@ public class GeneralController {
     // if used, json will be reset and old data lost
     private static void initUsers() {
         User[] users = new User[2];
-        User admin = new User("admin", null, null, null, null, "password", "admin");
+        User admin = new User("admin", null, null, null, "admin@email.com", "password", "admin");
         admin.setId(User.generateId(users));
 
         users[0] = admin;
@@ -619,16 +613,6 @@ public class GeneralController {
     // ----------------------------------------------------------------
     // ----------------------------------------------------------------
 
-    public static Room getRoom(Room[] rooms, int id) throws IllegalArgumentException {
-        Room room = null;
-        if (rooms.length > id)
-            room = rooms[id];
-        if (room == null)
-            throw new IllegalArgumentException("Room does not exist");
-        else
-            return room;
-    }
-
     public static Room getRoom(int id) throws IllegalArgumentException {
         Room[] rooms = (Room[]) pullData(Room.class);
 
@@ -639,33 +623,6 @@ public class GeneralController {
             throw new IllegalArgumentException("Room does not exist");
         else
             return room;
-    }
-
-    // returns first free room that matches parameters
-    // throws Exception if no room matches
-    /**
-     * @param roomType
-     * @param capacity
-     * @param checkIn
-     * @param checkOut
-     * @return
-     * @throws Exception
-     */
-    public static int getFreeRoomId(Room[] rooms, RoomType roomType, int capacity, DateTime checkIn, DateTime checkOut)
-            throws Exception {
-        int result = -1;
-        for (int i = 0; i < rooms.length; i++)
-            if (rooms[i] != null)
-                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
-                        && rooms[i].isOccupied(checkIn, checkOut) == false) {
-                    result = i;
-                    break;
-                }
-
-        // throwing exception if no room matches
-        if (result == -1)
-            throw new Exception("No room avaiable for the selected dates."); // message appears in the CreateRoomPanel
-        return result;
     }
 
     // returns first free room that matches parameters
@@ -697,23 +654,14 @@ public class GeneralController {
         return result;
     }
 
-    public static Room getFreeRoom(Room[] rooms, RoomType roomType, int capacity, DateTime checkIn, DateTime checkOut)
-            throws Exception {
-        Room result = null;
-        for (int i = 0; i < rooms.length; i++)
-            if (rooms[i] != null)
-                if (rooms[i].getType().equals(roomType) && rooms[i].getCapacity() == capacity
-                        && rooms[i].isOccupied(checkIn, checkOut) == false) {
-                    result = rooms[i];
-                    break;
-                }
-
-        // throwing exception if no room matches
-        if (result == null)
-            throw new Exception("No room avaiable for the selected dates."); // message appears in the CreateRoomPanel
-        return result;
-    }
-
+    /**
+     * @param roomType
+     * @param capacity
+     * @param checkIn
+     * @param checkOut
+     * @return
+     * @throws Exception
+     */
     public static Room getFreeRoom(RoomType roomType, int capacity, DateTime checkIn, DateTime checkOut)
             throws Exception {
         Room[] rooms = (Room[]) pullData(Room.class);
@@ -733,17 +681,6 @@ public class GeneralController {
         return result;
     }
 
-    public static ArrayList<Room> getRoomsByTypeCapacity(Room[] rooms, RoomType roomType, int capacity) {
-        ArrayList<Room> roomsByType = new ArrayList<>();
-        for (Room room : rooms) {
-            if (room != null && !room.isOccupied(new DateTime(), new DateTime()) && room.getType() == roomType
-                    && room.getCapacity() == capacity) {
-                roomsByType.add(room);
-            }
-        }
-        return roomsByType;
-    }
-
     public static ArrayList<Room> getRoomsByTypeCapacity(RoomType roomType, int capacity) {
         Room[] rooms = (Room[]) pullData(Room.class);
 
@@ -755,26 +692,6 @@ public class GeneralController {
             }
         }
         return roomsByType;
-    }
-
-    public static Room getRoomById(Room[] rooms, int roomNr) {
-        for (Room room : rooms) {
-            if (room != null && room.getId() == roomNr) {
-                return room;
-            }
-        }
-        return null;
-    }
-
-    public static Room getRoomById(int roomNr) {
-        Room[] rooms = (Room[]) pullData(Room.class);
-
-        for (Room room : rooms) {
-            if (room != null && room.getId() == roomNr) {
-                return room;
-            }
-        }
-        return null;
     }
 
     // Used to initialize rooms.json

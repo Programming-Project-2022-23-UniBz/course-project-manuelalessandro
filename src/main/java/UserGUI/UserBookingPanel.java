@@ -35,7 +35,7 @@ public class UserBookingPanel extends javax.swing.JPanel {
 
         public void setUser(User user) {
                 this.user = user;
-                booking = GeneralController.findBooking(user);
+                booking = GeneralController.findBooking(user.getId());
         }
 
         public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
@@ -46,7 +46,7 @@ public class UserBookingPanel extends javax.swing.JPanel {
         public void refreshInfos() {
                 errorLabel.setText("");
                 if (booking != null) {
-                        Room room = booking.getRoom();
+                        Room room = GeneralController.getRoom(booking.getRoomId());
 
                         roomField.setText("N:" + room.getId() + " - " + room.getType() + " for "
                                         + room.getCapacity());
@@ -94,7 +94,7 @@ public class UserBookingPanel extends javax.swing.JPanel {
 
                                 // apply changes
                                 if (input == 0) {
-                                        booking.setRoom(room);
+                                        booking.setRoomId(room.getId());
                                         booking.setCheckInDate(new DateTime(checkIn));
                                         booking.setCheckOutDate(new DateTime(checkOut));
 
