@@ -73,6 +73,7 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                         totalCost = Booking.calculateTotalCost(getSelectedRoomPrice(checkIn, checkOut), stay);
                         totalStayLabel.setText("Total stay:" + stay + " nights");
                         totalCostLabel.setText("Total cost:" + totalCost + "€");
+                        errorLabel.setText("");
                 } catch (Exception e) {
                         e.printStackTrace();
                         errorLabel.setText(e.getMessage());
@@ -107,8 +108,8 @@ public class CreateBookingPanel extends javax.swing.JPanel {
                                                 JOptionPane.WARNING_MESSAGE);
 
                         } catch (Exception e) {
-                                errorLabel.setText(
-                                                "Unfortunately, no room is avaiable for the selected dates.");
+                                errorLabel.setText(e.getMessage());
+                                e.printStackTrace();
                                 return;
                         }
 
@@ -330,7 +331,13 @@ public class CreateBookingPanel extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
         private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_applyButtonActionPerformed
-                confirmBooking();
+                int dialogResult = JOptionPane.showOptionDialog(this,
+                                "Are you sure you want to confirm the booking?", "Confirmation",
+                                JOptionPane.DEFAULT_OPTION,
+                                JOptionPane.QUESTION_MESSAGE, null,
+                                new Object[] { "No", "Yes" }, "No");
+                if (dialogResult == 1)
+                        confirmBooking();
         }// GEN-LAST:event_applyButtonActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

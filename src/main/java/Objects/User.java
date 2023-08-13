@@ -5,9 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -53,7 +51,8 @@ public class User {
     private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(";
     private String username;
 
-    public User(String name, String surname, Date dateOfBirth, GenderType gender, String email, String password,
+    public User(String name, String surname, String username, Date dateOfBirth, GenderType gender, String email,
+            String password,
             String role)
             throws IllegalArgumentException {
         this.name = name;
@@ -61,11 +60,11 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
-        this.password = password;
 
         // useful for logins
-        this.username = getUsername();
+        this.username = username;
         this.role = role;
+        this.password = password;
     }
 
     // Creating the user from from AdminFrame
@@ -78,14 +77,18 @@ public class User {
         this.email = email;
         this.password = null;
         this.role = "user";
-    }
-
-    // username is formed with name.surname+count+1
-    public final String getUsername() {
-        return this.username;
+        this.username = email; // TODO: change
     }
 
     // getters and setters
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getRole() {
         return role;
     }
@@ -156,6 +159,24 @@ public class User {
         else
             return "null";
     }
+
+    public void pushChanges() throws Exception {
+        User[] users = (User[]) GeneralController.pullData(User.class);
+
+        int index = -1;
+        for (int i = 0; i < users.length; i++)
+            if (users[i].getId().equals(id))
+                index = i;
+
+        if (index != -1)
+            users[index] = this;
+        else
+            throw new Exception("En error was found in pushing changes (User not found)");
+
+        GeneralController.pushData(User.class, users);
+    }
+
+    // ----------------------------------------------------------------
 
     public boolean equals(User user) {
         return this.id == user.getId();
@@ -371,4 +392,10 @@ public class User {
         // TODO
         return true;
     }
+
+    public static boolean usernameValid(String username2) {
+        // TODO
+        return true;
+    }
+
 }

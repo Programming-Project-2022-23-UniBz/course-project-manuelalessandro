@@ -83,23 +83,19 @@ public class LoginFrame extends JFrame {
         String U = this.username.getText();
         String P = this.password.getText();
 
-        System.out.println("Inserted: " + U + " " + P); // TODO: remove
-
         try {
             // searching for user that logged in
             User user = GeneralController.searchUser(U, P);
-            System.out.println("User trovato: " + user); // TODO: remove
             String userRole = user.getRole();
 
             if (userRole.equals("admin")) {
                 closeApplication();
                 AdminFrame frame = new AdminFrame();
                 frame.setVisible(true);
-            } else if (userRole.equals("user")) {
+            } else {
                 closeApplication();
                 UserFrame frame = new UserFrame(user);
                 frame.setVisible(true);
-                System.out.println("user");
             }
             JOptionPane.showMessageDialog(null, "login successful as " + userRole);
         } catch (Exception exception) {

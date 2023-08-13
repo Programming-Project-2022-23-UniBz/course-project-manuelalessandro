@@ -23,7 +23,6 @@ import Objects.User;
 public class UserBookingPanel extends javax.swing.JPanel {
 
         private User user;
-        private Booking booking;
         private UserFrame frame;
 
         /**
@@ -35,7 +34,6 @@ public class UserBookingPanel extends javax.swing.JPanel {
 
         public void setUser(User user) {
                 this.user = user;
-                booking = GeneralController.findBooking(user.getId());
         }
 
         public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
@@ -44,6 +42,7 @@ public class UserBookingPanel extends javax.swing.JPanel {
         }
 
         public void refreshInfos() {
+                Booking booking = GeneralController.findBooking(user.getId());
                 errorLabel.setText("");
                 if (booking != null) {
                         Room room = GeneralController.getRoom(booking.getRoomId());
@@ -67,6 +66,7 @@ public class UserBookingPanel extends javax.swing.JPanel {
                         System.out.println("-- User is null");
                 }
 
+                Booking booking = GeneralController.findBooking(user.getId());
                 if (booking == null) {
                         errorLabel.setText("Your booking was not identified, please restart the application");
                         System.out.println("-- Booking is null");
@@ -117,6 +117,7 @@ public class UserBookingPanel extends javax.swing.JPanel {
         }
 
         public void deleteBooking() {
+                Booking booking = GeneralController.findBooking(user.getId());
                 try {
                         GeneralController.removeBookingById(booking.getId());
 
@@ -523,7 +524,13 @@ public class UserBookingPanel extends javax.swing.JPanel {
         }// GEN-LAST:event_applyButtonActionPerformed
 
         private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_deleteButtonActionPerformed
-                deleteBooking();
+                int dialogResult = JOptionPane.showOptionDialog(this,
+                                "Are you sure you want to delete your booking", "Confirmation",
+                                JOptionPane.DEFAULT_OPTION,
+                                JOptionPane.QUESTION_MESSAGE, null,
+                                new Object[] { "No", "Yes" }, "No");
+                if (dialogResult == 1)
+                        deleteBooking();
         }// GEN-LAST:event_deleteButtonActionPerformed
 
         private void roomTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_roomTypeComboBoxActionPerformed

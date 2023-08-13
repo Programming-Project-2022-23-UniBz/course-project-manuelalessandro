@@ -61,7 +61,7 @@
         <Component class="UserGUI.UserDashboardPanel" name="userDashboardPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="dashboard"/>
+              <CardConstraints cardName="dash"/>
             </Constraint>
           </Constraints>
         </Component>

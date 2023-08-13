@@ -103,8 +103,11 @@ public class RegisterFrame extends JFrame {
         GenderType gender = (GenderType) genderComboBox.getSelectedItem();
         String role = "user";
 
-        // TODO: Process the user registration logic here
-        User user = new User(name, surname, birthDate, gender, email, password, role);
+        // TODO: process the validation here
+
+        // TODO: change email to username for registration
+
+        User user = new User(name, surname, email, birthDate, gender, email, password, role);
         GeneralController.addUser(user);
         JOptionPane.showMessageDialog(null, "Username for login: " + user.getUsername());
         closeApplication();

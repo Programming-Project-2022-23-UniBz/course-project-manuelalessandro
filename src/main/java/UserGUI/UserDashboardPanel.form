@@ -56,8 +56,8 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="panelGlowingGradient5" min="-2" pref="399" max="-2" attributes="0"/>
-                              <Component id="panelGlowingGradient4" min="-2" pref="399" max="-2" attributes="0"/>
+                              <Component id="bookingsPanelGlowingGradient" min="-2" pref="399" max="-2" attributes="0"/>
+                              <Component id="accountPanelGlowingGradient" min="-2" pref="399" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                   <Component id="titleTxt" min="-2" max="-2" attributes="0"/>
@@ -78,9 +78,9 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="titleTxt" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="panelGlowingGradient5" min="-2" pref="128" max="-2" attributes="0"/>
+                  <Component id="bookingsPanelGlowingGradient" min="-2" pref="128" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="panelGlowingGradient4" min="-2" pref="128" max="-2" attributes="0"/>
+                  <Component id="accountPanelGlowingGradient" min="-2" pref="128" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -104,12 +104,15 @@
         </Component>
         <Component class="DesignObjects.AppControlButtons" name="appControlButtons">
         </Component>
-        <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient4">
+        <Container class="DesignObjects.PanelGlowingGradient" name="accountPanelGlowingGradient">
           <Properties>
             <Property name="backgroundLight" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="accountPanelGlowingGradientMouseClicked"/>
+          </Events>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
             <Property name="useNullLayout" type="boolean" value="true"/>
@@ -131,13 +134,16 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="DesignObjects.PanelGlowingGradient" name="panelGlowingGradient5">
+        <Container class="DesignObjects.PanelGlowingGradient" name="bookingsPanelGlowingGradient">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="backgroundLight" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bookingsPanelGlowingGradientMouseClicked"/>
+          </Events>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
             <Property name="useNullLayout" type="boolean" value="true"/>

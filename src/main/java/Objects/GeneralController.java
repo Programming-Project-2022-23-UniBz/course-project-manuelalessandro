@@ -25,7 +25,8 @@ public class GeneralController {
     // ----------------------------------------------------------------
 
     public static void main(String[] args) throws Exception {
-
+        initUsers();
+        initBookingsTest();
     }
 
     public static Object[] pullData(Class c) {
@@ -99,13 +100,6 @@ public class GeneralController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void increment(Object[] array) {
-        Object[] newArray = new Object[array.length + 1];
-        for (int i = 0; i < array.length; i++)
-            newArray[i] = array[i];
-        array = newArray;
     }
 
     // ----------------------------------------------------------------
@@ -323,18 +317,27 @@ public class GeneralController {
         return result;
     }
 
+    public static Booking[] incrementBookings(Booking[] bookings) {
+        Booking[] newArray = new Booking[bookings.length + 1];
+        for (int i = 0; i < bookings.length; i++)
+            newArray[i] = bookings[i];
+        return newArray;
+    }
+
     public static void addBooking(Booking[] bookings, Booking booking) {
         if (bookings == null) {
             bookings = new Booking[0];
         }
-        increment(bookings);
+        bookings = incrementBookings(bookings);
         bookings[bookings.length - 1] = booking;
-        pushData(Booking.class, bookings);
     }
 
     public static void addBooking(Booking booking) {
         Booking[] bookings = (Booking[]) pullData(Booking.class);
-        increment(bookings);
+        if (bookings == null) {
+            bookings = new Booking[0];
+        }
+        bookings = incrementBookings(bookings);
         bookings[bookings.length - 1] = booking;
         pushData(Booking.class, bookings);
     }
@@ -500,10 +503,17 @@ public class GeneralController {
         pushData(User.class, users);
     }
 
+    public static User[] incrementUsers(User[] users) {
+        User[] newArray = new User[users.length + 1];
+        for (int i = 0; i < users.length; i++)
+            newArray[i] = users[i];
+        return newArray;
+    }
+
     public static void addUser(User[] users, User user) {
         user.setId(User.generateId(users));
 
-        increment(users);
+        users = incrementUsers(users);
         int index = users.length - 1;
         users[index] = user;
     }
@@ -513,7 +523,7 @@ public class GeneralController {
 
         user.setId(User.generateId(users));
 
-        increment(users);
+        users = incrementUsers(users);
         int index = users.length - 1;
         users[index] = user;
 
@@ -545,10 +555,7 @@ public class GeneralController {
 
     public static User searchUser(String username, String password) throws IllegalArgumentException {
         User[] users = (User[]) pullData(User.class);
-        // TODO remove
-        System.out.println("Users length:" + users.length + ", username: " + username + ", password: " + password);
-        // TODO remove
-        System.out.println("\n\nFirst user: " + users[0].getUsername() + ", pass: " + users[0].getPassword());
+
         for (int i = 0; i < users.length; i++)
             if (users[i].getUsername().equals(username) && users[i].getPassword().equals(password))
                 return users[i];
@@ -587,13 +594,13 @@ public class GeneralController {
     // if used, json will be reset and old data lost
     private static void initUsers() {
         User[] users = new User[2];
-        User admin = new User("admin", null, null, null, "admin@email.com", "password", "admin");
+        User admin = new User("admin", null, "admin", null, null, "admin@email.com", "password", "admin");
         admin.setId(User.generateId(users));
 
         users[0] = admin;
         User guestTest = null;
         try {
-            guestTest = new User("GuestName", "GuestSurname", User.dateFormatter.parse("01/01/1990"),
+            guestTest = new User("GuestName", "GuestSurname", "guest", User.dateFormatter.parse("01/01/1990"),
                     GenderType.OTHER, "guest@email.com", "password",
                     "guest");
             guestTest.setId(User.generateId(users));
