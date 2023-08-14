@@ -1,12 +1,17 @@
 package Main;
 
 import Objects.BookingControl;
+import Objects.GitCommandExecutor;
 import Objects.RoomControl;
 import Objects.UserControl;
 import WelcomeGUI.WelcomeFrame;
 
 public class Main {
     public static void main(String[] args) {
+        String remoteName = "origin";
+        String repositoryPath = System.getProperty("user.dir");
+        GitCommandExecutor.pullChanges(repositoryPath, remoteName);
+        
         pullAllData();
 
         WelcomeFrame frame = new WelcomeFrame();
@@ -15,7 +20,11 @@ public class Main {
 
     public static void stopApplication() {
         pushAllData();
-
+        
+        String remoteName = "origin";
+        String repositoryPath = System.getProperty("user.dir");
+        GitCommandExecutor.pushChanges(repositoryPath, remoteName);
+        
         System.exit(0);
     }
 
