@@ -54,6 +54,7 @@ public class User {
     private String username;
     public String repositoryPath = System.getProperty("user.dir");
     public final String remoteName = "origin";
+    public String branchName = "ale2";
     
     public User(String name, String surname, Date dateOfBirth, GenderType gender, String email, String password,
             String role)
@@ -177,7 +178,7 @@ public class User {
 
     public void addReview(String review) {
         try {
-            GitCommandExecutor.pullChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
@@ -195,7 +196,7 @@ public class User {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
-            GitCommandExecutor.pushChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -260,7 +261,7 @@ public class User {
 
         // Add the user data to the UserData.json file
         try {
-            GitCommandExecutor.pullChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read the existing JSON file
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/UserData.json"))
@@ -283,7 +284,7 @@ public class User {
             try (FileWriter writer = new FileWriter("src/main/resources/json/UserData.json")) {
                 gson.toJson(jsonArray, writer);
             }
-            GitCommandExecutor.pushChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException | JsonIOException e) {
             e.printStackTrace();
         }
@@ -292,7 +293,7 @@ public class User {
     // to remove User from users.json and UserData.json
     public void removeFromJson() {
         try {
-            GitCommandExecutor.pullChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             
             // Read the existing JSON file
             JsonParser parser = new JsonParser();
@@ -310,14 +311,14 @@ public class User {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
-            GitCommandExecutor.pushChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException | JsonIOException e) {
             e.printStackTrace();
         }
 
         // Remove the user data from the UserData.json file
         try {
-            GitCommandExecutor.pullChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read the existing JSON file
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/UserData.json"))
@@ -334,7 +335,7 @@ public class User {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
-            GitCommandExecutor.pushChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException | JsonIOException e) {
             e.printStackTrace();
         }
@@ -343,7 +344,7 @@ public class User {
     // to remove the review from reviews.json
     public void removeReview(String review) {
         try {
-            GitCommandExecutor.pullChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
@@ -363,7 +364,7 @@ public class User {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
-            GitCommandExecutor.pushChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -397,7 +398,7 @@ public class User {
 
     public boolean hasReview(String review) {
         try {
-            GitCommandExecutor.pullChanges(repositoryPath, remoteName);
+            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();

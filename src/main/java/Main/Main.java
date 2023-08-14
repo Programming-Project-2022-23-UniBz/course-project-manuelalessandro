@@ -10,7 +10,8 @@ public class Main {
     public static void main(String[] args) {
         String remoteName = "origin";
         String repositoryPath = System.getProperty("user.dir");
-        GitCommandExecutor.pullChanges(repositoryPath, remoteName);
+        String branchName = "ale2";
+        GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
         
         pullAllData();
 
@@ -23,7 +24,8 @@ public class Main {
         
         String remoteName = "origin";
         String repositoryPath = System.getProperty("user.dir");
-        GitCommandExecutor.pushChanges(repositoryPath, remoteName);
+        String branchName = "ale2";
+        GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         
         System.exit(0);
     }

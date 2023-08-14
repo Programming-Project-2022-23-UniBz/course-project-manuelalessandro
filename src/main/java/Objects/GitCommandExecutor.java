@@ -19,14 +19,14 @@ public class GitCommandExecutor {
         pushChanges(repositoryPath, remoteName);
     }*/
 
-    public static void pullChanges(String repositoryPath, String remoteName) {
-        String command = "git pull " + remoteName;
+    public static void pullChanges(String repositoryPath, String remoteName, String branchName) {
+        String command = "git pull " + remoteName + " " + branchName;
 
         executeGitCommand(repositoryPath, command);
     }
 
-    public static void pushChanges(String repositoryPath, String remoteName) {
-        String command = "git push " + remoteName;
+    public static void pushChanges(String repositoryPath, String remoteName, String branchName) {
+        String command = "git push " + remoteName + " " + branchName;
 
         executeGitCommand(repositoryPath, command);
     }
