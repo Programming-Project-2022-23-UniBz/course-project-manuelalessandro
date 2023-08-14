@@ -262,6 +262,8 @@ public class User {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
+            GitCommandExecutor.stageChanges(repositoryPath, ".");
+            GitCommandExecutor.commitChanges(repositoryPath, "changed reviews.json");
             GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException e) {
             e.printStackTrace();
@@ -327,6 +329,8 @@ public class User {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
+            GitCommandExecutor.stageChanges(repositoryPath, ".");
+            GitCommandExecutor.commitChanges(repositoryPath, "removed from reviews.json");
             GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException e) {
             e.printStackTrace();
