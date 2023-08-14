@@ -25,6 +25,18 @@ public class GitCommandExecutor {
         executeGitCommand(repositoryPath, command);
     }
 
+    public static void stageChanges(String repositoryPath, String filePath) {
+        String command = "git add " + filePath;
+
+        executeGitCommand(repositoryPath, command);
+    }
+
+    public static void commitChanges(String repositoryPath, String message) {
+        String command = "git commit -m \"" + message + "\"";
+
+        executeGitCommand(repositoryPath, command);
+    }
+    
     public static void pushChanges(String repositoryPath, String remoteName, String branchName) {
         String command = "git push " + remoteName + " " + branchName;
 
@@ -47,16 +59,38 @@ public class GitCommandExecutor {
             while ((line = bufferedReader.readLine()) != null) {
                 System.out.println(line);
             }
-            
-            int exitCode = process.waitFor(); // Waits for the pull to be completed
 
-            if (exitCode == 0) {
-                System.out.println("Git pull/push successful");
-            } else {
-                System.out.println("Git pull failed with exit code: " + exitCode);
-            }
+            int exitCode = process.waitFor();
+            System.out.println("Process exited with code: " + exitCode);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static boolean executeGitCommandWithStatus(String repositoryPath, String command) {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        processBuilder.directory(new File(repositoryPath));
+        processBuilder.command("cmd", "/c", command);
+
+        try {
+            Process process = processBuilder.start();
+
+            InputStream inputStream = process.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            int exitCode = process.waitFor();
+            System.out.println("Process exited with code: " + exitCode);
+
+            return exitCode == 0;
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

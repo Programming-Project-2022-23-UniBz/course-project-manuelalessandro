@@ -137,7 +137,7 @@ public class ReviewsPanel extends javax.swing.JPanel {
         starsPanel.setBackground(new Color(60, 78, 96)); // Set darker background color
 
         for (int i = 0; i < stars; i++) {
-            JPanel starIcon = createCircularStarIcon(); // Create a colored rectangle
+            JPanel starIcon = createDefaultStarIcon(); // Create a colored rectangle
             starIcon.setPreferredSize(new Dimension(12, 12)); // Set smaller size
             starsPanel.add(starIcon);
         }
@@ -145,17 +145,10 @@ public class ReviewsPanel extends javax.swing.JPanel {
         return starsPanel;
     }
 
-    private JPanel createCircularStarIcon() {
-        JPanel starIcon = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                int diameter = Math.min(getWidth(), getHeight());
-                g.setColor(Color.YELLOW); // Set star color
-                g.fillOval(0, 0, diameter, diameter);
-            }
-        };
-        starIcon.setPreferredSize(new Dimension(10, 10)); // Set size of the circle
+    private JPanel createDefaultStarIcon() {
+        JPanel starIcon = new JPanel();
+        starIcon.setPreferredSize(new Dimension(10, 10)); // Set size of the colored rectangle
+        starIcon.setBackground(Color.YELLOW); // Use a colored rectangle as a placeholder
         return starIcon;
     }
     

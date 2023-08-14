@@ -19,6 +19,8 @@ public class Main {
                 String remoteName = "origin";
                 String repositoryPath = System.getProperty("user.dir");
                 String branchName = "pushpull";
+                GitCommandExecutor.stageChanges(repositoryPath, ".");
+                GitCommandExecutor.commitChanges(repositoryPath, "closure push");
                 GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
 
                 System.exit(0);
