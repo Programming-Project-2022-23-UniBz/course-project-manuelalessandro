@@ -25,6 +25,7 @@ import java.util.Base64;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import Objects.GitCommandExecutor;
 
 ///// PASSWORDS FOR TESTING                                 ///////
 ////  admin = admin123                                      ///////
@@ -50,6 +51,9 @@ public class User {
     private String role;
     private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(";
     private String username;
+    public String repositoryPath = System.getProperty("user.dir");
+    public final String remoteName = "origin";
+    public String branchName = "ale2";
 
     public User(String name, String surname, String username, Date dateOfBirth, GenderType gender, String email,
             String password,
@@ -240,6 +244,7 @@ public class User {
 
     public void addReview(String review) {
         try {
+            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
@@ -257,6 +262,7 @@ public class User {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
+            GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -301,6 +307,7 @@ public class User {
     // to remove the review from reviews.json
     public void removeReview(String review) {
         try {
+            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
@@ -320,6 +327,7 @@ public class User {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
+            GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -353,6 +361,7 @@ public class User {
 
     public boolean hasReview(String review) {
         try {
+            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();

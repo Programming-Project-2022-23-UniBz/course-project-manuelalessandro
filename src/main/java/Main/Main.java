@@ -1,16 +1,27 @@
 package Main;
 
+import Objects.GitCommandExecutor;
 import WelcomeGUI.WelcomeFrame;
 
 public class Main {
-    public static void main(String[] args) {
-        WelcomeFrame frame = new WelcomeFrame();
-        frame.setVisible(true);
-    }
+        public static void main(String[] args) {
+                String remoteName = "origin";
+                String repositoryPath = System.getProperty("user.dir");
+                String branchName = "pushpull";
+                GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
 
-    public static void stopApplication() {
-        System.out.println("\n\n STOPPING \n\n");
-        System.exit(0);
-    }
+                WelcomeFrame frame = new WelcomeFrame();
+                frame.setVisible(true);
+        }
+
+        public static void stopApplication() {
+
+                String remoteName = "origin";
+                String repositoryPath = System.getProperty("user.dir");
+                String branchName = "pushpull";
+                GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
+
+                System.exit(0);
+        }
 
 }
