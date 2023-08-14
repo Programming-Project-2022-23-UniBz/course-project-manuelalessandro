@@ -17,6 +17,7 @@ public class ReviewsPanel extends javax.swing.JPanel {
 
     private JScrollPane ScrollPane1;
     private JPanel contentPanel;
+    String starIconPath = "src/main/resources/icon/star.png";
 
     public ReviewsPanel() {
         initComponents();
@@ -32,23 +33,34 @@ public class ReviewsPanel extends javax.swing.JPanel {
         jScrollPane1 = new JScrollPane(contentPanel);
         jScrollPane1.setPreferredSize(new Dimension(700, 500));
 
-        // Set an empty border with 200 pixels gap at the top
-        int topGap = 50;
-        JPanel topPanel = new JPanel();
-        topPanel.setPreferredSize(new Dimension(1, topGap));
-        JLabel Title = new JLabel("Costumer Reviews");
-        Title.setFont(new java.awt.Font("Perpetua Titling MT", 2, 25));
-        topPanel.add(Title);
-        JLabel blank = new JLabel("                                                                         ");
-        topPanel.add(blank);
+        // Set up the header panel
+        JPanel headerPanel = new JPanel(new BorderLayout());
+        headerPanel.setBackground(new Color(44, 62, 80)); // Set header background color
+
+        JLabel titleLabel = new JLabel("Customer Reviews");
+        titleLabel.setFont(new Font("Perpetua Titling MT", Font.BOLD, 30));
+        titleLabel.setForeground(Color.WHITE); // Set title text color
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        titlePanel.setBackground(new Color(44, 62, 80)); // Set header background color
+        titlePanel.add(titleLabel);
+
+        // Add the app control buttons to the header panel
         appControlButtons1 = new DesignObjects.AppControlButtons();
-        topPanel.add(appControlButtons1);
-        jScrollPane1.setColumnHeaderView(topPanel);
+        appControlButtons1.setBackground(new Color(44, 62, 80)); // Set header background color
+
+        headerPanel.add(titlePanel, BorderLayout.CENTER);
+        headerPanel.add(appControlButtons1, BorderLayout.EAST);
+
+        // Add the header panel to the scroll pane's column header
+        jScrollPane1.setColumnHeaderView(headerPanel);
 
         // Add the scroll pane to the panel
-        this.setLayout(new BorderLayout());
-        this.add(jScrollPane1, BorderLayout.CENTER);
+        setLayout(new BorderLayout());
+        add(jScrollPane1, BorderLayout.CENTER);
     }
+
 
     private void loadReviewsFromJSON() {
         try {
@@ -68,23 +80,41 @@ public class ReviewsPanel extends javax.swing.JPanel {
                 int stars = reviewObj.get("Stars").getAsInt();
                 String userName = reviewObj.get("GuestName").getAsString();
 
-                // Create a panel to hold the review components
+                 // Create a panel to hold the review components
                 JPanel reviewPanel = new JPanel();
                 reviewPanel.setLayout(new BorderLayout());
                 reviewPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                reviewPanel.setBackground(new Color(255, 255, 255)); // Set background color
 
-                // Create components for the review
-                JLabel starsLabel = new JLabel(stars + " stars");
-                JLabel userNameLabel = new JLabel("" + userName);
+                // Create star icons based on the star rating
+                JPanel starsPanel = createStarPanel(stars);
+
+                // Create a label for the user name
+                JLabel userNameLabel = new JLabel(userName);
+                userNameLabel.setForeground(Color.WHITE); // Set font color
+                userNameLabel.setFont(new Font("Arial", Font.BOLD, 14));
+
+                // Create a sub-panel to hold user name and star rating
+                JPanel userInfoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+                userInfoPanel.setBackground(new Color(60, 78, 96)); // Set darker background color
+                userInfoPanel.add(userNameLabel);
+                userInfoPanel.add(starsPanel);
+
+                // Create a text bubble for the review text
                 JTextArea reviewTextArea = new JTextArea(reviewText);
                 reviewTextArea.setEditable(false);
                 reviewTextArea.setLineWrap(true);
                 reviewTextArea.setWrapStyleWord(true);
+                reviewTextArea.setBackground(new Color(235, 235, 235)); // Set bubble color
+                reviewTextArea.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
-                // Add the components to the review panel
-                reviewPanel.add(starsLabel, BorderLayout.NORTH);
-                reviewPanel.add(userNameLabel, BorderLayout.WEST);
-                reviewPanel.add(reviewTextArea, BorderLayout.CENTER);
+                // Add the user info panel above the review text
+                JPanel userReviewPanel = new JPanel(new BorderLayout());
+                userReviewPanel.add(userInfoPanel, BorderLayout.NORTH);
+                userReviewPanel.add(reviewTextArea, BorderLayout.CENTER);
+
+                // Add the user review panel to the main review panel
+                reviewPanel.add(userReviewPanel, BorderLayout.CENTER);
 
                 // Add some spacing between reviews
                 reviewPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -100,6 +130,35 @@ public class ReviewsPanel extends javax.swing.JPanel {
         }
     }
 
+
+
+    private JPanel createStarPanel(int stars) {
+        JPanel starsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 2, 0)); // Adjust horizontal gap
+        starsPanel.setBackground(new Color(60, 78, 96)); // Set darker background color
+
+        for (int i = 0; i < stars; i++) {
+            JPanel starIcon = createCircularStarIcon(); // Create a colored rectangle
+            starIcon.setPreferredSize(new Dimension(12, 12)); // Set smaller size
+            starsPanel.add(starIcon);
+        }
+
+        return starsPanel;
+    }
+
+    private JPanel createCircularStarIcon() {
+        JPanel starIcon = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                int diameter = Math.min(getWidth(), getHeight());
+                g.setColor(Color.YELLOW); // Set star color
+                g.fillOval(0, 0, diameter, diameter);
+            }
+        };
+        starIcon.setPreferredSize(new Dimension(10, 10)); // Set size of the circle
+        return starIcon;
+    }
+    
     public void setLightTheme(Color[] colors) {
         // Background
         reviewsPanel.setBackground(colors[1]);

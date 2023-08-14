@@ -51,7 +51,7 @@ public class GitCommandExecutor {
             int exitCode = process.waitFor(); // Waits for the pull to be completed
 
             if (exitCode == 0) {
-                System.out.println("Git pull successful");
+                System.out.println("Git pull/push successful");
             } else {
                 System.out.println("Git pull failed with exit code: " + exitCode);
             }

@@ -53,7 +53,7 @@ public class User {
     private String username;
     public String repositoryPath = System.getProperty("user.dir");
     public final String remoteName = "origin";
-    public String branchName = "ale2";
+    public String branchName = "pushpull";
 
     public User(String name, String surname, String username, Date dateOfBirth, GenderType gender, String email,
             String password,
