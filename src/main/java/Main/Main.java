@@ -8,7 +8,7 @@ public class Main {
                 String remoteName = "origin";
                 String repositoryPath = System.getProperty("user.dir");
                 String branchName = "pushpull";
-                GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
+                // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
 
                 WelcomeFrame frame = new WelcomeFrame();
                 frame.setVisible(true);
@@ -19,9 +19,9 @@ public class Main {
                 String remoteName = "origin";
                 String repositoryPath = System.getProperty("user.dir");
                 String branchName = "pushpull";
-                GitCommandExecutor.stageChanges(repositoryPath, ".");
-                GitCommandExecutor.commitChanges(repositoryPath, "closure push");
-                GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
+                // GitCommandExecutor.stageChanges(repositoryPath, ".");
+                // GitCommandExecutor.commitChanges(repositoryPath, "closure push");
+                // GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
 
                 System.exit(0);
         }
