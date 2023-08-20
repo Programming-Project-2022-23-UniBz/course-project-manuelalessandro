@@ -272,9 +272,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JPasswordField" name="passField1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="test"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="usernameLabel">
               <Properties>
@@ -325,9 +322,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JPasswordField" name="passField2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="test"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="registerButton">
               <Properties>

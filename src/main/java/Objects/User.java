@@ -1,31 +1,34 @@
 package Objects;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Random;
-
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import Objects.GitCommandExecutor;
+import javax.crypto.spec.SecretKeySpec;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 ///// PASSWORDS FOR TESTING                                 ///////
 ////  admin = admin123                                      ///////
@@ -386,29 +389,99 @@ public class User {
 
     // Valid entries checkers
 
-    public static boolean emailValid(String mail) {
-        // TODO
-        return true;
+    public static boolean emailValid(String email) throws Exception {
+        if (email == null)
+            return false;
+
+        User[] users = (User[]) GeneralController.pullData(User.class);
+        for (User user : users)
+            if (user.getEmail() != null && user.getEmail().equals(email))
+                throw new Exception("Email is already registered to an account");
+
+        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        return Pattern.compile(emailRegex)
+                .matcher(email)
+                .matches();
     }
 
-    public static boolean passwordValid(String pass1, String pass2) {
-        // TODO
-        return true;
+    public static boolean passwordValid(String pass1, String pass2) throws Exception {
+        if (pass1 == null || pass2 == null)
+            return false;
+
+        // Password must contain at least one digit [0-9].
+        // Password must contain at least one lowercase Latin character [a-z].
+        // Password must contain at least one uppercase Latin character [A-Z].
+        // Password must contain at least one special character like ! @ # & ( ).
+        // Password must contain a length of at least 8 characters and a maximum of 20
+        // characters.
+
+        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()\u2013[{}]:;',?/*~$^+=<>]).{8,20}$";
+
+        // Check if pass1 and pass2 are equal
+        if (!pass1.equals(pass2))
+            throw new Exception("Passwords are not equal");
+
+        // Check if the input matches the pattern
+        return Pattern.compile(pattern)
+                .matcher(pass1)
+                .matches();
+    }
+
+    public static String getPasswordRequirements() {
+        return "1.\tPassword must contain at least one digit [0-9].\r\n" + //
+                "2.\tPassword must contain at least one lowercase Latin character [a-z].\r\n" + //
+                "3.\tPassword must contain at least one uppercase Latin character [A-Z].\r\n" + //
+                "4.\tPassword must contain at least one special character like ! @ # & ( ).\r\n" + //
+                "5.\tPassword must contain a length of at least 8 characters and a maximum of 20 characters. ";
     }
 
     public static boolean nameValid(String name, String surname) {
-        // TODO
+        String regex = "^[A-Z][a-zA-Z]*$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher1 = pattern.matcher(name);
+        Matcher matcher2 = pattern.matcher(surname);
+        return matcher1.matches() && matcher2.matches();
+    }
+
+    public static boolean birthDateValid(Date birthDate) throws Exception {
+        if (birthDate == null)
+            return false;
+        if (isGuestOver100(birthDate))
+            throw new Exception("No user can be over 100 years old.");
+        if (isGuestUnder18(birthDate))
+            throw new Exception("No user can be under 18 years old.");
         return true;
     }
 
-    public static boolean birthDateValid(Date birthDate) {
-        // TODO
+    public static boolean usernameValid(String username) {
+        if (username == null)
+            return false;
+        if (username.length() < 4)
+            return false;
+
+        User[] users = (User[]) GeneralController.pullData(User.class);
+        for (User user : users)
+            if (user.getUsername().equals(username))
+                return false;
         return true;
     }
 
-    public static boolean usernameValid(String username2) {
-        // TODO
-        return true;
+    // Method to check if the guest is under 18 years old
+    private static boolean isGuestUnder18(Date dateOfBirth) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.YEAR, -18); // Subtract 18 years from the current date
+        Date eighteenYearsAgo = calendar.getTime();
+
+        return dateOfBirth.toInstant().isAfter(eighteenYearsAgo.toInstant());
+    }
+
+    // Method to check if the guest is over 100 years old
+    private static boolean isGuestOver100(Date dateOfBirth) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.YEAR, -100); // Subtract 100 years from the current date
+        Date hundredYearsAgo = calendar.getTime();
+
+        return dateOfBirth.toInstant().isBefore(hundredYearsAgo.toInstant());
     }
 
 }

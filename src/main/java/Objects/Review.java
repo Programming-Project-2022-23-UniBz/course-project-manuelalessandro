@@ -21,18 +21,18 @@ import java.io.IOException;
  * @author aless
  */
 public class Review {
-    private User user;
+    private String userId;
     private String review;
     private int stars;
 
-    public Review(User user, String Review, int Stars) {
-        this.user = user;
+    public Review(String userId, String Review, int Stars) {
+        this.userId = userId;
         this.review = Review;
         this.stars = Stars;
     }
 
-    public User getUser() {
-        return this.user;
+    public String getUserId() {
+        return this.userId;
     }
 
     public String getReview() {
@@ -51,7 +51,7 @@ public class Review {
             JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
 
             // Find and remove the review from the array
-            int index = findIndexOfJson(jsonArray, "GuestName", this.user.getName());
+            int index = findIndexOfJson(jsonArray, "GuestName", GeneralController.getUser(userId).getName());
             if (index != -1) {
                 JsonObject reviewObject = jsonArray.get(index).getAsJsonObject();
                 String storedReview = reviewObject.get("Review").getAsString();
@@ -78,7 +78,7 @@ public class Review {
 
             // Create a new review object
             JsonObject reviewObject = new JsonObject();
-            reviewObject.addProperty("GuestName", this.user.getName());
+            reviewObject.addProperty("GuestName", GeneralController.getUser(userId).getName());
             reviewObject.addProperty("Review", review);
 
             // Add the new review to the array

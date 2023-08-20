@@ -72,7 +72,9 @@ public class UserBookingPanel extends javax.swing.JPanel {
                         System.out.println("-- Booking is null");
                 }
 
-                if (checkIn != null && checkOut != null) {
+                if (!(checkIn.after(new Date()))) {
+                        errorLabel.setText("You can book rooms only starting from tomorrow.");
+                } else if (checkIn != null && checkOut != null) {
                         RoomType roomType = (RoomType) roomTypeComboBox.getSelectedItem().get(0);
                         int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
 

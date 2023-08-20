@@ -987,30 +987,29 @@ public class BookingsPanel extends javax.swing.JPanel {
                 // TODO: change all validations to static references reusable
 
                 // Validate name
-                if (!name.matches("[a-zA-Z]+")) {
+                if (!User.nameValid(name, surname)) {
                         JOptionPane.showMessageDialog(this,
-                                        "Please enter a valid name. Only alphabetic characters are allowed.",
-                                        "Invalid Name", JOptionPane.WARNING_MESSAGE);
-                        nameIsValidated = false;
-                }
-
-                // Validate surname
-                if (!surname.matches("[a-zA-Z]+")) {
-                        JOptionPane.showMessageDialog(this,
-                                        "Please enter a valid surname. Only alphabetic characters are allowed.",
-                                        "Invalid Surname", JOptionPane.WARNING_MESSAGE);
+                                        "Please enter a valid name and surname. Only alphabetic characters are allowed.",
+                                        "Invalid Name/Surname", JOptionPane.WARNING_MESSAGE);
                         surnameIsValidated = false;
                 }
 
                 // Validate date of birth
-                if (dateOfBirth == null || !DOBIsValidated || isGuestUnder18(dateOfBirth)
-                                || isGuestOver100(dateOfBirth)) {
+                try {
+                        if (!User.birthDateValid(dateOfBirth)) {
+                                JOptionPane.showMessageDialog(this, "Guest age must be between 18 and 100 years.",
+                                                "Invalid Date of Birth",
+                                                JOptionPane.WARNING_MESSAGE);
+                                DOBIsValidated = false;
+                        } else {
+                                DOBIsValidated = true;
+                        }
+                } catch (Exception e) {
                         JOptionPane.showMessageDialog(this, "Guest age must be between 18 and 100 years.",
                                         "Invalid Date of Birth",
                                         JOptionPane.WARNING_MESSAGE);
                         DOBIsValidated = false;
-                } else {
-                        DOBIsValidated = true;
+                        e.printStackTrace();
                 }
 
                 // Validate gender
@@ -1022,11 +1021,20 @@ public class BookingsPanel extends javax.swing.JPanel {
                 }
 
                 // Validate email
-                if (!isValidEmail(email)) {
+                try {
+                        if (!User.emailValid(email)) {
+                                JOptionPane.showMessageDialog(this, "Please enter a valid email address.",
+                                                "Invalid Email",
+                                                JOptionPane.WARNING_MESSAGE);
+                                customerEmailTxtField.setText(""); // Clear the email text field
+                                emailIsValidated = false;
+                        }
+                } catch (Exception e) {
                         JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Invalid Email",
                                         JOptionPane.WARNING_MESSAGE);
                         customerEmailTxtField.setText(""); // Clear the email text field
                         emailIsValidated = false;
+                        e.printStackTrace();
                 }
 
                 // Create the User object with valid input
@@ -1037,36 +1045,6 @@ public class BookingsPanel extends javax.swing.JPanel {
 
                 User user = new User(name, surname, dateOfBirth, gender, email);
                 return user;
-        }
-
-        // Method to check if the guest is under 18 years old
-        private boolean isGuestUnder18(Date dateOfBirth) {
-                Calendar calendar = Calendar.getInstance();
-                calendar.add(Calendar.YEAR, -18); // Subtract 18 years from the current date
-                Date eighteenYearsAgo = calendar.getTime();
-
-                return dateOfBirth.toInstant().isAfter(eighteenYearsAgo.toInstant());
-        }
-
-        // Method to check if the guest is over 100 years old
-        private boolean isGuestOver100(Date dateOfBirth) {
-                Calendar calendar = Calendar.getInstance();
-                calendar.add(Calendar.YEAR, -100); // Subtract 100 years from the current date
-                Date hundredYearsAgo = calendar.getTime();
-
-                return dateOfBirth.toInstant().isBefore(hundredYearsAgo.toInstant());
-        }
-
-        private boolean isValidEmail(String email) {
-                String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-
-                // Compile the regex pattern
-                Pattern pattern = Pattern.compile(emailRegex);
-
-                // Match the input email against the pattern
-                Matcher matcher = pattern.matcher(email);
-
-                return matcher.matches();
         }
 
         private GenderType getSelectedGender() {
