@@ -66,15 +66,19 @@ public class UserBookingPanel extends javax.swing.JPanel {
                         System.out.println("-- User is null");
                 }
 
-                Booking booking = GeneralController.findBooking(user.getId());
+                Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
+                Booking booking = GeneralController.findBooking(bookings, user.getId());
+
                 if (booking == null) {
                         errorLabel.setText("Your booking was not identified, please restart the application");
                         System.out.println("-- Booking is null");
                 }
 
-                if (!(checkIn.after(new Date()))) {
+                if (checkIn == null || checkOut == null) {
+                        errorLabel.setText("You have to select valid dates!");
+                } else if (!(checkIn.after(new Date()))) {
                         errorLabel.setText("You can book rooms only starting from tomorrow.");
-                } else if (checkIn != null && checkOut != null) {
+                } else {
                         RoomType roomType = (RoomType) roomTypeComboBox.getSelectedItem().get(0);
                         int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
 
@@ -95,10 +99,12 @@ public class UserBookingPanel extends javax.swing.JPanel {
                                                                                                             // 2=cancel
 
                                 // apply changes
-                                if (input == 0) {
+                                if (input == 0 && booking != null) {
                                         booking.setRoomId(room.getId());
                                         booking.setCheckInDate(new DateTime(checkIn));
                                         booking.setCheckOutDate(new DateTime(checkOut));
+
+                                        GeneralController.pushData(Booking.class, bookings);
 
                                         JOptionPane.showMessageDialog(this,
                                                         "The booking was edited successfully!", "",
@@ -113,8 +119,6 @@ public class UserBookingPanel extends javax.swing.JPanel {
 
                         refreshInfos();
 
-                } else {
-                        errorLabel.setText("You have to select valid dates!");
                 }
         }
 
