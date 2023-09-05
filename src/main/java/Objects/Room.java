@@ -92,12 +92,12 @@ public class Room {
         return id == other.id;
     }
 
-    public boolean isOccupied(DateTime checkIn, DateTime checkOut) {
+    public boolean isOccupied(Booking[] bookingsGeneral, DateTime checkIn, DateTime checkOut) {
         boolean result = false;
 
         // get all bookings that have this room
         ArrayList<Booking> bookings = GeneralController
-                .getAllBookings((Booking[]) GeneralController.pullData(Booking.class), this.getId());
+                .getAllBookings(bookingsGeneral, this.getId());
 
         Date checkInDate = checkIn.toDate();
         Date checkOutDate = checkOut.toDate();
@@ -129,9 +129,9 @@ public class Room {
     }
 
     // checks if room is free for today
-    public boolean isOccupied() {
+    public boolean isOccupied(Booking[] bookings) {
         DateTime today = new DateTime();
-        return isOccupied(today, today);
+        return isOccupied(bookings, today, today);
     }
 
     public boolean isRoomAvailable(DateTime checkInDateTime, DateTime checkOutDateTime) {
