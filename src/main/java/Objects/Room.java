@@ -164,7 +164,7 @@ public class Room {
      * @param checkOut
      * @return ArrayList<Date> containing all dates between checkIn and checkOut
      */
-    private static ArrayList<DateTime> generateAllDates(DateTime checkIn, DateTime checkOut) {
+    public static ArrayList<DateTime> generateAllDates(DateTime checkIn, DateTime checkOut) {
         ArrayList<DateTime> result = new ArrayList<>();
         DateTime date = checkIn;
         while (!date.equals(checkOut)) {

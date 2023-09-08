@@ -13,13 +13,7 @@ public class UserTest {
 
     @BeforeEach
     public void setUp() {
-        // Create a sample User object for testing
         Date dateOfBirth = null;
-        try {
-            dateOfBirth = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1990");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         user = new User("John", "Doe", "johndoe", dateOfBirth, User.GenderType.MAN, "johndoe@example.com", "password123", "user");
     }
 
