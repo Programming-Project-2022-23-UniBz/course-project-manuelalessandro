@@ -30,7 +30,6 @@ public class LoginTest {
         // Attempt to log in
         loginFrame.loginUser("johndoe", "password123");
 
-        // Assert that the user is successfully logged in (replace with your actual assertion)
         assertFalse(loginFrame.loginErrorLabel.isVisible());
     }
 
@@ -46,7 +45,6 @@ public class LoginTest {
         // Attempt to log in
         loginFrame.loginUser(username, pass);
 
-        // Assert that an error message is displayed or the user is not logged in (replace with your actual assertion)
         assertTrue(loginFrame.loginErrorLabel.isVisible());
     }
 
@@ -69,7 +67,6 @@ public class LoginTest {
         // Attempt to register
         registrationFrame.registerUser(name, surname, username, birth, email, pass1, pass2);
 
-        // Assert that the registration is successful (replace with your actual assertion)
         assertFalse(registrationFrame.loginErrorLabel.isVisible());
     }
 
@@ -92,7 +89,6 @@ public class LoginTest {
         // Attempt to register
         registrationFrame.registerUser(name, surname, username, birth, email, pass1, pass2);
 
-        // Assert that the registration is successful (replace with your actual assertion)
         assertTrue(registrationFrame.loginErrorLabel.isVisible());
     }
 }
