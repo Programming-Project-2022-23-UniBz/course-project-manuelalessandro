@@ -411,11 +411,7 @@ public class GeneralController {
 
     public static User searchUser(String email) throws IllegalArgumentException {
         User[] users = (User[]) pullData(User.class);
-
-        for (int i = 0; i < users.length; i++)
-            if (users[i].getEmail().equals(email))
-                return users[i];
-        throw new IllegalArgumentException("Email does not exist");
+        return searchUser(users, email);
     }
 
     public static User searchUser(User[] users, String username, String password) throws IllegalArgumentException {
@@ -427,11 +423,7 @@ public class GeneralController {
 
     public static User searchUser(String username, String password) throws IllegalArgumentException {
         User[] users = (User[]) pullData(User.class);
-
-        for (int i = 0; i < users.length; i++)
-            if (users[i].getUsername().equals(username) && users[i].getPassword().equals(password))
-                return users[i];
-        throw new IllegalArgumentException("Username not found");
+        return searchUser(users, username, password);
     }
 
     public static User getUser(User[] users, String id) throws IllegalArgumentException {

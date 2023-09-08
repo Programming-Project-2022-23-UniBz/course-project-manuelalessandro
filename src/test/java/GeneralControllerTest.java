@@ -260,7 +260,7 @@ public class GeneralControllerTest {
         String emailToSearch = "user@example.com"; // Replace with the email to search for
 
         // Search for the user by email
-        User foundUser = GeneralController.searchUserByEmail(users, emailToSearch);
+        User foundUser = GeneralController.searchUser(users, emailToSearch);
 
         // Verify that the correct user is found
         assertNotNull(foundUser);
