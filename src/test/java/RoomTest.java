@@ -1,54 +1,50 @@
 import Objects.Room;
+import Objects.Room.RoomType;
+import org.joda.time.DateTime;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.joda.time.DateTime;
-import org.junit.jupiter.api.Test;
-
 public class RoomTest {
-    /*
-     * @Test
-     * public void testIsOccupied_WithNoBookings_ReturnsFalse() {
-     * // Arrange
-     * Room room = new Room(1, Room.RoomType.STANDARD, 2);
-     * DateTime checkIn = new DateTime(2023, 5, 1, 0, 0);
-     * DateTime checkOut = new DateTime(2023, 5, 3, 0, 0);
-     * 
-     * // Act
-     * boolean occupied = room.isOccupied(checkIn, checkOut);
-     * 
-     * // Assert
-     * assertFalse(occupied);
-     * }
-     * 
-     * @Test
-     * public void testIsOccupied_WithOccupiedDates_ReturnsTrue() {
-     * // TODO
-     * }
-     * 
-     * @Test
-     * public void testIsOccupied_WithPartialOverlap_ReturnsTrue() {
-     * // TODO
-     * }
-     * 
-     * @Test
-     * public void testIsOccupied_WithNoOverlap_ReturnsFalse() {
-     * // TODO
-     * }
-     * 
-     * @Test
-     * public void testIsOccupied_WithNoBookingsForToday() {
-     * // Arrange
-     * Room room = new Room(1, Room.RoomType.STANDARD, 2);
-     * 
-     * // Check availability for today's date
-     * DateTime today = new DateTime();
-     * 
-     * // Act
-     * boolean occupied = room.isOccupied();
-     * 
-     * // Assert
-     * assertFalse(occupied);
-     * }
-     */
+    private Room room;
+
+    @BeforeEach
+    public void setUp() {
+        room = new Room(1, RoomType.STANDARD, 2);
+    }
+
+    @Test
+    public void testRoomInitialization() {
+        assertEquals(1, room.getId());
+        assertEquals(RoomType.STANDARD, room.getType());
+        assertEquals(2, room.getCapacity());
+        assertEquals(150.0, room.getPrice());
+    }
+
+    @Test
+    public void testRoomIsOccupied() {
+        DateTime checkIn = new DateTime(2023, 9, 1, 0, 0);
+        DateTime checkOut = new DateTime(2023, 9, 5, 0, 0);
+
+        assertFalse(room.isOccupied(checkIn, checkOut));
+    }
+
+    @Test
+    public void testRoomIsAvailable() {
+        DateTime checkIn = new DateTime(2023, 9, 1, 0, 0);
+        DateTime checkOut = new DateTime(2023, 9, 5, 0, 0);
+
+        assertTrue(room.isRoomAvailable(checkIn, checkOut));
+    }
+
+    @Test
+    public void testGenerateAllDates() {
+        DateTime checkIn = new DateTime(2023, 9, 1, 0, 0);
+        DateTime checkOut = new DateTime(2023, 9, 5, 0, 0);
+
+        var dates = Room.generateAllDates(checkIn, checkOut);
+
+        assertEquals(5, dates.size());
+    }
 }

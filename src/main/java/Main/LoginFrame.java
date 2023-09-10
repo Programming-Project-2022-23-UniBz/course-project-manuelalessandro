@@ -47,9 +47,9 @@ public class LoginFrame extends javax.swing.JFrame {
 
     }
 
-    public void loginUser() {
-        String username = loginUsernameField.getText();
-        String password = new String(loginPassField.getPassword());
+    public void loginUser(String username, String password) {
+        //String username = loginUsernameField.getText();
+        //String password = new String(loginPassField.getPassword());
 
         try {
             // searching for user that logged in
@@ -71,15 +71,15 @@ public class LoginFrame extends javax.swing.JFrame {
 
     }
 
-    private void registerUser() {
+    public void registerUser(String name, String surname, String username, Date birth, String email, String pass1, String pass2) {
         try {
-            String name = nameField.getText();
+            /*String name = nameField.getText();
             String surname = surnameField.getText();
             String username = usernameField.getText();
             Date birth = birthField.getDate();
             String email = emailField.getText();
             String pass1 = new String(passField1.getPassword());
-            String pass2 = new String(passField2.getPassword());
+            String pass2 = new String(passField2.getPassword());*/
             GenderType gender;
 
             if (genderComboBox.getSelectedItem().equals("Man"))
@@ -550,7 +550,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }// GEN-LAST:event_usernameFieldActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_registerButtonActionPerformed
-        registerUser();
+        registerUser(nameField.getText(), surnameField.getText(), usernameField.getText(), birthField.getDate(), emailField.getText(), passField1.getText(), passField2.getText());
     }// GEN-LAST:event_registerButtonActionPerformed
 
     private void returnToLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_returnToLoginButtonActionPerformed
@@ -561,7 +561,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }// GEN-LAST:event_nameFieldActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginUsernameFieldActionPerformed
-        loginUser();
+        loginUser(this.loginUsernameField.getText(), loginPassField.getText());
     }// GEN-LAST:event_loginUsernameFieldActionPerformed
 
     private void loginUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginUsernameFieldActionPerformed
@@ -626,7 +626,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> genderComboBox;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JButton loginButton;
-    private javax.swing.JLabel loginErrorLabel;
+    public javax.swing.JLabel loginErrorLabel;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPasswordField loginPassField;
     private javax.swing.JButton loginRegisterButton;
