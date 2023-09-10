@@ -1,3 +1,4 @@
+import Objects.Booking;
 import Objects.Room;
 import Objects.Room.RoomType;
 import org.joda.time.DateTime;
@@ -26,8 +27,9 @@ public class RoomTest {
     public void testRoomIsOccupied() {
         DateTime checkIn = new DateTime(2023, 9, 1, 0, 0);
         DateTime checkOut = new DateTime(2023, 9, 5, 0, 0);
+        Booking[] bookings = new Booking[0];
 
-        assertFalse(room.isOccupied(checkIn, checkOut));
+        assertFalse(room.isOccupied(bookings, checkIn, checkOut));
     }
 
     @Test
