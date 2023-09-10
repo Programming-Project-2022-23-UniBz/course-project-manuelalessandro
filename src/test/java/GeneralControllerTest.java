@@ -9,6 +9,8 @@ import Objects.User.GenderType;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.joda.time.DateTime;
@@ -23,21 +25,6 @@ public class GeneralControllerTest {
     @BeforeAll
     public static void setUpBeforeClass() throws Exception {
         GeneralController.initRooms();
-    }
-
-    @AfterAll
-    public static void tearDownAfterClass() throws Exception {
-        // Cleanup after all tests, if needed.
-    }
-
-    @BeforeEach
-    public void setUp() throws Exception {
-        // Setup before each individual test here.
-    }
-
-    @AfterEach
-    public void tearDown() throws Exception {
-        // Cleanup after each individual test, if needed.
     }
 
     private static User[] getSampleUsers() {
@@ -92,6 +79,38 @@ public class GeneralControllerTest {
 
     private static Booking getSampleBooking2() throws Exception {
         return getSampleBookings()[1];
+    }
+
+    @Test
+    public void testPushAndPullData() {
+        String filePath = "src/test/resources/test.json";
+
+        // Create some Test objects
+        String string1 = new String("string 1");
+        String string2 = new String("string 2");
+        String string3 = new String("string 3");
+
+        String[] strings = new String[] { string1, string2, string3 };
+
+        // Push the Test objects
+        GeneralController.pushData(String.class, filePath, strings);
+
+        // Pull the Test objects
+        String[] pulledStrings = (String[]) GeneralController.pullData(String.class, filePath);
+
+        // Verify that pulled objects match the original ones
+        assertEquals(strings[0], pulledStrings[0]);
+        assertEquals(strings[1], pulledStrings[1]);
+        assertEquals(strings[2], pulledStrings[2]);
+
+        // wipe the file content
+        try {
+            FileWriter fileWriter = new FileWriter(filePath);
+            fileWriter.write("");
+            fileWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
     }
 
     @Test
@@ -231,11 +250,12 @@ public class GeneralControllerTest {
         String userIdToRemove = users[0].getId();
 
         // Remove the user by ID
-        users = GeneralController.removeUser(users, userIdToRemove);
+        User[] users_edited = GeneralController.removeUser(users, userIdToRemove);
 
         // Verify that the user no longer exists in the array
-        User userExists = GeneralController.getUser(users, userIdToRemove);
-        assertNull(userExists);
+        assertThrows(IllegalArgumentException.class, () -> {
+            GeneralController.getUser(users_edited, userIdToRemove);
+        });
     }
 
     @Test
@@ -255,9 +275,10 @@ public class GeneralControllerTest {
 
     @Test
     public void testSearchUser() {
+        // ----- BY EMAIL
         // Create test users
-        User[] users = getSampleUsers(); // Replace with your test data
-        String emailToSearch = "user@example.com"; // Replace with the email to search for
+        User[] users = getSampleUsers();
+        String emailToSearch = "u3@test.it";
 
         // Search for the user by email
         User foundUser = GeneralController.searchUser(users, emailToSearch);
@@ -265,32 +286,86 @@ public class GeneralControllerTest {
         // Verify that the correct user is found
         assertNotNull(foundUser);
         assertEquals(emailToSearch, foundUser.getEmail());
+
+        // ----- BY USERNAME / PASSWORD
+        // Create test users
+        String username = "u2";
+        String password = "u2pass";
+
+        // Search for the user by email
+        User foundUserByUserName = GeneralController.searchUser(users, username, password);
+
+        // Verify that the correct user is found
+        assertNotNull(foundUserByUserName);
+        assertEquals(username, foundUserByUserName.getUsername());
+        assertEquals(password, foundUserByUserName.getPassword());
     }
 
     @Test
     public void testGetRoom() {
-        // Create test rooms and retrieve rooms by ID.
-        // Use assertions to verify that the correct room is returned or an exception is
-        // thrown when expected.
+        // Create test rooms
+        Room[] rooms = GeneralController.initRooms();
+
+        // Test getting an existing room by ID
+        Room existingRoom = GeneralController.getRoom(rooms[100].getId());
+        assertNotNull(existingRoom);
+        assertEquals(rooms[100].getId(), existingRoom.getId());
+
+        // Test getting a non-existing room by ID, which should throw an exception
+        assertThrows(IllegalArgumentException.class, () -> {
+            int non_existing_id = 23241; // random number
+            GeneralController.getRoom(non_existing_id);
+        });
     }
 
     @Test
-    public void testGetFreeRoomId() {
-        // Create test rooms and bookings, and find a free room.
-        // Use assertions to verify that a valid room ID is returned or an exception is
-        // thrown when no room is available.
+    public void testGetFreeRoomId() throws Exception {
+        Booking[] bookings = getSampleBookings();
+        DateTime checkIn = new DateTime(2022, 9, 10, 0, 0);
+        DateTime checkOut = new DateTime(2022, 9, 12, 0, 0);
+        RoomType roomType = RoomType.STANDARD;
+        int capacity = 1;
+
+        assertDoesNotThrow(() -> {
+            GeneralController.getFreeRoomId(bookings, roomType, capacity, checkIn, checkOut);
+        });
     }
 
     @Test
-    public void testGetFreeRoom() {
-        // Create test rooms and bookings, and find a free room.
-        // Use assertions to verify that a valid room object is returned or an exception
-        // is thrown when no room is available.
+    public void testGetFreeRoom() throws Exception {
+        Booking[] bookings = getSampleBookings();
+        DateTime checkIn = new DateTime(2022, 9, 10, 0, 0);
+        DateTime checkOut = new DateTime(2022, 9, 12, 0, 0);
+        RoomType roomType = RoomType.STANDARD;
+        int capacity = 1;
+
+        Room freeRoom = null;
+        boolean hasFreeRoom = true;
+        try {
+            freeRoom = GeneralController.getFreeRoom(bookings, roomType, capacity, checkIn, checkOut);
+        } catch (Exception e) {
+            hasFreeRoom = false;
+        }
+        assertTrue(hasFreeRoom);
+        assertEquals(roomType, freeRoom.getType());
+        assertTrue(freeRoom.getCapacity() == capacity);
     }
 
     @Test
-    public void testGetRoomsByTypeCapacity() {
-        // Create test rooms and retrieve rooms by type and capacity.
-        // Use assertions to verify that the returned list contains the expected rooms.
+    public void testGetRoomsByTypeCapacity() throws Exception {
+        Booking[] bookings = getSampleBookings();
+        RoomType roomType = RoomType.STANDARD;
+        int capacity = 1;
+
+        ArrayList<Room> rooms = null;
+        try {
+            rooms = GeneralController.getRoomsByTypeCapacity(bookings, roomType, capacity);
+        } catch (Exception e) {
+        }
+        assertNotNull(rooms);
+        for (Room room : rooms) {
+            assertEquals(roomType, room.getType());
+            assertTrue(room.getCapacity() == capacity);
+        }
     }
 }

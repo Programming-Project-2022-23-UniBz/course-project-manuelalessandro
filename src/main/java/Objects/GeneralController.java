@@ -67,6 +67,8 @@ public class GeneralController {
             array = (Room[]) gson.fromJson(json, Room[].class);
         else if (c.equals(Review.class))
             array = (Review[]) gson.fromJson(json, Review[].class);
+        else if (c.equals(String.class))
+            array = (String[]) gson.fromJson(json, String[].class);
         else
             throw new IllegalArgumentException("Invalid class to pull data from: " + c);
 
@@ -611,7 +613,7 @@ public class GeneralController {
 
     // Used to initialize rooms.json
     // if used, json will be reset and old data lost
-    public static void initRooms() {
+    public static Room[] initRooms() {
         Room[] rooms = new Room[400];
         RoomType type = RoomType.STANDARD;
 
@@ -634,5 +636,6 @@ public class GeneralController {
         }
 
         pushData(Room.class, rooms);
+        return rooms;
     }
 }
