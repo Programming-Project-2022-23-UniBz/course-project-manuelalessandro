@@ -121,7 +121,7 @@ public class Booking {
         }
     }
 
-    private boolean isIdUnique(String bookingId) {
+    public boolean isIdUnique(String bookingId) {
         Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
         if (bookings != null)
             for (Booking booking : bookings) {
