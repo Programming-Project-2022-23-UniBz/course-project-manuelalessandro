@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,32 +15,36 @@ import com.google.gson.Gson;
 
 import Objects.Room.RoomType;
 import Objects.User.GenderType;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GeneralController {
     static Gson gson = new Gson();
+
+    private static String usersPath = "src/main/resources/json/users.json";
+    private static String bookingsPath = "src/main/resources/json/bookings.json";
+    private static String roomsPath = "src/main/resources/json/rooms.json";
+    private static String reviewsPath = "src/main/resources/json/reviews.json";
 
     // ----------------------------------------------------------------
     // -------------------- General part ------------------------------
     // ----------------------------------------------------------------
 
     public static void main(String[] args) throws Exception {
+        // cleanFile(User.class);
+        // cleanFile(Booking.class);
         // initUsers();
         // initBookingsTest();
     }
 
     public static Object[] pullData(Class c) {
-
-        String path = "src/main/resources/json/";
+        String path = "";
         if (c.equals(User.class))
-            path += "users.json";
+            path = usersPath;
         else if (c.equals(Booking.class))
-            path += "bookings.json";
+            path = bookingsPath;
         else if (c.equals(Room.class))
-            path += "rooms.json";
+            path = roomsPath;
         else if (c.equals(Review.class))
-            path += "reviews.json";
+            path = reviewsPath;
         else
             throw new IllegalArgumentException("Invalid class to pull data from: " + c);
 
@@ -77,15 +82,15 @@ public class GeneralController {
 
     public static <T> void pushData(Class<T> c, T[] content) {
 
-        String path = "src/main/resources/json/";
+        String path = "";
         if (c.equals(User.class))
-            path += "users.json";
+            path = usersPath;
         else if (c.equals(Booking.class))
-            path += "bookings.json";
+            path = bookingsPath;
         else if (c.equals(Room.class))
-            path += "rooms.json";
+            path = roomsPath;
         else if (c.equals(Review.class))
-            path += "reviews.json";
+            path = reviewsPath;
         else
             throw new IllegalArgumentException("Invalid class to push data to: " + c);
 
@@ -100,6 +105,28 @@ public class GeneralController {
             writer.flush();
             writer.close();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static <T> void cleanFile(Class<T> c) {
+
+        String path = "";
+        if (c.equals(User.class))
+            path = usersPath;
+        else if (c.equals(Booking.class))
+            path = bookingsPath;
+        else if (c.equals(Room.class))
+            path = roomsPath;
+        else if (c.equals(Review.class))
+            path = reviewsPath;
+
+        try {
+            FileWriter fileWriter = new FileWriter(path);
+            fileWriter.write("");
+            fileWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -342,7 +369,7 @@ public class GeneralController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            throw new Exception("Init bookings failes because room not found.");
+            throw new Exception("Init bookings failed.");
         }
         pushData(Booking.class, bookings);
     }
@@ -405,7 +432,7 @@ public class GeneralController {
     }
 
     public static User searchUser(User[] users, String email) throws IllegalArgumentException {
-        for (int i = 1; i < users.length; i++)
+        for (int i = 0; i < users.length; i++)
             if (users[i].getEmail().equals(email))
                 return users[i];
         throw new IllegalArgumentException("Email does not exist");
