@@ -15,8 +15,10 @@ import Objects.User;
 import Objects.User.GenderType;
 
 /**
- *
- * @author mamu8
+ * This class represents a panel for managing user account information in a GUI
+ * application.
+ * 
+ * @Author: ManuelVillotti
  */
 public class UserAccountPanel extends javax.swing.JPanel {
 
@@ -29,14 +31,29 @@ public class UserAccountPanel extends javax.swing.JPanel {
                 initComponents();
         }
 
+        /**
+         * Sets the current user for the user account panel.
+         * 
+         * @param user The user to set.
+         */
         public void setUser(User user) {
                 this.user = user;
         }
 
+        /**
+         * Sets the app control buttons for the panel.
+         * 
+         * @param frame   The JFrame containing the app controls.
+         * @param xBorder The x-coordinate border for the app controls.
+         */
         public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
                 appControlButtons.setAppControl(frame, appControlButtons.getX() + xBorder, appControlButtons.getY());
         }
 
+        /**
+         * Refreshes the displayed user information on the panel.
+         * If the user is not identified, it displays an error message.
+         */
         public void refreshInfos() {
                 if (user != null) {
                         errorLabel.setText("");
@@ -62,6 +79,10 @@ public class UserAccountPanel extends javax.swing.JPanel {
                 }
         }
 
+        /**
+         * Applies changes made to user account information.
+         * Validates the input fields and updates user information accordingly.
+         */
         private void applyChanges() {
                 try {
                         String name = nameField.getText();
