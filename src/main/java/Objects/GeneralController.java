@@ -25,8 +25,8 @@ public class GeneralController {
     // ----------------------------------------------------------------
 
     public static void main(String[] args) throws Exception {
-        initUsers();
-        initBookingsTest();
+        // initUsers();
+        // initBookingsTest();
     }
 
     public static Object[] pullData(Class c) {
@@ -353,7 +353,7 @@ public class GeneralController {
     // ----------------------------------------------------------------
     // ----------------------------------------------------------------
 
-    public static User[] removeUser(User[] users, String id) {
+    public static User[] removeUser(User[] users, String id) throws IllegalArgumentException {
         User[] newArr = new User[users.length - 1];
         int index = -1;
         for (int i = 0; i < users.length; i++)
@@ -369,13 +369,13 @@ public class GeneralController {
             }
             users = newArr;
         } else {
-            throw new InvalidParameterException("Id does not exist");
+            throw new IllegalArgumentException("Id does not exist");
         }
 
         return users;
     }
 
-    public static void removeUser(String id) {
+    public static void removeUser(String id) throws IllegalArgumentException {
         User[] users = (User[]) pullData(User.class);
         users = removeUser(users, id);
         pushData(User.class, users);
