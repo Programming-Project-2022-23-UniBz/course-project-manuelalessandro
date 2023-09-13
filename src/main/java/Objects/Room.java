@@ -4,8 +4,16 @@ import java.util.Date;
 import java.util.ArrayList;
 import org.joda.time.DateTime;
 
+/**
+ * Represents a room in a hotel with attributes including ID, type, capacity,
+ * and price.
+ * 
+ * @Author ManuelVillotti
+ */
 public class Room {
-
+    /**
+     * Enumerates different types of rooms (STANDARD, DELUXE, KING).
+     */
     public enum RoomType {
         STANDARD, DELUXE, KING
     }
@@ -16,6 +24,14 @@ public class Room {
     private int capacity;
     private double price;
 
+    /**
+     * Constructs a Room object with specified ID, type, and capacity, and sets its
+     * price accordingly.
+     *
+     * @param id       The unique identifier for the room.
+     * @param roomType The type of the room (STANDARD, DELUXE, KING).
+     * @param capacity The maximum number of occupants the room can accommodate.
+     */
     public Room(int id, RoomType roomType, int capacity) {
 
         this.id = id;
@@ -37,11 +53,21 @@ public class Room {
             price = 400;
     }
 
-    // getters and setters
+    // ---- getters and setters
+    /**
+     * Gets the unique identifier of the room.
+     *
+     * @return The room's ID.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets a new identifier for the room.
+     *
+     * @param id The new ID for the room.
+     */
     public void setId(int id) {
         this.id = id;
     }
@@ -92,6 +118,15 @@ public class Room {
         return id == other.id;
     }
 
+    /**
+     * Checks if the room is occupied during the specified date range.
+     *
+     * @param bookingsGeneral An array of Booking objects to check against.
+     * @param checkIn         The check-in date.
+     * @param checkOut        The check-out date.
+     * @return True if the room is occupied during the specified period, false
+     *         otherwise.
+     */
     public boolean isOccupied(Booking[] bookingsGeneral, DateTime checkIn, DateTime checkOut) {
         boolean result = false;
 
@@ -160,9 +195,12 @@ public class Room {
 
     // --------------------Help methods-----------------------------
     /**
-     * @param checkIn
-     * @param checkOut
-     * @return ArrayList<Date> containing all dates between checkIn and checkOut
+     * Generates a list of dates between the specified check-in and check-out dates.
+     *
+     * @param checkIn  The check-in date.
+     * @param checkOut The check-out date.
+     * @return ArrayList<DateTime> containing all dates between checkIn and
+     *         checkOut.
      */
     public static ArrayList<DateTime> generateAllDates(DateTime checkIn, DateTime checkOut) {
         ArrayList<DateTime> result = new ArrayList<>();
