@@ -1,7 +1,6 @@
 
 package UserGUI;
 
-import AdminGUI.*;
 import Objects.Booking;
 import Objects.GeneralController;
 import Objects.User;
@@ -9,15 +8,30 @@ import Objects.User;
 import java.awt.CardLayout;
 import java.awt.event.*;
 
+/**
+ * UserFrame class represents the main GUI frame for the user interface.
+ * It allows users to navigate between different panels (Dashboard, Booking,
+ * Account).
+ * 
+ * @Author ManuelVillotti
+ */
 public class UserFrame extends javax.swing.JFrame {
 
     private CardLayout cardLayout;
     private User user;
 
+    /**
+     * Enumeration defining the available cards (panels) in the UserFrame.
+     */
     public enum Card {
         DASH, BOOKING, ACCOUNT
     };
 
+    /**
+     * Constructs a new UserFrame for a given user.
+     * 
+     * @param user The User object representing the logged-in user.
+     */
     public UserFrame(User user) {
         System.out.println("Login as " + user.getFullName());
         this.user = user;
@@ -63,7 +77,11 @@ public class UserFrame extends javax.swing.JFrame {
 
     }
 
-    // visibility to package
+    /**
+     * Handles the action when a card (panel) is clicked.
+     * 
+     * @param card The card to be displayed.
+     */
     void buttonCardAction(Card card) {
         Booking booking = GeneralController.findBooking(user.getId());
         if (card.equals(Card.BOOKING) && booking == null) {
@@ -80,7 +98,6 @@ public class UserFrame extends javax.swing.JFrame {
         userAccountPanel.refreshInfos();
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -96,7 +113,7 @@ public class UserFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         cardPanel = new javax.swing.JPanel();
@@ -175,83 +192,76 @@ public class UserFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout sideMenuLayout = new javax.swing.GroupLayout(sideMenu);
         sideMenu.setLayout(sideMenuLayout);
         sideMenuLayout.setHorizontalGroup(
-                sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                Short.MAX_VALUE)
-                        .addGroup(sideMenuLayout.createSequentialGroup()
-                                .addGroup(sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(sideMenuLayout.createSequentialGroup()
-                                                .addGap(37, 37, 37)
-                                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 96,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(sideMenuLayout.createSequentialGroup()
-                                                .addGap(23, 23, 23)
-                                                .addGroup(sideMenuLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(bookingLabel,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 92,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(dashLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(accountLabel,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 92,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel5)))
-                                .addContainerGap(34, Short.MAX_VALUE)));
+            sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(sideMenuLayout.createSequentialGroup()
+                .addGroup(sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sideMenuLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sideMenuLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bookingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dashLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(accountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
         sideMenuLayout.setVerticalGroup(
-                sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(sideMenuLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(dashLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bookingLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(accountLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)));
+            sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sideMenuLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(dashLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bookingLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(accountLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(sideMenu, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 450,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(sideMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                        .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+            .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Handles the action when the log out button is clicked.
+     * 
+     * @param evt The ActionEvent triggering this action.
+     */
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logOutBtnActionPerformed
         this.dispose(); // closes the frame
     }// GEN-LAST:event_logOutBtnActionPerformed
 
-    private void logOutBtnActionPerformed() {// GEN-FIRST:event_logOutBtnActionPerformed
-        this.dispose();
-    }// GEN-LAST:event_logOutBtnActionPerformed
-
+    /**
+     * Main method to start the UserFrame GUI.
+     * Only used during developement to easy testing.
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code

@@ -2,10 +2,8 @@ package UserGUI;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 import java.util.Date;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.joda.time.DateTime;
@@ -19,6 +17,8 @@ import Objects.Room.RoomType;
 /**
  * This class represents a panel for creating a booking in a hotel reservation
  * system.
+ * 
+ * @Author: ManuelVillotti
  */
 public class CreateBookingPanel extends javax.swing.JPanel {
         private User user;
