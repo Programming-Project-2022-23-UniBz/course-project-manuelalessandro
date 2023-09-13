@@ -8,14 +8,10 @@ import com.google.gson.JsonObject;
 import java.awt.Color;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
 import java.io.FileReader;
-import java.awt.Color;
 
 public class ReviewsPanel extends javax.swing.JPanel {
 
-    private JScrollPane ScrollPane1;
     private JPanel contentPanel;
     String starIconPath = "src/main/resources/icon/star.png";
 
@@ -61,7 +57,6 @@ public class ReviewsPanel extends javax.swing.JPanel {
         add(jScrollPane1, BorderLayout.CENTER);
     }
 
-
     private void loadReviewsFromJSON() {
         try {
             // Read the JSON file
@@ -80,7 +75,7 @@ public class ReviewsPanel extends javax.swing.JPanel {
                 int stars = reviewObj.get("Stars").getAsInt();
                 String userName = reviewObj.get("GuestName").getAsString();
 
-                 // Create a panel to hold the review components
+                // Create a panel to hold the review components
                 JPanel reviewPanel = new JPanel();
                 reviewPanel.setLayout(new BorderLayout());
                 reviewPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -130,8 +125,6 @@ public class ReviewsPanel extends javax.swing.JPanel {
         }
     }
 
-
-
     private JPanel createStarPanel(int stars) {
         JPanel starsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 2, 0)); // Adjust horizontal gap
         starsPanel.setBackground(new Color(60, 78, 96)); // Set darker background color
@@ -151,7 +144,7 @@ public class ReviewsPanel extends javax.swing.JPanel {
         starIcon.setBackground(Color.YELLOW); // Use a colored rectangle as a placeholder
         return starIcon;
     }
-    
+
     public void setLightTheme(Color[] colors) {
         // Background
         reviewsPanel.setBackground(colors[1]);
@@ -170,11 +163,11 @@ public class ReviewsPanel extends javax.swing.JPanel {
         appControlButtons1.setAppControl(frame, appControlButtons1.getX() + xBorder, appControlButtons1.getY());
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         reviewsPanel = new javax.swing.JPanel();
@@ -191,41 +184,45 @@ public class ReviewsPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout reviewsPanelLayout = new javax.swing.GroupLayout(reviewsPanel);
         reviewsPanel.setLayout(reviewsPanelLayout);
         reviewsPanelLayout.setHorizontalGroup(
-            reviewsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reviewsPanelLayout.createSequentialGroup()
-                .addContainerGap(647, Short.MAX_VALUE)
-                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(reviewsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(reviewsPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
+                reviewsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reviewsPanelLayout.createSequentialGroup()
+                                .addContainerGap(647, Short.MAX_VALUE)
+                                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                        .addGroup(reviewsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(reviewsPanelLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 724,
+                                                Short.MAX_VALUE)
+                                        .addContainerGap())));
         reviewsPanelLayout.setVerticalGroup(
-            reviewsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(reviewsPanelLayout.createSequentialGroup()
-                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 528, Short.MAX_VALUE))
-            .addGroup(reviewsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reviewsPanelLayout.createSequentialGroup()
-                    .addContainerGap(106, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
-        );
+                reviewsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(reviewsPanelLayout.createSequentialGroup()
+                                .addComponent(appControlButtons1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 528, Short.MAX_VALUE))
+                        .addGroup(reviewsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                        reviewsPanelLayout.createSequentialGroup()
+                                                .addContainerGap(106, Short.MAX_VALUE)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap())));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(reviewsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(reviewsPanel, javax.swing.GroupLayout.Alignment.TRAILING,
+                                javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.PREFERRED_SIZE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(reviewsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(reviewsPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)));
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

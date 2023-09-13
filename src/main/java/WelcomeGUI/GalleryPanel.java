@@ -2,12 +2,14 @@ package WelcomeGUI;
 
 import java.awt.Color;
 import java.awt.Image;
-
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 
+/**
+ * GalleryPanel represents a panel displaying a gallery of images with
+ * corresponding radio buttons.
+ * 
+ * @Author ManuelVillotti
+ */
 public class GalleryPanel extends javax.swing.JPanel {
 
     // Instance variables (custom)
@@ -17,6 +19,9 @@ public class GalleryPanel extends javax.swing.JPanel {
             "/gallery/7.jpg", "/gallery/8.jpg", "/gallery/9.jpg", "/gallery/10.jpg" };
     private byte inc = 0;
 
+    /**
+     * Constructs a new GalleryPanel.
+     */
     public GalleryPanel() {
         initComponents();
 
@@ -36,6 +41,11 @@ public class GalleryPanel extends javax.swing.JPanel {
         buttonGroup.add(radioImage10);
     }
 
+    /**
+     * Sets the light theme for the GalleryPanel.
+     * 
+     * @param colors The array of Colors representing the theme.
+     */
     public void setLightTheme(Color[] colors) {
         // Background
         galleryPanel.setBackground(colors[1]);
@@ -45,6 +55,11 @@ public class GalleryPanel extends javax.swing.JPanel {
         btnRight.setForeground(colors[4]);
     }
 
+    /**
+     * Sets the dark theme for the GalleryPanel.
+     * 
+     * @param colors The array of Colors representing the theme.
+     */
     public void setDarkTheme(Color[] colors) {
         // Background
         galleryPanel.setBackground(colors[4]);
@@ -54,10 +69,21 @@ public class GalleryPanel extends javax.swing.JPanel {
         btnRight.setForeground(colors[1]);
     }
 
+    /**
+     * Sets the app control buttons for the GalleryPanel.
+     * 
+     * @param frame   The JFrame to which the app controls are associated.
+     * @param xBorder The x-coordinate border for the app controls.
+     */
     public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
         appControlButtons1.setAppControl(frame, appControlButtons1.getX() + xBorder, appControlButtons1.getY());
     }
 
+    /**
+     * Sets the image and corresponding text label based on the given URL.
+     * 
+     * @param url The URL of the image.
+     */
     private void setImage(String url) {
         if (url.equals(imgNames[0])) {
             radioImage1.setSelected(true);
@@ -96,7 +122,6 @@ public class GalleryPanel extends javax.swing.JPanel {
         imgLable.setIcon(icon);
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated

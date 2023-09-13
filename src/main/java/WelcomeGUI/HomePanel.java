@@ -3,12 +3,26 @@ package WelcomeGUI;
 
 import java.awt.Color;
 
+/**
+ * HomePanel represents a panel displaying home-related information with
+ * corresponding themes.
+ * 
+ * @Author ManuelVillotti
+ */
 public class HomePanel extends javax.swing.JPanel {
 
+        /**
+         * Constructs a new HomePanel.
+         */
         public HomePanel() {
                 initComponents();
         }
 
+        /**
+         * Sets the light theme for the HomePanel.
+         * 
+         * @param colors The array of Colors representing the theme.
+         */
         public void setLightTheme(Color[] colors) {
                 // Background
                 homePanel.setBackground(colors[1]);
@@ -18,6 +32,11 @@ public class HomePanel extends javax.swing.JPanel {
                 titleLabel2.setForeground(colors[0]);
         }
 
+        /**
+         * Sets the dark theme for the HomePanel.
+         * 
+         * @param colors The array of Colors representing the theme.
+         */
         public void setDarkTheme(Color[] colors) {
                 // Background
                 homePanel.setBackground(colors[4]);
@@ -27,11 +46,16 @@ public class HomePanel extends javax.swing.JPanel {
                 titleLabel2.setForeground(colors[1]);
         }
 
+        /**
+         * Sets the app control buttons for the HomePanel.
+         * 
+         * @param frame   The JFrame to which the app controls are associated.
+         * @param xBorder The x-coordinate border for the app controls.
+         */
         public void setAppControlButtons(javax.swing.JFrame frame, int xBorder) {
                 appControlButtons1.setAppControl(frame, appControlButtons1.getX() + xBorder, appControlButtons1.getY());
         }
 
-        @SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
