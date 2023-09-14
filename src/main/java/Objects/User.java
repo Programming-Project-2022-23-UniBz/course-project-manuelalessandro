@@ -245,29 +245,30 @@ public class User {
         return true; // unique
     }
 
-    public void addReview(String review) {
+    public void addReview(String review, int Stars) {
         try {
-            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
+            // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
 
             // Create a new review object
             JsonObject reviewObject = new JsonObject();
-            reviewObject.addProperty("GuestName", getName());
+            reviewObject.addProperty("GuestName", getFullName());
             reviewObject.addProperty("Review", review);
+            reviewObject.addProperty("Stars", Stars);
 
             // Add the new review to the array
             jsonArray.add(reviewObject);
 
             // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("reviews.json")) {
+            try (FileWriter writer = new FileWriter("src/main/resources/json/reviews.json")) {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
-            GitCommandExecutor.stageChanges(repositoryPath, ".");
-            GitCommandExecutor.commitChanges(repositoryPath, "changed reviews.json");
-            GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
+            // GitCommandExecutor.stageChanges(repositoryPath, ".");
+            // GitCommandExecutor.commitChanges(repositoryPath, "changed reviews.json");
+            // GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -312,13 +313,13 @@ public class User {
     // to remove the review from reviews.json
     public void removeReview(String review) {
         try {
-            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
+            //GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
 
             // Find and remove the review from the array
-            int index = findIndexOfJson(jsonArray, "GuestName", getName());
+            int index = findIndexOfJson(jsonArray, "GuestName", getFullName());
             if (index != -1) {
                 JsonObject reviewObject = jsonArray.get(index).getAsJsonObject();
                 String storedReview = reviewObject.get("Review").getAsString();
@@ -328,13 +329,13 @@ public class User {
             }
 
             // Write the updated array back to the JSON file
-            try (FileWriter writer = new FileWriter("reviews.json")) {
+            try (FileWriter writer = new FileWriter("src/main/resources/json/reviews.json")) {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
-            GitCommandExecutor.stageChanges(repositoryPath, ".");
-            GitCommandExecutor.commitChanges(repositoryPath, "removed from reviews.json");
-            GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
+            //GitCommandExecutor.stageChanges(repositoryPath, ".");
+            //GitCommandExecutor.commitChanges(repositoryPath, "removed from reviews.json");
+            //GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -368,13 +369,13 @@ public class User {
 
     public boolean hasReview(String review) {
         try {
-            GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
+            //GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
-            JsonArray jsonArray = parser.parse(new FileReader("reviews.json")).getAsJsonArray();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
 
             // Check if the user has the specified review
-            int index = findIndexOfJson(jsonArray, "GuestName", getName());
+            int index = findIndexOfJson(jsonArray, "GuestName", getFullName());
             if (index != -1) {
                 JsonObject reviewObject = jsonArray.get(index).getAsJsonObject();
                 String storedReview = reviewObject.get("Review").getAsString();
@@ -467,7 +468,7 @@ public class User {
     }
 
     // Method to check if the guest is under 18 years old
-    private static boolean isGuestUnder18(Date dateOfBirth) {
+    public static boolean isGuestUnder18(Date dateOfBirth) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.YEAR, -18); // Subtract 18 years from the current date
         Date eighteenYearsAgo = calendar.getTime();
@@ -476,7 +477,7 @@ public class User {
     }
 
     // Method to check if the guest is over 100 years old
-    private static boolean isGuestOver100(Date dateOfBirth) {
+    public static boolean isGuestOver100(Date dateOfBirth) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.YEAR, -100); // Subtract 100 years from the current date
         Date hundredYearsAgo = calendar.getTime();
