@@ -41,129 +41,124 @@ public class UserDashboardPanel extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+        // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-                bookingPanel = new javax.swing.JPanel();
-                titleTxt = new javax.swing.JLabel();
-                appControlButtons = new DesignObjects.AppControlButtons();
-                accountPanelGlowingGradient = new DesignObjects.PanelGlowingGradient();
-                jLabel5 = new javax.swing.JLabel();
-                bookingsPanelGlowingGradient = new DesignObjects.PanelGlowingGradient();
-                jLabel4 = new javax.swing.JLabel();
+        bookingPanel = new javax.swing.JPanel();
+        titleTxt = new javax.swing.JLabel();
+        appControlButtons = new DesignObjects.AppControlButtons();
+        accountPanelGlowingGradient = new DesignObjects.PanelGlowingGradient();
+        jLabel5 = new javax.swing.JLabel();
+        bookingsPanelGlowingGradient = new DesignObjects.PanelGlowingGradient();
+        jLabel4 = new javax.swing.JLabel();
+        reviewPanelGlowingGradient = new DesignObjects.PanelGlowingGradient();
+        jLabel6 = new javax.swing.JLabel();
 
-                setMaximumSize(new java.awt.Dimension(3231311, 123131));
+        setMaximumSize(new java.awt.Dimension(3231311, 123131));
 
-                bookingPanel.setBackground(new java.awt.Color(255, 255, 255));
-                bookingPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
-                bookingPanel.setMinimumSize(new java.awt.Dimension(0, 0));
+        bookingPanel.setBackground(new java.awt.Color(255, 255, 255));
+        bookingPanel.setMaximumSize(new java.awt.Dimension(3231311, 123131));
+        bookingPanel.setMinimumSize(new java.awt.Dimension(0, 0));
 
-                titleTxt.setBackground(new java.awt.Color(255, 255, 255));
-                titleTxt.setFont(new java.awt.Font("Yu Gothic UI", 1, 25)); // NOI18N
-                titleTxt.setForeground(new java.awt.Color(102, 153, 255));
-                titleTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                titleTxt.setText("Dashboard");
+        titleTxt.setBackground(new java.awt.Color(255, 255, 255));
+        titleTxt.setFont(new java.awt.Font("Yu Gothic UI", 1, 25)); // NOI18N
+        titleTxt.setForeground(new java.awt.Color(102, 153, 255));
+        titleTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleTxt.setText("Dashboard");
 
-                accountPanelGlowingGradient.setBackgroundLight(new java.awt.Color(255, 255, 255));
-                accountPanelGlowingGradient.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                accountPanelGlowingGradientMouseClicked(evt);
-                        }
-                });
+        accountPanelGlowingGradient.setBackgroundLight(new java.awt.Color(255, 255, 255));
+        accountPanelGlowingGradient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                accountPanelGlowingGradientMouseClicked(evt);
+            }
+        });
 
-                jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
-                jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                jLabel5.setText("Edit your account");
-                accountPanelGlowingGradient.add(jLabel5);
-                jLabel5.setBounds(50, 40, 300, 50);
+        jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Edit your account");
+        accountPanelGlowingGradient.add(jLabel5);
+        jLabel5.setBounds(50, 20, 300, 50);
 
-                bookingsPanelGlowingGradient.setToolTipText("");
-                bookingsPanelGlowingGradient.setBackgroundLight(new java.awt.Color(255, 255, 255));
-                bookingsPanelGlowingGradient.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                bookingsPanelGlowingGradientMouseClicked(evt);
-                        }
-                });
+        bookingsPanelGlowingGradient.setToolTipText("");
+        bookingsPanelGlowingGradient.setBackgroundLight(new java.awt.Color(255, 255, 255));
+        bookingsPanelGlowingGradient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bookingsPanelGlowingGradientMouseClicked(evt);
+            }
+        });
 
-                jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
-                jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                jLabel4.setText("View your bookings");
-                bookingsPanelGlowingGradient.add(jLabel4);
-                jLabel4.setBounds(50, 40, 300, 50);
+        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("View your bookings");
+        bookingsPanelGlowingGradient.add(jLabel4);
+        jLabel4.setBounds(50, 20, 300, 50);
 
-                javax.swing.GroupLayout bookingPanelLayout = new javax.swing.GroupLayout(bookingPanel);
-                bookingPanel.setLayout(bookingPanelLayout);
-                bookingPanelLayout.setHorizontalGroup(
-                                bookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(bookingPanelLayout.createSequentialGroup()
-                                                                .addGap(26, 26, 26)
-                                                                .addGroup(bookingPanelLayout
-                                                                                .createParallelGroup(
-                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(bookingPanelLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                                                                .addComponent(appControlButtons,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                74,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addGroup(bookingPanelLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGroup(bookingPanelLayout
-                                                                                                                .createParallelGroup(
-                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                .addComponent(bookingsPanelGlowingGradient,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                399,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                .addComponent(accountPanelGlowingGradient,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                399,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                .addGroup(bookingPanelLayout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addGap(19, 19, 19)
-                                                                                                                                .addComponent(titleTxt)))
-                                                                                                .addGap(0, 31, Short.MAX_VALUE)))
-                                                                .addContainerGap()));
-                bookingPanelLayout.setVerticalGroup(
-                                bookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(bookingPanelLayout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addComponent(appControlButtons,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                Short.MAX_VALUE)
-                                                                .addComponent(titleTxt)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(bookingsPanelGlowingGradient,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                128,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(accountPanelGlowingGradient,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                128,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(23, 23, 23)));
+        reviewPanelGlowingGradient.setBackgroundLight(new java.awt.Color(255, 255, 255));
+        reviewPanelGlowingGradient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reviewPanelGlowingGradientMouseClicked(evt);
+            }
+        });
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-                this.setLayout(layout);
-                layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(bookingPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-                layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(bookingPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-        }// </editor-fold>//GEN-END:initComponents
+        jLabel6.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("View your review");
+        reviewPanelGlowingGradient.add(jLabel6);
+        jLabel6.setBounds(50, 20, 300, 50);
+
+        javax.swing.GroupLayout bookingPanelLayout = new javax.swing.GroupLayout(bookingPanel);
+        bookingPanel.setLayout(bookingPanelLayout);
+        bookingPanelLayout.setHorizontalGroup(
+            bookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bookingPanelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(bookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bookingPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(appControlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bookingPanelLayout.createSequentialGroup()
+                        .addGroup(bookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bookingsPanelGlowingGradient, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(reviewPanelGlowingGradient, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(accountPanelGlowingGradient, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(bookingPanelLayout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(titleTxt)))
+                        .addGap(0, 31, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        bookingPanelLayout.setVerticalGroup(
+            bookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bookingPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(appControlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titleTxt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bookingsPanelGlowingGradient, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(accountPanelGlowingGradient, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reviewPanelGlowingGradient, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bookingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bookingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+        private void reviewPanelGlowingGradientMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_reviewPanelGlowingGradientMouseClicked
+                frame.buttonCardAction(Card.REVIEW);
+        }// GEN-LAST:event_reviewPanelGlowingGradientMouseClicked
 
         private void bookingsPanelGlowingGradientMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_bookingsPanelGlowingGradientMouseClicked
                 frame.buttonCardAction(Card.BOOKING);
@@ -173,13 +168,15 @@ public class UserDashboardPanel extends javax.swing.JPanel {
                 frame.buttonCardAction(Card.ACCOUNT);
         }// GEN-LAST:event_accountPanelGlowingGradientMouseClicked
 
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private DesignObjects.PanelGlowingGradient accountPanelGlowingGradient;
-        private DesignObjects.AppControlButtons appControlButtons;
-        private javax.swing.JPanel bookingPanel;
-        private DesignObjects.PanelGlowingGradient bookingsPanelGlowingGradient;
-        private javax.swing.JLabel jLabel4;
-        private javax.swing.JLabel jLabel5;
-        private javax.swing.JLabel titleTxt;
-        // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private DesignObjects.PanelGlowingGradient accountPanelGlowingGradient;
+    private DesignObjects.AppControlButtons appControlButtons;
+    private javax.swing.JPanel bookingPanel;
+    private DesignObjects.PanelGlowingGradient bookingsPanelGlowingGradient;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private DesignObjects.PanelGlowingGradient reviewPanelGlowingGradient;
+    private javax.swing.JLabel titleTxt;
+    // End of variables declaration//GEN-END:variables
 }

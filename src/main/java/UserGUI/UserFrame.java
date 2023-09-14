@@ -24,7 +24,7 @@ public class UserFrame extends javax.swing.JFrame {
      * Enumeration defining the available cards (panels) in the UserFrame.
      */
     public enum Card {
-        DASH, BOOKING, ACCOUNT
+        DASH, BOOKING, ACCOUNT, REVIEW
     };
 
     /**
@@ -60,21 +60,30 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
 
+        reviewLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                buttonCardAction(Card.REVIEW);
+            }
+        });
+
         // App control settings
         userBookingPanel.setAppControlButtons(this, sideMenu.getWidth());
         userAccountPanel.setAppControlButtons(this, sideMenu.getWidth());
         userDashboardPanel.setAppControlButtons(this, sideMenu.getWidth());
         createBookingPanel.setAppControlButtons(this, sideMenu.getWidth());
+        userReviewPanel.setAppControlButtons(this, sideMenu.getWidth());
 
         // set user in panels
         createBookingPanel.setUser(user);
         userBookingPanel.setUser(user);
         userAccountPanel.setUser(user);
+        userReviewPanel.setUser(user);
 
         // refresh user infos
         userBookingPanel.refreshInfos();
         userAccountPanel.refreshInfos();
-
+        userReviewPanel.refreshInfos();
     }
 
     /**
@@ -91,6 +100,8 @@ public class UserFrame extends javax.swing.JFrame {
             cardLayout.show(cardPanel, "booking");
         else if (card.equals(Card.ACCOUNT))
             cardLayout.show(cardPanel, "account");
+        else if (card.equals(Card.REVIEW))
+            cardLayout.show(cardPanel, "review");
         else
             cardLayout.show(cardPanel, "dash");
 
@@ -98,6 +109,7 @@ public class UserFrame extends javax.swing.JFrame {
         userAccountPanel.refreshInfos();
     }
 
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -121,6 +133,7 @@ public class UserFrame extends javax.swing.JFrame {
         userBookingPanel = new UserGUI.UserBookingPanel();
         userAccountPanel = new UserGUI.UserAccountPanel();
         createBookingPanel = new UserGUI.CreateBookingPanel();
+        userReviewPanel = new UserGUI.UserReviewPanel();
         sideMenu = new javax.swing.JPanel();
         dashLabel = new javax.swing.JLabel();
         bookingLabel = new javax.swing.JLabel();
@@ -129,6 +142,7 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        reviewLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(617, 352));
@@ -142,6 +156,7 @@ public class UserFrame extends javax.swing.JFrame {
         cardPanel.add(userBookingPanel, "booking");
         cardPanel.add(userAccountPanel, "account");
         cardPanel.add(createBookingPanel, "create");
+        cardPanel.add(userReviewPanel, "review");
 
         sideMenu.setBackground(new java.awt.Color(51, 153, 255));
         sideMenu.setMaximumSize(new java.awt.Dimension(167, 352));
@@ -189,6 +204,11 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Hotel");
 
+        reviewLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        reviewLabel.setForeground(new java.awt.Color(255, 255, 255));
+        reviewLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        reviewLabel.setText("Review");
+
         javax.swing.GroupLayout sideMenuLayout = new javax.swing.GroupLayout(sideMenu);
         sideMenu.setLayout(sideMenuLayout);
         sideMenuLayout.setHorizontalGroup(
@@ -205,7 +225,8 @@ public class UserFrame extends javax.swing.JFrame {
                             .addComponent(bookingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dashLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(accountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(reviewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)))
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -225,6 +246,8 @@ public class UserFrame extends javax.swing.JFrame {
                 .addComponent(accountLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reviewLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -242,7 +265,7 @@ public class UserFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+            .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
             .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -313,9 +336,11 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton logOutBtn;
+    private javax.swing.JLabel reviewLabel;
     private javax.swing.JPanel sideMenu;
     private UserGUI.UserAccountPanel userAccountPanel;
     private UserGUI.UserBookingPanel userBookingPanel;
     private UserGUI.UserDashboardPanel userDashboardPanel;
+    private UserGUI.UserReviewPanel userReviewPanel;
     // End of variables declaration//GEN-END:variables
 }
