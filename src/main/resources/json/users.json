@@ -1,1 +1,3 @@
+
 [{"id":"UID_20230813_7132","name":"admin","email":"admin@email.com","password":"password","role":"admin","username":"admin"},{"id":"UID_20230813_7588","name":"GuestName","surname":"GuestSurname","dateOfBirth":"1990-01-01T00:00:00Z","gender":"OTHER","email":"guest@email.com","password":"password","role":"guest","username":"guest"}]
+

@@ -347,6 +347,7 @@ public class GeneralControllerTest {
             hasFreeRoom = false;
         }
         assertTrue(hasFreeRoom);
+        assertNotNull(freeRoom);
         assertEquals(roomType, freeRoom.getType());
         assertTrue(freeRoom.getCapacity() == capacity);
     }

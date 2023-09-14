@@ -12,8 +12,6 @@ import javax.swing.table.DefaultTableModel;
 import org.joda.time.DateTime;
 
 import java.util.Calendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import Objects.User.GenderType;
 import java.util.Date;
 import Objects.Booking;
@@ -41,8 +39,11 @@ public class BookingsPanel extends javax.swing.JPanel {
          */
         public BookingsPanel() {
                 initComponents();
-                initBookingTable();
-
+                try {
+                        initBookingTable();
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
         }
 
         public BookingsPanel(Room selectedRoom, Date checkIn, Date checkOut) {
@@ -903,13 +904,19 @@ public class BookingsPanel extends javax.swing.JPanel {
                         model.setRowCount(0); // Clear existing rows
 
                         for (Booking booking : bookings) {
-                                User bookingUser = GeneralController.getUser(booking.getUserId());
                                 Object rowData[] = new Object[6];
-                                rowData[0] = booking.getId();
-                                if (bookingUser != null)
+                                User bookingUser;
+                                try {
+                                        bookingUser = GeneralController.getUser(booking.getUserId());
                                         rowData[1] = bookingUser.getFullName();
-                                else
-                                        rowData[1] = "null";
+                                } catch (Exception e) {
+                                        rowData[1] = "No user assigned";
+                                }
+                                try {
+                                        rowData[0] = booking.getId();
+                                } catch (Exception e) {
+                                        rowData[0] = "Id not found";
+                                }
                                 rowData[2] = booking.getRoomId();
                                 rowData[3] = booking.getCheckInDate();
                                 rowData[4] = booking.getCheckOutDate();

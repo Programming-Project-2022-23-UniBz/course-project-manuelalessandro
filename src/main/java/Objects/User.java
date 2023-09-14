@@ -341,19 +341,6 @@ public class User {
         }
     }
 
-    private int findIndexOfJson(JsonArray jsonArray, String key, int value) {
-        int index = -1;
-        for (int i = 0; i < jsonArray.size(); i++) {
-            JsonObject jsonObject = jsonArray.get(i).getAsJsonObject();
-            JsonElement jsonElement = jsonObject.get(key);
-            if (jsonElement != null && jsonElement.getAsInt() == value) {
-                index = i;
-                break;
-            }
-        }
-        return index;
-    }
-
     private int findIndexOfJson(JsonArray jsonArray, String key, String value) {
         int index = -1;
         for (int i = 0; i < jsonArray.size(); i++) {

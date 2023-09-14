@@ -14,7 +14,7 @@ public class AdminFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);// center position of JFrame
         setResizable(false);
-        
+
         // Buttons settings
         cardLayout = (CardLayout) cardPanel.getLayout();
         initMouseActionListener();
@@ -28,10 +28,11 @@ public class AdminFrame extends javax.swing.JFrame {
         bookingsPanel.setAppControlButtons(this, sideMenu.getWidth());
         reportPanel.setAppControlButtons(this, sideMenu.getWidth());
     }
-    
+
     public CardLayout getCardLayout() {
         return this.cardLayout;
     }
+
     public JPanel getCardPanel() {
         return this.cardPanel;
     }
@@ -56,6 +57,12 @@ public class AdminFrame extends javax.swing.JFrame {
                 cardLayout.show(cardPanel, "bookings");
             }
         });
+        reportsButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cardLayout.show(cardPanel, "chart");
+            }
+        });
     }
 
     // Method for setting card frok the dashboardPanel
@@ -67,7 +74,9 @@ public class AdminFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         sideMenu = new javax.swing.JPanel();
@@ -78,6 +87,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        reportsButton = new javax.swing.JLabel();
         cardPanel = new javax.swing.JPanel();
         dashboardPanel = new AdminGUI.DashboardPanel();
         roomsPanel = new AdminGUI.RoomsPanel();
@@ -136,48 +146,78 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Hotel");
 
+        reportsButton.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        reportsButton.setForeground(new java.awt.Color(255, 255, 255));
+        reportsButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        reportsButton.setText("Report");
+        reportsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout sideMenuLayout = new javax.swing.GroupLayout(sideMenu);
         sideMenu.setLayout(sideMenuLayout);
         sideMenuLayout.setHorizontalGroup(
-            sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(sideMenuLayout.createSequentialGroup()
-                .addGroup(sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(sideMenuLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(sideMenuLayout.createSequentialGroup()
+                sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                Short.MAX_VALUE)
+                        .addGroup(sideMenuLayout.createSequentialGroup()
                                 .addGroup(sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(roomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bookingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dashButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(2, 2, 2))))
-                    .addGroup(sideMenuLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel5)))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
+                                        .addGroup(sideMenuLayout.createSequentialGroup()
+                                                .addGap(27, 27, 27)
+                                                .addGroup(sideMenuLayout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(sideMenuLayout.createSequentialGroup()
+                                                                .addGroup(sideMenuLayout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(roomsButton,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                97,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(bookingsButton,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                92,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(dashButton,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                104,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(logOutBtn,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                90,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(reportsButton,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                92,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(2, 2, 2))))
+                                        .addGroup(sideMenuLayout.createSequentialGroup()
+                                                .addGap(56, 56, 56)
+                                                .addComponent(jLabel5)))
+                                .addContainerGap(31, Short.MAX_VALUE)));
         sideMenuLayout.setVerticalGroup(
-            sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sideMenuLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jLabel5)
-                .addGap(43, 43, 43)
-                .addComponent(dashButton)
-                .addGap(18, 18, 18)
-                .addComponent(roomsButton)
-                .addGap(18, 18, 18)
-                .addComponent(bookingsButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
-        );
+                sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(sideMenuLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel5)
+                                .addGap(43, 43, 43)
+                                .addComponent(dashButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(roomsButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(bookingsButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(reportsButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)));
 
         cardPanel.setMinimumSize(new java.awt.Dimension(1, 1));
         cardPanel.setPreferredSize(new java.awt.Dimension(738, 546));
@@ -193,17 +233,19 @@ public class AdminFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(sideMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(sideMenu, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -262,6 +304,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton logOutBtn;
+    private javax.swing.JLabel reportsButton;
     private javax.swing.JLabel roomsButton;
     private AdminGUI.RoomsPanel roomsPanel;
     private javax.swing.JPanel sideMenu;

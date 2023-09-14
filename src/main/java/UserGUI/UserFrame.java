@@ -1,7 +1,6 @@
 
 package UserGUI;
 
-import AdminGUI.*;
 import Objects.Booking;
 import Objects.GeneralController;
 import Objects.User;
@@ -9,15 +8,30 @@ import Objects.User;
 import java.awt.CardLayout;
 import java.awt.event.*;
 
+/**
+ * UserFrame class represents the main GUI frame for the user interface.
+ * It allows users to navigate between different panels (Dashboard, Booking,
+ * Account).
+ * 
+ * @Author ManuelVillotti
+ */
 public class UserFrame extends javax.swing.JFrame {
 
     private CardLayout cardLayout;
     private User user;
 
+    /**
+     * Enumeration defining the available cards (panels) in the UserFrame.
+     */
     public enum Card {
         DASH, BOOKING, ACCOUNT
     };
 
+    /**
+     * Constructs a new UserFrame for a given user.
+     * 
+     * @param user The User object representing the logged-in user.
+     */
     public UserFrame(User user) {
         System.out.println("Login as " + user.getFullName());
         this.user = user;
@@ -63,7 +77,11 @@ public class UserFrame extends javax.swing.JFrame {
 
     }
 
-    // visibility to package
+    /**
+     * Handles the action when a card (panel) is clicked.
+     * 
+     * @param card The card to be displayed.
+     */
     void buttonCardAction(Card card) {
         Booking booking = GeneralController.findBooking(user.getId());
         if (card.equals(Card.BOOKING) && booking == null) {
@@ -80,7 +98,6 @@ public class UserFrame extends javax.swing.JFrame {
         userAccountPanel.refreshInfos();
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -232,14 +249,19 @@ public class UserFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Handles the action when the log out button is clicked.
+     * 
+     * @param evt The ActionEvent triggering this action.
+     */
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logOutBtnActionPerformed
         this.dispose(); // closes the frame
     }// GEN-LAST:event_logOutBtnActionPerformed
 
-    private void logOutBtnActionPerformed() {// GEN-FIRST:event_logOutBtnActionPerformed
-        this.dispose();
-    }// GEN-LAST:event_logOutBtnActionPerformed
-
+    /**
+     * Main method to start the UserFrame GUI.
+     * Only used during developement to easy testing.
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code

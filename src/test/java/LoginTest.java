@@ -1,36 +1,69 @@
-import org.junit.jupiter.api.BeforeEach;
+import org.joda.time.DateTime;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import Objects.GeneralController;
 import Objects.User;
+import Objects.User.GenderType;
 import Main.LoginFrame;
 
 public class LoginTest {
 
-    private User user;
+    private static User getSampleUser() {
+        User user = new User("Uname", "Usurname", "userTest", new DateTime(1980, 05, 05, 0, 0).toDate(), GenderType.MAN,
+                "u1@test.it",
+                "U1password!", "user");
+        return user;
+    }
 
-    @BeforeEach
-    public void setUp() {
-        
-        Date dateOfBirth = null;
-        try {
-            dateOfBirth = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1990");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        user = new User("Ale", "Marc", "alemarc", dateOfBirth, User.GenderType.MAN, "alemarc@example.com", "password123", "user");
+    @Test
+    public void testRegisterUserValidInput() throws Exception {
+        User user = getSampleUser();
+        String name = user.getName();
+        String surname = user.getSurname();
+        String username = user.getUsername();
+        Date birth = user.getDateOfBirth();
+        String email = user.getEmail();
+        String pass1 = user.getPassword();
+        String pass2 = user.getPassword();
+
+        LoginFrame registrationFrame = new LoginFrame();
+        assertTrue(registrationFrame.registerUser(name, surname, username, birth, email, pass1, pass2));
+        assertFalse(registrationFrame.isVisible());
+
+        user = GeneralController.searchUser(email);
+        String userId = user.getId();
+        // remove the test user and assert it doesn't exist
+        assertDoesNotThrow(() -> {
+            GeneralController.removeUser(userId);
+        });
+        assertThrows(Exception.class, () -> {
+            GeneralController.searchUser(username, pass1);
+        });
     }
 
     @Test
     public void testLoginUserValidCredentials() {
-        
+        User user = getSampleUser();
+        String username = user.getUsername();
+        String password = user.getPassword();
+        GeneralController.addUser(user);
+
         LoginFrame loginFrame = new LoginFrame();
 
-        // Attempt to log in
-        loginFrame.loginUser("alemarc", "password123");
+        assertTrue(loginFrame.loginUser(username, password)); // Attempt to log in
+        assertFalse(loginFrame.isVisible()); // assert is not visible anymore
 
-        assertFalse(loginFrame.loginErrorLabel.isVisible());
+        user = GeneralController.searchUser(username, password);
+        String userId = user.getId();
+        // remove the test user and assert it doesn't exist
+        assertDoesNotThrow(() -> {
+            GeneralController.removeUser(userId);
+        });
+        assertThrows(Exception.class, () -> {
+            GeneralController.searchUser(username, password);
+        });
     }
 
     @Test
@@ -43,22 +76,6 @@ public class LoginTest {
         loginFrame.loginUser(username, pass);
 
         assertTrue(loginFrame.loginErrorLabel.isVisible());
-    }
-
-    @Test
-    public void testRegisterUserValidInput() {
-        
-        LoginFrame registrationFrame = new LoginFrame(); 
-        String name = "Ale";
-        String surname = "Marc";
-        String username = "alemarc3";
-        Date birth = null;
-        String email = "alemarc@gmail.com";
-        String pass1 = "superSecurePass23";
-        String pass2 = "superSecurePass23";
-        registrationFrame.registerUser(name, surname, username, birth, email, pass1, pass2);
-
-        assertFalse(registrationFrame.loginErrorLabel.isVisible());
     }
 
     @Test
@@ -78,4 +95,3 @@ public class LoginTest {
         assertTrue(registrationFrame.loginErrorLabel.isVisible());
     }
 }
-

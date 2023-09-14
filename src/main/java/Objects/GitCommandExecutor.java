@@ -1,5 +1,6 @@
 
 package Objects;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -8,13 +9,15 @@ import java.io.InputStreamReader;
 
 public class GitCommandExecutor {
 
-    /*public static void main(String[] args) {
-        String remoteName = "origin";
-
-        String repositoryPath = System.getProperty("user.dir");
-        pullChanges(repositoryPath, remoteName);
-        pushChanges(repositoryPath, remoteName);
-    }*/
+    /*
+     * public static void main(String[] args) {
+     * String remoteName = "origin";
+     * 
+     * String repositoryPath = System.getProperty("user.dir");
+     * pullChanges(repositoryPath, remoteName);
+     * pushChanges(repositoryPath, remoteName);
+     * }
+     */
 
     public static void pullChanges(String repositoryPath, String remoteName, String branchName) {
         String command = "git pull " + remoteName + " " + branchName;
@@ -33,7 +36,7 @@ public class GitCommandExecutor {
 
         executeGitCommand(repositoryPath, command);
     }
-    
+
     public static void pushChanges(String repositoryPath, String remoteName, String branchName) {
         String command = "git push " + remoteName + " " + branchName;
 
@@ -64,6 +67,7 @@ public class GitCommandExecutor {
         }
     }
 
+    @SuppressWarnings("unused")
     private static boolean executeGitCommandWithStatus(String repositoryPath, String command) {
         ProcessBuilder processBuilder = new ProcessBuilder();
         processBuilder.directory(new File(repositoryPath));
@@ -91,4 +95,3 @@ public class GitCommandExecutor {
         }
     }
 }
-
