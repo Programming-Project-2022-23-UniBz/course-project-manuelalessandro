@@ -5,10 +5,12 @@ import WelcomeGUI.WelcomeFrame;
 
 public class Main {
         public static void main(String[] args) {
+                // uncomment the next line to synchronize json data through multiple machines
                 // -- commented because syncronization is not active
                 // String remoteName = "origin";
                 // String repositoryPath = System.getProperty("user.dir");
-                // String branchName = "pushpull";
+                // String branchName = "main";
+                
                 // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
 
                 WelcomeFrame frame = new WelcomeFrame();
@@ -16,7 +18,8 @@ public class Main {
         }
 
         public static void stopApplication() {
-                // -- commented because syncronization is not active
+            
+                // uncomment the next line to synchronize json data/ -- commented because syncronization is not active
                 // String remoteName = "origin";
                 // String repositoryPath = System.getProperty("user.dir");
                 // String branchName = "pushpull";
