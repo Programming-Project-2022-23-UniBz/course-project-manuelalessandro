@@ -529,7 +529,6 @@ public class GeneralController {
         return bookings.length;
     }
 
-    @SuppressWarnings("unused")
     /**
      * Initializes the bookings data with sample Booking objects for testing
      * purposes.
@@ -739,7 +738,6 @@ public class GeneralController {
         return getUser(users, id);
     }
 
-    @SuppressWarnings("unused")
     /**
      * Initializes the users data with sample User objects for testing purposes.
      */
