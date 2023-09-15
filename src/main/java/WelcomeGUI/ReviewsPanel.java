@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileReader;
 
+
+
 /**
  * This class represents a panel for displaying customer reviews.
  * 

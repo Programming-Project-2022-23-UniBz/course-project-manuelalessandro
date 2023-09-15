@@ -6,7 +6,7 @@ package UserGUI;
 
 import Objects.User;
 import javax.swing.JOptionPane;
-
+import WelcomeGUI.ReviewsPanel;
 /**
  *
  * @author mamu8
@@ -267,12 +267,18 @@ public class UserReviewPanel extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
         private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_confirmButtonActionPerformed
+            String buttonText = confirmButton.getText();
+            
+            if ("Confirm".equals(buttonText)) {
                 int rating = this.ratingComboBox.getItemCount();
                 String review = this.textField.getText();
                 this.user.addReview(review, rating);
-                JOptionPane.showMessageDialog(null, "Review added correctly", "Success",
-                                JOptionPane.INFORMATION_MESSAGE);
-                refreshInfos();
+                JOptionPane.showMessageDialog(null, "Review added correctly", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else if ("Update".equals(buttonText)) {
+                user.removeReview(user.getReview());
+                user.addReview(this.textField.getText(),this.ratingComboBox.getItemCount());
+            }
+            refreshInfos();
         }// GEN-LAST:event_confirmButtonActionPerformed
 
         private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_deleteButtonActionPerformed

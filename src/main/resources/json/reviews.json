@@ -1,12 +1,52 @@
 [
   {
-    "GuestName": "GuestSurname GuestName",
-    "Review": "Nice hotel!",
+    "GuestName": "Russo Antonio",
+    "Review": "A wonderful experience! The staff was incredibly friendly, and the room was clean and comfortable. I would definitely stay here again.",
     "Stars": 5
   },
   {
-    "GuestName": "Russo Antonio",
-    "Review": "blee",
+    "GuestName": "Johnson Emily",
+    "Review": "I had a pleasant stay at this hotel. The service was good, and the room was cozy. However, the breakfast options could be improved.",
+    "Stars": 4
+  },
+  {
+    "GuestName": "Smith John",
+    "Review": "Not a great experience. The room was not very clean, and the noise from the street was disturbing. I wouldn\u0027t stay here again.",
+    "Stars": 2
+  },
+  {
+    "GuestName": "Brown Sarah",
+    "Review": "I had a mixed experience. The hotel\u0027s location was convenient, but the room was a bit outdated. The staff, however, was friendly and helpful.",
+    "Stars": 3
+  },
+  {
+    "GuestName": "Garcia Carlos",
+    "Review": "Outstanding service! The hotel staff went above and beyond to make my stay enjoyable. The room was spotless and comfortable. Highly recommended!",
+    "Stars": 5
+  },
+  {
+    "GuestName": "Williams Jennifer",
+    "Review": "I had a great time at this hotel. The location was perfect, and the view from my room was breathtaking. The restaurant on-site also had delicious food.",
+    "Stars": 5
+  },
+  {
+    "GuestName": "Lee David",
+    "Review": "Decent stay overall. The room was clean, but the Wi-Fi connection was a bit slow. The hotel\u0027s location made it easy to explore the city.",
+    "Stars": 3
+  },
+  {
+    "GuestName": "Chen Mei",
+    "Review": "I expected more from this hotel. The room was small, and the bathroom could have been cleaner. The only positive was the friendly staff.",
+    "Stars": 2
+  },
+  {
+    "GuestName": "Taylor Robert",
+    "Review": "Not worth the price. The room was outdated, and the air conditioning didn\u0027t work properly. I would look for other options next time.",
+    "Stars": 1
+  },
+  {
+    "GuestName": "GuestSurname GuestName",
+    "Review": "test22",
     "Stars": 5
   }
 ]

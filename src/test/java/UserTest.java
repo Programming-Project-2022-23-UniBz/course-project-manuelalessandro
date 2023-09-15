@@ -95,11 +95,5 @@ public class UserTest {
         assertTrue(User.isGuestUnder18(dateOfBirth2));
         assertFalse(User.isGuestOver100(dateOfBirth2));
         dateOfBirth2 = new DateTime(1900, 05, 05, 0, 0).toDate();
-<<<<<<< HEAD
     }
-
-=======
-
-    }
->>>>>>> b0b3a5200ef4c6b4595ae9ee5a7836288886cbbc
 }
