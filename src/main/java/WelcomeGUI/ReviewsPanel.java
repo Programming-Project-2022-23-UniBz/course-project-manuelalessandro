@@ -10,8 +10,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileReader;
 
-
-
 /**
  * This class represents a panel for displaying customer reviews.
  * 
@@ -71,7 +69,11 @@ public class ReviewsPanel extends javax.swing.JPanel {
          * Loads reviews from a JSON file and populates the content panel.
          */
         public void loadReviewsFromJSON() {
+
                 try {
+                        // Remove all components from contentPanel
+                        contentPanel.removeAll();
+
                         // Read the JSON file
                         FileReader reader = new FileReader("src/main/resources/json/reviews.json");
 
@@ -129,6 +131,7 @@ public class ReviewsPanel extends javax.swing.JPanel {
 
                                 // Add the review panel to the content panel
                                 contentPanel.add(reviewPanel);
+
                         }
 
                         // Close the reader

@@ -8,7 +8,7 @@ import Objects.GeneralController;
 import Objects.User;
 import Objects.User.GenderType;
 import UserGUI.UserFrame;
-import WelcomeGUI.ReviewsPanel;
+import WelcomeGUI.WelcomeFrame;
 
 import java.awt.CardLayout;
 import java.util.Date;
@@ -25,7 +25,7 @@ import AdminGUI.AdminFrame;
 public class LoginFrame extends javax.swing.JFrame {
 
         private CardLayout cardLayout;
-        private ReviewsPanel reviewsPanel;
+        private WelcomeFrame welcomeFrame;
 
         public enum Card {
                 LOGIN, REGISTER
@@ -64,7 +64,7 @@ public class LoginFrame extends javax.swing.JFrame {
                                 frame.setVisible(true);
                         } else {
                                 UserFrame frame = new UserFrame(user);
-                                frame.passReviewPanel(reviewsPanel);
+                                frame.passWelcomeFrame(welcomeFrame);
                                 frame.setVisible(true);
                         }
                         this.dispose();
@@ -76,8 +76,13 @@ public class LoginFrame extends javax.swing.JFrame {
                 }
         }
 
-        public void passReviewPanel(ReviewsPanel reviewsPanel) {
-                this.reviewsPanel = reviewsPanel;
+        /**
+         * To pass and refresh the reviews panel
+         * 
+         * @param welcomeFrame
+         */
+        public void passWelcomeFrame(WelcomeFrame welcomeFrame) {
+                this.welcomeFrame = welcomeFrame;
         }
 
         public boolean registerUser(String name, String surname, String username, Date birth, String email,

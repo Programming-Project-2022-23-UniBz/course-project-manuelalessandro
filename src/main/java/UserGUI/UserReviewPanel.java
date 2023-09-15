@@ -5,10 +5,9 @@
 package UserGUI;
 
 import Objects.User;
-import WelcomeGUI.ReviewsPanel;
 
 import javax.swing.JOptionPane;
-import WelcomeGUI.ReviewsPanel;
+
 /**
  *
  * @author mamu8
@@ -16,7 +15,6 @@ import WelcomeGUI.ReviewsPanel;
 public class UserReviewPanel extends javax.swing.JPanel {
 
         private User user;
-        @SuppressWarnings("unused")
         private UserFrame frame;
 
         /**
@@ -276,18 +274,21 @@ public class UserReviewPanel extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
         private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_confirmButtonActionPerformed
-            String buttonText = confirmButton.getText();
-            
-            if ("Confirm".equals(buttonText)) {
-                int rating = this.ratingComboBox.getItemCount();
-                String review = this.textField.getText();
-                this.user.addReview(review, rating);
-                JOptionPane.showMessageDialog(null, "Review added correctly", "Success", JOptionPane.INFORMATION_MESSAGE);
-            } else if ("Update".equals(buttonText)) {
-                user.removeReview(user.getReview());
-                user.addReview(this.textField.getText(),this.ratingComboBox.getItemCount());
-            }
-            refreshInfos();
+                String buttonText = confirmButton.getText();
+
+                if ("Confirm".equals(buttonText)) {
+                        int rating = this.ratingComboBox.getSelectedIndex() + 1;
+                        String review = this.textField.getText();
+                        this.user.addReview(review, rating);
+                        JOptionPane.showMessageDialog(null, "Review added correctly", "Success",
+                                        JOptionPane.INFORMATION_MESSAGE);
+                } else if ("Update".equals(buttonText)) {
+                        user.removeReview(user.getReview());
+                        int rating = this.ratingComboBox.getSelectedIndex() + 1;
+                        String review = this.textField.getText();
+                        user.addReview(review, rating);
+                }
+                refreshInfos();
         }// GEN-LAST:event_confirmButtonActionPerformed
 
         private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_deleteButtonActionPerformed

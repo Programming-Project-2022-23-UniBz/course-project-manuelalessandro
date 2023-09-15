@@ -9,7 +9,6 @@ import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 import java.awt.Color;
 
@@ -168,8 +167,17 @@ public class WelcomeFrame extends javax.swing.JFrame {
          */
         private void accountButtonActionPerformed(java.awt.event.ActionEvent event) {
                 LoginFrame login = new LoginFrame();
-                login.passReviewPanel(reviewsPanel);
+                login.passWelcomeFrame(this);
                 login.setVisible(true);
+        }
+
+        /**
+         * To refresh the reviews panel
+         */
+        public void refreshReviews() {
+                reviewsPanel.loadReviewsFromJSON();
+                homeButton.doClick();
+                reviewsButton.doClick();
         }
 
         // <editor-fold defaultstate="collapsed" desc="Generated
@@ -496,4 +504,5 @@ public class WelcomeFrame extends javax.swing.JFrame {
         private WelcomeGUI.ServicesPanel servicesPanel;
         private DesignObjects.SteelCheckBox.SteelCheckBox themeCheckBox;
         // End of variables declaration//GEN-END:variables
+
 }

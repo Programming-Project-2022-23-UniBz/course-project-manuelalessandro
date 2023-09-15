@@ -4,7 +4,7 @@ package UserGUI;
 import Objects.Booking;
 import Objects.GeneralController;
 import Objects.User;
-import WelcomeGUI.ReviewsPanel;
+import WelcomeGUI.WelcomeFrame;
 
 import java.awt.CardLayout;
 import java.awt.event.*;
@@ -20,7 +20,7 @@ public class UserFrame extends javax.swing.JFrame {
 
     private CardLayout cardLayout;
     private User user;
-    private ReviewsPanel reviewsPanel;
+    private WelcomeFrame welcomeFrame;
 
     /**
      * Enumeration defining the available cards (panels) in the UserFrame.
@@ -89,18 +89,16 @@ public class UserFrame extends javax.swing.JFrame {
     }
 
     /**
-     * To pass and refresh the panel
+     * To pass and refresh the reviews panel
      * 
-     * @param reviewsPanel
+     * @param welcomeFrame
      */
-    public void passReviewPanel(ReviewsPanel reviewsPanel) {
-        this.reviewsPanel = reviewsPanel;
+    public void passWelcomeFrame(WelcomeFrame welcomeFrame) {
+        this.welcomeFrame = welcomeFrame;
     }
 
     public void refreshWelcomeReviews() {
-        if (reviewsPanel == null)
-            System.out.println("NULL REVIEWS PANEL");
-        reviewsPanel.loadReviewsFromJSON();
+        welcomeFrame.refreshReviews();
     }
 
     /**
