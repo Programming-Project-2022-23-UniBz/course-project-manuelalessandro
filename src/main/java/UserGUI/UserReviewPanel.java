@@ -5,6 +5,8 @@
 package UserGUI;
 
 import Objects.User;
+import WelcomeGUI.ReviewsPanel;
+
 import javax.swing.JOptionPane;
 import WelcomeGUI.ReviewsPanel;
 /**
@@ -53,6 +55,13 @@ public class UserReviewPanel extends javax.swing.JPanel {
                         this.confirmButton.setText("Confirm");
                         this.ratingComboBox.setSelectedIndex(0);
                         this.textField.setText("");
+                }
+
+                // refresh also infos on the WelcomeFrame
+                try {
+                        frame.refreshWelcomeReviews();
+                } catch (Exception e) {
+                        System.out.println("Refresh of welcome review frame failed: " + e.getMessage());
                 }
         }
 

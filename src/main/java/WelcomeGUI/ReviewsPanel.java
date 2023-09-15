@@ -70,7 +70,7 @@ public class ReviewsPanel extends javax.swing.JPanel {
         /**
          * Loads reviews from a JSON file and populates the content panel.
          */
-        private void loadReviewsFromJSON() {
+        public void loadReviewsFromJSON() {
                 try {
                         // Read the JSON file
                         FileReader reader = new FileReader("src/main/resources/json/reviews.json");

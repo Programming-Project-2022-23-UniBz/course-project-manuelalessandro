@@ -8,6 +8,7 @@ import Objects.GeneralController;
 import Objects.User;
 import Objects.User.GenderType;
 import UserGUI.UserFrame;
+import WelcomeGUI.ReviewsPanel;
 
 import java.awt.CardLayout;
 import java.util.Date;
@@ -18,11 +19,13 @@ import AdminGUI.AdminFrame;
 
 /**
  *
- * @author mamu8
+ * @author aless
+ * @author ManuelVillotti
  */
 public class LoginFrame extends javax.swing.JFrame {
 
         private CardLayout cardLayout;
+        private ReviewsPanel reviewsPanel;
 
         public enum Card {
                 LOGIN, REGISTER
@@ -61,6 +64,7 @@ public class LoginFrame extends javax.swing.JFrame {
                                 frame.setVisible(true);
                         } else {
                                 UserFrame frame = new UserFrame(user);
+                                frame.passReviewPanel(reviewsPanel);
                                 frame.setVisible(true);
                         }
                         this.dispose();
@@ -70,6 +74,10 @@ public class LoginFrame extends javax.swing.JFrame {
                         exception.printStackTrace();
                         return false;
                 }
+        }
+
+        public void passReviewPanel(ReviewsPanel reviewsPanel) {
+                this.reviewsPanel = reviewsPanel;
         }
 
         public boolean registerUser(String name, String surname, String username, Date birth, String email,
@@ -714,4 +722,5 @@ public class LoginFrame extends javax.swing.JFrame {
         private javax.swing.JLabel usernameLabel;
         private javax.swing.JLabel usernameLabel1;
         // End of variables declaration//GEN-END:variables
+
 }

@@ -9,6 +9,8 @@ import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
 import java.awt.Color;
 
 /**
@@ -166,6 +168,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
          */
         private void accountButtonActionPerformed(java.awt.event.ActionEvent event) {
                 LoginFrame login = new LoginFrame();
+                login.passReviewPanel(reviewsPanel);
                 login.setVisible(true);
         }
 
