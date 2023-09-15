@@ -3,11 +3,17 @@
 
 ## 1. About
 
-Describe your project here in 1-2 paragraphs.
+Introducing our Hotel Management App, a comprehensive solution that caters to the needs of both guests and administrators.
+
+Guests can easily book rooms, update their personal information, and leave reviews, ensuring a personalized and comfortable stay. Our app prioritizes user satisfaction.
+
+Administrators, on the other hand, have access to a suite of essential features. They can effortlessly view all bookings, ensuring smooth check-ins and check-outs. With the ability to check hotel income reports, administrators can make informed decisions to optimize revenue. Additionally, monitoring room availability is a breeze, ensuring efficient room assignment and management.
+
+Our Hotel Management App is the perfect solution for both guests and administrators, creating a harmonious and efficient hotel experience for all.
 
 ### 1.1. Demo
 
-Add a link to a demo of your project.
+video here
 
 ## 2. Authors
 
@@ -47,13 +53,20 @@ List and justify the third party libraries you used.
 
 List and explain how you used the 10 programming techniques required for this project.
 
-- **Technique 1**: We used interfaces to do X, because of Y. 
-- **Technique 2**: ...
-- ...
+- **Technique 1**: We used Serialization to convert a json object into a string, because we used them as our database. 
+- **Technique 2**: We used Deserialization to do the opposite and update a json object or add a json object to the array.
+- **Technique 3**: We used regular expressions to check the user input during the register phase.
+- **Technique 4**: Try-Catch blocks were a significant part of our code because they allowed us to handle and gracefully manage potential exceptions during file reading, ensuring the reliability and stability of our application even in the face of unexpected errors, such as file not found or permission issues.
+- **Technique 5**: We used Test hooks as they provide a means to isolate and test specific components or functions within our codebase.
+- **Technique 6**: We used a Graphical user interface because it makes the app easier to use.
+- **Technique 7**: We used File I/O to work with the jsons.
+- **Technique 8**: We used overriding to provide a specific implementation, for example, of the "mouseClicked" method for each button, which overrides the default behavior in the MouseAdapter class and defines custom actions for each button's click event
+- **Technique 9**: We used collections to make the usage of the combo boxes easier or also in the management of rooms.
+- **Technique 10**: We used custom exceptions to provide a more descriptive error message, enhancing code readability and debugging by specifying the nature of the failure during different occasions. 
 
 ### 4.4. Tests
 
-Briefly describe and motivate your test suite.
+Our test suite encompasses unit, integration, boundary, error handling, and performance testing to thoroughly evaluate the main classes and methods, ensuring their functionality, reliability, and robustness under various conditions
 
 ## 5. Experience
 
