@@ -37,9 +37,10 @@ import com.google.gson.JsonParser;
  */
 public class User {
 
-    //A date formatter for formatting date of birth.
+    // A date formatter for formatting date of birth.
     public static DateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
-/**
+
+    /**
      * Enum representing different gender types.
      */
     public enum GenderType {
@@ -61,17 +62,17 @@ public class User {
     // public final String remoteName = "origin";
     // public String branchName = "pushpull";
 
-/**
+    /**
      * Constructs a User object with specified attributes.
      *
-     * @param name The user's first name.
-     * @param surname The user's last name.
-     * @param username The username for login.
+     * @param name        The user's first name.
+     * @param surname     The user's last name.
+     * @param username    The username for login.
      * @param dateOfBirth The user's date of birth.
-     * @param gender The user's gender.
-     * @param email The user's email address.
-     * @param password The user's password.
-     * @param role The user's role.
+     * @param gender      The user's gender.
+     * @param email       The user's email address.
+     * @param password    The user's password.
+     * @param role        The user's role.
      * @throws IllegalArgumentException If any of the arguments are invalid.
      */
     public User(String name, String surname, String username, Date dateOfBirth, GenderType gender, String email,
@@ -90,16 +91,18 @@ public class User {
         this.password = password;
     }
 
-/**
-     * Constructs a User object with specified attributes, for creating user from AdminFrame.
+    /**
+     * Constructs a User object with specified attributes, for creating user from
+     * AdminFrame.
      *
-     * @param name The user's first name.
-     * @param surname The user's last name.
+     * @param name        The user's first name.
+     * @param surname     The user's last name.
      * @param dateOfBirth The user's date of birth.
-     * @param gender The user's gender.
-     * @param email The user's email address.
+     * @param gender      The user's gender.
+     * @param email       The user's email address.
      * @throws IllegalArgumentException If any of the arguments are invalid.
-     */    public User(String name, String surname, Date dateOfBirth, GenderType gender, String email)
+     */
+    public User(String name, String surname, Date dateOfBirth, GenderType gender, String email)
             throws IllegalArgumentException {
         this.name = name;
         this.surname = surname;
@@ -111,9 +114,8 @@ public class User {
         this.username = email; // because the user won't be able to login
     }
 
-    //**
-    * getters and setters
-    */
+    // ------------- getters and setters
+
     public String getUsername() {
         return this.username;
     }
@@ -192,11 +194,12 @@ public class User {
         else
             return "null";
     }
-/**
- * Pushes changes made to the user data to the data source.
- * 
- * @throws Exception If an error occurs during the process.
- */
+
+    /**
+     * Pushes changes made to the user data to the data source.
+     * 
+     * @throws Exception If an error occurs during the process.
+     */
     public void pushChanges() throws Exception {
         User[] users = (User[]) GeneralController.pullData(User.class);
 
@@ -218,11 +221,12 @@ public class User {
     public boolean equals(User user) {
         return this.id == user.getId();
     }
-/**
- * Generates a unique ID for a user based on current date and random digits.
- * 
- * @return The generated user ID.
- */
+
+    /**
+     * Generates a unique ID for a user based on current date and random digits.
+     * 
+     * @return The generated user ID.
+     */
     public static String generateId() {
         String prefix = "UID_";
 
@@ -246,13 +250,15 @@ public class User {
             return generateId();
         }
     }
-/**
- * Generates a unique ID for a user based on current date and random digits, while
- * ensuring uniqueness among a given array of users.
- * 
- * @param users An array of users to check for uniqueness.
- * @return The generated user ID.
- */
+
+    /**
+     * Generates a unique ID for a user based on current date and random digits,
+     * while
+     * ensuring uniqueness among a given array of users.
+     * 
+     * @param users An array of users to check for uniqueness.
+     * @return The generated user ID.
+     */
     public static String generateId(User[] users) {
         String prefix = "UID_";
 
@@ -274,13 +280,14 @@ public class User {
             return generateId();
         }
     }
-/**
- * Checks if a user ID is unique among a given array of users.
- * 
- * @param users An array of users to check against.
- * @param userId The user ID to check for uniqueness.
- * @return True if the user ID is unique, otherwise false.
- */
+
+    /**
+     * Checks if a user ID is unique among a given array of users.
+     * 
+     * @param users  An array of users to check against.
+     * @param userId The user ID to check for uniqueness.
+     * @return True if the user ID is unique, otherwise false.
+     */
     private static boolean isIdUnique(User[] users, String userId) {
         if (users != null)
             for (User user : users) {
@@ -293,11 +300,11 @@ public class User {
 
     @SuppressWarnings("deprecation")
     /**
- * Adds a review for the user and stores it in a JSON file.
- * 
- * @param review The review text.
- * @param Stars The star rating for the review.
- */
+     * Adds a review for the user and stores it in a JSON file.
+     * 
+     * @param review The review text.
+     * @param Stars  The star rating for the review.
+     */
     public void addReview(String review, int Stars) {
         try {
             // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
@@ -329,21 +336,23 @@ public class User {
 
     // ----------------------------------------------------------------
 
-/**
- * Checks if the user has admin privileges.
- * 
- * @return True if the user is an admin, otherwise false.
- */    public boolean isAdmin() {
+    /**
+     * Checks if the user has admin privileges.
+     * 
+     * @return True if the user is an admin, otherwise false.
+     */
+    public boolean isAdmin() {
         if (this.role.equals("admin"))
             return true;
         return false;
     }
-/**
- * Encrypts a given plain text using AES encryption.
- * 
- * @param plainText The text to be encrypted.
- * @return The encrypted text.
- */
+
+    /**
+     * Encrypts a given plain text using AES encryption.
+     * 
+     * @param plainText The text to be encrypted.
+     * @return The encrypted text.
+     */
     public static String encrypt(String plainText) {
         try {
             Cipher cipher = Cipher.getInstance("AES");
@@ -356,12 +365,13 @@ public class User {
         }
         return null;
     }
-/**
- * Decrypts an encrypted text using AES decryption.
- * 
- * @param encryptedText The text to be decrypted.
- * @return The decrypted text.
- */
+
+    /**
+     * Decrypts an encrypted text using AES decryption.
+     * 
+     * @param encryptedText The text to be decrypted.
+     * @return The decrypted text.
+     */
     public static String decrypt(String encryptedText) {
         try {
             Cipher cipher = Cipher.getInstance("AES");
@@ -378,10 +388,10 @@ public class User {
 
     @SuppressWarnings("deprecation")
     /**
- * Removes a review associated with the user from the reviews JSON file.
- * 
- * @param review The review text to be removed.
- */
+     * Removes a review associated with the user from the reviews JSON file.
+     * 
+     * @param review The review text to be removed.
+     */
     public void removeReview(String review) {
         try {
             // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
@@ -434,12 +444,12 @@ public class User {
 
     @SuppressWarnings("deprecation")
     /**
- * Retrieves the review associated with the user from the reviews JSON file.
- * 
- * @Author alessandro
- * 
- * @return The user's review.
- */
+     * Retrieves the review associated with the user from the reviews JSON file.
+     * 
+     * @Author alessandro
+     * 
+     * @return The user's review.
+     */
     public String getReview() {
         String review = "";
         try {
@@ -458,12 +468,13 @@ public class User {
 
     @SuppressWarnings("deprecation")
     /**
- * Retrieves the rating associated with the user's review from the reviews JSON file.
- * 
- * @Author alessandro
- * 
- * @return The user's review rating.
- */
+     * Retrieves the rating associated with the user's review from the reviews JSON
+     * file.
+     * 
+     * @Author alessandro
+     * 
+     * @return The user's review rating.
+     */
     public int getRating() {
         int rating = 0;
         try {
@@ -482,12 +493,12 @@ public class User {
 
     @SuppressWarnings("deprecation")
     /**
- * Checks if the user has submitted a review.
- * 
- * @Author alessandro
- * 
- * @return True if the user has submitted a review, otherwise false.
- */
+     * Checks if the user has submitted a review.
+     * 
+     * @Author alessandro
+     * 
+     * @return True if the user has submitted a review, otherwise false.
+     */
     public boolean hasReview() {
         try {
             // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
@@ -510,13 +521,13 @@ public class User {
     }
 
     // -------------- Valid entries checkers
-/**
- * Checks if the provided email is valid.
- * 
- * @param email The email to validate.
- * @return True if the email is valid, otherwise false.
- * @throws Exception If an error occurs during the validation process.
- */
+    /**
+     * Checks if the provided email is valid.
+     * 
+     * @param email The email to validate.
+     * @return True if the email is valid, otherwise false.
+     * @throws Exception If an error occurs during the validation process.
+     */
     public static boolean emailValid(String email) throws Exception {
         if (email == null)
             return false;
@@ -581,13 +592,14 @@ public class User {
         Matcher matcher2 = pattern.matcher(surname);
         return matcher1.matches() && matcher2.matches();
     }
-/**
- * Checks if the provided birth date is valid.
- * 
- * @param birthDate The birth date to validate.
- * @return True if the birth date is valid, otherwise false.
- * @throws Exception If an error occurs during the validation process.
- */
+
+    /**
+     * Checks if the provided birth date is valid.
+     * 
+     * @param birthDate The birth date to validate.
+     * @return True if the birth date is valid, otherwise false.
+     * @throws Exception If an error occurs during the validation process.
+     */
     public static boolean birthDateValid(Date birthDate) throws Exception {
         if (birthDate == null)
             return false;
@@ -597,12 +609,13 @@ public class User {
             throw new Exception("No user can be under 18 years old.");
         return true;
     }
-/**
- * Checks if the provided username is valid.
- * 
- * @param username The username to validate.
- * @return True if the username is valid, otherwise false.
- */
+
+    /**
+     * Checks if the provided username is valid.
+     * 
+     * @param username The username to validate.
+     * @return True if the username is valid, otherwise false.
+     */
     public static boolean usernameValid(String username) {
         if (username == null)
             return false;
