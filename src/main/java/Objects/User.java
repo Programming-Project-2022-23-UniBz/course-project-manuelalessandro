@@ -356,39 +356,42 @@ public class User {
         }
         return index;
     }
+
+    @SuppressWarnings("deprecation")
     public String getReview() {
         String review = "";
-        try{
+        try {
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
             int index = findIndexOfJson(jsonArray, "GuestName", getFullName());
             JsonObject userObject = jsonArray.get(index).getAsJsonObject();
-            String storedUser = userObject.get("GuestName").getAsString();
             review = userObject.get("Review").getAsString();
-            
-        }catch(IOException e){
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         return review;
     }
+
+    @SuppressWarnings("deprecation")
     public int getRating() {
         int rating = 0;
-        try{
+        try {
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
             int index = findIndexOfJson(jsonArray, "GuestName", getFullName());
             JsonObject userObject = jsonArray.get(index).getAsJsonObject();
-            String storedUser = userObject.get("GuestName").getAsString();
             rating = userObject.get("Stars").getAsInt();
-            
-        }catch(IOException e){
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         return rating;
     }
-    
+
+    @SuppressWarnings("deprecation")
     public boolean hasReview() {
         try {
             // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
