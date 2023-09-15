@@ -354,7 +354,40 @@ public class User {
         return index;
     }
 
-    public boolean hasReview(String review) {
+    public String getReview() {
+        String review = "";
+        try{
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
+            int index = findIndexOfJson(jsonArray, "GuestName", getFullName());
+            JsonObject userObject = jsonArray.get(index).getAsJsonObject();
+            String storedUser = userObject.get("GuestName").getAsString();
+            review = userObject.get("Review").getAsString();
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        return review;
+    }
+    public int getRating() {
+        int rating = 0;
+        try{
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
+            int index = findIndexOfJson(jsonArray, "GuestName", getFullName());
+            JsonObject userObject = jsonArray.get(index).getAsJsonObject();
+            String storedUser = userObject.get("GuestName").getAsString();
+            rating = userObject.get("Stars").getAsInt();
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        return rating;
+    }
+    
+    public boolean hasReview() {
         try {
             //GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
@@ -364,9 +397,9 @@ public class User {
             // Check if the user has the specified review
             int index = findIndexOfJson(jsonArray, "GuestName", getFullName());
             if (index != -1) {
-                JsonObject reviewObject = jsonArray.get(index).getAsJsonObject();
-                String storedReview = reviewObject.get("Review").getAsString();
-                return storedReview.equals(review);
+                JsonObject userObject = jsonArray.get(index).getAsJsonObject();
+                String storedUser = userObject.get("GuestName").getAsString();
+                return storedUser.equals(getFullName());
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -5,6 +5,7 @@
 package UserGUI;
 
 import Objects.User;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +40,19 @@ public class UserReviewPanel extends javax.swing.JPanel {
 
     public void refreshInfos() {
         // TODO: implement method to refresh infos if review exists
+        String review = "";
+        int rating = 0;
+        if(this.user.hasReview()){
+            this.confirmButton.setText("Update");
+            review = user.getReview();
+            rating = user.getRating();
+            this.ratingComboBox.setSelectedItem(rating);
+            this.textField.setText(review);
+        }else{
+            this.confirmButton.setText("Confirm");
+            this.ratingComboBox.setSelectedIndex(0);
+            this.textField.setText("");
+        }
     }
 
     public void setUser(User user) {
@@ -192,10 +206,19 @@ public class UserReviewPanel extends javax.swing.JPanel {
         int rating = this.ratingComboBox.getItemCount();
         String review = this.textField.getText();
         this.user.addReview(review, rating);
+        JOptionPane.showMessageDialog(null, "Review added correctly", "Success", JOptionPane.INFORMATION_MESSAGE);
+        refreshInfos();
     }// GEN-LAST:event_confirmButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_deleteButtonActionPerformed
-        this.textField.setText("");
+        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this review?", "Delete Review", JOptionPane.YES_NO_OPTION);
+        if(choice == JOptionPane.YES_OPTION){
+            user.removeReview(user.getReview());
+            this.errorLabel.setText("Review Removed");
+            refreshInfos();
+        }else{
+            return;
+        }
     }// GEN-LAST:event_deleteButtonActionPerformed
 
     private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_textFieldActionPerformed
