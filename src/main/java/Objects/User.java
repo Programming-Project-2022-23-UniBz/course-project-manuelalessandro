@@ -172,7 +172,7 @@ public class User {
 
         int index = -1;
         for (int i = 0; i < users.length; i++)
-            if (users[i].getId().equals(id))
+            if (users[i].getId().equals(getId()))
                 index = i;
 
         if (index != -1)
