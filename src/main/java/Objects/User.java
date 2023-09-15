@@ -84,7 +84,7 @@ public class User {
         this.email = email;
         this.password = null;
         this.role = "user";
-        this.username = email; // TODO: change
+        this.username = email; // because the user won't be able to login
     }
 
     // getters and setters
