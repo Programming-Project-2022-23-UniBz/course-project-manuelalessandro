@@ -89,7 +89,7 @@ public class UserReviewPanel extends javax.swing.JPanel {
         deleteButton.setBackground(new java.awt.Color(255, 102, 51));
         deleteButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
-        deleteButton.setText("Delete booking");
+        deleteButton.setText("Delete");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -173,7 +173,7 @@ public class UserReviewPanel extends javax.swing.JPanel {
                     .addComponent(deleteButton))
                 .addGap(35, 35, 35)
                 .addComponent(errorLabel)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -184,16 +184,18 @@ public class UserReviewPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(reviewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(reviewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_confirmButtonActionPerformed
-        // TODO add your handling code here:
+        int rating = this.ratingComboBox.getItemCount();
+        String review = this.textField.getText();
+        this.user.addReview(review, rating);
     }// GEN-LAST:event_confirmButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
+        this.textField.setText("");
     }// GEN-LAST:event_deleteButtonActionPerformed
 
     private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_textFieldActionPerformed
