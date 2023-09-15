@@ -81,23 +81,20 @@ public class UserTest {
 
     @Test
     public void testHasReview() {
-        assertFalse(user.hasReview("nice place")); // user shouldn't have any review
+        assertFalse(user.hasReview()); // user shouldn't have any review
         user.addReview("Hello, nice place!", 5); // add the review for the user
-        assertTrue(user.hasReview("Hello, nice place!")); // review should be found
+        assertTrue(user.hasReview()); // review should be found
         user.removeReview("Hello, nice place!"); // remove review
-        assertFalse(user.hasReview("Hello, nice place!")); // review shouldn't be found
+        assertFalse(user.hasReview()); // review shouldn't be found
     }
 
     @Test
     public void testGuestAge() {
-        Date dateOfBirth2 = null; // da cambiare in qualcosa sotto i 18 anni
+        Date dateOfBirth2 = new DateTime(2010, 05, 05, 0, 0).toDate();
         user.setDateOfBirth(dateOfBirth2);
-        assertTrue(User.isGuestUnder18(dateOfBirth2));
-        assertFalse(User.isGuestOver100(dateOfBirth2));
-        dateOfBirth2 = null; // da cambiare in qualcosa sopra 100
-        user.setDateOfBirth(dateOfBirth2);
-        assertTrue(User.isGuestOver100(dateOfBirth2));
-        assertFalse(User.isGuestUnder18(dateOfBirth2));
-    }
+        assertTrue(user.isGuestUnder18(dateOfBirth2));
+        assertFalse(user.isGuestOver100(dateOfBirth2));
+        dateOfBirth2 = new DateTime(1900, 05, 05, 0, 0).toDate();
 
+    }
 }

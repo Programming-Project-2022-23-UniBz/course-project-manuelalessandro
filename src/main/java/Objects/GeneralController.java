@@ -40,10 +40,20 @@ public class GeneralController {
      * @throws Exception Throws an exception if an error occurs during execution.
      */
     public static void main(String[] args) throws Exception {
-        // cleanFile(User.class);
-        // cleanFile(Booking.class);
-        // initUsers();
-        // initBookingsTest();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Do you want to initialize every json file? [Yes/No]:");
+        String answer = scanner.next();
+        if (answer.equals("yes") || answer.equals("Yes")) {
+            cleanFile(User.class);
+            cleanFile(Booking.class);
+            cleanFile(Room.class);
+            initRooms();
+            initUsers();
+            initBookingsTest();
+            System.out.println("INITIALIZED");
+        } else
+            System.out.println("not initialized");
+        scanner.close();
     }
 
     /**
@@ -748,6 +758,12 @@ public class GeneralController {
 
         pushData(User.class, users);
     }
+
+    // ----------------------------------------------------------------
+    // ----------------------------------------------------------------
+    // -------------------- Review Control ----------------------------
+    // ----------------------------------------------------------------
+    // ----------------------------------------------------------------
 
     // ----------------------------------------------------------------
     // ----------------------------------------------------------------
