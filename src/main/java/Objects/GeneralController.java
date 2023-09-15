@@ -44,9 +44,7 @@ public class GeneralController {
         System.out.print("Do you want to initialize every json file? [Yes/No]:");
         String answer = scanner.next();
         if (answer.equals("yes") || answer.equals("Yes")) {
-            cleanFile(User.class);
-            cleanFile(Booking.class);
-            cleanFile(Room.class);
+            initReviews();
             initRooms();
             initUsers();
             initBookingsTest();
@@ -54,6 +52,12 @@ public class GeneralController {
         } else
             System.out.println("not initialized");
         scanner.close();
+    }
+
+    private static void initReviews() {
+        cleanFile(Review.class);
+        Review[] reviews = new Review[0];
+        pushData(Review.class, reviews);
     }
 
     /**
