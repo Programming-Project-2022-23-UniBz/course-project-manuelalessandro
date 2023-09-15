@@ -52,11 +52,11 @@ public class User {
     private String email;
     private String password;
     private String role;
-    private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(";
+    private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D("; // unused
     private String username;
-    public String repositoryPath = System.getProperty("user.dir");
-    public final String remoteName = "origin";
-    public String branchName = "pushpull";
+    // public String repositoryPath = System.getProperty("user.dir");
+    // public final String remoteName = "origin";
+    // public String branchName = "pushpull";
 
     public User(String name, String surname, String username, Date dateOfBirth, GenderType gender, String email,
             String password,

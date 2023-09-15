@@ -1,4 +1,4 @@
-package SteelCheckBox;
+package DesignObjects.SteelCheckBox;
 
 import java.awt.Cursor;
 

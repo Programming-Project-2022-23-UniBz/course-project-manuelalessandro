@@ -525,15 +525,7 @@ public class GeneralController {
     private static void initBookingsTest() throws Exception {
         Booking[] bookings;
         try {
-            bookings = new Booking[2];
-
-            // Admin Room
-            DateTime checkInAdmin = new DateTime(2023, 2, 11, 0, 0);
-            DateTime checkOutAdmin = new DateTime(2023, 2, 16, 0, 0);
-            Room room1 = getFreeRoom(RoomType.DELUXE, 2, checkInAdmin, checkOutAdmin);
-            User user1 = searchUser("admin@email.com"); // adminUser
-            Booking booking1 = new Booking(checkInAdmin, checkOutAdmin, room1.getId(), user1.getId());
-            bookings[0] = booking1;
+            bookings = new Booking[1];
 
             // Guest Room
             DateTime checkInGuest = new DateTime(2023, 5, 18, 0, 0);
@@ -541,7 +533,7 @@ public class GeneralController {
             Room room2 = getFreeRoom(RoomType.DELUXE, 1, checkInGuest, checkOutGuest);
             User user2 = searchUser("guest@email.com"); // guestUser
             Booking booking2 = new Booking(checkInGuest, checkOutGuest, room2.getId(), user2.getId());
-            bookings[1] = booking2;
+            bookings[0] = booking2;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -618,7 +610,8 @@ public class GeneralController {
      * @return The updated array of User objects after addition.
      */
     public static User[] addUser(User[] users, User user) {
-        user.setId(User.generateId(users));
+        if (user.getId() == null || user.getId().length() < 2)
+            user.setId(User.generateId(users));
 
         users = incrementUsers(users);
         int index = users.length - 1;
@@ -729,17 +722,7 @@ public class GeneralController {
      */
     public static User getUser(String id) throws IllegalArgumentException {
         User[] users = (User[]) pullData(User.class);
-
-        User result = null;
-        if (users != null)
-            for (int i = 0; i < users.length; i++)
-                if (users[i].getId().equals(id))
-                    result = users[i];
-
-        if (result != null)
-            return result;
-        else
-            throw new IllegalArgumentException("Id does not exist");
+        return getUser(users, id);
     }
 
     @SuppressWarnings("unused")
