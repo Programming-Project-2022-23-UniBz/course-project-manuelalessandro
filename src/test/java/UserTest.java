@@ -92,8 +92,8 @@ public class UserTest {
     public void testGuestAge() {
         Date dateOfBirth2 = new DateTime(2010, 05, 05, 0, 0).toDate();
         user.setDateOfBirth(dateOfBirth2);
-        assertTrue(user.isGuestUnder18(dateOfBirth2));
-        assertFalse(user.isGuestOver100(dateOfBirth2));
+        assertTrue(User.isGuestUnder18(dateOfBirth2));
+        assertFalse(User.isGuestOver100(dateOfBirth2));
         dateOfBirth2 = new DateTime(1900, 05, 05, 0, 0).toDate();
 
     }
