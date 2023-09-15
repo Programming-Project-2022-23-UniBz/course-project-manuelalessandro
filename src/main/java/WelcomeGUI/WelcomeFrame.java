@@ -3,12 +3,13 @@ package WelcomeGUI;
 
 import Main.LoginFrame;
 import DesignObjects.ColorSetting;
+import DesignObjects.SteelCheckBox.ColorDef;
+
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Color;
-import SteelCheckBox.ColorDef;
 
 /**
  * WelcomeFrame represents the main GUI frame for the welcome interface.
@@ -169,19 +170,6 @@ public class WelcomeFrame extends javax.swing.JFrame {
         }
 
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -202,7 +190,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 infoLabel3 = new javax.swing.JLabel();
                 hotelLogo = new javax.swing.JLabel();
                 accountButton = new javax.swing.JButton();
-                themeCheckBox = new SteelCheckBox.SteelCheckBox();
+                themeCheckBox = new DesignObjects.SteelCheckBox.SteelCheckBox();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                 setUndecorated(true);
@@ -503,6 +491,6 @@ public class WelcomeFrame extends javax.swing.JFrame {
         private WelcomeGUI.ReviewsPanel reviewsPanel;
         private javax.swing.JButton servicesButton;
         private WelcomeGUI.ServicesPanel servicesPanel;
-        private SteelCheckBox.SteelCheckBox themeCheckBox;
+        private DesignObjects.SteelCheckBox.SteelCheckBox themeCheckBox;
         // End of variables declaration//GEN-END:variables
 }

@@ -52,11 +52,11 @@ public class User {
     private String email;
     private String password;
     private String role;
-    private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(";
+    private static final String ENCRYPTION_KEY = "4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D("; // unused
     private String username;
-    public String repositoryPath = System.getProperty("user.dir");
-    public final String remoteName = "origin";
-    public String branchName = "pushpull";
+    // public String repositoryPath = System.getProperty("user.dir");
+    // public final String remoteName = "origin";
+    // public String branchName = "pushpull";
 
     public User(String name, String surname, String username, Date dateOfBirth, GenderType gender, String email,
             String password,
@@ -172,7 +172,7 @@ public class User {
 
         int index = -1;
         for (int i = 0; i < users.length; i++)
-            if (users[i].getId().equals(id))
+            if (users[i].getId().equals(getId()))
                 index = i;
 
         if (index != -1)
@@ -356,39 +356,42 @@ public class User {
         }
         return index;
     }
+
+    @SuppressWarnings("deprecation")
     public String getReview() {
         String review = "";
-        try{
+        try {
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
             int index = findIndexOfJson(jsonArray, "GuestName", getFullName());
             JsonObject userObject = jsonArray.get(index).getAsJsonObject();
-            String storedUser = userObject.get("GuestName").getAsString();
             review = userObject.get("Review").getAsString();
-            
-        }catch(IOException e){
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         return review;
     }
+
+    @SuppressWarnings("deprecation")
     public int getRating() {
         int rating = 0;
-        try{
+        try {
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
             int index = findIndexOfJson(jsonArray, "GuestName", getFullName());
             JsonObject userObject = jsonArray.get(index).getAsJsonObject();
-            String storedUser = userObject.get("GuestName").getAsString();
             rating = userObject.get("Stars").getAsInt();
-            
-        }catch(IOException e){
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         return rating;
     }
-    
+
+    @SuppressWarnings("deprecation")
     public boolean hasReview() {
         try {
             // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);

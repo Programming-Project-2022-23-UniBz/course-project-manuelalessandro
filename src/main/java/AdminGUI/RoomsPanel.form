@@ -345,7 +345,7 @@
                 </Property>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="&#x9;Room numbers: &#x9;&#x9;Capacity:&#x9;                Enter one of the following room types: &#xa;&#x9;From 100 to 115&#x9;&#x9;SINGLE&#x9;  &#x9;           STANDARD&#xa;&#x9;From 116 to 125&#x9;&#x9;DOUBLE&#x9;&#x9;           STANDARD 2&#xa;&#x9;From 200 to 215&#x9;&#x9;SINGLE&#x9;&#x9;               DELUXE&#xa;&#x9;From 216 to 225&#x9;&#x9;DOUBLE&#x9;&#x9;              DELUXE 2&#xa;&#x9;From 300 to 325&#x9;&#x9;SINGLE&#x9;&#x9;                  KING"/>
+                <Property name="text" type="java.lang.String" value="&#x9;Room numbers: &#x9;&#x9;Capacity:&#x9;                Enter one of the following room types: &#xa;&#x9;From 100 to 115&#x9;&#x9;SINGLE&#x9;  &#x9;           STANDARD&#xa;&#x9;From 116 to 125&#x9;&#x9;DOUBLE&#x9;&#x9;           STANDARD 2&#xa;&#x9;From 200 to 215&#x9;&#x9;SINGLE&#x9;&#x9;               DELUXE&#xa;&#x9;From 216 to 225&#x9;&#x9;DOUBLE&#x9;&#x9;              DELUXE 2&#xa;&#x9;From 300 to 325&#x9;&#x9;SINGLE&#x9;&#x9;                 KING 2"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>

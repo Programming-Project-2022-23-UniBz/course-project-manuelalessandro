@@ -822,8 +822,6 @@ public class BookingsPanel extends javax.swing.JPanel {
         }
 
         private void addBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addBookingBtnActionPerformed
-                boolean isUserCreated = true;
-
                 // Check if any of the required fields are empty
                 if (customerNameTxtField.getText().isEmpty()
                                 || customerSurnameTxtField.getText().isEmpty()
@@ -846,23 +844,19 @@ public class BookingsPanel extends javax.swing.JPanel {
                          * provided by the user.
                          */
                         user = processUserInputs();
-                        if (user == null) {
-                                JOptionPane.showMessageDialog(this,
-                                                "An error occurred while processing user inputs. Please check your input.");
-                                isUserCreated = false;
-                                return;
-                        }
+                        if (user == null)
+                                throw new IllegalArgumentException();
                 } catch (IllegalArgumentException e) {
                         JOptionPane.showMessageDialog(this,
                                         "An error occurred while processing user inputs. Please check your input.");
-                        isUserCreated = false;
+                        user = null;
                         return;
                 }
 
                 DateTime dateTimecheckIn = new DateTime(jDateOfCheckInChooser.getDate());
                 DateTime dateTimecheckOut = new DateTime(jDateOfCheckOutChooser.getDate());
 
-                if (!isUserCreated || !isCheckInValidated || !isCheckOutValidated) {
+                if (user == null || !isCheckInValidated || !isCheckOutValidated) {
                         JOptionPane.showMessageDialog(this, "Booking was not created successfully.", "Invalid Booking",
                                         JOptionPane.WARNING_MESSAGE);
                         return;
@@ -872,13 +866,13 @@ public class BookingsPanel extends javax.swing.JPanel {
                                         "Room is not available for the selected dates. Please choose another room.",
                                         "Invalid Room Selection", JOptionPane.WARNING_MESSAGE);
                 } else {
-                        if (isUserCreated || isCheckInValidated || isCheckOutValidated) {
+                        if (user != null & isCheckInValidated & isCheckOutValidated) {
+                                GeneralController.addUser(user);
+                                System.out.println("ID: " + user.getId());
                                 Booking booking = new Booking(dateTimecheckIn, dateTimecheckOut, bookingRoom.getId(),
                                                 user.getId());
                                 booking.setId();
-                                Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
-                                GeneralController.addBooking(bookings, booking);
-                                GeneralController.pushData(Booking.class, bookings);
+                                GeneralController.addBooking(booking);
                                 initBookingTable();
 
                                 // Display a success message
@@ -896,7 +890,6 @@ public class BookingsPanel extends javax.swing.JPanel {
          * Shows in a table all the bookings that has been created
          */
         public void initBookingTable() {
-
                 Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);
 
                 if (bookings != null) {
@@ -907,6 +900,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                                 Object rowData[] = new Object[6];
                                 User bookingUser;
                                 try {
+                                        System.out.println("Book user id: " + booking.getUserId());
                                         bookingUser = GeneralController.getUser(booking.getUserId());
                                         rowData[1] = bookingUser.getFullName();
                                 } catch (Exception e) {
@@ -953,6 +947,16 @@ public class BookingsPanel extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, message, "Modify Booking", JOptionPane.INFORMATION_MESSAGE);
                         processBookingEdit(bookingID);
                 } else if (dialogResult == 1) { // Delete option selected
+                        // control if user has account (if not delete user)
+                        try {
+                                User user = GeneralController
+                                                .getUser(GeneralController.getBookingById(bookingID).getUserId());
+                                if (user.getPassword() == null)
+                                        GeneralController.removeUser(user.getId());
+                        } catch (Exception e) {
+                                System.out.println("User was not removed");
+                        }
+
                         GeneralController.removeBookingById(bookingID);
                         initBookingTable();
                 }
@@ -1045,7 +1049,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                 // Create the User object with valid input
                 if (!nameIsValidated || !surnameIsValidated || !DOBIsValidated || !genderIsValidated
                                 || !emailIsValidated) {
-                        return null;
+                        throw new IllegalArgumentException();
                 }
 
                 User user = new User(name, surname, dateOfBirth, gender, email);
@@ -1061,7 +1065,12 @@ public class BookingsPanel extends javax.swing.JPanel {
                 }
 
                 try {
-                        return GenderType.valueOf(selectedGender.toUpperCase());
+                        if (selectedGender.equals("MAN"))
+                                return GenderType.MAN;
+                        else if (selectedGender.equals("WOMAN"))
+                                return GenderType.WOMAN;
+                        else
+                                return GenderType.OTHER;
                 } catch (IllegalArgumentException e) {
                         JOptionPane.showMessageDialog(this, "Please select a valid gender.");
                         return null;

@@ -72,7 +72,7 @@ public class UserBookingPanel extends javax.swing.JPanel {
                         totalCostField.setText(booking.getTotalCost() + "");
                 } else {
                         errorLabel.setText("Your booking was not identified, please restart the application");
-                        System.out.println("-- Booking is null");
+                        // System.out.println("-- Booking is null");
                 }
         }
 

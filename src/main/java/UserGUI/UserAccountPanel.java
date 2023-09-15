@@ -83,6 +83,7 @@ public class UserAccountPanel extends javax.swing.JPanel {
         private void applyChanges() {
                 try {
                         String name = nameField.getText();
+                        System.out.println("\n\n name: " + name);
                         String surname = surnameField.getText();
                         String username = usernameField.getText();
                         Date birth = birthField.getDate();
@@ -100,11 +101,12 @@ public class UserAccountPanel extends javax.swing.JPanel {
 
                         if (!User.nameValid(name, surname))
                                 throw new Exception("Name or surname is invalid!");
-                        else if (!User.usernameValid(username))
+                        else if (!user.getUsername().equals(username) && !User.usernameValid(username))
                                 throw new Exception("Username is invalid!");
-                        else if (!User.emailValid(email))
-                                throw new Exception("Email is invalid!");
-                        else if (pass1 != null && !User.passwordValid(pass1, pass2)) {
+                        else if (!user.getEmail().equals(email)) {
+                                if (!User.emailValid(email))
+                                        throw new Exception("Email is invalid!");
+                        } else if (pass1 != null && pass1.length() > 5 && !User.passwordValid(pass1, pass2)) {
                                 // Show password requirements
                                 JOptionPane.showMessageDialog(this,
                                                 User.getPasswordRequirements(),
@@ -133,6 +135,7 @@ public class UserAccountPanel extends javax.swing.JPanel {
                         }
                 } catch (Exception e) {
                         errorLabel.setText("Error: " + e.getMessage());
+                        e.printStackTrace();
                 }
                 refreshInfos();
         }
