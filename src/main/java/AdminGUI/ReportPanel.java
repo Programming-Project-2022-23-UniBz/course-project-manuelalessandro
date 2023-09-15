@@ -8,7 +8,6 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-import Objects.Booking;
 import Objects.GeneralController;
 
 import org.jfree.chart.ChartPanel;

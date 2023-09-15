@@ -104,9 +104,15 @@ public class UserAccountPanel extends javax.swing.JPanel {
                                 throw new Exception("Username is invalid!");
                         else if (!User.emailValid(email))
                                 throw new Exception("Email is invalid!");
-                        else if (pass1 != null && !User.passwordValid(pass1, pass2))
-                                throw new Exception("Password is invalid!"); // TODO: print requisites
-                        else if (!User.birthDateValid(birth))
+                        else if (pass1 != null && !User.passwordValid(pass1, pass2)) {
+                                // Show password requirements
+                                JOptionPane.showMessageDialog(this,
+                                                User.getPasswordRequirements(),
+                                                "Password requirements",
+                                                JOptionPane.WARNING_MESSAGE);
+
+                                throw new Exception("Password is invalid!");
+                        } else if (!User.birthDateValid(birth))
                                 throw new Exception("Birthdate is invalid!");
                         else {
                                 user.setName(name);
@@ -536,7 +542,6 @@ public class UserAccountPanel extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
         private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_usernameFieldActionPerformed
-                // TODO add your handling code here:
         }// GEN-LAST:event_usernameFieldActionPerformed
 
         private void applyChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_applyChangesButtonActionPerformed

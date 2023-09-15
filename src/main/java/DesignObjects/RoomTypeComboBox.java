@@ -3,13 +3,12 @@ package DesignObjects;
 import java.awt.Component;
 import java.util.ArrayList;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
 
 import Objects.Room.RoomType;
 
-public class RoomTypeComboBox extends JComboBox {
+public class RoomTypeComboBox extends JComboBox<String> {
 
     public RoomTypeComboBox() {
         super();
@@ -29,8 +28,10 @@ public class RoomTypeComboBox extends JComboBox {
             if (value instanceof String) {
                 displayText = (String) value;
             } else if (value instanceof ArrayList) {
-                RoomType roomType = (RoomType) ((ArrayList) value).get(0);
-                int capacity = (int) ((ArrayList) value).get(1);
+                @SuppressWarnings("unchecked")
+                RoomType roomType = (RoomType) ((ArrayList<RoomType>) value).get(0);
+                @SuppressWarnings("unchecked")
+                int capacity = (int) ((ArrayList<Integer>) value).get(1);
                 if (roomType == RoomType.STANDARD) {
                     if (capacity == 1)
                         displayText = "Single room standard";
@@ -71,8 +72,7 @@ public class RoomTypeComboBox extends JComboBox {
         } else if (super.getSelectedItem().equals("King suite")) {
             result.add(RoomType.KING);
             result.add(2);
-        }
-        else {
+        } else {
             result.add(super.getSelectedItem());
         }
         return result;

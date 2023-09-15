@@ -991,8 +991,6 @@ public class BookingsPanel extends javax.swing.JPanel {
                 boolean genderIsValidated = true;
                 boolean emailIsValidated = true;
 
-                // TODO: change all validations to static references reusable
-
                 // Validate name
                 if (!User.nameValid(name, surname)) {
                         JOptionPane.showMessageDialog(this,
