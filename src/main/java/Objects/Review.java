@@ -20,6 +20,7 @@ import java.io.IOException;
  *
  * @author aless
  */
+@SuppressWarnings("deprecation")
 public class Review {
     private String userId;
     private String review;

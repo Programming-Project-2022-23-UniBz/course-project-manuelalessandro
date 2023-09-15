@@ -98,5 +98,25 @@
     "GuestName": "Amelia Walker",
     "Review": "Friendly staff and comfortable rooms. Enjoyed my stay here.",
     "Stars": 4
+  },
+  {
+    "GuestName": "GuestSurname GuestName",
+    "Review": "wadWAdadwadawdadadWDdadadaw",
+    "Stars": 5
+  },
+  {
+    "GuestName": "GuestSurname GuestName",
+    "Review": "wadWAdadwadawdadadWDdadadaw",
+    "Stars": 5
+  },
+  {
+    "GuestName": "GuestSurname GuestName",
+    "Review": "test",
+    "Stars": 5
+  },
+  {
+    "GuestName": "GuestSurname GuestName",
+    "Review": "test",
+    "Stars": 5
   }
 ]

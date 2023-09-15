@@ -245,6 +245,7 @@ public class User {
         return true; // unique
     }
 
+    @SuppressWarnings("deprecation")
     public void addReview(String review, int Stars) {
         try {
             // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
@@ -311,9 +312,10 @@ public class User {
     }
 
     // to remove the review from reviews.json
+    @SuppressWarnings("deprecation")
     public void removeReview(String review) {
         try {
-            //GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
+            // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();
@@ -333,9 +335,10 @@ public class User {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonArray, writer);
             }
-            //GitCommandExecutor.stageChanges(repositoryPath, ".");
-            //GitCommandExecutor.commitChanges(repositoryPath, "removed from reviews.json");
-            //GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
+            // GitCommandExecutor.stageChanges(repositoryPath, ".");
+            // GitCommandExecutor.commitChanges(repositoryPath, "removed from
+            // reviews.json");
+            // GitCommandExecutor.pushChanges(repositoryPath, remoteName, branchName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -354,9 +357,10 @@ public class User {
         return index;
     }
 
+    @SuppressWarnings("deprecation")
     public boolean hasReview(String review) {
         try {
-            //GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
+            // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
             // Read existing reviews from the JSON file
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(new FileReader("src/main/resources/json/reviews.json")).getAsJsonArray();

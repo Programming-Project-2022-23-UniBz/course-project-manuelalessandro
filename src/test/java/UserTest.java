@@ -8,7 +8,6 @@ import java.util.Date;
 
 import Objects.User;
 
-
 public class UserTest {
     private User user;
 
@@ -79,7 +78,7 @@ public class UserTest {
         user.setSurname(null);
         assertEquals("null", user.getFullName());
     }
-    
+
     @Test
     public void testHasReview() {
         assertFalse(user.hasReview("nice place")); // user shouldn't have any review
@@ -88,17 +87,17 @@ public class UserTest {
         user.removeReview("Hello, nice place!"); // remove review
         assertFalse(user.hasReview("Hello, nice place!")); // review shouldn't be found
     }
-    
+
     @Test
-    public void testGuestAge(){
-        Date dateOfBirth2 = null; //da cambiare in qualcosa sotto i 18 anni
+    public void testGuestAge() {
+        Date dateOfBirth2 = null; // da cambiare in qualcosa sotto i 18 anni
         user.setDateOfBirth(dateOfBirth2);
-        assertTrue(user.isGuestUnder18(dateOfBirth2));
-        assertFalse(user.isGuestOver100(dateOfBirth2));
+        assertTrue(User.isGuestUnder18(dateOfBirth2));
+        assertFalse(User.isGuestOver100(dateOfBirth2));
         dateOfBirth2 = null; // da cambiare in qualcosa sopra 100
         user.setDateOfBirth(dateOfBirth2);
-        assertTrue(user.isGuestOver100(dateOfBirth2));
-        assertFalse(user.isGuestUnder18(dateOfBirth2));
+        assertTrue(User.isGuestOver100(dateOfBirth2));
+        assertFalse(User.isGuestUnder18(dateOfBirth2));
     }
 
 }

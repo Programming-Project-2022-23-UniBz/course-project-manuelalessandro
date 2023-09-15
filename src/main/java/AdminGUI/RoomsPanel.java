@@ -480,8 +480,6 @@ public class RoomsPanel extends javax.swing.JPanel {
                         return;
                 }
 
-                boolean isCheckInValidated = true;
-                boolean isCheckOutValidated = true;
                 Date checkInDate = jDateOfCheckInChooser.getDate();
                 Date checkOutDate = jDateOfCheckOutChooser.getDate();
 
@@ -493,7 +491,6 @@ public class RoomsPanel extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "Check-in date cannot be earlier than today.",
                                         "Invalid Check-in Date",
                                         JOptionPane.WARNING_MESSAGE);
-                        isCheckInValidated = false;
                         return;
                 }
 
@@ -502,7 +499,6 @@ public class RoomsPanel extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this,
                                         "Check-out date must be after the check-in date and not the same day.",
                                         "Invalid Check-out Date", JOptionPane.WARNING_MESSAGE);
-                        isCheckOutValidated = false;
                         return;
                 }
 
@@ -547,8 +543,6 @@ public class RoomsPanel extends javax.swing.JPanel {
                         return;
                 }
 
-                boolean isCheckInValidated = true;
-                boolean isCheckOutValidated = true;
                 Date checkInDate = jDateOfCheckInChooser.getDate();
                 Date checkOutDate = jDateOfCheckOutChooser.getDate();
 
@@ -560,7 +554,6 @@ public class RoomsPanel extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "Check-in date cannot be earlier than today.",
                                         "Invalid Check-in Date",
                                         JOptionPane.WARNING_MESSAGE);
-                        isCheckInValidated = false;
                         return;
                 }
 
@@ -569,7 +562,6 @@ public class RoomsPanel extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this,
                                         "Check-out date must be after the check-in date and not the same day.",
                                         "Invalid Check-out Date", JOptionPane.WARNING_MESSAGE);
-                        isCheckOutValidated = false;
                         return;
                 }
 

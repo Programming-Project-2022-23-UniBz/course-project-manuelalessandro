@@ -1,6 +1,6 @@
 package Main;
 
-import Objects.GitCommandExecutor;
+//import Objects.GitCommandExecutor;
 import WelcomeGUI.WelcomeFrame;
 
 public class Main {
@@ -10,7 +10,7 @@ public class Main {
                 // String remoteName = "origin";
                 // String repositoryPath = System.getProperty("user.dir");
                 // String branchName = "main";
-                
+
                 // GitCommandExecutor.pullChanges(repositoryPath, remoteName, branchName);
 
                 WelcomeFrame frame = new WelcomeFrame();
@@ -18,8 +18,9 @@ public class Main {
         }
 
         public static void stopApplication() {
-            
-                // uncomment the next line to synchronize json data/ -- commented because syncronization is not active
+
+                // uncomment the next line to synchronize json data/ -- commented because
+                // syncronization is not active
                 // String remoteName = "origin";
                 // String repositoryPath = System.getProperty("user.dir");
                 // String branchName = "pushpull";
