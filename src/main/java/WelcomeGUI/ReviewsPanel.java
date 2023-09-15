@@ -12,8 +12,6 @@ import java.io.FileReader;
 
 /**
  * This class represents a panel for displaying customer reviews.
- * 
- * @Author ManuelVillotti
  */
 public class ReviewsPanel extends javax.swing.JPanel {
 
