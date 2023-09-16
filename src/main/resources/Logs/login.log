@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="windows-1252" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
+<record>
+  <date>2023-09-16T10:22:19.134420Z</date>
+  <millis>1694859739134</millis>
+  <nanos>420000</nanos>
+  <sequence>0</sequence>
+  <logger>LoginLogger</logger>
+  <level>INFO</level>
+  <class>Main.LoginFrame</class>
+  <method>loginUser</method>
+  <thread>28</thread>
+  <message>User logged in: Username=admin, Role=admin</message>
+</record>
 </log>
