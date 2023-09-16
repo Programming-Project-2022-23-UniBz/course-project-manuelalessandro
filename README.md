@@ -118,17 +118,18 @@ Turning to the design aspect, I devoted time to create visually appealing and in
 
 Elaborate on the main challenges each group member faced throughout the project and how they were surpassed.
 
-- **Khinchi Ganesh Kumar:** The most challenging aspect in this project for me was to implement the unit tests. The reason was X so I had to do Y and I achived Z.
 - **Marconi Alessandro:** The most difficult aspect of this project for me was to try to implement a server and client architecture, which I didn't manage to do exactly because of time management, which was also a significant problem I encountered. 
-- **Villotti Manuel:** 
+- **Villotti Manuel:** Navigating this project presented several notable challenges. Initially, I grappled with defining clear objectives and a starting point. Establishing a solid foundation was important.
+Efficiently managing the extensive data proved to be another hurdle. It required planning to ensure seamless data handling throughout the application (I had to change the initial method).
+However, the most demanding task was undoubtedly bug hunting and resolution. This demanded time and rigorous testing to identify and resolve issues. Fortunately, exceptions helped a lot with this aspect.
+
 
 ### 5.4. Learning Outcomes
 
 Describe what you learned with this project.
 
-- **Khinchi Ganesh Kumar:** I learned a new library called `XYZ`!
 - **Marconi Alessandro:**  Above all, I acquired valuable experience in serializing and deserializing JSON data, which with the whole project significantly improved my overall skills. 
-- **Villotti Manuel:** ...
+- **Villotti Manuel:** Reflecting on this project, I've acquired a wealth of new skills that I am confident will prove invaluable in future projects, enabling me to streamline my workflow and save time. Additionally, I've noticed a transformation in my coding approach. I've become more diligent in documenting my code and handling exceptions, and now prioritize writing structured and organized code.
 
 
 
