@@ -16,6 +16,11 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 import AdminGUI.AdminFrame;
+import java.io.IOException;
+
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +28,10 @@ import AdminGUI.AdminFrame;
  * @author ManuelVillotti
  */
 public class LoginFrame extends javax.swing.JFrame {
-
+    
+        private static final Logger logger = Logger.getLogger("LoginLogger");
+        private FileHandler fileHandler;
+        
         private CardLayout cardLayout;
         private WelcomeFrame welcomeFrame;
 
@@ -35,6 +43,13 @@ public class LoginFrame extends javax.swing.JFrame {
          * Creates new form LoginTEST
          */
         public LoginFrame() {
+                try {
+                    // Configure logger to save logs to a file
+                    fileHandler = new FileHandler("src/main/java/Logs/login.log");
+                    logger.addHandler(fileHandler);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 initComponents();
                 setLocationRelativeTo(null);// center position of JFrame
                 setResizable(false);
@@ -58,7 +73,7 @@ public class LoginFrame extends javax.swing.JFrame {
                         // searching for user that logged in
                         User user = GeneralController.searchUser(username, password);
                         String userRole = user.getRole();
-
+                        logger.info("User logged in: Username=" + username + ", Role=" + userRole);
                         if (userRole.equals("admin")) {
                                 AdminFrame frame = new AdminFrame();
                                 frame.setVisible(true);
@@ -71,6 +86,7 @@ public class LoginFrame extends javax.swing.JFrame {
                         return true;
                 } catch (Exception exception) {
                         loginErrorLabel.setText("Error: invalid username or password");
+                        logger.warning("Login failed for username: " + username);
                         exception.printStackTrace();
                         return false;
                 }
@@ -129,12 +145,14 @@ public class LoginFrame extends javax.swing.JFrame {
                                 User user = new User(name, surname, username, birth, gender, email, pass1, "user");
 
                                 GeneralController.addUser(user);
+                                logger.info("User registered: Username=" + username + ", Name=" + name + ", Surname=" + surname + ", Email=" + email);
 
                                 this.dispose(); // to close this Frame
                                 return true; // user registered successfully
                         }
                 } catch (Exception e) {
                         registerErrorLabel.setText("Error: " + e.getMessage());
+                        logger.warning("User registration failed for username: " + username);
                         e.printStackTrace();
                         return false; // user registration failed
                 }

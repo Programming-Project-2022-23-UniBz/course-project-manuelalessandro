@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-09-16T02:05:12.530146Z</date>
+  <millis>1694829912530</millis>
+  <nanos>146000</nanos>
+  <sequence>0</sequence>
+  <logger>LoginLogger</logger>
+  <level>INFO</level>
+  <class>Main.LoginFrame</class>
+  <method>loginUser</method>
+  <thread>35</thread>
+  <message>User logged in: Username=guest, Role=guest</message>
+</record>
+</log>
