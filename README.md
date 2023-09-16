@@ -57,7 +57,7 @@ com.google.code.gson:gson (Version: 2.10.1)
 Justification: Gson was used for serializing and deserializing JSON data.
 
 org.junit.jupiter:junit-jupiter-api (Version: 5.7.1)
-Justification: JUnit was used for writing test cases for your code.
+Justification: JUnit was used for writing test cases for our code.
 
 org.junit.jupiter:junit-jupiter-engine (Version: 5.7.1)
 Justification: This is the JUnit engine required for executing JUnit 5 tests.
