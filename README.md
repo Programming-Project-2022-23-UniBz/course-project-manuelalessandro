@@ -1,5 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-8d59dc4de5201274e310e4c54b9627a8934c3b88527886e3b421487c677d23eb.svg)](https://classroom.github.com/a/KEbQ1JIO)
-# Your project's title
+# Hotel Management System
 
 ## 1. About
 
@@ -57,7 +57,7 @@ com.google.code.gson:gson (Version: 2.10.1)
 Justification: Gson was used for serializing and deserializing JSON data.
 
 org.junit.jupiter:junit-jupiter-api (Version: 5.7.1)
-Justification: JUnit was used for writing test cases for your code.
+Justification: JUnit was used for writing test cases for our code.
 
 org.junit.jupiter:junit-jupiter-engine (Version: 5.7.1)
 Justification: This is the JUnit engine required for executing JUnit 5 tests.
@@ -105,25 +105,31 @@ In the end, the experience of developing this Java project was both demanding an
 
 Describe the roles and responsibilities each member had in this project.
 
-- **Khinchi Ganesh Kumar:** I was responsible for implementing components `x` and `y`. I also helped 2 to implement technique `z`.
+- **Khinchi Ganesh Kumar:** He made contributions to the project during the initial phase, working on the admin console and designing the gallery and services panel on the welcome page. Unfortunately, he had to leave the project during the semester.
 - **Marconi Alessandro:** I primarily focused on enhancing the backend of our login and registration system. I also spearheaded the development of robust test suites for essential classes like User, Login & Register, and Room. Additionally, I played a key role in building the backend functionality for handling Reviews. Moreover, I implemented the logging mechanism in the login and register class. Ultimately, I helped here and there in the backend development. 
-- **Villotti Manuel:** 
+- **Villotti Manuel:** In this programming project, my first responsibility was to establish a well-organized project structure. This involved creating distinct JFrames and separating various JPanels across different packages, ensuring a clear and manageable architecture (also because it was needed to edit the design separately with NetBeans).
+I took charge of designing and implementing the User, Room, and Booking objects, carefully interconnecting them using unique generated IDs. This seamless integration allowed for smooth interactions between booking records, reserved rooms, and user accounts. Additionally, I implemented methods, utilizing regular expressions, to validate user input during the account registration and editing process. This ensured that all information provided met the necessary criteria.
+One of the pivotal components I developed was the GeneralController class, which serves as the backbone of the backend. It houses essential methods utilized by various classes and encompasses functionalities to handle data retrieval and storage from the Json database. This class serves as the central hub for viewing and modifying the objects I created (User, Room, and Booking), all of which are stored in arrays within the Json files.
+A significant portion of my efforts went into crafting the User page, an interface for guest interaction. I implemented a management console, empowering users to create and edit their bookings and adjust their account details.
+In collaboration with Ganesh, I also played a role in the development of the Admin Console. Together, we worked to ensure its functionality and completeness.
+Turning to the design aspect, I devoted time to create visually appealing and intuitive interfaces. This included designing the welcome page with its distinct sections like home, gallery, and the left panel. Additionally, I crafted the login and registration popups, ensuring they were both aesthetically pleasing and user-friendly. In addition to these core contributions, I introduced the dark theme extra feature for the welcome page.
 
 ### 5.3. Main Challenges
 
 Elaborate on the main challenges each group member faced throughout the project and how they were surpassed.
 
-- **Khinchi Ganesh Kumar:** The most challenging aspect in this project for me was to implement the unit tests. The reason was X so I had to do Y and I achived Z.
 - **Marconi Alessandro:** The most difficult aspect of this project for me was to try to implement a server and client architecture, which I didn't manage to do exactly because of time management, which was also a significant problem I encountered. 
-- **Villotti Manuel:** ...
+- **Villotti Manuel:** Navigating this project presented several notable challenges. Initially, I grappled with defining clear objectives and a starting point. Establishing a solid foundation was important.
+Efficiently managing the extensive data proved to be another hurdle. It required planning to ensure seamless data handling throughout the application (I had to change the initial method).
+However, the most demanding task was undoubtedly bug hunting and resolution. This demanded time and rigorous testing to identify and resolve issues. Fortunately, exceptions helped a lot with this aspect.
+
 
 ### 5.4. Learning Outcomes
 
 Describe what you learned with this project.
 
-- **Khinchi Ganesh Kumar:** I learned a new library called `XYZ`!
 - **Marconi Alessandro:**  Above all, I acquired valuable experience in serializing and deserializing JSON data, which with the whole project significantly improved my overall skills. 
-- **Villotti Manuel:** ...
+- **Villotti Manuel:** Reflecting on this project, I've acquired a wealth of new skills that I am confident will prove invaluable in future projects, enabling me to streamline my workflow and save time. Additionally, I've noticed a transformation in my coding approach. I've become more diligent in documenting my code and handling exceptions, and now prioritize writing structured and organized code.
 
 
 
