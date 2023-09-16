@@ -44,7 +44,7 @@ public class LoginFrame extends javax.swing.JFrame {
         public LoginFrame() {
                 try {
                         // Configure logger to save logs to a file
-                        fileHandler = new FileHandler("src/main/java/Logs/login.log");
+                        fileHandler = new FileHandler("src/main/resources/Logs/login.log");
                         logger.addHandler(fileHandler);
                 } catch (IOException e) {
                         e.printStackTrace();
