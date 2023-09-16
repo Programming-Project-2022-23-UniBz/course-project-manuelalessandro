@@ -105,9 +105,14 @@ In the end, the experience of developing this Java project was both demanding an
 
 Describe the roles and responsibilities each member had in this project.
 
-- **Khinchi Ganesh Kumar:** I was responsible for implementing components `x` and `y`. I also helped 2 to implement technique `z`.
+- **Khinchi Ganesh Kumar:** He made contributions to the project during the initial phase, working on the admin console and designing the gallery and services panel on the welcome page. Unfortunately, he had to leave the project during the semester.
 - **Marconi Alessandro:** I primarily focused on enhancing the backend of our login and registration system. I also spearheaded the development of robust test suites for essential classes like User, Login & Register, and Room. Additionally, I played a key role in building the backend functionality for handling Reviews. Moreover, I implemented the logging mechanism in the login and register class. Ultimately, I helped here and there in the backend development. 
-- **Villotti Manuel:** 
+- **Villotti Manuel:** In this programming project, my first responsibility was to establish a well-organized project structure. This involved creating distinct JFrames and separating various JPanels across different packages, ensuring a clear and manageable architecture (also because it was needed to edit the design separately with NetBeans).
+I took charge of designing and implementing the User, Room, and Booking objects, carefully interconnecting them using unique generated IDs. This seamless integration allowed for smooth interactions between booking records, reserved rooms, and user accounts. Additionally, I implemented methods, utilizing regular expressions, to validate user input during the account registration and editing process. This ensured that all information provided met the necessary criteria.
+One of the pivotal components I developed was the GeneralController class, which serves as the backbone of the backend. It houses essential methods utilized by various classes and encompasses functionalities to handle data retrieval and storage from the Json database. This class serves as the central hub for viewing and modifying the objects I created (User, Room, and Booking), all of which are stored in arrays within the Json files.
+A significant portion of my efforts went into crafting the User page, an interface for guest interaction. I implemented a management console, empowering users to create and edit their bookings and adjust their account details.
+In collaboration with Ganesh, I also played a role in the development of the Admin Console. Together, we worked to ensure its functionality and completeness.
+Turning to the design aspect, I devoted time to create visually appealing and intuitive interfaces. This included designing the welcome page with its distinct sections like home, gallery, and the left panel. Additionally, I crafted the login and registration popups, ensuring they were both aesthetically pleasing and user-friendly. In addition to these core contributions, I introduced the dark theme extra feature for the welcome page.
 
 ### 5.3. Main Challenges
 
@@ -115,7 +120,7 @@ Elaborate on the main challenges each group member faced throughout the project 
 
 - **Khinchi Ganesh Kumar:** The most challenging aspect in this project for me was to implement the unit tests. The reason was X so I had to do Y and I achived Z.
 - **Marconi Alessandro:** The most difficult aspect of this project for me was to try to implement a server and client architecture, which I didn't manage to do exactly because of time management, which was also a significant problem I encountered. 
-- **Villotti Manuel:** ...
+- **Villotti Manuel:** 
 
 ### 5.4. Learning Outcomes
 
