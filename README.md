@@ -51,18 +51,16 @@ List and justify the third party libraries you used.
 
 ### 4.3. Programming Techniques
 
-List and explain how you used the 10 programming techniques required for this project.
-
-- **Technique 1**: We used Serialization to convert a json object into a string, because we used them as our database. 
-- **Technique 2**: We used Deserialization to do the opposite and update a json object or add a json object to the array.
-- **Technique 3**: We used regular expressions to check the user input during the register phase.
-- **Technique 4**: Try-Catch blocks were a significant part of our code because they allowed us to handle and gracefully manage potential exceptions during file reading, ensuring the reliability and stability of our application even in the face of unexpected errors, such as file not found or permission issues.
-- **Technique 5**: We used Test hooks as they provide a means to isolate and test specific components or functions within our codebase.
-- **Technique 6**: We used a Graphical user interface because it makes the app easier to use.
-- **Technique 7**: We used File I/O to work with the jsons.
-- **Technique 8**: We used overriding to provide a specific implementation, for example, of the "mouseClicked" method for each button, which overrides the default behavior in the MouseAdapter class and defines custom actions for each button's click event
-- **Technique 9**: We used collections to make the usage of the combo boxes easier or also in the management of rooms.
-- **Technique 10**: We used custom exceptions to provide a more descriptive error message, enhancing code readability and debugging by specifying the nature of the failure during different occasions. 
+- Serialization: We used Serialization to convert a json object into a string, because we used them as our database. 
+- Deserialization: We used Deserialization to do the opposite and update a json object or add a json object to the array.
+- Regular Expressions: We used regular expressions to check the user input during the register phase.
+- Try-Catch blocks: Try-Catch blocks were a significant part of our code because they allowed us to handle and gracefully manage potential exceptions during file reading, ensuring the reliability and stability of our application even in the face of unexpected errors, such as file not found or permission issues.
+- Test hooks: We used Test hooks as they provide a means to isolate and test specific components or functions within our codebase.
+- Graphical Interface: We used a Graphical user interface because it makes the app easier to use.
+- File I/O: We used File I/O to work with the jsons.
+- Overriding: We used overriding to provide a specific implementation, for example, of the "mouseClicked" method for each button, which overrides the default behavior in the MouseAdapter class and defines custom actions for each button's click event
+- Collections: We used collections to make the usage of the combo boxes easier or also in the management of rooms.
+- Logging: We used logging to control better the inputs users give when they login or register, in case someone would find an exploit and use it to gain admin privileges. 
 
 ### 4.4. Tests
 
@@ -72,13 +70,14 @@ Our test suite encompasses unit, integration, boundary, error handling, and perf
 
 ### 5.1. Overall Experience
 
-Describe your overall experience in developing this project.
+Creating this Java project was a challenging but rewarding journey. It began with careful planning, followed by meticulous coding and testing phases. Collaboration and adaptation were key. The project honed our skills and provided valuable lessons in software development and project management. 
+In the end, the experience of developing this Java project was both demanding and fulfilling, leaving us with a profound sense of growth and achievement.
 
 ### 5.2. Division of Responsibilities
 
 Describe the roles and responsibilities each member had in this project.
 
-- **Student 1:** I was responsible for implementing components `x` and `y`. I also helped 2 to implement technique `z`.
+- **Khinchi Ganesh Kumar:** I was responsible for implementing components `x` and `y`. I also helped 2 to implement technique `z`.
 - **Student 2:** ...
 - **Student 3:** ...
 
