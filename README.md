@@ -43,7 +43,25 @@ mvn abc
 
 ### 4.1. Architectural Overview
 
-Describe the architecture of your application.
+src/main/java: This is the main source code directory where our Java classes reside.
+
+a. AdminGUI: This component contains classes related to the graphical user interface for administrators.
+
+b. DesignObjects: This component houses design-related objects or classes, related to the user interface design.
+
+c. Logs: This component contains the log files.
+
+d. Main: This component includes the main class or entry point for our application.
+
+e. Objects: This directory holds most of our backend classes.
+
+f. UserGUI: This component contains classes related to the graphical user interface for regular users.
+
+g. WelcomeGUI: Component responsible for the welcome page.
+
+src/main/resources: This directory holds all non-java files, such as JSON, jpeg, or png.
+
+src/test: This is the directory where our Test units are.
 
 ### 4.2. Third-Party Libraries
 
@@ -88,7 +106,9 @@ Justification: AssertJ is a library for enhancing assertions in test cases, maki
 - **File I/O:** We used File I/O to work with the jsons.
 - **Overriding:** We used overriding to provide a specific implementation, for example, of the "mouseClicked" method for each button, which overrides the default behavior in the MouseAdapter class and defines custom actions for each button's click event
 - **Collections:** We used collections to make the usage of the combo boxes easier or also in the management of rooms.
-- **Logging:** We used logging to control better the inputs users give when they log in or register, in case someone finds an exploit and uses it to gain admin privileges. 
+- **Logging:** We used logging to control better the inputs users give when they log in or register, in case someone finds an exploit and uses it to gain admin privileges.
+- **Casting:** We used casting to convert a value from one data type to another. It allowed us to change the type of a variable or an expression temporarily.
+- **Lambda Expressions:** 
 
 ### 4.4. Tests
 
