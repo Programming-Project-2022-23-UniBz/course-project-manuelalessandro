@@ -47,20 +47,48 @@ Describe the architecture of your application.
 
 ### 4.2. Third-Party Libraries
 
-List and justify the third party libraries you used.
+org.netbeans.external:AbsoluteLayout (Version: RELEASE170)
+Justification: This library was used for layout management.
+
+com.toedter:jcalendar (Version: 1.4)
+Justification: used for calendar-related functionality, for date selection, and display in the application.
+
+com.google.code.gson:gson (Version: 2.10.1)
+Justification: Gson was used for serializing and deserializing JSON data.
+
+org.junit.jupiter:junit-jupiter-api (Version: 5.7.1)
+Justification: JUnit was used for writing test cases for your code.
+
+org.junit.jupiter:junit-jupiter-engine (Version: 5.7.1)
+Justification: This is the JUnit engine required for executing JUnit 5 tests.
+
+joda-time:joda-time (Version: 2.12.5)
+Justification: Joda-Time was used for handling date and time operations in a more user-friendly and flexible manner compared to Java's built-in date and time classes.
+
+org.apache.maven.plugins:maven-compiler-plugin (Version: 3.8.1)
+Justification: Used for compiling the project's source code.
+
+org.apache.maven.plugins:maven-resources-plugin (Version: 3.2.0)
+Justification: Used for managing and copying resources (e.g., configuration files) during the build process.
+
+jfree:jfreechart (Version: 1.0.13)
+Justification: JFreeChart was used for data visualization in the application, in the admin frame.
+
+org.assertj:assertj-core (Version: 3.22.0)
+Justification: AssertJ is a library for enhancing assertions in test cases, making it easier to write and read test assertions.
 
 ### 4.3. Programming Techniques
 
-- Serialization: We used Serialization to convert a json object into a string, because we used them as our database. 
-- Deserialization: We used Deserialization to do the opposite and update a json object or add a json object to the array.
-- Regular Expressions: We used regular expressions to check the user input during the register phase.
-- Try-Catch blocks: Try-Catch blocks were a significant part of our code because they allowed us to handle and gracefully manage potential exceptions during file reading, ensuring the reliability and stability of our application even in the face of unexpected errors, such as file not found or permission issues.
-- Test hooks: We used Test hooks as they provide a means to isolate and test specific components or functions within our codebase.
-- Graphical Interface: We used a Graphical user interface because it makes the app easier to use.
-- File I/O: We used File I/O to work with the jsons.
-- Overriding: We used overriding to provide a specific implementation, for example, of the "mouseClicked" method for each button, which overrides the default behavior in the MouseAdapter class and defines custom actions for each button's click event
-- Collections: We used collections to make the usage of the combo boxes easier or also in the management of rooms.
-- Logging: We used logging to control better the inputs users give when they login or register, in case someone would find an exploit and use it to gain admin privileges. 
+- **Serialization:** We used Serialization to convert a JSON object into a string because we used them as our database. 
+- **Deserialization:** We used Deserialization to do the opposite and update a JSON object or add a JSON object to the array.
+- **Regular Expressions:** We used regular expressions to check the user input during the register phase.
+- **Try-Catch blocks:** Try-Catch blocks were a significant part of our code because they allowed us to handle and gracefully manage potential exceptions during file reading, ensuring the reliability and stability of our application even in the face of unexpected errors, such as file not found or permission issues.
+- **Test hooks:** We used Test hooks as they provide a means to isolate and test specific components or functions within our codebase.
+- **Graphical Interface:** We used a Graphical user interface because it makes the app easier to use.
+- **File I/O:** We used File I/O to work with the jsons.
+- **Overriding:** We used overriding to provide a specific implementation, for example, of the "mouseClicked" method for each button, which overrides the default behavior in the MouseAdapter class and defines custom actions for each button's click event
+- **Collections:** We used collections to make the usage of the combo boxes easier or also in the management of rooms.
+- **Logging:** We used logging to control better the inputs users give when they log in or register, in case someone finds an exploit and uses it to gain admin privileges. 
 
 ### 4.4. Tests
 
@@ -78,24 +106,24 @@ In the end, the experience of developing this Java project was both demanding an
 Describe the roles and responsibilities each member had in this project.
 
 - **Khinchi Ganesh Kumar:** I was responsible for implementing components `x` and `y`. I also helped 2 to implement technique `z`.
-- **Student 2:** ...
-- **Student 3:** ...
+- **Marconi Alessandro:** I primarily focused on enhancing the backend of our login and registration system. I also spearheaded the development of robust test suites for essential classes like User, Login & Register, and Room. Additionally, I played a key role in building the backend functionality for handling Reviews. Moreover, I implemented the logging mechanism in the login and register class. Ultimately, I helped here and there in the backend development. 
+- **Villotti Manuel:** 
 
 ### 5.3. Main Challenges
 
 Elaborate on the main challenges each group member faced throughout the project and how they were surpassed.
 
-- **Student 1:** The most difficult aspect in this project for me was to implement the units tests. The reason was X so I had to do Y and I achived Z.
-- **Student 2:** ...
-- **Student 3:** ...
+- **Khinchi Ganesh Kumar:** The most challenging aspect in this project for me was to implement the unit tests. The reason was X so I had to do Y and I achived Z.
+- **Marconi Alessandro:** The most difficult aspect of this project for me was to try to implement a server and client architecture, which I didn't manage to do exactly because of time management, which was also a significant problem I encountered. 
+- **Villotti Manuel:** ...
 
 ### 5.4. Learning Outcomes
 
 Describe what you learned with this project.
 
-- **Student 1:** I learned a new library called `xyz`!
-- **Student 2:** I learned how to implement the design pattern `abc`
-- **Student 3:** ...
+- **Khinchi Ganesh Kumar:** I learned a new library called `XYZ`!
+- **Marconi Alessandro:**  Above all, I acquired valuable experience in serializing and deserializing JSON data, which with the whole project significantly improved my overall skills. 
+- **Villotti Manuel:** ...
 
 
 
