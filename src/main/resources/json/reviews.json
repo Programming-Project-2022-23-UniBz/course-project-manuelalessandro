@@ -1,7 +1,27 @@
 [
   {
-    "GuestName": "GuestSurname GuestName",
-    "Review": "Nice hotel!",
+    "GuestName": "Sophia Johnson",
+    "Review": "Exquisite experience from start to finish. The attention to detail in every aspect of this hotel is truly commendable. The staff is exceptionally warm and welcoming, and the rooms are nothing short of luxurious. The view from my room was breathtaking. I can't wait to return!",
     "Stars": 5
+  },
+  {
+    "GuestName": "Michael Anderson",
+    "Review": "A hidden gem! This hotel exceeded all my expectations. The ambiance is elegant and inviting, and the service is impeccable. I particularly loved the variety of amenities provided. The on-site restaurant offers a delectable culinary experience. I had a fantastic stay and will definitely be back.",
+    "Stars": 5
+  },
+  {
+    "GuestName": "Ella Davis",
+    "Review": "The hotel was okay. I expected a bit more for the price I paid. The room was clean but quite small, and the view wasn't impressive. The staff was polite, but not overly friendly. I might consider other options next time I'm in town.",
+    "Stars": 3
+  },
+  {
+    "GuestName": "Jonathan Smith",
+    "Review": "Disappointing stay. The room had a strange odor, and the bed was uncomfortable. I also encountered some issues with the plumbing. The staff seemed indifferent to my concerns. I won't be coming back.",
+    "Stars": 2
+  },
+  {
+    "GuestName": "Olivia Brown",
+    "Review": "Below expectations. The hotel looked great in pictures, but reality was different. The noise from the street was bothersome, and the walls seemed thin. Additionally, the breakfast options were limited. I wouldn't choose to stay here again.",
+    "Stars": 2
   }
 ]
