@@ -10,6 +10,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+/**
+ * This class represents a panel containing control buttons for a windowed
+ * application.
+ * 
+ * @Author ManuelVillotti
+ */
 public class AppControlButtons extends javax.swing.JPanel {
 
     private int x, y;
@@ -20,12 +26,20 @@ public class AppControlButtons extends javax.swing.JPanel {
     private ImageIcon minimizeLight = new ImageIcon("src/main/resources/appControl/minimize_light.png");
     private ImageIcon minimizeDark = new ImageIcon("src/main/resources/appControl/minimize_dark.png");
 
+    /**
+     * Initializes a new instance of the AppControlButtons class.
+     */
     public AppControlButtons() {
         initComponents();
     }
 
-    // xPosition and yPosition are the coordinates of the calling JPanel and the
-    // BorderPanel toghether
+    /**
+     * Sets the control actions for the provided JFrame.
+     * 
+     * @param frame     The JFrame to which the control actions will be applied.
+     * @param xPosition The x-coordinate of the calling JPanel.
+     * @param yPosition The y-coordinate of the calling JPanel.
+     */
     public void setAppControl(JFrame frame, int xPosition, int yPosition) {
 
         closeLabel.addMouseListener(new MouseAdapter() {
@@ -66,23 +80,24 @@ public class AppControlButtons extends javax.swing.JPanel {
 
     }
 
+    /**
+     * Sets the light theme for the control buttons.
+     */
     public void setLightTheme() {
         closeLabel.setIcon(closeDark);
         moveLabel.setIcon(moveDark);
         minimizeLabel.setIcon(minimizeDark);
     }
 
+    /**
+     * Sets the dark theme for the control buttons.
+     */
     public void setDarkTheme() {
         closeLabel.setIcon(closeLight);
         moveLabel.setIcon(moveLight);
         minimizeLabel.setIcon(minimizeLight);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {

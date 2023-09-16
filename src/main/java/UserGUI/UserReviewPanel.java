@@ -9,7 +9,9 @@ import Objects.User;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * consents the user to create/edit/delete his review
+ * 
+ * @author aless
  * @author mamu8
  */
 public class UserReviewPanel extends javax.swing.JPanel {

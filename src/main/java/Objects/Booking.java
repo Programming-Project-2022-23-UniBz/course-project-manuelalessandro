@@ -42,7 +42,7 @@ public class Booking {
         setId();
     }
 
-    // ---- getters and setters
+    // ---------- getters and setters
 
     /**
      * Gets the unique booking ID.

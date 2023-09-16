@@ -2,6 +2,11 @@ package DesignObjects;
 
 import java.awt.Color;
 
+/**
+ * A utility class for managing color palettes in the application.
+ * 
+ * @Author ManuelVillotti
+ */
 public class ColorSetting {
 
     // Light palette link: https://colorhunt.co/palette/effffdb8fff985f4ff42c2ff
@@ -20,6 +25,12 @@ public class ColorSetting {
     private static Color dark4 = new Color(203, 228, 222);
     private static Color[] darkColors = { dark0, dark1, dark2, dark3, dark4 };
 
+    /**
+     * Gets the array of colors based on the specified mode.
+     *
+     * @param mode The color mode ("Dark" or "Light").
+     * @return An array of Color objects corresponding to the specified mode.
+     */
     public static Color[] getWelcomeColors(String c) {
         if (c.equalsIgnoreCase("Dark"))
             return darkColors;

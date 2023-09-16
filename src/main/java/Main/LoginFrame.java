@@ -19,7 +19,6 @@ import AdminGUI.AdminFrame;
 import java.io.IOException;
 
 import java.util.logging.FileHandler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -28,10 +27,10 @@ import java.util.logging.Logger;
  * @author ManuelVillotti
  */
 public class LoginFrame extends javax.swing.JFrame {
-    
+
         private static final Logger logger = Logger.getLogger("LoginLogger");
         private FileHandler fileHandler;
-        
+
         private CardLayout cardLayout;
         private WelcomeFrame welcomeFrame;
 
@@ -44,11 +43,11 @@ public class LoginFrame extends javax.swing.JFrame {
          */
         public LoginFrame() {
                 try {
-                    // Configure logger to save logs to a file
-                    fileHandler = new FileHandler("src/main/java/Logs/login.log");
-                    logger.addHandler(fileHandler);
+                        // Configure logger to save logs to a file
+                        fileHandler = new FileHandler("src/main/java/Logs/login.log");
+                        logger.addHandler(fileHandler);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                        e.printStackTrace();
                 }
                 initComponents();
                 setLocationRelativeTo(null);// center position of JFrame
@@ -145,7 +144,8 @@ public class LoginFrame extends javax.swing.JFrame {
                                 User user = new User(name, surname, username, birth, gender, email, pass1, "user");
 
                                 GeneralController.addUser(user);
-                                logger.info("User registered: Username=" + username + ", Name=" + name + ", Surname=" + surname + ", Email=" + email);
+                                logger.info("User registered: Username=" + username + ", Name=" + name + ", Surname="
+                                                + surname + ", Email=" + email);
 
                                 this.dispose(); // to close this Frame
                                 return true; // user registered successfully

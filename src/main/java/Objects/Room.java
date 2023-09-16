@@ -53,21 +53,12 @@ public class Room {
             price = 400;
     }
 
-    // ---- getters and setters
-    /**
-     * Gets the unique identifier of the room.
-     *
-     * @return The room's ID.
-     */
+    // -------- getters and setters
+
     public int getId() {
         return id;
     }
 
-    /**
-     * Sets a new identifier for the room.
-     *
-     * @param id The new ID for the room.
-     */
     public void setId(int id) {
         this.id = id;
     }
@@ -163,12 +154,26 @@ public class Room {
         return result;
     }
 
-    // checks if room is free for today
+    /**
+     * Checks if the room is occupied for today.
+     * 
+     * @param bookings An array of Booking objects representing all existing
+     *                 bookings.
+     * @return true if the room is occupied for today, false otherwise.
+     */
     public boolean isOccupied(Booking[] bookings) {
         DateTime today = new DateTime();
         return isOccupied(bookings, today, today);
     }
 
+    /**
+     * Checks if the room is available for a given check-in and check-out date time.
+     * 
+     * @param checkInDateTime  The desired check-in date and time.
+     * @param checkOutDateTime The desired check-out date and time.
+     * @return true if the room is available, false if it is already booked for the
+     *         specified period.
+     */
     public boolean isRoomAvailable(DateTime checkInDateTime, DateTime checkOutDateTime) {
 
         Booking[] bookings = (Booking[]) GeneralController.pullData(Booking.class);

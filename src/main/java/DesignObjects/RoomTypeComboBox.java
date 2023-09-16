@@ -8,8 +8,17 @@ import javax.swing.JComboBox;
 
 import Objects.Room.RoomType;
 
+/**
+ * A customized JComboBox for selecting room types and capacities.
+ * 
+ * @Author ManuelVillotti
+ */
 public class RoomTypeComboBox extends JComboBox<String> {
 
+    /**
+     * Initializes a new instance of the RoomTypeComboBox class.
+     * Sets up the model, default selection, and custom renderer.
+     */
     public RoomTypeComboBox() {
         super();
         setModel();
@@ -17,6 +26,9 @@ public class RoomTypeComboBox extends JComboBox<String> {
         super.setRenderer(new CustomListCellRenderer());
     }
 
+    /**
+     * Custom list cell renderer for displaying room types and capacities.
+     */
     private class CustomListCellRenderer extends DefaultListCellRenderer {
 
         @Override
@@ -54,7 +66,12 @@ public class RoomTypeComboBox extends JComboBox<String> {
         }
     }
 
-    // returns a List containing RoomType at index 0 and capacity at index 1
+    /**
+     * Gets the selected item as an ArrayList containing RoomType at index 0 and
+     * capacity at index 1.
+     * 
+     * @return An ArrayList containing the selected RoomType and capacity.
+     */
     public ArrayList<Object> getSelectedItem() {
         ArrayList<Object> result = new ArrayList<>();
         if (super.getSelectedItem().equals("Single room standard")) {
@@ -78,6 +95,9 @@ public class RoomTypeComboBox extends JComboBox<String> {
         return result;
     }
 
+    /**
+     * Sets up the model with room type options.
+     */
     private void setModel() {
         super.setModel(new javax.swing.DefaultComboBoxModel<>(
                 new String[] { "Single room standard", "Double room standard", "Single room deluxe",
