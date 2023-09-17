@@ -108,7 +108,7 @@ Justification: AssertJ is a library for enhancing assertions in test cases, maki
 - **Collections:** We used collections to make the usage of the combo boxes easier or also in the management of rooms.
 - **Logging:** We used logging to control better the inputs users give when they log in or register, in case someone finds an exploit and uses it to gain admin privileges.
 - **Casting:** We used casting to convert a value from one data type to another. It allowed us to change the type of a variable or an expression temporarily.
-- **Lambda Expressions:** 
+- **Lambda Expressions:** We used lambda expressions multiple times for concise functionality, especially within assert statements.
 
 ### 4.4. Tests
 
