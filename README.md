@@ -25,19 +25,51 @@ This project was created by:
 
 ## 3. Usage
 
-Describe how to compile, package, and Main your project here.
+### Application Requirements
 
-To build the project, Main:
+To run our application, you will need Java 17 installed on your system. If you haven't already, you can download it from [Oracle's official website](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html). 
 
-```shell
-mvn package
-```
+Please ensure that your `JAVA_HOME` environment variable is correctly set to the installation folder of Java 17.
 
-To do X, Main:
+If you don't have Maven installed on your system, don't worry, it is already implemented in the repository.
 
-```
-mvn abc
-```
+### Commands
+
+Follow these steps to compile and run the application:
+
+1. Open a terminal in the repository's path.
+
+2. It's always a good practice to clean the repository before compiling the code.
+
+    ```shell
+    ./mvnw clean
+    ```
+
+3. To build the application, use the following command:
+
+    ```shell
+    ./mvnw package
+    ```
+
+4. After successfully building the application, you can run it either using Maven or directly with Java.
+
+    Using Maven:
+
+    ```shell
+    ./mvnw exec:exec
+    ```
+
+    Alternatively, you can run the JAR file directly:
+
+    ```shell
+    java -jar ./<path-to-the-jar-file>.jar
+    ```
+
+5. To run the test classes, use the following command:
+
+    ```shell
+    ./mvnw test
+    ```
 
 ## 4. Implementation
 
