@@ -33,6 +33,16 @@ Please ensure that your `JAVA_HOME` environment variable is correctly set to the
 
 If you don't have Maven installed on your system, don't worry, it is already implemented in the repository.
 
+### Default account credentials
+
+To access the Admin Console, use the following credentials:
+  - Username: admin
+  - Password: password
+
+To access the User Console, use the following credentials (or register your own account):
+  - Username: guest
+  - Password: password
+
 ### Commands
 
 Follow these steps to compile and run the application:
