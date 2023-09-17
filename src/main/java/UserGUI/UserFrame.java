@@ -35,7 +35,6 @@ public class UserFrame extends javax.swing.JFrame {
      * @param user The User object representing the logged-in user.
      */
     public UserFrame(User user) {
-        System.out.println("Login as " + user.getFullName());
         this.user = user;
         initComponents();
         setLocationRelativeTo(null);// center position of JFrame
