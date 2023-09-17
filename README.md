@@ -12,15 +12,16 @@ Our Hotel Management App is the perfect solution for both guests and administrat
 
 ### 1.1. Demo
 
-video here
+Watch our demo on YouTube: https://youtu.be/5Sl7PLuSNgo
 
 ## 2. Authors
 
 This project was created by:
 
-* Khinchi Ganesh Kumar 
 * Marconi Alessandro
 * Villotti Manuel
+
+Collaborator: Khinchi Ganesh Kumar 
 
 ## 3. Usage
 
