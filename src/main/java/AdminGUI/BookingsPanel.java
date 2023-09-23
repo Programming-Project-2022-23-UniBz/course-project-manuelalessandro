@@ -1077,7 +1077,7 @@ public class BookingsPanel extends javax.swing.JPanel {
                 }
         }
 
-        private boolean isSameDay(Date date1, Date date2) {
+        public static boolean isSameDay(Date date1, Date date2) {
                 Calendar cal1 = Calendar.getInstance();
                 Calendar cal2 = Calendar.getInstance();
                 cal1.setTime(date1);

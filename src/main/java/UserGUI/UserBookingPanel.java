@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 
 import org.joda.time.DateTime;
 
+import AdminGUI.BookingsPanel;
 import Objects.Booking;
 import Objects.GeneralController;
 import Objects.Room;
@@ -96,7 +97,8 @@ public class UserBookingPanel extends javax.swing.JPanel {
                         System.out.println("-- Booking is null");
                 }
 
-                if (checkIn == null || checkOut == null) {
+                if (checkIn == null || checkOut == null || checkIn.after(checkOut)
+                                || BookingsPanel.isSameDay(checkIn, checkOut)) {
                         errorLabel.setText("You have to select valid dates!");
                 } else if (!(checkIn.after(new Date()))) {
                         errorLabel.setText("You can book rooms only starting from tomorrow.");

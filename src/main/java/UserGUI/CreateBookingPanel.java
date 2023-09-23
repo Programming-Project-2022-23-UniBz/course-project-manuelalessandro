@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import org.joda.time.DateTime;
 
+import AdminGUI.BookingsPanel;
 import Objects.Booking;
 import Objects.GeneralController;
 import Objects.Room;
@@ -124,7 +125,8 @@ public class CreateBookingPanel extends javax.swing.JPanel {
 
                 if (!(checkIn.after(new Date()))) {
                         errorLabel.setText("You can book rooms only starting from tomorrow.");
-                } else if (checkIn != null && checkOut != null) {
+                } else if (checkIn != null && checkOut != null && checkIn.before(checkOut)
+                                && !BookingsPanel.isSameDay(checkIn, checkOut)) {
                         RoomType roomType = (RoomType) roomTypeComboBox.getSelectedItem().get(0);
                         int capacity = (int) roomTypeComboBox.getSelectedItem().get(1);
 
